@@ -5,7 +5,7 @@ node_js:
 cache: npm
 branches:
   only:
-    - master
+    - hexo-source
 before_install:
   - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
   - git submodule update --init --recursive
