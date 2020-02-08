@@ -99,3 +99,9 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: ''
+
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
