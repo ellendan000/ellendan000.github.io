@@ -6,6 +6,9 @@ cache: npm
 branches:
   only:
     - master
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
 script:
   - hexo generate
 deploy:
@@ -16,3 +19,5 @@ deploy:
   on:
     branch: master
   local-dir: public
+git:
+  submodules: false
