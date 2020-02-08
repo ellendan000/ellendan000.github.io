@@ -17,8 +17,9 @@ deploy:
   github-token:
     secure: RfCInEEilDgc0iY+i6P/7y8ClNbNBM+gppMnSCVe5IMNyqYv9tSkgvhPrg2mUzxOcBvxJ8YK3f4r7jFsjKV75aLH8n7lVTwhJkLBPvezFKR5VmCkbogRGT9SkFikljwRhhDvGfw9qUKW5w0rwNPDC5jh2OvCgdokeQlO9yKif/3PvN5E41bOj3sw3UXOA3xAwBrPDJCl9H0zaxUCY4XocAKun6+1JTNvfNi/3ADO4wJ4tk643TvnFqIVIYYtrze9JvwYOB2d44eWVqIvGPqs+uWbEjr7cRUSlXmXjFg0kHqXQyIsQTPql33H3gRhVI8FpBQXIjxjXfuMzHcP3bEw7I+iibuJPkL6V390Fzv4JlkMxSCu7DrWS7GwsHFwxrebpw99daj0Pc5iurn/h4Y0rO7dFJ9KXSM2Z3d0vlrMYJHz8xZxzQC01/33mODBZ32Z67DY+NZ7CjK1i+F8LCuVn3PEP8qj3jgdvKX/u9izG7Wvx56mR/SVwyWlbV9LX9sy8/yqysEP8fD70ud92FqIfdyY5dsAR4b3/a7PgyTCrwbsQP+5wvmxnCqN1RAHkcav/a7FDHE4SLCXdcAD/QtaVY3byzrKLw3B8KhqxgwPm2Z9WG/QkwoQu2lih1k2UO5M4TOXOldR0fn0A55TZK7tpV0fjd/MWdjXaZfNEkNACWc=
   keep-history: true
+  target_branch: master
   on:
-    branch: master
+    branch: hexo-source
   local-dir: public
 git:
   submodules: false
