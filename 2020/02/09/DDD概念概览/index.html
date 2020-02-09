@@ -55,7 +55,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://ellendan.github.com/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/ddd-summary.png">
 <meta property="article:published_time" content="2020-02-09T06:50:44.000Z">
-<meta property="article:modified_time" content="2020-02-09T09:06:27.644Z">
+<meta property="article:modified_time" content="2020-02-09T13:07:57.324Z">
 <meta property="article:author" content="Ellen Dan">
 <meta property="article:tag" content="DDD">
 <meta name="twitter:card" content="summary">
@@ -230,7 +230,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-02-09 14:50:44 / 修改时间：17:06:27" itemprop="dateCreated datePublished" datetime="2020-02-09T14:50:44+08:00">2020-02-09</time>
+              <time title="创建时间：2020-02-09 14:50:44 / 修改时间：21:07:57" itemprop="dateCreated datePublished" datetime="2020-02-09T14:50:44+08:00">2020-02-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -295,7 +295,7 @@
 <li>缺乏对问题域的关注和正确认识，构建出来的软件系统往往会失败。<br>注：<strong>问题域</strong> ，涉及你当前正在构建软件的主题领域。是确定软件价值的关键点。</li>
 </ol>
 <h3 id="DDD模式"><a href="#DDD模式" class="headerlink" title="DDD模式"></a>DDD模式</h3><p>DDD具有两种模式类型：战略模式和战术模式。<br>战略模式影响的是解决方案，战术模式用于实现富领域模型。<br><img src="/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/ddd-summary.png" alt="Domain Drive Design Summary.png"></p>
-<h3 id="DDD战略模式"><a href="#DDD战略模式" class="headerlink" title="DDD战略模式"></a>DDD战略模式</h3><p>领域驱动设计的战略模式会提炼问题域并塑造应用程序的架构。</p>
+<h4 id="DDD战略模式"><a href="#DDD战略模式" class="headerlink" title="DDD战略模式"></a>DDD战略模式</h4><p>领域驱动设计的战略模式会提炼问题域并塑造应用程序的架构。</p>
 <ol>
 <li>提炼问题域以揭示重要之处是什么 —— 核心子域。核心域是编写软件的原因，保留最大价值的关键区域，决定软件成功与否的关键。并非一个系统的所有部分都需要被精心设计，团队可以更专注于核心领域。</li>
 <li>在解空间构建一个软件模型，以处理领域问题并让软件与业务保持一致。</li>
@@ -303,9 +303,9 @@
 <li>限界上下文（Bounded Context），定义了模型的适用性并确保保留其完整性和独立发展的能力。统一语言和模型的适用边界应该是要在具体的限界上下文内。</li>
 <li>上下文映射（Context Map）。上下文映射提供了整个系统各上下文边界之间的宏观状况，揭示了上下文之间的关系和交互方式，同时表现出各上下文内模型的有多少差异，以及它们的交换哪些数据来实现业务处理过程。</li>
 </ol>
-<h5 id="问题空间-amp-解空间"><a href="#问题空间-amp-解空间" class="headerlink" title="问题空间 &amp; 解空间"></a>问题空间 &amp; 解空间</h5><p>战略模式中强调问题空间和解空间的区别。只有明确确定了问题空间，才能分析出对应的解空间，最终才能构建出满足解决业务问题的成功软件。<br>上1，是解决问题空间复杂度的管理模式。问题空间将问题提炼成更多可管理的子域。<br>上2、3、4、5， 是解空间的管理模式。</p>
+<p><strong>问题空间 &amp; 解空间</strong><br>战略模式中强调问题空间和解空间的区别。只有明确确定了问题空间，才能分析出对应的解空间，最终才能构建出满足解决业务问题的成功软件。<br>上1，是解决问题空间复杂度的管理模式。问题空间将问题提炼成更多可管理的子域。<br>上2、3、4、5， 是解空间的管理模式。</p>
 <p>战略模式强调了DDD的侧重点是：知识消化、知识提炼、协作沟通、统一语言、上下文、模型持续发展。<br>后面战术模式，其实只是支持其实现而推荐的手段。</p>
-<h3 id="DDD战术模式"><a href="#DDD战术模式" class="headerlink" title="DDD战术模式"></a>DDD战术模式</h3><p>DDD的战术模式（也称模型构造块）是一个帮助创建用于复杂有界上下文的有效模型的模式集合。<br>许多模式都早于DDD概念的出现，但依然有一些被推荐为DDD战术的标准模式。<br>在战略模式提供的架构和原则的基础上，共用这些标准模式可以让设计有序进行，也使项目组成员能够更方便地了解彼此的工作内容。</p>
+<h4 id="DDD战术模式"><a href="#DDD战术模式" class="headerlink" title="DDD战术模式"></a>DDD战术模式</h4><p>DDD的战术模式（也称模型构造块）是一个帮助创建用于复杂有界上下文的有效模型的模式集合。<br>许多模式都早于DDD概念的出现，但依然有一些被推荐为DDD战术的标准模式。<br>在战略模式提供的架构和原则的基础上，共用这些标准模式可以让设计有序进行，也使项目组成员能够更方便地了解彼此的工作内容。</p>
 <ol>
 <li>实体（Entity）</li>
 <li>值对象（Value Object）</li>
@@ -318,7 +318,7 @@
 <li>集成限界上下文</li>
 <li>六边形架构</li>
 </ol>
-<h5 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h5><ol>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
 <li>《领域驱动设计：软件核心复杂性应对之道》，Eric Evans 著</li>
 <li>《实现领域驱动设计》，Vaughn Vemon 著</li>
 <li>《领域驱动设计模式、原理与实践》，Scott Millett / Nick Tune 著</li>
@@ -414,7 +414,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#何为DDD"><span class="nav-number">1.</span> <span class="nav-text">何为DDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么DDD"><span class="nav-number">2.</span> <span class="nav-text">为什么DDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDD模式"><span class="nav-number">3.</span> <span class="nav-text">DDD模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDD战略模式"><span class="nav-number">4.</span> <span class="nav-text">DDD战略模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#问题空间-amp-解空间"><span class="nav-number">4.0.1.</span> <span class="nav-text">问题空间 &amp; 解空间</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDD战术模式"><span class="nav-number">5.</span> <span class="nav-text">DDD战术模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#参考文献"><span class="nav-number">5.0.1.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#何为DDD"><span class="nav-number">1.</span> <span class="nav-text">何为DDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么DDD"><span class="nav-number">2.</span> <span class="nav-text">为什么DDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDD模式"><span class="nav-number">3.</span> <span class="nav-text">DDD模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DDD战略模式"><span class="nav-number">3.1.</span> <span class="nav-text">DDD战略模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DDD战术模式"><span class="nav-number">3.2.</span> <span class="nav-text">DDD战术模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
