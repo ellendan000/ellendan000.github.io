@@ -19,7 +19,7 @@
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('http://ellendan.github.com').hostname,
+    hostname: new URL('https://ellendan.com').hostname,
     root: '/',
     scheme: 'Mist',
     version: '7.7.1',
@@ -49,14 +49,14 @@
   <meta name="description" content="人生如逆水行舟，不进则退。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="ellendan">
-<meta property="og:url" content="http://ellendan.github.com/archives/2020/index.html">
+<meta property="og:url" content="https://ellendan.com/archives/2020/index.html">
 <meta property="og:site_name" content="ellendan">
 <meta property="og:description" content="人生如逆水行舟，不进则退。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Ellen Dan">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://ellendan.github.com/archives/2020/">
+<link rel="canonical" href="https://ellendan.com/archives/2020/">
 
 
 <script id="page-configurations">
@@ -70,21 +70,14 @@
 
   <title>归档 | ellendan</title>
   
-    <script>
-      function sendPageView() {
-        if (CONFIG.hostname !== location.hostname) return;
-        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
-        localStorage.setItem('uid', uid);
-        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
-          v  : 1,
-          tid: 'UA-158099564-1',
-          cid: uid,
-          t  : 'pageview',
-          dp : encodeURIComponent(location.pathname)
-        }));
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158099564-1"></script>
+    <script pjax>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-158099564-1');
       }
-      document.addEventListener('pjax:complete', sendPageView);
-      sendPageView();
     </script>
 
 
