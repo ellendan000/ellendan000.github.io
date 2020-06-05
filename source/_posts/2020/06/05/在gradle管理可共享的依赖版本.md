@@ -1,3 +1,9 @@
+---
+title: 在gradle管理可共享的依赖版本管理  
+date: 2020-06-05 14:18:20  
+tags: [gradle, Java开发实践, Java服务模板]  
+categories: [Java服务模板]  
+---
 
 “可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。  
 对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。  
