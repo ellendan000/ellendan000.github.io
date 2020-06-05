@@ -20,7 +20,7 @@ Maven __BOM__，全名 `Bill Of Materials`, 是一种特殊的 POM，主要用�
 讲的直观一点，效果就是（见下图）：
 ![Spring-dependencies-management](在gradle管理可共享的依赖版本/Spring-dependencies-management.png)
 dependencies中依赖的那些库为何可以不用标明版本？  
-正是因为使用了*dependency-management* 插件，当 gradle plugin *org.springframework.boot* 检测到此插件启用时，会自动导入Spring boot dependencies BOM，这样依赖库们会主动使用 BOM 中推荐的版本。
+正是因为使用了*dependency-management* 插件，当 gradle plugin *org.springframework.boot* 检测到此插件启用时，会自动导入Spring boot dependencies BOM，这样依赖库们会主动使用 BOM 中推荐的版本。[链接](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies)
 
 下面是Spring Cloud BOM的一部分展示(完整见[链接](https://github.com/spring-cloud/spring-cloud-release/blob/vHoxton.SR5/spring-cloud-dependencies/pom.xml))：
 
@@ -148,3 +148,9 @@ dependencies {
 眼看2020就要过半，由于2020开局乱来，受种种因素影响，计划一团混乱变更。  
 一鼓作气，再而衰，三而竭，各种计划目标债。期望2020后半段能走好吧~
 
+## 参考资料
+1. https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies
+2. https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header
+3. https://docs.gradle.org/current/userguide/platforms.html
+4. https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/#introduction
+5. https://www.baeldung.com/spring-maven-bom
