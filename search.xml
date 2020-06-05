@@ -7,7 +7,7 @@
 <a id="more"></a>
 
 <h2 id="1-BOM是什么？"><a href="#1-BOM是什么？" class="headerlink" title="1. BOM是什么？"></a>1. BOM是什么？</h2><p>在说 BOM 之前，先了解一下 Maven 的一些基本概念。<br>Maven <strong>POM</strong>，全名 <code>Project Object Model</code>, 是 Maven 使用中的重要配置文件，xml格式，主要用来导入依赖和进行项目构建。<br>Maven <strong>BOM</strong>，全名 <code>Bill Of Materials</code>, 是一种特殊的 POM，主要用来集中管理项目依赖的版本，更加灵活地维护所有依赖的版本信息。<br>配置好的 BOM，可以放在单个项目中自用，也可以传阅和分享给其他项目进行公用。</p>
-<p>讲的直观一点，效果就是（见下图）：<br><img src="/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/Spring-dependencies-management.png" alt="Spring-dependencies-management"><br>dependencies中依赖的那些库为何可以不用标明版本？<br>正是因为使用了<em>dependency-management</em> 插件，当 gradle plugin <em>org.springframework.boot</em> 检测到此插件启用时，会自动导入Spring boot dependencies BOM，这样依赖库们会主动使用 BOM 中推荐的版本。</p>
+<p>讲的直观一点，效果就是（见下图）：<br><img src="/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/Spring-dependencies-management.png" alt="Spring-dependencies-management"><br>dependencies中依赖的那些库为何可以不用标明版本？<br>正是因为使用了<em>dependency-management</em> 插件，当 gradle plugin <em>org.springframework.boot</em> 检测到此插件启用时，会自动导入Spring boot dependencies BOM，这样依赖库们会主动使用 BOM 中推荐的版本。<a href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies" target="_blank" rel="noopener">链接</a></p>
 <p>下面是Spring Cloud BOM的一部分展示(完整见<a href="https://github.com/spring-cloud/spring-cloud-release/blob/vHoxton.SR5/spring-cloud-dependencies/pom.xml" target="_blank" rel="noopener">链接</a>)：</p>
 <p><img src="/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/Spring-cloud-dependencies.png" alt="Spring-cloud-dependencies"></p>
 <p>看到这里，是不是觉得有 BOM 的情况下便捷不少，再也不用一条条dependency分别查阅、选择和维护版本了？<br>日常开发中，我们已经见识过了Spring boot / Spring Cloud /junit 这些常用 BOMs。</p>
@@ -30,6 +30,13 @@
 </blockquote>
 <p>所以，这里决定尝试做一个“服务模板”。<br>依赖版本管理只是其中的一个小的部分, 并且使用 gradle 来实现也非常简单。<br>具体代码地址：<a href="https://github.com/ellendan000/service_template" target="_blank" rel="noopener">https://github.com/ellendan000/service_template</a></p>
 <h2 id="PS-废话篇"><a href="#PS-废话篇" class="headerlink" title="PS. 废话篇"></a>PS. 废话篇</h2><p>眼看2020就要过半，由于2020开局乱来，受种种因素影响，计划一团混乱变更。<br>一鼓作气，再而衰，三而竭，各种计划目标债。期望2020后半段能走好吧~</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies" target="_blank" rel="noopener">https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies</a></li>
+<li><a href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header" target="_blank" rel="noopener">https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header</a></li>
+<li><a href="https://docs.gradle.org/current/userguide/platforms.html" target="_blank" rel="noopener">https://docs.gradle.org/current/userguide/platforms.html</a></li>
+<li><a href="https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/#introduction" target="_blank" rel="noopener">https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/#introduction</a></li>
+<li><a href="https://www.baeldung.com/spring-maven-bom" target="_blank" rel="noopener">https://www.baeldung.com/spring-maven-bom</a></li>
+</ol>
 ]]></content>
       <categories>
         <category>Java服务模板</category>
