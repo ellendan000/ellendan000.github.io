@@ -1,6 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>研发效能之层级测试</title>
+    <url>/2020/06/29/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<p>研发效能不等于研发效率。</p>
+<p>在我司的<code>研发平台解决方案</code>的定义中，研发效能 = 可持续快速交付价值的能力 = 效率 + 质量 + 用户价值。</p>
+<p>如果不能达到相应的质量标准和用户价值，再高的研发效率也是枉然。</p>
+<p>这里我专门聊一下效率和质量之间的结合一个点。</p>
+<h3 id="1-在对质量的追求中，如何优化研发效率？"><a href="#1-在对质量的追求中，如何优化研发效率？" class="headerlink" title="1. 在对质量的追求中，如何优化研发效率？"></a>1. 在对质量的追求中，如何优化研发效率？</h3><p>在敏捷团队里，开发人员往往被要求编写单元测试、集成测试、契约测试等等自动化测试，并且在 CI 流水线上创建对应的<code>test stage</code>，通过每次提交代码后重复运行 —— 来获取测试情况，以此来增添交付质量的保证。</p>
+<p><img src="/2020/06/29/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/CI%E6%B5%81%E6%B0%B4%E7%BA%BF.png" alt="CI流水线"></p>
+<p>CI 流水线上运行的自动化测试，大家一定不陌生 —— 一次编写、重复运行、变更时及时维护。</p>
+<p>对团队而言，<strong>可视化</strong>、最直观的就是，测试的运行效率、运行时长。</p>
+<p>因此，团队会尽量缩短测试集的运行时长，以达到快速反馈和提高流水线的及时使用率。</p>
+<p>同时，快速的测试运行效率，也可以缩短开发人员进行代码预提交的检查时间。</p>
+<p>在一般<strong>不可视化</strong>的角落，其实还有日常的测试编写和维护的效率。</p>
+<p>当团队要求较高的代码覆盖率时，往往一个 story 的开发时间中，可能有一半左右用以编写上述自动化测试。</p>
+<p>所以，在研发效能度量中，自动化测试的效率包括两个部分：</p>
+<p><img src="/Users/rldan/space/ellendan000.github.com/source/_posts/2020/06/3/2020/06/29/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E6%95%88%E7%8E%87.png" alt="自动化测试的效率"></p>
+<p>不仅要优化测试集的运行效率，同时还要优化测试编写的效率。</p>
+<h3 id="2-测试金字塔是个合适的策略"><a href="#2-测试金字塔是个合适的策略" class="headerlink" title="2. 测试金字塔是个合适的策略"></a>2. 测试金字塔是个合适的策略</h3><p><a href="https://martinfowler.com/bliki/TestPyramid.html" target="_blank" rel="noopener">测试金字塔</a>主导思想就是，通过不同的测试类型组合，来达到质量与投入产出比的一个平衡取舍 —— 以合适的投入产出比，来获取一个较高的质量。</p>
+<p>除开硬件资源的投入（如 CI 资源），投入产出比与研发效率是线性的关系。</p>
+<p>测试金字塔中，底层的单元测试拥有反馈快、代价低、单一职责的特点，因此作为基数最大的基层测试 —— 用以覆盖绝大部分代码逻辑。</p>
+<p>基于单元测试上的其他上层测试，主要以其他角度弥补单元测试的不足，如组件完整性等等，同时它们面临的问题越来越复杂、范围越来越广，启动和运行的过程也会越来越重，编写和维护成本也越高。</p>
+<p>因此，运用测试金字塔，利用大量的底层单元测试来尽量覆盖代码逻辑，是同时优化<code>测试编写效率</code>和<code>测试集运行效率</code>的一把有利钥匙。</p>
+<h3 id="3-单元测试覆盖所有代码逻辑-——-不可能做到？"><a href="#3-单元测试覆盖所有代码逻辑-——-不可能做到？" class="headerlink" title="3. 单元测试覆盖所有代码逻辑 —— 不可能做到？"></a>3. 单元测试覆盖所有代码逻辑 —— 不可能做到？</h3><p>以服务架构举例，从传统的分层架构说起。（代码术语以Java/Spring为背景。）<br><img src="/2020/06/29/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/%E4%BC%A0%E7%BB%9F%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84.png" alt="传统分层架构"></p>
+<p>从技术实现角度来讲，只有其中的 application 层和 domain 层可以实现真正意义的单元测试 —— 只测试单元本身，仅使用 Junit + mokito，测试反馈总时长在秒级以内。  </p>
+<p>从代码实现来看，user interfaces 和 persistence 其实也可以仅使用 Junit + mokito 来编写单元测试。<br>但问题是：这两层只使用单元测试来测方法体本身，没有意义。  </p>
+<h4 id="是否要单独测试-user-interfaces-和-persist-层？"><a href="#是否要单独测试-user-interfaces-和-persist-层？" class="headerlink" title="是否要单独测试 user interfaces 和 persist 层？"></a>是否要单独测试 user interfaces 和 persist 层？</h4><p>这里有块示例代码，见下。<br>user interfaces 里面定义的基于 Spring MVC 的 controller，看起来方法体内只有一两行代码，同时下层 applicationService 和 mapper 逻辑已经由自身单元测试覆盖了。  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@GetMapping(&quot;&#x2F;customers&#x2F;&#123;customerId&#125;&#x2F;projects&#x2F;&#123;projectId&#125;&quot;)</span><br><span class="line">@PreAuthorize(&quot;hasRole(&#39;USER&#39;)&quot;)</span><br><span class="line">@ResponseStatus(HttpStatus.OK)</span><br><span class="line">Set&lt;LatestPipelineInfoResponse&gt; fetchLatestUploadInfo(@PathVariable @Min(0) Long customerId, @PathVariable Long projectId)&#123;</span><br><span class="line">    Set&lt;LatestPipelineInfoDTO&gt; dtos &#x3D; this.service.fetchLatestUploadInfo(customerId, projectId);</span><br><span class="line">    return LatestPipelineInfoResponseMapper.MAPPER.fromDto(dtos);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果使用单元测试，仅仅测的是 controller 对 service 和 mapper 的成功调用，意义很小。</p>
+<p>我们这看一下上面这个controller method背后覆盖了多少逻辑：  </p>
+<ul>
+<li><p>监听http request</p>
+</li>
+<li><p>将http request中的数据反序列化转换成Java objects, 注入到方法调用的入参中</p>
+</li>
+<li><p>验证入参</p>
+</li>
+<li><p>验证 security 权限</p>
+</li>
+<li><p>调用业务逻辑</p>
+</li>
+<li><p>将业务逻辑返回的Java objects序列化返回到response中</p>
+</li>
+<li><p>处理以上环节中发生的异常  </p>
+</li>
+</ul>
+<p>  一共7项，虽然代码实现起来很简单，这是因为 Spring 框架帮开发人员简化了很多代码量。<br>  单独测试user interfaces层，并不是说要测 Spring 提供的框架能力，而是要测这块定制代码最终实现的是 —— “正如你所愿”。  </p>
+<p>相同道理，在persist层，如果代码里有复杂的逻辑，比如动态查询，或者直接HSQL、SQL。如：  </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public interface PipelineHistoryJpaRepository extends</span><br><span class="line">        JpaRepository&lt;PipelineHistory, String&gt; &#123;</span><br><span class="line"></span><br><span class="line">    @Query(nativeQuery &#x3D; true, value &#x3D; &quot;SELECT * FROM pipeline_histories p, &quot; +</span><br><span class="line">            &quot;(SELECT max(id) AS id FROM pipeline_histories &quot; +</span><br><span class="line">            &quot;GROUP BY customer_id, project_id, pipeline_name) tmp &quot; +</span><br><span class="line">            &quot;WHERE p.id &#x3D; tmp.id &quot; +</span><br><span class="line">            &quot;ORDER BY customer_id, project_id, pipeline_name&quot;)</span><br><span class="line">    public List&lt;PipelineHistory&gt; fetchAllExistsPipeline();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>persist层逻辑，也需要使用测试覆盖。<br>当然，如果是JPA自动生成的findBy、save等等系列，不在这块范围之内。  </p>
+<h4 id="如何单独测-user-interfaces-和-persist-层？"><a href="#如何单独测-user-interfaces-和-persist-层？" class="headerlink" title="如何单独测 user interfaces 和 persist 层？"></a>如何单独测 user interfaces 和 persist 层？</h4><p>user interfaces 和 persist 层因为框架和工具的原因，只能带上Spring application context一起启动测试。<br>正常来说，它们已经算是集成测试了，集成了 Spring 容器。   </p>
+<p>用过 @SpringBootTest 的人，一定对其造成的测试编写效率和运行效率印象深刻 —— 可能只是添加了几个 Bean，就会让 context 的启动时间延长几秒，不恰当地使用某些test annotation也会造成context的重新加载和刷新。   </p>
+<p>本人也用过很长一段时间 —— 通过 API 调用整个组件（<code>controller</code>-&gt; <code>servcie</code>-&gt;<code>repository</code>-&gt;<code>memory db</code>）, 以实现对user interfaces 和 persist 层的覆盖。即使在成功优化Spring加载机制 —— 每次批量运行测试用例仅加载一次 application context，但每次编写新的API测试、修复API测试仍然痛苦不已 —— 每次运行单条测试进行反馈时，依然要等待一次完整的 context 启动。    </p>
+<p>因此，这里推荐使用Spring提供的切片测试工具（Tests Slices）: @WebMvcTest、@DataJpaTest。其原理是仅创建简化的application context，少量的bean，使用轻量级、有针对性范围的方式，降低反馈时间、提升测试性能。<br>在编写测试、运行测试的性能上，切片测试的反馈效率的确赶不上单元测试，但对比 @SpringBootTest 加载几乎完整 context 的情况已经优化不少。    </p>
+<h4 id="最终的目的：利用基层的测试来整体覆盖代码逻辑"><a href="#最终的目的：利用基层的测试来整体覆盖代码逻辑" class="headerlink" title="最终的目的：利用基层的测试来整体覆盖代码逻辑"></a>最终的目的：利用基层的测试来整体覆盖代码逻辑</h4><p>回到之前的问题：技术意义上的单元测试的确不能覆盖所有代码逻辑。</p>
+<p>但，<code>单元测试</code> + <code>轻量级的、快速反馈的 slice tests</code> 可以尽量覆盖到所有代码逻辑。</p>
+<p>因为<code>单元测试 + slice tests</code>的目标是为了完成分层架构内的逻辑测试，为了避免语义上的冲突，因此这里将两者一起称为<code>层级测试</code>。<br>除了传统的分层架构，也来看看六边形架构、或者叫接口适配器架构是不是适合进行<code>分层测试</code>呢？<br>其实不然，六边形架构在宏观意义上，其实可以看成是“两层” —— domain 和 infrastructure。<br><img src="/2020/06/29/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/%E5%85%AD%E8%BE%B9%E5%BD%A2%E6%9E%B6%E6%9E%84.png" alt="六边形架构"><br>正好对照了 unit tests 和 slice tests 的分界。<br>而这两层的区别，在于 unit tests 测试的是系统中稳定的业务层，可以尽量多的追求代码覆盖率；而slice tests 测试的是对基础设施的依赖适配和定制逻辑，追求定制逻辑的功能覆盖。<br>最终同样得以完成对 ”代码逻辑“ 的整体测试覆盖。  </p>
+<h3 id="4-题外："><a href="#4-题外：" class="headerlink" title="4. 题外："></a>4. 题外：</h3><h4 id="4-1-API集成测试（API-Integration-Tests）"><a href="#4-1-API集成测试（API-Integration-Tests）" class="headerlink" title="4.1 API集成测试（API Integration Tests）"></a>4.1 API集成测试（API Integration Tests）</h4><p><img src="/2020/06/29/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/API%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95.png" alt="API集成测试"><br>在完成前面的层级测试、覆盖了所有逻辑细节之后，就轮到跨层级的连通性测试了。<br>这里虽然命名为“API集成测试”，其实也叫“组件测试”。由于系统架构由来已久，到微服务架构的时候，一个组件的边界已经是一个微服务的边界，针对微服务的API特性, 这篇文章里称其为“API集成测试”。    </p>
+<p>基于测试运行的可重复性，API集成测试中需要降低对外界的依赖，比如微服务在真实环境中对数据库、外部服务的依赖。   </p>
+<p>数据库可以替换成能力相同的内存式、或嵌入式数据库，比如生产mysql\mariaDB 可替换成 mariadb4j 实现嵌入式数据库；外部服务依赖，使用服务边界mock进行统一管理。    </p>
+<p>借用<strong><a href="http://github.com/tobyclemson" target="_blank" rel="noopener">Toby Clemson</a></strong> 的一张微服务组件测试的图，橙色的虚线正是组件测试的边界。<a href="https://martinfowler.com/articles/microservice-testing/" target="_blank" rel="noopener">原图来源</a>    </p>
+<p><img src="/2020/06/29/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/%E7%BB%84%E4%BB%B6%E6%B5%8B%E8%AF%95.png" alt="组件测试"></p>
+<p>使用 API 集成测试实现组件内部的连通性测试，一般测试路径选择覆盖层级完整的 happy path，不要企图去测试各逻辑分支。  </p>
+<p>举个例子：  </p>
+<p>一般写API集成测试的时候，常会遇到层级间“传递参数缺少校验“的问题，如 controller 调用 applicationService 时，入参传递了一个未预料的<code>null</code> 值，这个<code>null</code>值的校验，应该由具体代码 controller 与 applicationService 之间进行约定：可以是接收方编写防御性校验，也可以由调用方前瞻性校验。  </p>
+<p>因此，此处<code>null</code>值校验的逻辑完全是可以在 Layer tests中由测试覆盖。不要试图在API集成测试中覆盖这个<code>null</code>和<code>非null</code>分支。  </p>
+<h4 id="4-2-契约测试-Contract-Tests"><a href="#4-2-契约测试-Contract-Tests" class="headerlink" title="4.2 契约测试(Contract Tests)"></a>4.2 契约测试(Contract Tests)</h4><p>之前测完各层级逻辑、组件内的调用连通性，接着来看一下微服务边界的契约测试。  </p>
+<p><img src="/Users/rldan/space/ellendan000.github.com/source/_posts/2020/06/3/2020/06/29/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/%E5%A5%91%E7%BA%A6%E6%B5%8B%E8%AF%95.png" alt="契约测试"></p>
+<h5 id="契约-vs-API"><a href="#契约-vs-API" class="headerlink" title="契约 vs API"></a>契约 vs API</h5><p>对于契约测试，首先要避免进入 —— 一条API就应该是一个契约的误区。  </p>
+<p>记住，契约测试有个“首要精神“：<code>消费者驱动契约（Consumer Driven Contracts）</code>。  </p>
+<p>举个例子：  </p>
+<p><img src="/2020/06/29/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/%E5%A5%91%E7%BA%A6.png" alt="契约"></p>
+<p>服务producer，本身实现了一条API，返回资源 —— 每个会员的详细信息，包括：<code>id</code>、<code>age</code>、<code>name</code>。  </p>
+<p>服务consumer I、II、III知道 producer 服务可以提供会员信息资源，于是分别来与producer谈需求、谈集成，最终形成两份需求约定，见上图。  </p>
+<p>差别是：一份约定必须返回<code>id</code>和<code>age</code>字段，另一份约定必须返回<code>id</code>和<code>name</code>字段。  </p>
+<p>这也就形成了两份契约 —— 是根据消费者的需求直接驱动的。  </p>
+<p>从 consumer 角度来看，根本不关心 producer 的API是否是复用，这里只是恰好多个契约可以共用一条API而已，因此每个consumer的基本诉求就是 —— 无论之后API的实现如何变动，都不能影响自己契约内的数据。  </p>
+<p>接着在需求发布以后，consumer III的需求需要变动 —— 将返回的<code>name</code>字段，分切成<code>firstName</code>和<code>lastName</code>，这时候就形成了第三份<code>契约C</code>。无论具体API如何变更，都有两个基本的安全校验阀在那里：<code>契约A</code>和<code>契约B</code>。  </p>
+<p>也许有人会说不需要<code>契约C</code>，为了省事儿consumer III拿上<code>name</code>字段自己拆嘛。这种思路在现实谈需求、谈集成中其实经常会碰到。 这里一个小的玩笑：请告诉我，你觉得”金城武“是姓”金城“，还是姓”金“？  </p>
+<h5 id="契约测试需要双方维护"><a href="#契约测试需要双方维护" class="headerlink" title="契约测试需要双方维护"></a>契约测试需要双方维护</h5><p><code>契约（contract）</code>以满足consumer需求为目的，以consumer定义为主导，但 producer / customer 双方都有校验契约交付物的权利和义务 。  </p>
+<p><code>契约测试</code>，首先运行在producer的<code>auto test</code>中，以保证任何时候 producer 代码变更之后都满足契约。  </p>
+<p>同时该契约需要生成stub，提供给 consumer 以作为test double，consumer 依赖此契约的场景使用测试覆盖，以保证契约被变更时 consumer 能够及时获知。  </p>
+<h5 id="不要滥用契约测试"><a href="#不要滥用契约测试" class="headerlink" title="不要滥用契约测试"></a>不要滥用契约测试</h5><p>契约中主要约定是三部分：<code>调用方式</code>、<code>数据类型</code>、<code>数据格式</code>。因此契约测试主要校验的是这三部分，不包括数据值。  </p>
+<p>并且每一份契约的形成和变更，都会涉及到两方团队的沟通、协议和实现，比单元测试、API 集成测试 —— 代价高，效率低。  </p>
+<p>因此，契约测试在测试金字塔中位于 API 集成测试上方。  </p>
+<p>除了<code>调用方式</code>、<code>数据类型</code>、<code>数据格式</code>外，需要使用单元测试、API 集成测试的方式覆盖。  </p>
+<h4 id="4-3-E2E测试"><a href="#4-3-E2E测试" class="headerlink" title="4.3 E2E测试"></a>4.3 E2E测试</h4><p>在软件研发阶段的 E2E 测试，一直有<code>无法稳定重复运行</code>、<code>代价高</code>、<code>效率低</code>等等问题，因此一直被放在测试金字塔的顶端。  </p>
+<p>在微服务架构、多微服务环境部署中，在 E2E 是基于环境、运行时的情况下，这些问题就更加突出。  </p>
+<p>因此，E2E 测试的目标和范围在团队中需要仔细的被定义。  </p>
+<p>在本文的上下文——研发阶段的质量内建，推荐仅将 E2E 测试作为基于几个关键业务场景的服务连通性测试。  </p>
+<p>当然，如果团队有一票专门来写E2E测试的人手，愿意承担高代价的成本、觉得这种ROI可以接受，也是可以多写写E2E测试的。  </p>
+]]></content>
+  </entry>
+  <entry>
     <title>在gradle管理可共享的依赖版本管理</title>
     <url>/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/</url>
     <content><![CDATA[<p>“可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。<br>对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。<br>没用过 Maven 的小伙伴们也不用被劝退，想想在使用Spring plugin <code>io.spring.dependency-management</code>时，<br><code>imports.mavenBom</code>到底在做什么，有没有想要了解一下？</p>
