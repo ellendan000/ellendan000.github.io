@@ -11,7 +11,7 @@ categories: [Java服务模板]
 `imports.mavenBom`到底在做什么，有没有想要了解一下？
 <!-- more -->
 
-## 1. BOM是什么？
+### BOM是什么？
 在说 BOM 之前，先了解一下 Maven 的一些基本概念。  
 Maven __POM__，全名 `Project Object Model`, 是 Maven 使用中的重要配置文件，xml格式，主要用来导入依赖和进行项目构建。  
 Maven __BOM__，全名 `Bill Of Materials`, 是一种特殊的 POM，主要用来集中管理项目依赖的版本，更加灵活地维护所有依赖的版本信息。  
@@ -33,7 +33,7 @@ dependencies中依赖的那些库为何可以不用标明版本？
 同时 BOM 不可避免地还支持版本升级。  
 下面我们就来看看如何在 gradle 中定义我们自己的 BOM。
 
-## 2. gradle Java platform plugin
+### gradle Java platform plugin
 `gradle Java platform plugin`是 gradle 对定义、发布 BOM 提供的一款实用插件。  
 引入它，我们就可以开始动手工作了。[官方链接](https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header)
 
@@ -102,7 +102,7 @@ publishing {
 
 maven publish 成功后，我们就可以来使用 BOM 导入依赖版本了。
 
-## 3. gradle platform
+### gradle platform
 导入方式也非常简单，直接使用platform组件即可。[官方链接](https://docs.gradle.org/current/userguide/platforms.html)
 
 创建一个example项目试一下, 编写`build.gradle`文件。
@@ -133,7 +133,7 @@ dependencies {
 但本人在写代码的时候，发现自定义 BOM 中spring boot dependencies BOM 无法被成功引入，而其他 BOMs 都没有此问题、可以成功导入。  
 因此，我这里并不推荐通过spring-dependency-management的`imports.mavenBom`来导入。
 
-## 4. 为什么要做“可共享的依赖版本管理”
+### 为什么要做“可共享的依赖版本管理”
 这还要从本人最近的一个任务说起。  
 任务本身是做 —— “启动模板”。  
 但“启动模板”，这四个字，怎么看都觉得非常的静态。  
@@ -144,11 +144,11 @@ dependencies {
 依赖版本管理只是其中的一个小的部分, 并且使用 gradle 来实现也非常简单。  
 具体代码地址：https://github.com/ellendan000/service_template
 
-## PS. 废话篇
+### PS. 废话篇
 眼看2020就要过半，由于2020开局乱来，受种种因素影响，计划一团混乱变更。  
 一鼓作气，再而衰，三而竭，各种计划目标债。期望2020后半段能走好吧~
 
-## 参考资料
+### 参考资料
 1. https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies
 2. https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header
 3. https://docs.gradle.org/current/userguide/platforms.html
