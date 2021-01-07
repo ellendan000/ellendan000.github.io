@@ -62,7 +62,7 @@ B+ Tree概念，需要区分二叉树（Binary Tree）、二叉查找树（BST�
 
 注意，在索引页的Record中的`page pointer`，指向的是页，而非具体的记录行。并且Record的`index key`，为指向的page records的起始键值。
 
-#####  聚集索引 (Cluster index)
+#### 聚集索引 (Cluster index)
 
 MySQL将数据存放在聚集索引的叶子节点中，由索引进行组织。因此也可称为，数据即索引，索引即数据，在整个页分类中，都被列为`B+ Tree Node`。
 
@@ -84,7 +84,7 @@ MySQL将数据存放在聚集索引的叶子节点中，由索引进行组织。
 
 这时，数据库会将该页加载到内存中，然后通过`Page Directory`进行二分查找。
 
-##### Page Directory
+#### Page Directory
 
 `Page Directory`是该页存放的`User Records`的一个稀疏目录，存放的内容是Record在页内的相对位置。每两个字节，记录一个相对位置，从邻近`File Trailer`的位置开始倒排存放。
 
