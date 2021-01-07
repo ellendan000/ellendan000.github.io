@@ -31,7 +31,7 @@
 <p>因此，在聚集索引中，非叶子节点都为索引页，叶子节点为数据页；</p>
 <p>在辅助索引中，非叶子节点和叶子节点都为索引页。不同的是，叶子节点里记录的是聚集索引中的主键ID值。</p>
 <p>注意，在索引页的Record中的<code>page pointer</code>，指向的是页，而非具体的记录行。并且Record的<code>index key</code>，为指向的page records的起始键值。</p>
-<h5 id="聚集索引-Cluster-index"><a href="#聚集索引-Cluster-index" class="headerlink" title="聚集索引 (Cluster index)"></a>聚集索引 (Cluster index)</h5><p>MySQL将数据存放在聚集索引的叶子节点中，由索引进行组织。因此也可称为，数据即索引，索引即数据，在整个页分类中，都被列为<code>B+ Tree Node</code>。</p>
+<h4 id="聚集索引-Cluster-index"><a href="#聚集索引-Cluster-index" class="headerlink" title="聚集索引 (Cluster index)"></a>聚集索引 (Cluster index)</h4><p>MySQL将数据存放在聚集索引的叶子节点中，由索引进行组织。因此也可称为，数据即索引，索引即数据，在整个页分类中，都被列为<code>B+ Tree Node</code>。</p>
 <p>图2 即是一个完整的聚集索引的B+ Tree结构展现。</p>
 <p>在叶子节点是如何实现双向链接的结构，可以详细看下页内的组织分布。</p>
 <p>在表空间文件的一个页的结构上，内容布局为：</p>
@@ -39,7 +39,7 @@
 <p>在聚集索引中，数据页内除了按照主键大小进行记录存放以外，在<code>File header</code>中，有两个字段：<code>fil_page_prev</code> 和<code>fil_page_next</code>, 分别记录了上一页/下一页的偏移量（offset），用以实现数据页在B+ Tree叶子位置的双向链表结构。</p>
 <h3 id="数据检索"><a href="#数据检索" class="headerlink" title="数据检索"></a>数据检索</h3><p>通过B+ Tree结构，可以明显看到，通过B+ Tree查找，可以定位到索引最后指向的数据页，并不能找到具体的记录本身。</p>
 <p>这时，数据库会将该页加载到内存中，然后通过<code>Page Directory</code>进行二分查找。</p>
-<h5 id="Page-Directory"><a href="#Page-Directory" class="headerlink" title="Page Directory"></a>Page Directory</h5><p><code>Page Directory</code>是该页存放的<code>User Records</code>的一个稀疏目录，存放的内容是Record在页内的相对位置。每两个字节，记录一个相对位置，从邻近<code>File Trailer</code>的位置开始倒排存放。</p>
+<h4 id="Page-Directory"><a href="#Page-Directory" class="headerlink" title="Page Directory"></a>Page Directory</h4><p><code>Page Directory</code>是该页存放的<code>User Records</code>的一个稀疏目录，存放的内容是Record在页内的相对位置。每两个字节，记录一个相对位置，从邻近<code>File Trailer</code>的位置开始倒排存放。</p>
 <p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-page-directory.png" alt="image-20210107214107410"></p>
 <p><code>Page Directory</code>中每两个字节，代表一个目录槽。在上图中，一共有6个槽。</p>
 <p>在页首的<code>Page Header</code>部分有一个<code>Page_N_Dir_Slots</code>的字段 —— 同样记录了目录槽的数量。</p>
