@@ -46,22 +46,28 @@
   };
 </script>
 
-  <meta name="description" content="软件的核心，是为其用户解决领域相关问题的能力。 何为DDDDDD是Domain Driven Design的简称。领域驱动设计，“领域”指业务领域，“设计”指软件设计。DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思维方式，使得团队可以高效管理——用于复杂问题域的软件的构造和维护。">
+  <meta name="description" content="关系型数据库系统的世界是非常复杂的 —— 如果我们思考一下我们需要做哪些事情才能满足SQL语句的查询需求，就能意识到这种复杂是必然的。但具有讽刺意味的是，书写SQL是如此简单，表、行与列的概念也非常容易理解。 ​    —— 《数据库索引设计和优化》">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DDD概念概览">
-<meta property="og:url" content="https://ellendan.com/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/index.html">
+<meta property="og:title" content="MySQL InnoDB 聚集索引数据结构">
+<meta property="og:url" content="https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="ellendan">
-<meta property="og:description" content="软件的核心，是为其用户解决领域相关问题的能力。 何为DDDDDD是Domain Driven Design的简称。领域驱动设计，“领域”指业务领域，“设计”指软件设计。DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思维方式，使得团队可以高效管理——用于复杂问题域的软件的构造和维护。">
+<meta property="og:description" content="关系型数据库系统的世界是非常复杂的 —— 如果我们思考一下我们需要做哪些事情才能满足SQL语句的查询需求，就能意识到这种复杂是必然的。但具有讽刺意味的是，书写SQL是如此简单，表、行与列的概念也非常容易理解。 ​    —— 《数据库索引设计和优化》">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ellendan.com/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/ddd-summary.png">
-<meta property="article:published_time" content="2020-02-09T06:50:44.000Z">
-<meta property="article:modified_time" content="2021-01-07T14:10:54.285Z">
+<meta property="og:image" content="https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-py-innodb-page-info.png">
+<meta property="og:image" content="https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-B+tree.png">
+<meta property="og:image" content="https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-page-structure.png">
+<meta property="og:image" content="https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-page-directory.png">
+<meta property="og:image" content="https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-record-header.png">
+<meta property="og:image" content="https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-page-slots.png">
+<meta property="article:published_time" content="2020-12-27T14:00:20.000Z">
+<meta property="article:modified_time" content="2021-01-07T14:10:54.297Z">
 <meta property="article:author" content="Ellen Dan">
-<meta property="article:tag" content="DDD">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ellendan.com/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/ddd-summary.png">
+<meta name="twitter:image" content="https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-py-innodb-page-info.png">
 
-<link rel="canonical" href="https://ellendan.com/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/">
+<link rel="canonical" href="https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
 
 
 <script id="page-configurations">
@@ -73,7 +79,7 @@
   };
 </script>
 
-  <title>DDD概念概览 | ellendan</title>
+  <title>MySQL InnoDB 聚集索引数据结构 | ellendan</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158099564-1"></script>
     <script pjax>
@@ -215,7 +221,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/">
+    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -228,7 +234,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          DDD概念概览
+          MySQL InnoDB 聚集索引数据结构
         </h1>
 
         <div class="post-meta">
@@ -238,7 +244,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-02-09 14:50:44" itemprop="dateCreated datePublished" datetime="2020-02-09T14:50:44+08:00">2020-02-09</time>
+              <time title="创建时间：2020-12-27 22:00:20" itemprop="dateCreated datePublished" datetime="2020-12-27T22:00:20+08:00">2020-12-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -253,8 +259,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/DDD/" itemprop="url" rel="index">
-                    <span itemprop="name">DDD</span>
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
                   </a>
                 </span>
             </span>
@@ -268,8 +274,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/09/DDD概念概览/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/12/27/MySQL_InnoDB聚集索引数据结构/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -279,14 +285,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
+              <span>2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -298,46 +304,53 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>软件的核心，是为其用户解决领域相关问题的能力。</p>
-<h3 id="何为DDD"><a href="#何为DDD" class="headerlink" title="何为DDD"></a>何为DDD</h3><p>DDD是Domain Driven Design的简称。<strong>领域驱动设计</strong>，“<strong>领域</strong>”指业务领域，“<strong>设计</strong>”指软件设计。<br>DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思维方式，使得团队可以高效管理——用于复杂问题域的软件的构造和维护。</p>
+        <blockquote>
+<p>关系型数据库系统的世界是非常复杂的 —— 如果我们思考一下我们需要做哪些事情才能满足SQL语句的查询需求，就能意识到这种复杂是必然的。但具有讽刺意味的是，书写SQL是如此简单，表、行与列的概念也非常容易理解。</p>
+<p>​    —— 《数据库索引设计和优化》</p>
+</blockquote>
 <a id="more"></a>
 
-<h3 id="为什么DDD"><a href="#为什么DDD" class="headerlink" title="为什么DDD"></a>为什么DDD</h3><p>对于一个复杂业务系统，无视业务复杂度而割裂式地进行软件设计，往往会造成软件的<strong>大泥球模式（BBoM）</strong>，后果就是：</p>
-<ol>
-<li>对统一语言和问题域知识缺乏重视，导致代码库可用但无法揭示业务意图。</li>
-<li>缺乏基于问题域模型的应用程序设计的重视，让代码库缺乏与业务行为的协同效应，当有后续功能的扩展就会变得棘手。领域复杂性和技术复杂性混合在了一起。</li>
-<li>会扼杀开发。对开发人员来说，软件杂乱、变更易出错。对企业来说，降低了软件快速实现商业价值的能力。</li>
-<li>缺乏对问题域的关注和正确认识，构建出来的软件系统往往会失败。<br>注：<strong>问题域</strong> ，涉及你当前正在构建软件的主题领域。是确定软件价值的关键点。</li>
-</ol>
-<h3 id="DDD模式"><a href="#DDD模式" class="headerlink" title="DDD模式"></a>DDD模式</h3><p>DDD具有两种模式类型：战略模式和战术模式。<br>战略模式影响的是解决方案，战术模式用于实现富领域模型。<br><img src="/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/ddd-summary.png" alt="Domain Drive Design Summary.png"></p>
-<h4 id="DDD战略模式"><a href="#DDD战略模式" class="headerlink" title="DDD战略模式"></a>DDD战略模式</h4><p>领域驱动设计的战略模式会提炼问题域并塑造应用程序的架构。</p>
-<ol>
-<li>提炼问题域以揭示重要之处是什么 —— 核心子域。核心域是编写软件的原因，保留最大价值的关键区域，决定软件成功与否的关键。并非一个系统的所有部分都需要被精心设计，团队可以更专注于核心领域。</li>
-<li>在解空间构建一个软件模型，以处理领域问题并让软件与业务保持一致。</li>
-<li>运用统一语言（Ubiquitous Language），开启建模协作。首先，确保的是领域专家和开发团队协作工作，其次，是将分析模型绑定到代码模型，以便开发团队和领域专家能够在模型设计方面进行协作。</li>
-<li>限界上下文（Bounded Context），定义了模型的适用性并确保保留其完整性和独立发展的能力。统一语言和模型的适用边界应该是要在具体的限界上下文内。</li>
-<li>上下文映射（Context Map）。上下文映射提供了整个系统各上下文边界之间的宏观状况，揭示了上下文之间的关系和交互方式，同时表现出各上下文内模型的有多少差异，以及它们的交换哪些数据来实现业务处理过程。</li>
-</ol>
-<p><strong>问题空间 &amp; 解空间</strong><br>战略模式中强调问题空间和解空间的区别。只有明确确定了问题空间，才能分析出对应的解空间，最终才能构建出满足解决业务问题的成功软件。<br>上1，是解决问题空间复杂度的管理模式。问题空间将问题提炼成更多可管理的子域。<br>上2、3、4、5， 是解空间的管理模式。</p>
-<p>战略模式强调了DDD的侧重点是：知识消化、知识提炼、协作沟通、统一语言、上下文、模型持续发展。<br>后面战术模式，其实只是支持其实现而推荐的手段。</p>
-<h4 id="DDD战术模式"><a href="#DDD战术模式" class="headerlink" title="DDD战术模式"></a>DDD战术模式</h4><p>DDD的战术模式（也称模型构造块）是一个帮助创建用于复杂有界上下文的有效模型的模式集合。<br>许多模式都早于DDD概念的出现，但依然有一些被推荐为DDD战术的标准模式。<br>在战略模式提供的架构和原则的基础上，共用这些标准模式可以让设计有序进行，也使项目组成员能够更方便地了解彼此的工作内容。</p>
-<ol>
-<li>实体（Entity）</li>
-<li>值对象（Value Object）</li>
-<li>领域服务（Domain Service）</li>
-<li>工厂(Factory)和验证器(Validator)</li>
-<li>聚合(Aggregation)</li>
-<li>资源库(Repository)</li>
-<li>领域事件(Domain Event)</li>
-<li>模块(Module)</li>
-<li>集成限界上下文</li>
-<li>六边形架构</li>
-</ol>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
-<li>《领域驱动设计：软件核心复杂性应对之道》，Eric Evans 著</li>
-<li>《实现领域驱动设计》，Vaughn Vemon 著</li>
-<li>《领域驱动设计模式、原理与实践》，Scott Millett / Nick Tune 著</li>
-</ol>
+<h3 id="页-Page"><a href="#页-Page" class="headerlink" title="页 (Page)"></a>页 (Page)</h3><p>页，是数据库数据存储方式的逻辑结构。</p>
+<p>Innodb 采用将存储数据按表空间（tablespace）的方式进行存放。如果没有开启 <code>innodb_file_per_table</code> 设置，新的表的创建会保存进默认的系统共享表空间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like &#39;innodb_file_per_table&#39;;</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">| Variable_name         | Value |</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">| innodb_file_per_table | ON    |</span><br><span class="line">+-----------------------+-------+</span><br></pre></td></tr></table></figure>
+
+<p>当 <code>innodb_file_per_table</code> 等于 <code>ON</code> 时，会给每个表创建独立的数据文件。</p>
+<p>比如，在数据库 <code>test</code> 中创建一个表 <code>show_index</code> ，在mysql 的 dataDirectory 目录下就回出现一个名为 <code>show_index.ibd</code> 的数据文件。</p>
+<p>在单个表的数据文件中，数据就是以多个页的形式进行排列。MySQL默认配置下，每16K，即为一个页。</p>
+<p>借用了《MySQL技术内幕Innodb存储引擎》作者的工具<code>py_innodb_page_type.py</code>，可以查看到单表数据文件的页组成：</p>
+<p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-py-innodb-page-info.png" alt="图1 file_per_table tablespace结构图"></p>
+<p>MySQL中数据页和索引页，都被归类为B Tree Node类型，严格来说应该是B+ Tree Node。</p>
+<h3 id="B-Tree-Node"><a href="#B-Tree-Node" class="headerlink" title="B+ Tree Node"></a>B+ Tree Node</h3><p>B+ Tree概念，需要区分二叉树（Binary Tree）、二叉查找树（BST）、B-Tree（B: Balance）。</p>
+<p>在MySQL innodb中，叶子节点页的page level为0，非叶子节点页的page level &gt; 0。</p>
+<p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-B+tree.png" alt="图2 聚集索引的B+ Tree图"></p>
+<p>上图是一个聚集索引的B+ Tree图。</p>
+<p>1个B+ Tree Node，占据一个页。  </p>
+<ul>
+<li>在索引页，页的主要记录部分(<code>User Records</code>)存放的<code>Record</code> = <code>record header</code> + <code>index key</code> + <code>page pointer</code>。</li>
+<li>在数据页，则是按表创建时的<code>row_format</code>类型存放完整数据行记录。<br>row_format类型分别有：<code>Compact</code>、<code>Redundant</code>、<code>Compressed</code>和<code>Dynamic</code>。</li>
+</ul>
+<p>因此，在聚集索引中，非叶子节点都为索引页，叶子节点为数据页；</p>
+<p>在辅助索引中，非叶子节点和叶子节点都为索引页。不同的是，叶子节点里记录的是聚集索引中的主键ID值。</p>
+<p>注意，在索引页的Record中的<code>page pointer</code>，指向的是页，而非具体的记录行。并且Record的<code>index key</code>，为指向的page records的起始键值。</p>
+<h5 id="聚集索引-Cluster-index"><a href="#聚集索引-Cluster-index" class="headerlink" title="聚集索引 (Cluster index)"></a>聚集索引 (Cluster index)</h5><p>MySQL将数据存放在聚集索引的叶子节点中，由索引进行组织。因此也可称为，数据即索引，索引即数据，在整个页分类中，都被列为<code>B+ Tree Node</code>。</p>
+<p>图2 即是一个完整的聚集索引的B+ Tree结构展现。</p>
+<p>在叶子节点是如何实现双向链接的结构，可以详细看下页内的组织分布。</p>
+<p>在表空间文件的一个页的结构上，内容布局为：</p>
+<p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-page-structure.png" alt="图3 页的结构组成图"></p>
+<p>在聚集索引中，数据页内除了按照主键大小进行记录存放以外，在<code>File header</code>中，有两个字段：<code>fil_page_prev</code> 和<code>fil_page_next</code>, 分别记录了上一页/下一页的偏移量（offset），用以实现数据页在B+ Tree叶子位置的双向链表结构。</p>
+<h3 id="数据检索"><a href="#数据检索" class="headerlink" title="数据检索"></a>数据检索</h3><p>通过B+ Tree结构，可以明显看到，通过B+ Tree查找，可以定位到索引最后指向的数据页，并不能找到具体的记录本身。</p>
+<p>这时，数据库会将该页加载到内存中，然后通过<code>Page Directory</code>进行二分查找。</p>
+<h5 id="Page-Directory"><a href="#Page-Directory" class="headerlink" title="Page Directory"></a>Page Directory</h5><p><code>Page Directory</code>是该页存放的<code>User Records</code>的一个稀疏目录，存放的内容是Record在页内的相对位置。每两个字节，记录一个相对位置，从邻近<code>File Trailer</code>的位置开始倒排存放。</p>
+<p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-page-directory.png" alt="image-20210107214107410"></p>
+<p><code>Page Directory</code>中每两个字节，代表一个目录槽。在上图中，一共有6个槽。</p>
+<p>在页首的<code>Page Header</code>部分有一个<code>Page_N_Dir_Slots</code>的字段 —— 同样记录了目录槽的数量。</p>
+<p>一个目录槽，对应按序的多条记录。记录的相对位置，指向这批记录的第一条记录。</p>
+<p>每条记录都有<code>Record header</code>, 但目录槽 指向的第一条记录的<code>Record Header</code>中第4~8位（bits），是<code>n_owned</code>值，代表该目录槽中拥有的记录数量。</p>
+<p><code>Record header</code>的组织结构：</p>
+<p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-record-header.png" alt="image-20210107214322598"></p>
+<p>比如下图，一共有6个目录槽，大部分目录槽中有4条记录。</p>
+<p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-page-slots.png" alt="image-20210107204730744"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>MySQL Innodb通过页组织成的B+ Tree Nodes结构 和 Page Directory，完成了具体记录的检索。</p>
 
     </div>
 
@@ -350,7 +363,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/DDD/" rel="tag"><i class="fa fa-tag"></i> DDD</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="fa fa-tag"></i> 数据库</a>
+              <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
           </div>
 
         
@@ -359,13 +373,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/08/%E4%BB%8E%E7%B2%BE%E7%9B%8A%E6%9D%A5%E7%9C%8B%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98%E6%98%AF%E4%BB%80%E4%B9%88/" rel="prev" title="从精益来看价值交付是什么">
-      <i class="fa fa-chevron-left"></i> 从精益来看价值交付是什么
+    <a href="/2020/06/30/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/" rel="prev" title="研发效能之层级测试">
+      <i class="fa fa-chevron-left"></i> 研发效能之层级测试
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/" rel="next" title="在gradle管理可共享的依赖版本管理">
-      在gradle管理可共享的依赖版本管理 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -432,7 +443,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#何为DDD"><span class="nav-number">1.</span> <span class="nav-text">何为DDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么DDD"><span class="nav-number">2.</span> <span class="nav-text">为什么DDD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDD模式"><span class="nav-number">3.</span> <span class="nav-text">DDD模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DDD战略模式"><span class="nav-number">3.1.</span> <span class="nav-text">DDD战略模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DDD战术模式"><span class="nav-number">3.2.</span> <span class="nav-text">DDD战术模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#页-Page"><span class="nav-number">1.</span> <span class="nav-text">页 (Page)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Tree-Node"><span class="nav-number">2.</span> <span class="nav-text">B+ Tree Node</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#聚集索引-Cluster-index"><span class="nav-number">2.0.1.</span> <span class="nav-text">聚集索引 (Cluster index)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据检索"><span class="nav-number">3.</span> <span class="nav-text">数据检索</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Page-Directory"><span class="nav-number">3.0.1.</span> <span class="nav-text">Page Directory</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -649,9 +660,9 @@ window.addEventListener('pjax:success', () => {
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://ellendan.com/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/";
-    this.page.identifier = "2020/02/09/DDD概念概览/";
-    this.page.title = "DDD概念概览";
+    this.page.url = "https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/";
+    this.page.identifier = "2020/12/27/MySQL_InnoDB聚集索引数据结构/";
+    this.page.title = "MySQL InnoDB 聚集索引数据结构";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
