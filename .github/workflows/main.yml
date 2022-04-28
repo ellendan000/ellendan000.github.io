@@ -1,4 +1,4 @@
-name: CD
+name: Deploy to github pages.
 on:
   push:
     branches: [ hexo-source ]
@@ -12,8 +12,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node
         uses: actions/setup-node@v3.1.1
@@ -33,7 +31,6 @@ jobs:
           npm run build -d
           
       - name: GitHub Pages
-        # uses: crazy-max/ghaction-github-pages@a117e4aa1fb4854d021546d2abdfac95be568a3a
         uses: crazy-max/ghaction-github-pages@v2.6.0
         with:
           target_branch: master
@@ -43,3 +40,4 @@ jobs:
           jekyll: false
           committer: git-action-deploy
           commit_message: "git action deployed."
+          github_token: ${{ secrets.GITHUB_TOKEN }}
