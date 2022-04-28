@@ -38,5 +38,6 @@ jobs:
           keep_history: true
           allow_empty_commit: false
           build_dir: public
+          jekyll: false
           committer: git-action-deploy
           commit_message: "git action deployed."
