@@ -1,0 +1,43 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CD
+on:
+  push:
+    branches: [ hexo-source ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3.1.1
+        with:
+          node-version: '12.x'
+
+      # Runs a set of commands using the runners shell
+      - name: Before install
+        run: |
+          git submodule update --init --recursive
+          npm install
+          
+      - name: Install
+        run: |
+          hexo clean
+          hexo g -d
+          
+      - name: GitHub Pages
+        # uses: crazy-max/ghaction-github-pages@a117e4aa1fb4854d021546d2abdfac95be568a3a
+        uses: crazy-max/ghaction-github-pages@v2.6.0
+        with:
+          target_branch: master
+          keep_history: true
+          allow_empty_commit: false
+          build_dir: public
+          committer: git-action-deploy
+          commit_message: "git action deployed."
