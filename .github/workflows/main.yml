@@ -27,8 +27,8 @@ jobs:
           
       - name: Install
         run: |
-          npm clean
-          npm run hexo g -d
+          npm run clean
+          npm run build -d
           
       - name: GitHub Pages
         # uses: crazy-max/ghaction-github-pages@a117e4aa1fb4854d021546d2abdfac95be568a3a
