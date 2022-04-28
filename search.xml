@@ -15,14 +15,13 @@
 <p>然而，对于微服务能力不同、或者理解不同的各企业和团队来说，部分团队需要等到系统被部署到线上运行时才能真正发现和正视问题。</p>
 <p>当你面临的团队，不追求clean architecture、不写测试、不坚持重构、没有性能测试和联调测试、甚至没有太多有经验的开发，这时候，线上系统监控将成为最后的反馈堡垒。</p>
 <p>因此，带有观测性的线上监控能力是各个微服务团队必不可少的“看家”工具之一。</p>
-<p>业内能做到线上监控的开源产品和商业产品不一而足。大家可能见过下面这样的（监控微服务状态、微服务之间调用等）：</p>
-<p><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-spring_boot_dashboard.png" alt="图1"></p>
+<p>业内能做到线上监控的开源产品和商业产品不一而足。大家可能见过下面这样的（监控微服务状态、微服务之间调用等）：<br><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-spring_boot_dashboard.png" alt="图1"><br><em>（图 1）</em></p>
 <p>或者是，监控 服务对资源CPU、内存、磁盘等利用率趋势：</p>
-<p><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-grafana_jvm_dashboard.png" alt="图2"></p>
+<p><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-grafana_jvm_dashboard.png" alt="图2"><br><em>（图 2）</em></p>
 <p>也有API调用量、失败率、延时时长的TopN统计：</p>
-<p><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-app_api.png" alt="图3"></p>
+<p><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-app_api.png" alt="图3"><br><em>（图 3）</em></p>
 <p>或者，是基于动态链路技术实现的链路图：</p>
-<p><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-dynamic_invoking_graph.png" alt="图4"></p>
+<p><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-dynamic_invoking_graph.png" alt="图4"><br><em>（图 4）</em></p>
 <h3 id="监控需要分层次"><a href="#监控需要分层次" class="headerlink" title="监控需要分层次"></a>监控需要分层次</h3><p>看过上面四种监控示例图，相信有不少做过线上问题诊断的同事会认为：不少指标过于细，或者过于底层，对于发现实际问题和定位问题毫无帮助。</p>
 <p>当经过详细调研分析和使用之后，本人发现这些监控模型是应该分层次来理解和使用的。</p>
 <p><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-layers.png" alt="图5"></p>
