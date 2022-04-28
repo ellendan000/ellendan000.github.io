@@ -21,6 +21,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Before install
         run: |
+          sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
           git submodule update --init --recursive
           npm install
           
