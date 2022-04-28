@@ -27,7 +27,7 @@ jobs:
           
       - name: Install
         run: |
-          npm run hexo clean
+          npm clean
           npm run hexo g -d
           
       - name: GitHub Pages
