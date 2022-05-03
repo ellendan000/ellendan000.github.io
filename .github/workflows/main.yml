@@ -24,7 +24,7 @@ jobs:
           sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
           git submodule update --init --recursive
           cd ./themes/next
-          git pull
+          git pull origin v7.7.1-local
           cd ../..
           npm install
           
