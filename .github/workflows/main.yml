@@ -23,6 +23,9 @@ jobs:
         run: |
           sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
           git submodule update --init --recursive
+          cd ./themes/next
+          git pull
+          cd ../..
           npm install
           
       - name: Install
