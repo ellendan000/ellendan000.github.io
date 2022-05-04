@@ -11,7 +11,7 @@ categories: [MySQL]
 
 <!-- more -->
 
-### 页 (Page)
+### 1. 页 (Page)
 
 页，是数据库数据存储方式的逻辑结构。
 
@@ -40,7 +40,7 @@ mysql> show variables like 'innodb_file_per_table';
 
 MySQL中数据页和索引页，都被归类为B Tree Node类型，严格来说应该是B+ Tree Node。
 
-### B+ Tree Node
+### 2. B+ Tree Node
 
 B+ Tree概念，需要区分二叉树（Binary Tree）、二叉查找树（BST）、B-Tree（B: Balance）。
 
@@ -62,7 +62,7 @@ B+ Tree概念，需要区分二叉树（Binary Tree）、二叉查找树（BST�
 
 注意，在索引页的Record中的`page pointer`，指向的是页，而非具体的记录行。并且Record的`index key`，为指向的page records的起始键值。
 
-#### 聚集索引 (Cluster index)
+#### 2.1 聚集索引 (Cluster index)
 
 MySQL将数据存放在聚集索引的叶子节点中，由索引进行组织。因此也可称为，数据即索引，索引即数据，在整个页分类中，都被列为`B+ Tree Node`。
 
@@ -78,13 +78,13 @@ MySQL将数据存放在聚集索引的叶子节点中，由索引进行组织。
 
 在聚集索引中，数据页内除了按照主键大小进行记录存放以外，在`File header`中，有两个字段：`fil_page_prev` 和`fil_page_next`, 分别记录了上一页/下一页的偏移量（offset），用以实现数据页在B+ Tree叶子位置的双向链表结构。
 
-### 数据检索
+### 3. 数据检索
 
 通过B+ Tree结构，可以明显看到，通过B+ Tree查找，可以定位到索引最后指向的数据页，并不能找到具体的记录本身。
 
 这时，数据库会将该页加载到内存中，然后通过`Page Directory`进行二分查找。
 
-#### Page Directory
+#### 3.1 Page Directory
 
 `Page Directory`是该页存放的`User Records`的一个稀疏目录，存放的内容是Record在页内的相对位置。每两个字节，记录一个相对位置，从邻近`File Trailer`的位置开始倒排存放。
 
@@ -110,6 +110,6 @@ MySQL将数据存放在聚集索引的叶子节点中，由索引进行组织。
 
 
 
-### 总结
+### 4. 总结
 
 MySQL Innodb通过页组织成的B+ Tree Nodes结构 和 Page Directory，完成了具体记录的检索。
