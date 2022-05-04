@@ -78,7 +78,7 @@
 <p>这里就主要从可观测性、层次性、时效性上，聊聊微服务线上治理中的监控。</p>
 <a id="more"></a>
 
-<h3 id="系统运行时的可观测性"><a href="#系统运行时的可观测性" class="headerlink" title="系统运行时的可观测性"></a>系统运行时的可观测性</h3><p>微服务线上治理的前提——采集线上运行时数据，让系统状态与流程可被实时度量和监控。</p>
+<h3 id="1-系统运行时的可观测性"><a href="#1-系统运行时的可观测性" class="headerlink" title="1. 系统运行时的可观测性"></a>1. 系统运行时的可观测性</h3><p>微服务线上治理的前提——采集线上运行时数据，让系统状态与流程可被实时度量和监控。</p>
 <p>管理学之⽗德鲁克曾经说过:“如果你无法度量它，就无法改进它。”</p>
 <p>然而对于今天——在各系统存在各种五花八门、各式各样、大量指标数据的当下，如何整合这些指标，在度量的同时，提升整个系统运行时的可观测性，以达到及时地发现问题、定位问题的目的，才是微服务线上治理的基础。</p>
 <p>理论上，问题越早发现、越早修复，可以越节省研发成本。一些微服务的问题，在规划、研发、构建等阶段，可以通过线下微服务治理的方式提前解决掉。</p>
@@ -92,7 +92,7 @@
 <p><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-app_api.png" alt="图3"><br><em>（图 3）</em></p>
 <p>或者，是基于动态链路技术实现的链路图：</p>
 <p><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-dynamic_invoking_graph.png" alt="图4"><br><em>（图 4）</em></p>
-<h3 id="监控需要分层次"><a href="#监控需要分层次" class="headerlink" title="监控需要分层次"></a>监控需要分层次</h3><p>看过上面四种监控示例图，相信有不少做过线上问题诊断的同事会认为：不少指标过于细，或者过于底层，对于发现实际问题和定位问题毫无帮助。</p>
+<h3 id="2-监控需要分层次"><a href="#2-监控需要分层次" class="headerlink" title="2. 监控需要分层次"></a>2. 监控需要分层次</h3><p>看过上面四种监控示例图，相信有不少做过线上问题诊断的同事会认为：不少指标过于细，或者过于底层，对于发现实际问题和定位问题毫无帮助。</p>
 <p>当经过详细调研分析和使用之后，本人发现这些监控模型是应该分层次来理解和使用的。</p>
 <p><img src="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/image-layers.png" alt="图5"></p>
 <p>一共分为<code>基础状态层</code>、<code>资源占用层</code>、<code>API层</code>、<code>链路层</code>。</p>
@@ -105,7 +105,7 @@
 <p>越靠近<code>技术底层</code>，指标越孤立，对服务的影响面越广，越难直接定位问题；</p>
 <p>越靠近<code>应用层</code>，指标越具象，影响面越小，越容易定位问题。</p>
 <p>当然也有人会认为，在这种分层结构中，应该将基础设施服务单独拎出来作为一个单独分类  —— 的确也是无不可，除了链路层以外，基础设施服务可以独立完成另外三层的纵向切片。</p>
-<h3 id="监控需要时效性"><a href="#监控需要时效性" class="headerlink" title="监控需要时效性"></a>监控需要时效性</h3><p>在搭建监控工具 或者 接入监控平台时，面对于采集日志、指标的实时运算方式，大多数情况团队都默认监控是实时的 —— 这样能及时发现和响应问题。</p>
+<h3 id="3-监控需要时效性"><a href="#3-监控需要时效性" class="headerlink" title="3. 监控需要时效性"></a>3. 监控需要时效性</h3><p>在搭建监控工具 或者 接入监控平台时，面对于采集日志、指标的实时运算方式，大多数情况团队都默认监控是实时的 —— 这样能及时发现和响应问题。</p>
 <p>并且大部分监控工具，做到了监控自动化，进行实时预警，及时通知到相关人员处理问题；或者，有部分DevOps监控平台甚至可以做到自动化AI管控，针对<code>基础状态层</code>、<code>资源占用层</code>出现的问题，使用资源临时扩容、资源切换/重启等策略进行线上自动恢复。</p>
 <p>然而，随着Q/TPS、数据量的增长，监控服务资源升级的滞后 或 架构的不合理，监控延时的误差会越来越大。</p>
 <p>当监控的时效性越来越偏离实时，团队对于系统运行时快速发现和响应问题的效率将大打折扣。</p>
@@ -126,7 +126,7 @@
 </blockquote>
 <a id="more"></a>
 
-<h3 id="页-Page"><a href="#页-Page" class="headerlink" title="页 (Page)"></a>页 (Page)</h3><p>页，是数据库数据存储方式的逻辑结构。</p>
+<h3 id="1-页-Page"><a href="#1-页-Page" class="headerlink" title="1. 页 (Page)"></a>1. 页 (Page)</h3><p>页，是数据库数据存储方式的逻辑结构。</p>
 <p>Innodb 采用将存储数据按表空间（tablespace）的方式进行存放。如果没有开启 <code>innodb_file_per_table</code> 设置，新的表的创建会保存进默认的系统共享表空间。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt; show variables like &#39;innodb_file_per_table&#39;;</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">| Variable_name         | Value |</span><br><span class="line">+-----------------------+-------+</span><br><span class="line">| innodb_file_per_table | ON    |</span><br><span class="line">+-----------------------+-------+</span><br></pre></td></tr></table></figure>
 
@@ -136,7 +136,7 @@
 <p>借用了《MySQL技术内幕Innodb存储引擎》作者的工具<code>py_innodb_page_type.py</code>，可以查看到单表数据文件的页组成：</p>
 <p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-py-innodb-page-info.png" alt="图1 file_per_table tablespace结构图"></p>
 <p>MySQL中数据页和索引页，都被归类为B Tree Node类型，严格来说应该是B+ Tree Node。</p>
-<h3 id="B-Tree-Node"><a href="#B-Tree-Node" class="headerlink" title="B+ Tree Node"></a>B+ Tree Node</h3><p>B+ Tree概念，需要区分二叉树（Binary Tree）、二叉查找树（BST）、B-Tree（B: Balance）。</p>
+<h3 id="2-B-Tree-Node"><a href="#2-B-Tree-Node" class="headerlink" title="2. B+ Tree Node"></a>2. B+ Tree Node</h3><p>B+ Tree概念，需要区分二叉树（Binary Tree）、二叉查找树（BST）、B-Tree（B: Balance）。</p>
 <p>在MySQL innodb中，叶子节点页的page level为0，非叶子节点页的page level &gt; 0。</p>
 <p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-B+tree.png" alt="图2 聚集索引的B+ Tree图"></p>
 <p>上图是一个聚集索引的B+ Tree图。</p>
@@ -148,15 +148,15 @@
 <p>因此，在聚集索引中，非叶子节点都为索引页，叶子节点为数据页；</p>
 <p>在辅助索引中，非叶子节点和叶子节点都为索引页。不同的是，叶子节点里记录的是聚集索引中的主键ID值。</p>
 <p>注意，在索引页的Record中的<code>page pointer</code>，指向的是页，而非具体的记录行。并且Record的<code>index key</code>，为指向的page records的起始键值。</p>
-<h4 id="聚集索引-Cluster-index"><a href="#聚集索引-Cluster-index" class="headerlink" title="聚集索引 (Cluster index)"></a>聚集索引 (Cluster index)</h4><p>MySQL将数据存放在聚集索引的叶子节点中，由索引进行组织。因此也可称为，数据即索引，索引即数据，在整个页分类中，都被列为<code>B+ Tree Node</code>。</p>
+<h4 id="2-1-聚集索引-Cluster-index"><a href="#2-1-聚集索引-Cluster-index" class="headerlink" title="2.1 聚集索引 (Cluster index)"></a>2.1 聚集索引 (Cluster index)</h4><p>MySQL将数据存放在聚集索引的叶子节点中，由索引进行组织。因此也可称为，数据即索引，索引即数据，在整个页分类中，都被列为<code>B+ Tree Node</code>。</p>
 <p>图2 即是一个完整的聚集索引的B+ Tree结构展现。</p>
 <p>在叶子节点是如何实现双向链接的结构，可以详细看下页内的组织分布。</p>
 <p>在表空间文件的一个页的结构上，内容布局为：</p>
 <p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-page-structure.png" alt="图3 页的结构组成图"></p>
 <p>在聚集索引中，数据页内除了按照主键大小进行记录存放以外，在<code>File header</code>中，有两个字段：<code>fil_page_prev</code> 和<code>fil_page_next</code>, 分别记录了上一页/下一页的偏移量（offset），用以实现数据页在B+ Tree叶子位置的双向链表结构。</p>
-<h3 id="数据检索"><a href="#数据检索" class="headerlink" title="数据检索"></a>数据检索</h3><p>通过B+ Tree结构，可以明显看到，通过B+ Tree查找，可以定位到索引最后指向的数据页，并不能找到具体的记录本身。</p>
+<h3 id="3-数据检索"><a href="#3-数据检索" class="headerlink" title="3. 数据检索"></a>3. 数据检索</h3><p>通过B+ Tree结构，可以明显看到，通过B+ Tree查找，可以定位到索引最后指向的数据页，并不能找到具体的记录本身。</p>
 <p>这时，数据库会将该页加载到内存中，然后通过<code>Page Directory</code>进行二分查找。</p>
-<h4 id="Page-Directory"><a href="#Page-Directory" class="headerlink" title="Page Directory"></a>Page Directory</h4><p><code>Page Directory</code>是该页存放的<code>User Records</code>的一个稀疏目录，存放的内容是Record在页内的相对位置。每两个字节，记录一个相对位置，从邻近<code>File Trailer</code>的位置开始倒排存放。</p>
+<h4 id="3-1-Page-Directory"><a href="#3-1-Page-Directory" class="headerlink" title="3.1 Page Directory"></a>3.1 Page Directory</h4><p><code>Page Directory</code>是该页存放的<code>User Records</code>的一个稀疏目录，存放的内容是Record在页内的相对位置。每两个字节，记录一个相对位置，从邻近<code>File Trailer</code>的位置开始倒排存放。</p>
 <p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-page-directory.png" alt="image-20210107214107410"></p>
 <p><code>Page Directory</code>中每两个字节，代表一个目录槽。在上图中，一共有6个槽。</p>
 <p>在页首的<code>Page Header</code>部分有一个<code>Page_N_Dir_Slots</code>的字段 —— 同样记录了目录槽的数量。</p>
@@ -166,7 +166,7 @@
 <p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-record-header.png" alt="image-20210107214322598"></p>
 <p>比如下图，一共有6个目录槽，大部分目录槽中有4条记录。</p>
 <p><img src="/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-page-slots.png" alt="image-20210107204730744"></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>MySQL Innodb通过页组织成的B+ Tree Nodes结构 和 Page Directory，完成了具体记录的检索。</p>
+<h3 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h3><p>MySQL Innodb通过页组织成的B+ Tree Nodes结构 和 Page Directory，完成了具体记录的检索。</p>
 ]]></content>
       <categories>
         <category>MySQL</category>
@@ -183,7 +183,7 @@
 <p>在我司的<code>研发平台解决方案</code>的定义中，研发效能 = 可持续快速交付价值的能力 = 效率 + 质量 + 用户价值。</p>
 <p>如果不能达到相应的质量标准和用户价值，再高的研发效率也是枉然。</p>
 <p>这里我专门聊一下效率和质量之间的结合一个点。</p>
-<h3 id="在对质量的追求中，如何优化研发效率？"><a href="#在对质量的追求中，如何优化研发效率？" class="headerlink" title="在对质量的追求中，如何优化研发效率？"></a>在对质量的追求中，如何优化研发效率？</h3><a id="more"></a>
+<h3 id="1-在对质量的追求中，如何优化研发效率？"><a href="#1-在对质量的追求中，如何优化研发效率？" class="headerlink" title="1. 在对质量的追求中，如何优化研发效率？"></a>1. 在对质量的追求中，如何优化研发效率？</h3><a id="more"></a>
 
 <p>在敏捷团队里，开发人员往往被要求编写单元测试、集成测试、契约测试等等自动化测试，并且在 CI 流水线上创建对应的<code>test stage</code>，通过每次提交代码后重复运行 —— 来获取测试情况，以此来增添交付质量的保证。</p>
 <p><img src="/2020/06/30/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/CI%E6%B5%81%E6%B0%B4%E7%BA%BF.png" alt="CI流水线"></p>
@@ -196,15 +196,15 @@
 <p>所以，在研发效能度量中，自动化测试的效率包括两个部分：</p>
 <p><img src="/2020/06/30/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E6%95%88%E7%8E%87.png" alt="自动化测试的效率"></p>
 <p>不仅要优化测试集的运行效率，同时还要优化测试编写的效率。</p>
-<h3 id="测试金字塔是个合适的策略"><a href="#测试金字塔是个合适的策略" class="headerlink" title="测试金字塔是个合适的策略"></a>测试金字塔是个合适的策略</h3><p><a href="https://martinfowler.com/bliki/TestPyramid.html" target="_blank" rel="noopener">测试金字塔</a>主导思想就是，通过不同的测试类型组合，来达到质量与投入产出比的一个平衡取舍 —— 以合适的投入产出比，来获取一个较高的质量。</p>
+<h3 id="2-测试金字塔是个合适的策略"><a href="#2-测试金字塔是个合适的策略" class="headerlink" title="2. 测试金字塔是个合适的策略"></a>2. 测试金字塔是个合适的策略</h3><p><a href="https://martinfowler.com/bliki/TestPyramid.html" target="_blank" rel="noopener">测试金字塔</a>主导思想就是，通过不同的测试类型组合，来达到质量与投入产出比的一个平衡取舍 —— 以合适的投入产出比，来获取一个较高的质量。</p>
 <p>除开硬件资源的投入（如 CI 资源），投入产出比与研发效率是线性的关系。</p>
 <p>测试金字塔中，底层的单元测试拥有反馈快、代价低、单一职责的特点，因此作为基数最大的基层测试 —— 用以覆盖绝大部分代码逻辑。</p>
 <p>基于单元测试上的其他上层测试，主要以其他角度弥补单元测试的不足，如组件完整性等等，同时它们面临的问题越来越复杂、范围越来越广，启动和运行的过程也会越来越重，编写和维护成本也越高。</p>
 <p>因此，运用测试金字塔，利用大量的底层单元测试来尽量覆盖代码逻辑，是同时优化<code>测试编写效率</code>和<code>测试集运行效率</code>的一把有利钥匙。</p>
-<h3 id="单元测试覆盖所有代码逻辑-——-不可能做到？"><a href="#单元测试覆盖所有代码逻辑-——-不可能做到？" class="headerlink" title="单元测试覆盖所有代码逻辑 —— 不可能做到？"></a>单元测试覆盖所有代码逻辑 —— 不可能做到？</h3><p>以服务架构举例，从传统的分层架构说起。（代码术语以Java/Spring为背景。）<br><img src="/2020/06/30/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/%E4%BC%A0%E7%BB%9F%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84.png" alt="传统分层架构"></p>
+<h3 id="3-单元测试覆盖所有代码逻辑-——-不可能做到？"><a href="#3-单元测试覆盖所有代码逻辑-——-不可能做到？" class="headerlink" title="3. 单元测试覆盖所有代码逻辑 —— 不可能做到？"></a>3. 单元测试覆盖所有代码逻辑 —— 不可能做到？</h3><p>以服务架构举例，从传统的分层架构说起。（代码术语以Java/Spring为背景。）<br><img src="/2020/06/30/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/%E4%BC%A0%E7%BB%9F%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84.png" alt="传统分层架构"></p>
 <p>从技术实现角度来讲，只有其中的 application 层和 domain 层可以实现真正意义的单元测试 —— 只测试单元本身，仅使用 Junit + mokito，测试反馈总时长在秒级以内。  </p>
 <p>从代码实现来看，user interfaces 和 persistence 其实也可以仅使用 Junit + mokito 来编写单元测试。<br>但问题是：这两层只使用单元测试来测方法体本身，没有意义。  </p>
-<h4 id="1-是否要单独测试-user-interfaces-和-persist-层？"><a href="#1-是否要单独测试-user-interfaces-和-persist-层？" class="headerlink" title="1. 是否要单独测试 user interfaces 和 persist 层？"></a>1. 是否要单独测试 user interfaces 和 persist 层？</h4><p>这里有块示例代码，见下。<br>user interfaces 里面定义的基于 Spring MVC 的 controller，看起来方法体内只有一两行代码，同时下层 applicationService 和 mapper 逻辑已经由自身单元测试覆盖了。  </p>
+<h4 id="3-1-是否要单独测试-user-interfaces-和-persist-层？"><a href="#3-1-是否要单独测试-user-interfaces-和-persist-层？" class="headerlink" title="3.1. 是否要单独测试 user interfaces 和 persist 层？"></a>3.1. 是否要单独测试 user interfaces 和 persist 层？</h4><p>这里有块示例代码，见下。<br>user interfaces 里面定义的基于 Spring MVC 的 controller，看起来方法体内只有一两行代码，同时下层 applicationService 和 mapper 逻辑已经由自身单元测试覆盖了。  </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@GetMapping(&quot;&#x2F;customers&#x2F;&#123;customerId&#125;&#x2F;projects&#x2F;&#123;projectId&#125;&quot;)</span><br><span class="line">@PreAuthorize(&quot;hasRole(&#39;USER&#39;)&quot;)</span><br><span class="line">@ResponseStatus(HttpStatus.OK)</span><br><span class="line">Set&lt;LatestPipelineInfoResponse&gt; fetchLatestUploadInfo(@PathVariable @Min(0) Long customerId, @PathVariable Long projectId)&#123;</span><br><span class="line">    Set&lt;LatestPipelineInfoDTO&gt; dtos &#x3D; this.service.fetchLatestUploadInfo(customerId, projectId);</span><br><span class="line">    return LatestPipelineInfoResponseMapper.MAPPER.fromDto(dtos);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果使用单元测试，仅仅测的是 controller 对 service 和 mapper 的成功调用，意义很小。</p>
 <p>我们这看一下上面这个controller method背后覆盖了多少逻辑：  </p>
@@ -228,14 +228,14 @@
 <p>相同道理，在persist层，如果代码里有复杂的逻辑，比如动态查询，或者直接HSQL、SQL。如：  </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public interface PipelineHistoryJpaRepository extends</span><br><span class="line">        JpaRepository&lt;PipelineHistory, String&gt; &#123;</span><br><span class="line"></span><br><span class="line">    @Query(nativeQuery &#x3D; true, value &#x3D; &quot;SELECT * FROM pipeline_histories p, &quot; +</span><br><span class="line">            &quot;(SELECT max(id) AS id FROM pipeline_histories &quot; +</span><br><span class="line">            &quot;GROUP BY customer_id, project_id, pipeline_name) tmp &quot; +</span><br><span class="line">            &quot;WHERE p.id &#x3D; tmp.id &quot; +</span><br><span class="line">            &quot;ORDER BY customer_id, project_id, pipeline_name&quot;)</span><br><span class="line">    public List&lt;PipelineHistory&gt; fetchAllExistsPipeline();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>persist层逻辑，也需要使用测试覆盖。<br>当然，如果是JPA自动生成的findBy、save等等系列，不在这块范围之内。  </p>
-<h4 id="2-如何单独测-user-interfaces-和-persist-层？"><a href="#2-如何单独测-user-interfaces-和-persist-层？" class="headerlink" title="2. 如何单独测 user interfaces 和 persist 层？"></a>2. 如何单独测 user interfaces 和 persist 层？</h4><p>user interfaces 和 persist 层因为框架和工具的原因，只能带上Spring application context一起启动测试。<br>正常来说，它们已经算是集成测试了，集成了 Spring 容器。   </p>
+<h4 id="3-2-如何单独测-user-interfaces-和-persist-层？"><a href="#3-2-如何单独测-user-interfaces-和-persist-层？" class="headerlink" title="3.2. 如何单独测 user interfaces 和 persist 层？"></a>3.2. 如何单独测 user interfaces 和 persist 层？</h4><p>user interfaces 和 persist 层因为框架和工具的原因，只能带上Spring application context一起启动测试。<br>正常来说，它们已经算是集成测试了，集成了 Spring 容器。   </p>
 <p>用过 @SpringBootTest 的人，一定对其造成的测试编写效率和运行效率印象深刻 —— 可能只是添加了几个 Bean，就会让 context 的启动时间延长几秒，不恰当地使用某些test annotation也会造成context的重新加载和刷新。   </p>
 <p>本人也用过很长一段时间 —— 通过 API 调用整个组件（<code>controller</code>-&gt; <code>servcie</code>-&gt;<code>repository</code>-&gt;<code>memory db</code>）, 以实现对user interfaces 和 persist 层的覆盖。即使在成功优化Spring加载机制 —— 每次批量运行测试用例仅加载一次 application context，但每次编写新的API测试、修复API测试仍然痛苦不已 —— 每次运行单条测试进行反馈时，依然要等待一次完整的 context 启动。    </p>
 <p>因此，这里推荐使用Spring提供的切片测试工具（Tests Slices）: @WebMvcTest、@DataJpaTest。其原理是仅创建简化的application context，少量的bean，使用轻量级、有针对性范围的方式，降低反馈时间、提升测试性能。<br>在编写测试、运行测试的性能上，切片测试的反馈效率的确赶不上单元测试，但对比 @SpringBootTest 加载几乎完整 context 的情况已经优化不少。    </p>
-<h4 id="3-最终的目的：利用基层的测试来整体覆盖代码逻辑"><a href="#3-最终的目的：利用基层的测试来整体覆盖代码逻辑" class="headerlink" title="3. 最终的目的：利用基层的测试来整体覆盖代码逻辑"></a>3. 最终的目的：利用基层的测试来整体覆盖代码逻辑</h4><p>回到之前的问题：技术意义上的单元测试的确不能覆盖所有代码逻辑。</p>
+<h4 id="3-3-最终的目的：利用基层的测试来整体覆盖代码逻辑"><a href="#3-3-最终的目的：利用基层的测试来整体覆盖代码逻辑" class="headerlink" title="3.3. 最终的目的：利用基层的测试来整体覆盖代码逻辑"></a>3.3. 最终的目的：利用基层的测试来整体覆盖代码逻辑</h4><p>回到之前的问题：技术意义上的单元测试的确不能覆盖所有代码逻辑。</p>
 <p>但，<code>单元测试</code> + <code>轻量级的、快速反馈的 slice tests</code> 可以尽量覆盖到所有代码逻辑。</p>
 <p>因为<code>单元测试 + slice tests</code>的目标是为了完成分层架构内的逻辑测试，为了避免语义上的冲突，因此这里将两者一起称为<code>层级测试</code>。<br>除了传统的分层架构，也来看看六边形架构、或者叫接口适配器架构是不是适合进行<code>分层测试</code>呢？<br>其实不然，六边形架构在宏观意义上，其实可以看成是“两层” —— domain 和 infrastructure。<br><img src="/2020/06/30/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/%E5%85%AD%E8%BE%B9%E5%BD%A2%E6%9E%B6%E6%9E%84.png" alt="六边形架构"><br>正好对照了 unit tests 和 slice tests 的分界。<br>而这两层的区别，在于 unit tests 测试的是系统中稳定的业务层，可以尽量多的追求代码覆盖率；而slice tests 测试的是对基础设施的依赖适配和定制逻辑，追求定制逻辑的功能覆盖。<br>最终同样得以完成对 ”代码逻辑“ 的整体测试覆盖。  </p>
-<h3 id="题外："><a href="#题外：" class="headerlink" title="题外："></a>题外：</h3><h4 id="1-API集成测试（API-Integration-Tests）"><a href="#1-API集成测试（API-Integration-Tests）" class="headerlink" title="1. API集成测试（API Integration Tests）"></a>1. API集成测试（API Integration Tests）</h4><p><img src="/2020/06/30/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/API%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95.png" alt="API集成测试"><br>在完成前面的层级测试、覆盖了所有逻辑细节之后，就轮到跨层级的连通性测试了。<br>这里虽然命名为“API集成测试”，其实也叫“组件测试”。由于系统架构由来已久，到微服务架构的时候，一个组件的边界已经是一个微服务的边界，针对微服务的API特性, 这篇文章里称其为“API集成测试”。    </p>
+<h3 id="题外："><a href="#题外：" class="headerlink" title="题外："></a>题外：</h3><h4 id="4-1-API集成测试（API-Integration-Tests）"><a href="#4-1-API集成测试（API-Integration-Tests）" class="headerlink" title="4.1. API集成测试（API Integration Tests）"></a>4.1. API集成测试（API Integration Tests）</h4><p><img src="/2020/06/30/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/API%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95.png" alt="API集成测试"><br>在完成前面的层级测试、覆盖了所有逻辑细节之后，就轮到跨层级的连通性测试了。<br>这里虽然命名为“API集成测试”，其实也叫“组件测试”。由于系统架构由来已久，到微服务架构的时候，一个组件的边界已经是一个微服务的边界，针对微服务的API特性, 这篇文章里称其为“API集成测试”。    </p>
 <p>基于测试运行的可重复性，API集成测试中需要降低对外界的依赖，比如微服务在真实环境中对数据库、外部服务的依赖。   </p>
 <p>数据库可以替换成能力相同的内存式、或嵌入式数据库，比如生产mysql\mariaDB 可替换成 mariadb4j 实现嵌入式数据库；外部服务依赖，使用服务边界mock进行统一管理。    </p>
 <p>借用<strong><a href="http://github.com/tobyclemson" target="_blank" rel="noopener">Toby Clemson</a></strong> 的一张微服务组件测试的图，橙色的虚线正是组件测试的边界。<a href="https://martinfowler.com/articles/microservice-testing/" target="_blank" rel="noopener">原图来源</a>    </p>
@@ -244,7 +244,7 @@
 <p>举个例子：  </p>
 <p>一般写API集成测试的时候，常会遇到层级间“传递参数缺少校验“的问题，如 controller 调用 applicationService 时，入参传递了一个未预料的<code>null</code> 值，这个<code>null</code>值的校验，应该由具体代码 controller 与 applicationService 之间进行约定：可以是接收方编写防御性校验，也可以由调用方前瞻性校验。  </p>
 <p>因此，此处<code>null</code>值校验的逻辑完全是可以在 Layer tests中由测试覆盖。不要试图在API集成测试中覆盖这个<code>null</code>和<code>非null</code>分支。  </p>
-<h4 id="2-契约测试-Contract-Tests"><a href="#2-契约测试-Contract-Tests" class="headerlink" title="2 契约测试(Contract Tests)"></a>2 契约测试(Contract Tests)</h4><p>之前测完各层级逻辑、组件内的调用连通性，接着来看一下微服务边界的契约测试。  </p>
+<h4 id="4-2-契约测试-Contract-Tests"><a href="#4-2-契约测试-Contract-Tests" class="headerlink" title="4.2 契约测试(Contract Tests)"></a>4.2 契约测试(Contract Tests)</h4><p>之前测完各层级逻辑、组件内的调用连通性，接着来看一下微服务边界的契约测试。  </p>
 <p><img src="/2020/06/30/%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E4%B9%8B%E5%B1%82%E7%BA%A7%E6%B5%8B%E8%AF%95/%E5%A5%91%E7%BA%A6%E6%B5%8B%E8%AF%95.png" alt="契约测试"></p>
 <h5 id="契约-vs-API"><a href="#契约-vs-API" class="headerlink" title="契约 vs API"></a>契约 vs API</h5><p>对于契约测试，首先要避免进入 —— 一条API就应该是一个契约的误区。  </p>
 <p>记住，契约测试有个“首要精神“：<code>消费者驱动契约（Consumer Driven Contracts）</code>。  </p>
@@ -284,25 +284,25 @@
     <content><![CDATA[<p>“可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。<br>对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。<br>没用过 Maven 的小伙伴们也不用被劝退，想想在使用Spring plugin <code>io.spring.dependency-management</code>时，<br><code>imports.mavenBom</code>到底在做什么，有没有想要了解一下？</p>
 <a id="more"></a>
 
-<h3 id="BOM是什么？"><a href="#BOM是什么？" class="headerlink" title="BOM是什么？"></a>BOM是什么？</h3><p>在说 BOM 之前，先了解一下 Maven 的一些基本概念。<br>Maven <strong>POM</strong>，全名 <code>Project Object Model</code>, 是 Maven 使用中的重要配置文件，xml格式，主要用来导入依赖和进行项目构建。<br>Maven <strong>BOM</strong>，全名 <code>Bill Of Materials</code>, 是一种特殊的 POM，主要用来集中管理项目依赖的版本，更加灵活地维护所有依赖的版本信息。<br>配置好的 BOM，可以放在单个项目中自用，也可以传阅和分享给其他项目进行公用。</p>
+<h3 id="1-BOM是什么？"><a href="#1-BOM是什么？" class="headerlink" title="1. BOM是什么？"></a>1. BOM是什么？</h3><p>在说 BOM 之前，先了解一下 Maven 的一些基本概念。<br>Maven <strong>POM</strong>，全名 <code>Project Object Model</code>, 是 Maven 使用中的重要配置文件，xml格式，主要用来导入依赖和进行项目构建。<br>Maven <strong>BOM</strong>，全名 <code>Bill Of Materials</code>, 是一种特殊的 POM，主要用来集中管理项目依赖的版本，更加灵活地维护所有依赖的版本信息。<br>配置好的 BOM，可以放在单个项目中自用，也可以传阅和分享给其他项目进行公用。</p>
 <p>讲的直观一点，效果就是（见下图）：<br><img src="/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/Spring-dependencies-management.png" alt="Spring-dependencies-management"><br>dependencies中依赖的那些库为何可以不用标明版本？<br>正是因为使用了<em>dependency-management</em> 插件，当 gradle plugin <em>org.springframework.boot</em> 检测到此插件启用时，会自动导入Spring boot dependencies BOM，这样依赖库们会主动使用 BOM 中推荐的版本。<a href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies" target="_blank" rel="noopener">链接</a></p>
 <p>下面是Spring Cloud BOM的一部分展示(完整见<a href="https://github.com/spring-cloud/spring-cloud-release/blob/vHoxton.SR5/spring-cloud-dependencies/pom.xml" target="_blank" rel="noopener">链接</a>)：</p>
 <p><img src="/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/Spring-cloud-dependencies.png" alt="Spring-cloud-dependencies"></p>
 <p>看到这里，是不是觉得有 BOM 的情况下便捷不少，再也不用一条条dependency分别查阅、选择和维护版本了？<br>日常开发中，我们已经见识过了Spring boot / Spring Cloud /junit 这些常用 BOMs。</p>
 <p>当有了已经被验证过的依赖版本管理，setup projects时候直接拿来复用，是不是感觉省事不少？<br>同时 BOM 不可避免地还支持版本升级。<br>下面我们就来看看如何在 gradle 中定义我们自己的 BOM。</p>
-<h3 id="gradle-Java-platform-plugin"><a href="#gradle-Java-platform-plugin" class="headerlink" title="gradle Java platform plugin"></a>gradle Java platform plugin</h3><p><code>gradle Java platform plugin</code>是 gradle 对定义、发布 BOM 提供的一款实用插件。<br>引入它，我们就可以开始动手工作了。<a href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header" target="_blank" rel="noopener">官方链接</a></p>
+<h3 id="2-gradle-Java-platform-plugin"><a href="#2-gradle-Java-platform-plugin" class="headerlink" title="2. gradle Java platform plugin"></a>2. gradle Java platform plugin</h3><p><code>gradle Java platform plugin</code>是 gradle 对定义、发布 BOM 提供的一款实用插件。<br>引入它，我们就可以开始动手工作了。<a href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header" target="_blank" rel="noopener">官方链接</a></p>
 <p><em><code>build.gradle</code></em></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#39;maven-publish&#39;</span><br><span class="line">    id &#39;java-platform&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">version &#39;0.1.1-SNAPSHOT&#39;</span><br><span class="line"></span><br><span class="line">javaPlatform &#123;</span><br><span class="line">    allowDependencies()</span><br><span class="line">&#125;</span><br><span class="line">dependencies &#123;</span><br><span class="line">    api platform(&#39;org.springframework.boot:spring-boot-dependencies:2.2.6.RELEASE&#39;)</span><br><span class="line">    api platform(&#39;org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR3&#39;)</span><br><span class="line">    api platform(&#39;org.springframework.cloud:spring-cloud-contract-dependencies:2.2.3.RELEASE&#39;)</span><br><span class="line">    api platform(&#39;org.junit:junit-bom:5.3.2&#39;)</span><br><span class="line">    constraints &#123;</span><br><span class="line">        api &#39;com.google.guava:guava:27.0.1-jre&#39;</span><br><span class="line"></span><br><span class="line">        api &#39;ch.vorburger.mariaDB4j:mariaDB4j-springboot:2.4.0&#39;</span><br><span class="line">        api &#39;org.mariadb.jdbc:mariadb-java-client:2.2.5&#39;</span><br><span class="line"></span><br><span class="line">        api &#39;org.mockito:mockito-core:2.22.0&#39;</span><br><span class="line">        api &#39;org.mockito:mockito-junit-jupiter:2.22.0&#39;</span><br><span class="line">        api &#39;org.assertj:assertj-core:3.11.1&#39;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">publishing &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123;</span><br><span class="line">            credentials &#123;</span><br><span class="line">                username &#x3D; &#39;jfrog&#39;</span><br><span class="line">                password &#x3D; &#39;jfrog123456&#39;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            def releasesRepoUrl &#x3D; &#39;http:&#x2F;&#x2F;localhost:8082&#x2F;artifactory&#x2F;libs-release&#x2F;&#39;</span><br><span class="line">            def snapshotsRepoUrl &#x3D; &#39;http:&#x2F;&#x2F;localhost:8082&#x2F;artifactory&#x2F;libs-snapshot&#x2F;&#39;</span><br><span class="line">            url &#x3D; version.endsWith(&#39;SNAPSHOT&#39;) ? snapshotsRepoUrl : releasesRepoUrl</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    publications &#123;</span><br><span class="line">        myPlatform(MavenPublication) &#123;</span><br><span class="line">            from components.javaPlatform</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>当然, 作为一个服务级的 BOM，自然无需从零开始逐条定义，可以直接先 import 框架级的 BOMs，如上例中的Spring boot / Spring cloud / Spring cloud contract / Junit。<br>但由于需要使用第三方platform bom, 则不得不打开配置约束 ——<code>javaPlatform.allowDependencies</code>。具体使用请见<a href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#sec:java_platform_bom_import" target="_blank" rel="noopener">官方链接</a></p>
 <p>这里，通过gradle生成的 BOM 会发布到一个我本地自己搭建的JFrog artifactory OSS中。<br>(为什么不在云上搭一个？啊哈哈，因为JFrog artifactory OSS最低预配是4核4G内存，自己掏钱就手短了。。)<br>当然,也可以生成本地的 POM 文件，手动复制传阅，但这样就不容易进行后续的版本管理和保持更新了。</p>
 <p>maven publish 成功后，我们就可以来使用 BOM 导入依赖版本了。</p>
-<h3 id="gradle-platform"><a href="#gradle-platform" class="headerlink" title="gradle platform"></a>gradle platform</h3><p>导入方式也非常简单，直接使用platform组件即可。<a href="https://docs.gradle.org/current/userguide/platforms.html" target="_blank" rel="noopener">官方链接</a></p>
+<h3 id="3-gradle-platform"><a href="#3-gradle-platform" class="headerlink" title="3. gradle platform"></a>3. gradle platform</h3><p>导入方式也非常简单，直接使用platform组件即可。<a href="https://docs.gradle.org/current/userguide/platforms.html" target="_blank" rel="noopener">官方链接</a></p>
 <p>创建一个example项目试一下, 编写<code>build.gradle</code>文件。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    maven &#123;</span><br><span class="line">        credentials &#123;</span><br><span class="line">            username &#x3D; &quot;jfrog&quot;</span><br><span class="line">            password &#x3D; &quot;jfrog123456&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        url &quot;http:&#x2F;&#x2F;localhost:8082&#x2F;artifactory&#x2F;libs-snapshot&#x2F;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation platform(&#39;com.ellendan.service.template:dependencies-bom:0.1.1-SNAPSHOT&#39;)</span><br><span class="line"></span><br><span class="line">    implementation &#39;org.springframework.boot:spring-boot-starter-web&#39;</span><br><span class="line">    implementation &#39;org.springframework.boot:spring-boot-starter-security&#39;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对，就是使用platform()引入即可。  </p>
 <p>也许有人会问：大家用 spring-dependency-management 习惯了，这个 BOM 是否支持 spring-dependency-management 的 <code>imports.mavenBom</code>。<br>理论上是支持的。<br>但本人在写代码的时候，发现自定义 BOM 中spring boot dependencies BOM 无法被成功引入，而其他 BOMs 都没有此问题、可以成功导入。<br>因此，我这里并不推荐通过spring-dependency-management的<code>imports.mavenBom</code>来导入。</p>
-<h3 id="为什么要做“可共享的依赖版本管理”"><a href="#为什么要做“可共享的依赖版本管理”" class="headerlink" title="为什么要做“可共享的依赖版本管理”"></a>为什么要做“可共享的依赖版本管理”</h3><p>这还要从本人最近的一个任务说起。<br>任务本身是做 —— “启动模板”。<br>但“启动模板”，这四个字，怎么看都觉得非常的静态。<br>结合Rebecca《演进式架构》中“服务模板”的概念（虽然“模板”这命名还是怎么看怎么静态）。在构建服务的过程中，为了防止有害的重复，如果技术上的适当耦合避免不了，那就尽量让其黑盒复用。  </p>
+<h3 id="4-为什么要做“可共享的依赖版本管理”"><a href="#4-为什么要做“可共享的依赖版本管理”" class="headerlink" title="4. 为什么要做“可共享的依赖版本管理”"></a>4. 为什么要做“可共享的依赖版本管理”</h3><p>这还要从本人最近的一个任务说起。<br>任务本身是做 —— “启动模板”。<br>但“启动模板”，这四个字，怎么看都觉得非常的静态。<br>结合Rebecca《演进式架构》中“服务模板”的概念（虽然“模板”这命名还是怎么看怎么静态）。在构建服务的过程中，为了防止有害的重复，如果技术上的适当耦合避免不了，那就尽量让其黑盒复用。  </p>
 <blockquote>
 <p>通过在服务模板中定义适当的技术架构耦合点，并让基础设施团队管理这些耦合，就能使各个服务团队免于这些苦恼。  </p>
 </blockquote>
@@ -329,18 +329,18 @@
     <title>DDD概念概览</title>
     <url>/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/</url>
     <content><![CDATA[<p>软件的核心，是为其用户解决领域相关问题的能力。</p>
-<h3 id="何为DDD"><a href="#何为DDD" class="headerlink" title="何为DDD"></a>何为DDD</h3><p>DDD是Domain Driven Design的简称。<strong>领域驱动设计</strong>，“<strong>领域</strong>”指业务领域，“<strong>设计</strong>”指软件设计。<br>DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思维方式，使得团队可以高效管理——用于复杂问题域的软件的构造和维护。</p>
+<h3 id="1-何为DDD"><a href="#1-何为DDD" class="headerlink" title="1. 何为DDD"></a>1. 何为DDD</h3><p>DDD是Domain Driven Design的简称。<strong>领域驱动设计</strong>，“<strong>领域</strong>”指业务领域，“<strong>设计</strong>”指软件设计。<br>DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思维方式，使得团队可以高效管理——用于复杂问题域的软件的构造和维护。</p>
 <a id="more"></a>
 
-<h3 id="为什么DDD"><a href="#为什么DDD" class="headerlink" title="为什么DDD"></a>为什么DDD</h3><p>对于一个复杂业务系统，无视业务复杂度而割裂式地进行软件设计，往往会造成软件的<strong>大泥球模式（BBoM）</strong>，后果就是：</p>
+<h3 id="2-为什么DDD"><a href="#2-为什么DDD" class="headerlink" title="2. 为什么DDD"></a>2. 为什么DDD</h3><p>对于一个复杂业务系统，无视业务复杂度而割裂式地进行软件设计，往往会造成软件的<strong>大泥球模式（BBoM）</strong>，后果就是：</p>
 <ol>
 <li>对统一语言和问题域知识缺乏重视，导致代码库可用但无法揭示业务意图。</li>
 <li>缺乏基于问题域模型的应用程序设计的重视，让代码库缺乏与业务行为的协同效应，当有后续功能的扩展就会变得棘手。领域复杂性和技术复杂性混合在了一起。</li>
 <li>会扼杀开发。对开发人员来说，软件杂乱、变更易出错。对企业来说，降低了软件快速实现商业价值的能力。</li>
 <li>缺乏对问题域的关注和正确认识，构建出来的软件系统往往会失败。<br>注：<strong>问题域</strong> ，涉及你当前正在构建软件的主题领域。是确定软件价值的关键点。</li>
 </ol>
-<h3 id="DDD模式"><a href="#DDD模式" class="headerlink" title="DDD模式"></a>DDD模式</h3><p>DDD具有两种模式类型：战略模式和战术模式。<br>战略模式影响的是解决方案，战术模式用于实现富领域模型。<br><img src="/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/ddd-summary.png" alt="Domain Drive Design Summary.png"></p>
-<h4 id="DDD战略模式"><a href="#DDD战略模式" class="headerlink" title="DDD战略模式"></a>DDD战略模式</h4><p>领域驱动设计的战略模式会提炼问题域并塑造应用程序的架构。</p>
+<h3 id="3-DDD模式"><a href="#3-DDD模式" class="headerlink" title="3. DDD模式"></a>3. DDD模式</h3><p>DDD具有两种模式类型：战略模式和战术模式。<br>战略模式影响的是解决方案，战术模式用于实现富领域模型。<br><img src="/2020/02/09/DDD%E6%A6%82%E5%BF%B5%E6%A6%82%E8%A7%88/ddd-summary.png" alt="Domain Drive Design Summary.png"></p>
+<h4 id="3-1-DDD战略模式"><a href="#3-1-DDD战略模式" class="headerlink" title="3.1. DDD战略模式"></a>3.1. DDD战略模式</h4><p>领域驱动设计的战略模式会提炼问题域并塑造应用程序的架构。</p>
 <ol>
 <li>提炼问题域以揭示重要之处是什么 —— 核心子域。核心域是编写软件的原因，保留最大价值的关键区域，决定软件成功与否的关键。并非一个系统的所有部分都需要被精心设计，团队可以更专注于核心领域。</li>
 <li>在解空间构建一个软件模型，以处理领域问题并让软件与业务保持一致。</li>
@@ -350,7 +350,7 @@
 </ol>
 <p><strong>问题空间 &amp; 解空间</strong><br>战略模式中强调问题空间和解空间的区别。只有明确确定了问题空间，才能分析出对应的解空间，最终才能构建出满足解决业务问题的成功软件。<br>上1，是解决问题空间复杂度的管理模式。问题空间将问题提炼成更多可管理的子域。<br>上2、3、4、5， 是解空间的管理模式。</p>
 <p>战略模式强调了DDD的侧重点是：知识消化、知识提炼、协作沟通、统一语言、上下文、模型持续发展。<br>后面战术模式，其实只是支持其实现而推荐的手段。</p>
-<h4 id="DDD战术模式"><a href="#DDD战术模式" class="headerlink" title="DDD战术模式"></a>DDD战术模式</h4><p>DDD的战术模式（也称模型构造块）是一个帮助创建用于复杂有界上下文的有效模型的模式集合。<br>许多模式都早于DDD概念的出现，但依然有一些被推荐为DDD战术的标准模式。<br>在战略模式提供的架构和原则的基础上，共用这些标准模式可以让设计有序进行，也使项目组成员能够更方便地了解彼此的工作内容。</p>
+<h4 id="3-2-DDD战术模式"><a href="#3-2-DDD战术模式" class="headerlink" title="3.2. DDD战术模式"></a>3.2. DDD战术模式</h4><p>DDD的战术模式（也称模型构造块）是一个帮助创建用于复杂有界上下文的有效模型的模式集合。<br>许多模式都早于DDD概念的出现，但依然有一些被推荐为DDD战术的标准模式。<br>在战略模式提供的架构和原则的基础上，共用这些标准模式可以让设计有序进行，也使项目组成员能够更方便地了解彼此的工作内容。</p>
 <ol>
 <li>实体（Entity）</li>
 <li>值对象（Value Object）</li>
@@ -383,7 +383,7 @@
 <p>老实说，曾经在我司经常听到Dev challenge BA：“你这个需求的价值是什么？”现在反而听到越来越少。<br>曾经我们坚持要去做有价值的事情，直到我们现在不得不 highlight 出 <code>价值交付</code> 这个标题。<br>并且常常会被问到 —— 价值交付，它到底指什么？</p>
 <a id="more"></a>
 
-<h2 id="“价值交付是什么？”"><a href="#“价值交付是什么？”" class="headerlink" title="“价值交付是什么？”"></a>“价值交付是什么？”</h2><p>首先，我不会尝试直接回答这个问题。<br>作为一个交付型U，我们先从一些耳熟能详的理论和方法实践中，尝试找到“价值”这个词。</p>
+<h2 id="1-“价值交付是什么？”"><a href="#1-“价值交付是什么？”" class="headerlink" title="1. “价值交付是什么？”"></a>1. “价值交付是什么？”</h2><p>首先，我不会尝试直接回答这个问题。<br>作为一个交付型U，我们先从一些耳熟能详的理论和方法实践中，尝试找到“价值”这个词。</p>
 <ol>
 <li><p>敏捷软件开发宣言</p>
 <blockquote>
@@ -405,14 +405,14 @@
 </li>
 </ol>
 <p>从前两组概念 —— 敏捷和敏捷项目管理，来直接追溯价值交付，看起来总是有些刻意。<br>而精益思想的第一原则“精确地定义特性产品的价值”，直接从用户受众的角度入手，就看起来直观的多，因此我这里就直接从精益来看价值交付是什么。</p>
-<h3 id="价值交付的具象产出部分-——-产品"><a href="#价值交付的具象产出部分-——-产品" class="headerlink" title="价值交付的具象产出部分 —— 产品"></a>价值交付的具象产出部分 —— 产品</h3><p>说到精益，如果用一句话来描述它是用来干什么的话，那应该是：<code>杜绝浪费，降本增效。</code><br>当然，如果提到它诞生的背景的话，它解决了工业化大生产中的提前批量性生产、生产时间周期过长、生产可预测性不准等问题，但解决问题的终极思路就是：<code>在保证价值的同时，持续不断、稳定地消除浪费，从而降低成本提升效能。</code></p>
+<h3 id="1-1-价值交付的具象产出部分-——-产品"><a href="#1-1-价值交付的具象产出部分-——-产品" class="headerlink" title="1.1. 价值交付的具象产出部分 —— 产品"></a>1.1. 价值交付的具象产出部分 —— 产品</h3><p>说到精益，如果用一句话来描述它是用来干什么的话，那应该是：<code>杜绝浪费，降本增效。</code><br>当然，如果提到它诞生的背景的话，它解决了工业化大生产中的提前批量性生产、生产时间周期过长、生产可预测性不准等问题，但解决问题的终极思路就是：<code>在保证价值的同时，持续不断、稳定地消除浪费，从而降低成本提升效能。</code></p>
 <p>说到“浪费”：丰田模式中，将生产活动中的各环节分为3类步骤：</p>
 <ul>
 <li>明确能创造价值的步骤</li>
 <li>虽然不能创造价值，但是在现有技术和生产条件下不可避免的步骤（<strong>1型浪费</strong>）</li>
 <li>不创造价值，并且可以去掉的步骤（<strong>2型浪费</strong>）<br>针对产品制造的第一要务就是首先定义价值，从而识别整个生产活动中能够创造价值的步骤、1型浪费和2型浪费。然后消除2型浪费，并将1型浪费逐渐转化成2型浪费从来最终消除。</li>
 </ul>
-<h4 id="首先定义价值"><a href="#首先定义价值" class="headerlink" title="首先定义价值"></a>首先定义价值</h4><p><img src="/2020/02/08/%E4%BB%8E%E7%B2%BE%E7%9B%8A%E6%9D%A5%E7%9C%8B%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98%E6%98%AF%E4%BB%80%E4%B9%88/value.png" alt="价值"></p>
+<h4 id="1-1-1-首先定义价值"><a href="#1-1-1-首先定义价值" class="headerlink" title="1.1.1 首先定义价值"></a>1.1.1 首先定义价值</h4><p><img src="/2020/02/08/%E4%BB%8E%E7%B2%BE%E7%9B%8A%E6%9D%A5%E7%9C%8B%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98%E6%98%AF%E4%BB%80%E4%B9%88/value.png" alt="价值"></p>
 <p>同样的道理，在软件交付中，首先的出发点就是价值，并不是一堆一堆的功能集、features 或者 看起来非常 fashion 但不解决自身问题的前沿方案。</p>
 <p>然而无论是制造业还是软件业，价值只能由产品的使用者 —— 最终用户来确定。<br>一般在交付团队中，会有两种情况：</p>
 <ul>
@@ -426,20 +426,20 @@
 <li>第二种情况：已经有了需求收集和分析渠道，但行业方案较新，无法完全避免产品实验开发的浪费。这种，在更下游、更靠近用户的地方，是否建立了有效的用户反馈、价值追踪和核定机制 —— 实验的效果是什么样的，生成了哪些价值，是否帮助我们更好地逐渐形成价值定义？</li>
 </ul>
 <p>实现完价值定义之后，我们针对当前价值定义来看看“交付”这个动作。</p>
-<h4 id="从需求到产品的快速研发能力"><a href="#从需求到产品的快速研发能力" class="headerlink" title="从需求到产品的快速研发能力"></a>从需求到产品的快速研发能力</h4><h5 id="“识别出每种产品的价值流”"><a href="#“识别出每种产品的价值流”" class="headerlink" title="“识别出每种产品的价值流”"></a>“识别出每种产品的价值流”</h5><p>用过 Scrum 或者 Kanban board 的人应该都理解，一张卡（无论 EPIC 卡还是 story 卡），其承载的就是一个价值点（这里不涉及到估算）。</p>
+<h4 id="1-1-2-从需求到产品的快速研发能力"><a href="#1-1-2-从需求到产品的快速研发能力" class="headerlink" title="1.1.2. 从需求到产品的快速研发能力"></a>1.1.2. 从需求到产品的快速研发能力</h4><h5 id="“识别出每种产品的价值流”"><a href="#“识别出每种产品的价值流”" class="headerlink" title="“识别出每种产品的价值流”"></a>“识别出每种产品的价值流”</h5><p>用过 Scrum 或者 Kanban board 的人应该都理解，一张卡（无论 EPIC 卡还是 story 卡），其承载的就是一个价值点（这里不涉及到估算）。</p>
 <p>而将 board 上的各个 columns 对应的步骤连接起来，其实就组成了完成此类卡的一条粗粒度的“价值流”。其中，有产生价值的In Dev、In QA等，也有1型浪费Dev Done / Ready for QA 等等，当然个别团队可能还存在2型浪费的 columns。<br>价值流的目标就是让团队识别出流程步骤，为之后消除这些浪费做准备，最终降低开发成本、缩短lead time。<br>那从这种粗粒度的”价值流“中如何逐渐暴露浪费和执行改进呢？</p>
 <h5 id="“使价值不间断地流动”"><a href="#“使价值不间断地流动”" class="headerlink" title="“使价值不间断地流动”"></a>“使价值不间断地流动”</h5><p>也许有人会觉得这句话理解起来很难，其实在部分团队内非常常见。<br>比如：见过一些客户团队，所有 story 的开发只要开发人员开发完毕，就推进Dev Done column 中，等到整体功能开发的差不多了，才引入 QA 来开始测试，在此之前 QA 资源可能在忙于另一个团队的测试工作。一种类似制造业批量化生产的模式，生产步骤之间存在大量库存，批量满额之后，才会推进到下一个生产环节。<br>也有一些敏捷团队，由于 QA 资源不足，出现相同的Dev Done之后在Ready for QA中形成批量等待，始终无人解决，甚至大家对此已经习以为常 —— QA会在下一个sprint整体测试这批卡。<br>“使价值不间断地流动”，其实不仅是行动、更是从思想和意识上认识到 —— 价值要流动起来。就像最后那些敏捷团队的例子，即使使用了敏捷流程和工具，思想和意识不到位，依然用出了批量的样子。</p>
 <p>有人会说：“这种批量有什么不好？团队上所有的人都在工作，并没有空转，人力没有被浪费。“<br>如果一定要从项目人力运营的知识域中来看价值交付，我只想说：是的，大家看起来都忙忙碌碌，行色匆匆，努力“做事”，但是人力花完就代表创造了价值么？<br>另一方面，我也可以从”测试前置“、”一次性把事情做好“、”缺陷越晚修复，修复的成本越高“、”开发周期越长，越容易返工“等等方面来聊一聊不关注价值流会造成的种种人力成本、时间成本、机会成本上的浪费。</p>
 <p>只有让价值尽量不间断地流动起来，从需求到生产，才会暴露问题 —— 让团队观察和思考这种端到端的整条价值生产活动中，哪些是产生价值的，哪些是浪费？持续地逐渐优化和消除浪费后，降低开发成本、提升研发效能。</p>
 <h5 id="“让客户从生产者方面拉动价值”"><a href="#“让客户从生产者方面拉动价值”" class="headerlink" title="“让客户从生产者方面拉动价值”"></a>“让客户从生产者方面拉动价值”</h5><p>当研发效能提升、单个价值点能被快速完成端到端交付时，提前预测性质的功能设计（是否能最终产生价值靠玄学的那种）就可以完全被避免，由最下游的终端用户直接提出需求，从来拉动交付。</p>
-<h4 id="方案、技术先进性的加持"><a href="#方案、技术先进性的加持" class="headerlink" title="方案、技术先进性的加持"></a>方案、技术先进性的加持</h4><p>在前面我讲board上面的价值流的时候，始终特指其是”粗粒度“的价值流。<br>为何？<br>因为无法从这些columns中看到：用A框架开发会比B节省多少开发成本、使用某个自动化测试方案可以节省多少测试成本，诸如此类的“细粒度”的价值流才会发现的浪费对比。<br>这种时候，各团队面临的问题各不相同，需要团队一线人员自身的方案和技术能力去扩展优势、消除浪费，不再局限于敏捷软件开发流程、scrum / kanban board来宏观指导和描述开发流程。</p>
+<h4 id="1-1-3-方案、技术先进性的加持"><a href="#1-1-3-方案、技术先进性的加持" class="headerlink" title="1.1.3 方案、技术先进性的加持"></a>1.1.3 方案、技术先进性的加持</h4><p>在前面我讲board上面的价值流的时候，始终特指其是”粗粒度“的价值流。<br>为何？<br>因为无法从这些columns中看到：用A框架开发会比B节省多少开发成本、使用某个自动化测试方案可以节省多少测试成本，诸如此类的“细粒度”的价值流才会发现的浪费对比。<br>这种时候，各团队面临的问题各不相同，需要团队一线人员自身的方案和技术能力去扩展优势、消除浪费，不再局限于敏捷软件开发流程、scrum / kanban board来宏观指导和描述开发流程。</p>
 <p>这里就涉及到精益思想的最后一个原则：<em>“永远追求尽善尽美”</em>。</p>
-<h3 id="价值交付的土壤-——-团队能力-学习型组织"><a href="#价值交付的土壤-——-团队能力-学习型组织" class="headerlink" title="价值交付的土壤 —— 团队能力 / 学习型组织"></a>价值交付的土壤 —— 团队能力 / 学习型组织</h3><p>精益思想前四大原则都只是在讲 —— 如何消除产品生产过程的浪费，最终形成高效有价值的生产流程。一般完成前四原则，基本可以收获 <code>突破性改善</code>（指初次改革，调整生产活动后，一次性获取到的改善效果）。<br>精益思想用最后一个原则<code>“永远追求尽善尽美”</code>，才提到了如何 <code>持续性改善</code> 。</p>
+<h3 id="1-2-价值交付的土壤-——-团队能力-学习型组织"><a href="#1-2-价值交付的土壤-——-团队能力-学习型组织" class="headerlink" title="1.2. 价值交付的土壤 —— 团队能力 / 学习型组织"></a>1.2. 价值交付的土壤 —— 团队能力 / 学习型组织</h3><p>精益思想前四大原则都只是在讲 —— 如何消除产品生产过程的浪费，最终形成高效有价值的生产流程。一般完成前四原则，基本可以收获 <code>突破性改善</code>（指初次改革，调整生产活动后，一次性获取到的改善效果）。<br>精益思想用最后一个原则<code>“永远追求尽善尽美”</code>，才提到了如何 <code>持续性改善</code> 。</p>
 <p>而《丰田模式》用了一整本书，来讲如何实现“追求尽善尽美”、实现“持续性改善” —— 即使完成了前面四个原则，或用了大量的精益工具和实践，只要没达到一点，就不是精益。精益 —— <code>打造一个真正的学习型组织。</code></p>
 <p>这个“学习型组织”，不是说 —— 只是在组织内培养学习氛围，今天去学几种对价值流毫无帮助的语言或架构，明天去做一些对当前主业务毫无扩展的社区活动。也不是说，当某个团队需要一个大数据工程师时，需要从零开始培养，当第二个团队又需要一个大数据工程师时，再次另外培养。<br>而是说 —— 培养学习氛围、过程中不断创建“标准化”以达到“稳定”，然后让成员发挥创造性思维和创新能力以持续改进价值流的组织。</p>
 <p>为什么说“团队能力/学习型组织”是价值交付的土壤呢？<br>假设某团队前四原则背后的工作并不是团队自发形成完成的，是由一个外部人员引入并督促实践完成，本团队并没有掌握其能力。当用户需求拉动生产越来越快时，必然会暴露进一步需要解决的瓶颈和浪费，这时候团队离开了外部人员根本无力继续持续改进从而稳定交付价值。</p>
 <p>为了真正实现精益的持久性改善和价值交付，这需要一个自下而上的过程。<br>仅靠上级制定几个衡量指标，没有培养团队的学习和自组织能力，你永远也想像不到真正实践时会长成什么样子。<br>将团队的指标呈现想像成地上的树，如下图。<br>上级也许期望是扎根价值交付、持续性改进指标背后的问题。但团队也许只是做了一些流于表面的工作让指标变得好看。<br><img src="/2020/02/08/%E4%BB%8E%E7%B2%BE%E7%9B%8A%E6%9D%A5%E7%9C%8B%E4%BB%B7%E5%80%BC%E4%BA%A4%E4%BB%98%E6%98%AF%E4%BB%80%E4%B9%88/how-tree-grow.png" alt="你以为和实际的区别"></p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>何为价值交付？<br>以打造学习型组织或团队为基石 —— 精确定义产品用户价值，尽可能以追求价值卓越为目标，从需求提出开始到产品上线被终端使用，持续消除或者减少阻碍产品研发的浪费，最终实现产品价值。</p>
+<h2 id="2-最后"><a href="#2-最后" class="headerlink" title="2. 最后"></a>2. 最后</h2><p>何为价值交付？<br>以打造学习型组织或团队为基石 —— 精确定义产品用户价值，尽可能以追求价值卓越为目标，从需求提出开始到产品上线被终端使用，持续消除或者减少阻碍产品研发的浪费，最终实现产品价值。</p>
 <p>看起来，精益贯穿始终。<br>再回来看看《敏捷宣言》和《相互依赖声明》，发现和精益很多方面都很相似。只不过在我看来，精益可以更好的端到端描述整个价值流思路。</p>
 ]]></content>
       <categories>
