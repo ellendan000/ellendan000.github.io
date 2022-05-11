@@ -210,6 +210,122 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2022/05/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84ACID%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Ellen Dan">
+      <meta itemprop="description" content="人生如逆水行舟，不进则退。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ellendan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84ACID%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="post-title-link" itemprop="url">数据库的ACID和分布式事务</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-05-10 20:00:00" itemprop="dateCreated datePublished" datetime="2022-05-10T20:00:00+08:00">2022-05-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84ACID%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/10/数据库的ACID和分布式事务/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>657</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>前面写了一篇关于<code>CAP原理</code>的博文，说到<code>一致性 Consistency</code>，有人往往会想到事务<code>ACID</code>特性中的<code>C: Consistency</code>，虽然都叫一致性，但完全是两个东西。  </p>
+<ul>
+<li><code>CAP</code>的一致性指：数据库的同一复制集（replicaSet）之间数据相同。<br>  <em>这里的“数据库”，可以是主从、主备、集群架构，但没有单机架构。</em></li>
+<li><code>ACID</code>的一致性指：在数据库单一实例中(暂不涉及多个数据源的分布式事务)，成功写入的数据不违反已定义的数据规则，如约束、级联规则等等。<br>接着，来通过本地事务的详细说一下<code>ACID</code>，以及跨多数据源的分布式事务。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84ACID%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      
+
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://ellendan.com/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -241,7 +357,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-04 12:07:20" itemprop="dateModified" datetime="2022-05-04T12:07:20+08:00">2022-05-04</time>
+                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -354,7 +470,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-04 12:07:20" itemprop="dateModified" datetime="2022-05-04T12:07:20+08:00">2022-05-04</time>
+                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -467,7 +583,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-04 12:07:20" itemprop="dateModified" datetime="2022-05-04T12:07:20+08:00">2022-05-04</time>
+                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -582,7 +698,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-04 12:07:20" itemprop="dateModified" datetime="2022-05-04T12:07:20+08:00">2022-05-04</time>
+                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -698,7 +814,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-04 12:07:20" itemprop="dateModified" datetime="2022-05-04T12:07:20+08:00">2022-05-04</time>
+                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -815,7 +931,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-04 12:07:20" itemprop="dateModified" datetime="2022-05-04T12:07:20+08:00">2022-05-04</time>
+                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -928,7 +1044,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-04 12:07:20" itemprop="dateModified" datetime="2022-05-04T12:07:20+08:00">2022-05-04</time>
+                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1042,7 +1158,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-04 12:07:20" itemprop="dateModified" datetime="2022-05-04T12:07:20+08:00">2022-05-04</time>
+                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1190,14 +1306,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
