@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>聊聊研发效能治理方案的理论框架_上篇</title>
-    <url>/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_%E4%B8%8A%E7%AF%87/</url>
+    <title>聊聊研发效能治理方案的理论框架（上篇）</title>
+    <url>/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8A%E7%AF%87%EF%BC%89/</url>
     <content><![CDATA[<hr>
 <p>title: 聊聊研发效能治理方案的理论框架（上篇）<br>date: 2022-07-02 20:00:00<br>tags: [精益]<br>categories: [敏捷精益软件]  </p>
 <hr>
@@ -10,7 +10,9 @@
 <blockquote>
 </blockquote>
 <p>DevOps is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications and services at high velocity: evolving and improving products at a faster pace than organizations using traditional software development and infrastructure management processes. This speed enables organizations to better serve their customers and compete more effectively in the market.</p>
-<p>那么，研发效能 == DevOps 吗？<br>答案自然是否定 。<br>研发效能 明显是<code>&quot;问题域&quot;</code>。<br>DevOps 是一种解决方案，且是一种已经被验证、非常成熟的、可以提升软件研发效能的解决方案。<br>但就像人感冒发烧一样，吃 A 药可以痊愈，吃 B 药也可以痊愈，打针也可以痊愈，甚至有时候发现吃药效果不理想，最后还是去打了针。<br><code>研发效能低</code>，就像人感冒发烧一样，是个 “问题” 。<code>DevOps</code>, 是解决这个问题的一种 “药”。</p>
+<p>那么，研发效能 == DevOps 吗？<br>答案自然是否定 。  </p>
+<a id="more"></a>
+<p>研发效能 明显是<code>&quot;问题域&quot;</code>。<br>DevOps 是一种解决方案，且是一种已经被验证、非常成熟的、可以提升软件研发效能的解决方案。<br>但就像人感冒发烧一样，吃 A 药可以痊愈，吃 B 药也可以痊愈，打针也可以痊愈，甚至有时候发现吃药效果不理想，最后还是去打了针。<br><code>研发效能低</code>，就像人感冒发烧一样，是个 “问题” 。<code>DevOps</code>, 是解决这个问题的一种 “药”。</p>
 <p>因此，弄清楚了<code>问题域</code>和<code>解空间</code>的关系之后，我们来看看研发效能和它的解空间，并且主要聊一聊解空间（研发效能治理）。</p>
 <h3 id="1-研发效能的定义"><a href="#1-研发效能的定义" class="headerlink" title="1. 研发效能的定义"></a>1. 研发效能的定义</h3><p>研发效能，即持续快速交付价值的能力。<br>将其拆解一下：<code>研发效能</code> = <code>效率</code> + <code>质量</code>+ <code>有效价值</code>，还有这三项可重复和稳定发生的<code>持续性</code>。  </p>
 <p>展开来讲，就是</p>
