@@ -210,6 +210,156 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Ellen Dan">
+      <meta itemprop="description" content="人生如逆水行舟，不进则退。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ellendan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/" class="post-title-link" itemprop="url">聊聊研发效能治理方案的理论框架</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-07-02 00:00:00" itemprop="dateCreated datePublished" datetime="2022-07-02T00:00:00+08:00">2022-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-04 09:44:29" itemprop="dateModified" datetime="2022-07-04T09:44:29+08:00">2022-07-04</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/07/01/聊聊研发效能治理方案的理论框架/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<p>title: 聊聊研发效能治理方案的理论框架（上篇）<br>date: 2022-07-02 20:00:00<br>tags: [精益]<br>categories: [敏捷精益软件]  </p>
+<hr>
+<p>最近几年，国内业界越来越常提及<code>“研发效能”</code>这个词，追其根源大部分是始于<code>“DevOps”</code>运动的活跃。<br>知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。<br>很多云厂商在推广自己 DevOps 平台服务的时候，也会提及对<code>“研发效能”</code>的大幅度影响，比如<code>AWS</code>对 DevOps 的描述：</p>
+<blockquote>
+</blockquote>
+<p>DevOps is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications and services at high velocity: evolving and improving products at a faster pace than organizations using traditional software development and infrastructure management processes. This speed enables organizations to better serve their customers and compete more effectively in the market.</p>
+<p>那么，研发效能 == DevOps 吗？<br>答案自然是否定 。<br>研发效能 明显是<code>&quot;问题域&quot;</code>。<br>DevOps 是一种解决方案，且是一种已经被验证、非常成熟的、可以提升软件研发效能的解决方案。<br>但就像人感冒发烧一样，吃 A 药可以痊愈，吃 B 药也可以痊愈，打针也可以痊愈，甚至有时候发现吃药效果不理想，最后还是去打了针。<br><code>研发效能低</code>，就像人感冒发烧一样，是个 “问题” 。<code>DevOps</code>, 是解决这个问题的一种 “药”。</p>
+<p>因此，弄清楚了<code>问题域</code>和<code>解空间</code>的关系之后，我们来看看研发效能和它的解空间，并且主要聊一聊解空间（研发效能治理）。</p>
+<h3 id="1-研发效能的定义"><a href="#1-研发效能的定义" class="headerlink" title="1. 研发效能的定义"></a>1. 研发效能的定义</h3><p>研发效能，即持续快速交付价值的能力。<br>将其拆解一下：<code>研发效能</code> = <code>效率</code> + <code>质量</code>+ <code>有效价值</code>，还有这三项可重复和稳定发生的<code>持续性</code>。  </p>
+<p>展开来讲，就是</p>
+<ul>
+<li>要在保证系统可靠性、不降低交付质量的情况下，尽量缩短从业务构想到功能上线的时间  （质量 + 效率）  </li>
+<li>从而使“最小化可行需求”能快速被验证，确保有效价值，减少浪费  （有效价值）  </li>
+<li>且整个过程效果可重复发生（持续性）  </li>
+</ul>
+<h3 id="2-研发效能的治理"><a href="#2-研发效能的治理" class="headerlink" title="2. 研发效能的治理"></a>2. 研发效能的治理</h3><p>有了定义之后，就来看看如何对研发效能进行治理。<br>根据市面上大部分公司的软件工程能力状况，针对研发效能治理，这里提炼了一条“研发效能治理成熟度模型”。</p>
+<p><img src="/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/%E6%B2%BB%E7%90%86%E6%88%90%E7%86%9F%E5%BA%A6%E6%9B%B2%E7%BA%BF.png" alt="研发效能治理成熟度"><br>从左至右，研发效能治理分为5个阶段，每个阶段也必须包含它左边所有阶段的成果。<br>举个例子：某IT部门采购了一个 DevOps 平台服务，但日常仅仅当做 CI/CD流水线 甚至是“发布工具”来使用，对效能治理没什么概念，这时候该IT部门的治理成熟度自然是低的，可能只在“度量和评估”的位置。</p>
+<p>接着，展开来看看效能治理成熟度每一个阶段。</p>
+<h4 id="2-1-度量和评估"><a href="#2-1-度量和评估" class="headerlink" title="2.1. 度量和评估"></a>2.1. 度量和评估</h4><p>管理学之父彼得德鲁克曾经说过：“如果你无法度量它，就无法管理它”。<br>对管理如此，对效能治理亦是如此。因此，度量和评估，对于研发效能的治理必不可少。</p>
+<p>那么，再来看看为何把“度量和评估”放在治理的第一步呢：</p>
+<ul>
+<li>首先，想要对研发效能进行治理，必须知道当前效能处于一个什么阶段，对现状有了度量评估和自我认知之后，才能明确之后治理的方向和力度。  </li>
+<li>同时，度量和评估模型在持续治理的过程中，可以阶段性地重复使用，用以呈现治理成果的效果和进行快速反馈。  </li>
+</ul>
+<p>因此，度量和评估，作为研发效能治理的第一步不可或缺。</p>
+<p><strong>接着，来看看如何做度量和评估？</strong><br><strong>从 “健康度指标” 和 “局部诊断性指标” 分两层来看。</strong><br>首先，借鉴于<code>DORA</code>(DevOps研究和评估组织) 的2021年报告中的Four Key Metrics，将其作为研发效能的4个关键 <strong><code>健康度指标</code></strong>:</p>
+<p><img src="/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/four_key_metrics.png" alt="four key metrics"></p>
+<ul>
+<li><strong>研发效率</strong>：<ul>
+<li>部署频率 </li>
+<li>前置时间（Lead time）</li>
+</ul>
+</li>
+<li><strong>研发质量</strong>：<ul>
+<li>故障恢复时间 （MTTR）</li>
+<li>部署失败率  </li>
+</ul>
+</li>
+</ul>
+<p><code>特别注意</code>：区别于 DevOps 只关注于“从代码提交到功能发布”这个区间的前置时间，研发效能中的“前置时间”延伸了覆盖范围 —— 从业务构想到功能发布，涉及研发运营的整个研发周期。<br>其他三项，与 DevOps 报告相同。</p>
+<p>至于，研发效能中的<strong><code>有效价值</code></strong>，其与业务关系紧密，度量数据模型需要根据具体业务来设计，因此目前仅给予该项 <code>健康度评估模型</code>：</p>
+<blockquote>
+<p>Measurement involves collecting factual information about the value of a deployed feature and evaluating it against the original hypothesis statement.</p>
+</blockquote>
+<p>Rate your team’s ability to collect objective information about the actual value realized by deployed features so that it can inform strategic financial decisions.<br>Sit (1-2): We don’t define or measure the value of Features.<br>Crawl (3-4): We’ve defined what “value” is but don’t know how to measure it.<br>Walk (5-6): We capture qualitative feedback from the business about the value of our Features.<br>Run (7-8): We capture qualitative and quantitative feedback from the business and our monitoring systems about the value of our features.<br>Fly (9-10): We aggregate the quantitative and qualitative feedback to objectively validate the original hypothesis and inform pivot-or-persevere decisions.</p>
+<p>看到这里，是不是有点眼熟，如果原本预想的解决方案是 “DevOps一体化” 的话，加上有效价值的度量，是不是方案就要考虑<code>&quot;BizDevOps&quot;</code>?! 是不是仅仅一个DevOps的方案就不够匹配了？</p>
+<p><strong>接着，再来聊下“局部诊断性指标”。</strong><br>也许有人会觉得，对比下其他类型的度量和评估报告上繁多的指标量，上面这几个指标未免有些简陋。<br>比如，连常见的评估应用架构维度的指标都没有。<br>其实，应用架构指标是有的，但并不属于效能“健康度指标”，而是“局部诊断性指标”。</p>
+<ul>
+<li>当发现健康度不理想，需要分析、定位和形成改进建议时，这时就要借助于局部诊断性指标。</li>
+<li>当实施了改进建议，对局部指标进行了优化，最终效果又会传导到健康度指标上。<br>如果局部指标改进了，但健康度未提升，这时可能需要回过头来分析和反思一下：是诊断和改进建议的问题，还是本身局部指标需要调整。</li>
+</ul>
+<p><img src="/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/%E5%B1%80%E9%83%A8%E8%AF%8A%E6%96%AD%E6%80%A7%E6%8C%87%E6%A0%87.png" alt="局部诊断性指标示例"></p>
+<p>有了这两层指标，整个研发效能的度量和评估模型才大体完整。<br>而在整个研发的过程中，可以常常阶段性的使用模型进行度量和评估一下，比如每次发布周期完成 或者 每次sprint完成的时候等等。<br>使用指标值的时候，也需要注意：<strong>指标值本身并不重要，重要的是通过数据驱动出洞见。而在持续改进的过程中，数据趋势比数据值更重要。</strong></p>
+<p><img src="/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/key_metrics_report.png" alt="趋势图"></p>
+<p>《下篇》讲接着聊剩下的4个成熟度。</p>
+
+      
+    </div>
+
+    
+    
+    
+      
+
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://ellendan.com/2022/05/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84ACID%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -241,7 +391,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
+                <time title="修改时间：2022-07-04 09:44:29" itemprop="dateModified" datetime="2022-07-04T09:44:29+08:00">2022-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -357,7 +507,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
+                <time title="修改时间：2022-07-04 09:44:29" itemprop="dateModified" datetime="2022-07-04T09:44:29+08:00">2022-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -470,7 +620,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
+                <time title="修改时间：2022-07-04 09:44:29" itemprop="dateModified" datetime="2022-07-04T09:44:29+08:00">2022-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -583,7 +733,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
+                <time title="修改时间：2022-07-04 09:44:29" itemprop="dateModified" datetime="2022-07-04T09:44:29+08:00">2022-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -698,7 +848,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
+                <time title="修改时间：2022-07-04 09:44:29" itemprop="dateModified" datetime="2022-07-04T09:44:29+08:00">2022-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -814,7 +964,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
+                <time title="修改时间：2022-07-04 09:44:29" itemprop="dateModified" datetime="2022-07-04T09:44:29+08:00">2022-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -931,7 +1081,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
+                <time title="修改时间：2022-07-04 09:44:29" itemprop="dateModified" datetime="2022-07-04T09:44:29+08:00">2022-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1044,7 +1194,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
+                <time title="修改时间：2022-07-04 09:44:29" itemprop="dateModified" datetime="2022-07-04T09:44:29+08:00">2022-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1158,7 +1308,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-11 17:00:49" itemprop="dateModified" datetime="2022-05-11T17:00:49+08:00">2022-05-11</time>
+                <time title="修改时间：2022-07-04 09:44:29" itemprop="dateModified" datetime="2022-07-04T09:44:29+08:00">2022-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1306,7 +1456,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1366,13 +1516,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">23k</span>
+    <span title="站点总字数">26k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">21 分钟</span>
+    <span title="站点阅读时长">24 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
