@@ -2,11 +2,8 @@
 <search>
   <entry>
     <title>聊聊研发效能治理方案的理论框架（上篇）</title>
-    <url>/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8A%E7%AF%87%EF%BC%89/</url>
-    <content><![CDATA[<hr>
-<p>title: 聊聊研发效能治理方案的理论框架（上篇）<br>date: 2022-07-02 20:00:00<br>tags: [精益]<br>categories: [敏捷精益软件]  </p>
-<hr>
-<p>最近几年，国内业界越来越常提及<code>“研发效能”</code>这个词，追其根源大部分是始于<code>“DevOps”</code>运动的活跃。<br>知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。<br>很多云厂商在推广自己 DevOps 平台服务的时候，也会提及对<code>“研发效能”</code>的大幅度影响，比如<code>AWS</code>对 DevOps 的描述：</p>
+    <url>/2022/07/02/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8A%E7%AF%87%EF%BC%89/</url>
+    <content><![CDATA[<p>最近几年，国内业界越来越常提及<code>“研发效能”</code>这个词，追其根源大部分是始于<code>“DevOps”</code>运动的活跃。<br>知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。<br>很多云厂商在推广自己 DevOps 平台服务的时候，也会提及对<code>“研发效能”</code>的大幅度影响，比如<code>AWS</code>对 DevOps 的描述：</p>
 <blockquote>
 </blockquote>
 <p>DevOps is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications and services at high velocity: evolving and improving products at a faster pace than organizations using traditional software development and infrastructure management processes. This speed enables organizations to better serve their customers and compete more effectively in the market.</p>
@@ -31,7 +28,8 @@
 <li>同时，度量和评估模型在持续治理的过程中，可以阶段性地重复使用，用以呈现治理成果的效果和进行快速反馈。  </li>
 </ul>
 <p>因此，度量和评估，作为研发效能治理的第一步不可或缺。</p>
-<p><strong>接着，来看看如何做度量和评估？</strong><br><strong>从 “健康度指标” 和 “局部诊断性指标” 分两层来看。</strong><br>首先，借鉴于<code>DORA</code>(DevOps研究和评估组织) 的2021年报告中的Four Key Metrics，将其作为研发效能的4个关键 <strong><code>健康度指标</code></strong>:</p>
+<p><strong>接着，来看看如何做度量和评估？</strong><br><strong>从 “健康度指标” 和 “局部诊断性指标” 分两层来看。</strong>  </p>
+<h5 id="健康度指标"><a href="#健康度指标" class="headerlink" title="健康度指标"></a>健康度指标</h5><p>首先，借鉴于<code>DORA</code>(DevOps研究和评估组织) 的2021年报告中的Four Key Metrics，将其作为研发效能的4个关键 <strong><code>健康度指标</code></strong>:</p>
 <p><img src="./%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/four_key_metrics.png" alt="four key metrics"></p>
 <ul>
 <li><strong>研发效率</strong>：<ul>
@@ -52,7 +50,7 @@
 </blockquote>
 <p>Rate your team’s ability to collect objective information about the actual value realized by deployed features so that it can inform strategic financial decisions.<br>Sit (1-2): We don’t define or measure the value of Features.<br>Crawl (3-4): We’ve defined what “value” is but don’t know how to measure it.<br>Walk (5-6): We capture qualitative feedback from the business about the value of our Features.<br>Run (7-8): We capture qualitative and quantitative feedback from the business and our monitoring systems about the value of our features.<br>Fly (9-10): We aggregate the quantitative and qualitative feedback to objectively validate the original hypothesis and inform pivot-or-persevere decisions.</p>
 <p>看到这里，是不是有点眼熟，如果原本预想的解决方案是 “DevOps一体化” 的话，加上有效价值的度量，是不是方案就要考虑<code>&quot;BizDevOps&quot;</code>?! 是不是仅仅一个DevOps的方案就不够匹配了？</p>
-<p><strong>接着，再来聊下“局部诊断性指标”。</strong><br>也许有人会觉得，对比下其他类型的度量和评估报告上繁多的指标量，上面这几个指标未免有些简陋。<br>比如，连常见的评估应用架构维度的指标都没有。<br>其实，应用架构指标是有的，但并不属于效能“健康度指标”，而是“局部诊断性指标”。</p>
+<h5 id="局部诊断性指标"><a href="#局部诊断性指标" class="headerlink" title="局部诊断性指标"></a>局部诊断性指标</h5><p>也许有人会觉得，对比下其他类型的度量和评估报告上繁多的指标量，上面这几个指标未免有些简陋。<br>比如，连常见的评估应用架构维度的指标都没有。<br>其实，应用架构指标是有的，但并不属于效能“健康度指标”，而是“局部诊断性指标”。</p>
 <ul>
 <li>当发现健康度不理想，需要分析、定位和形成改进建议时，这时就要借助于局部诊断性指标。</li>
 <li>当实施了改进建议，对局部指标进行了优化，最终效果又会传导到健康度指标上。<br>如果局部指标改进了，但健康度未提升，这时可能需要回过头来分析和反思一下：是诊断和改进建议的问题，还是本身局部指标需要调整。</li>
@@ -62,6 +60,12 @@
 <p><img src="./%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/key_metrics_report.png" alt="趋势图"></p>
 <p>《下篇》讲接着聊剩下的4个成熟度。</p>
 ]]></content>
+      <categories>
+        <category>敏捷精益软件</category>
+      </categories>
+      <tags>
+        <tag>精益</tag>
+      </tags>
   </entry>
   <entry>
     <title>数据库的ACID和分布式事务</title>
