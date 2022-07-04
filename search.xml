@@ -4,11 +4,12 @@
     <title>聊聊研发效能治理方案的理论框架（上篇）</title>
     <url>/2022/07/02/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8A%E7%AF%87%EF%BC%89/</url>
     <content><![CDATA[<p>最近几年，国内业界越来越常提及<code>“研发效能”</code>这个词，追其根源大部分是始于<code>“DevOps”</code>运动的活跃。<br>知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。<br>很多云厂商在推广自己 DevOps 平台服务的时候，也会提及对<code>“研发效能”</code>的大幅度影响，比如 AWS 对 DevOps 的描述：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;</span><br><span class="line">DevOps is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications and services at high velocity: evolving and improving products at a faster pace than organizations using traditional software development and infrastructure management processes. This speed enables organizations to better serve their customers and compete more effectively in the market.</span><br></pre></td></tr></table></figure>
-
+<blockquote>
+</blockquote>
+<p>DevOps is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications and services at high velocity: evolving and improving products at a faster pace than organizations using traditional software development and infrastructure management processes. This speed enables organizations to better serve their customers and compete more effectively in the market.</p>
 <p>那么，研发效能 == DevOps 吗？<br>答案自然是否定 。  </p>
 <a id="more"></a>
-<p>研发效能 明显是<code>&quot;问题域&quot;</code>。<br>DevOps 是一种解决方案，且是一种已经被验证、非常成熟的、可以提升软件研发效能的解决方案。<br>但就像人感冒发烧一样，吃 A 药可以痊愈，吃 B 药也可以痊愈，打针也可以痊愈，甚至有时候发现吃药效果不理想，最后还是去打了针。<br><code>研发效能低</code>，就像人感冒发烧一样，是个 “问题” 。<code>DevOps</code>, 是解决这个问题的一种 “药”。</p>
+<p>研发效能 明显是“问题域”。<br>DevOps 是一种解决方案，且是一种已经被验证、非常成熟的、可以提升软件研发效能的解决方案。<br>但就像人感冒发烧一样，吃 A 药可以痊愈，吃 B 药也可以痊愈，打针也可以痊愈，甚至有时候发现吃药效果不理想，最后还是去打了针。<br><code>研发效能低</code>，就像人感冒发烧一样，是个 “问题” 。<code>DevOps</code>, 是解决这个问题的一种 “药”。</p>
 <p>因此，弄清楚了<code>问题域</code>和<code>解空间</code>的关系之后，我们来看看研发效能和它的解空间，并且主要聊一聊解空间（研发效能治理）。</p>
 <h3 id="1-研发效能的定义"><a href="#1-研发效能的定义" class="headerlink" title="1. 研发效能的定义"></a>1. 研发效能的定义</h3><p>研发效能，即持续快速交付价值的能力。<br>将其拆解一下：<code>研发效能</code> = <code>效率</code> + <code>质量</code>+ <code>有效价值</code>，还有这三项可重复和稳定发生的<code>持续性</code>。  </p>
 <p>展开来讲，就是</p>
