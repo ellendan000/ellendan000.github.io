@@ -46,20 +46,24 @@
   };
 </script>
 
-  <meta name="description" content="最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只见云雾不见青山。所以，现觉得对自身的知识储备进行重构，迫在眉睫。那么，有没有一种看起来比较靠谱的架构解决方案可以达到此目的呢？重读《金字塔原理》之后，我觉得使用“">
+  <meta name="description" content="title: 聊聊研发效能治理方案的理论框架（上篇）date: 2022-07-02 20:00:00tags: [精益]categories: [敏捷精益软件]    最近几年，国内业界越来越常提及“研发效能”这个词，追其根源大部分是始于“DevOps”运动的活跃。知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。很多云厂商在推">
 <meta property="og:type" content="article">
-<meta property="og:title" content="重启">
-<meta property="og:url" content="https://ellendan.com/2022/04/29/%E9%87%8D%E5%90%AF/index.html">
+<meta property="og:title" content="聊聊研发效能治理方案的理论框架_上篇">
+<meta property="og:url" content="https://ellendan.com/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_%E4%B8%8A%E7%AF%87/index.html">
 <meta property="og:site_name" content="ellendan">
-<meta property="og:description" content="最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只见云雾不见青山。所以，现觉得对自身的知识储备进行重构，迫在眉睫。那么，有没有一种看起来比较靠谱的架构解决方案可以达到此目的呢？重读《金字塔原理》之后，我觉得使用“">
+<meta property="og:description" content="title: 聊聊研发效能治理方案的理论框架（上篇）date: 2022-07-02 20:00:00tags: [精益]categories: [敏捷精益软件]    最近几年，国内业界越来越常提及“研发效能”这个词，追其根源大部分是始于“DevOps”运动的活跃。知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。很多云厂商在推">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-04-29T04:12:00.000Z">
-<meta property="article:modified_time" content="2022-07-04T01:46:17.215Z">
+<meta property="og:image" content="https://ellendan.com/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_%E4%B8%8A%E7%AF%87/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/%E6%B2%BB%E7%90%86%E6%88%90%E7%86%9F%E5%BA%A6%E6%9B%B2%E7%BA%BF.png">
+<meta property="og:image" content="https://ellendan.com/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_%E4%B8%8A%E7%AF%87/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/four_key_metrics.png">
+<meta property="og:image" content="https://ellendan.com/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_%E4%B8%8A%E7%AF%87/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/%E5%B1%80%E9%83%A8%E8%AF%8A%E6%96%AD%E6%80%A7%E6%8C%87%E6%A0%87.png">
+<meta property="og:image" content="https://ellendan.com/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_%E4%B8%8A%E7%AF%87/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/key_metrics_report.png">
+<meta property="article:published_time" content="2022-07-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-04T01:46:17.227Z">
 <meta property="article:author" content="Ellen Dan">
-<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ellendan.com/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_%E4%B8%8A%E7%AF%87/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/%E6%B2%BB%E7%90%86%E6%88%90%E7%86%9F%E5%BA%A6%E6%9B%B2%E7%BA%BF.png">
 
-<link rel="canonical" href="https://ellendan.com/2022/04/29/%E9%87%8D%E5%90%AF/">
+<link rel="canonical" href="https://ellendan.com/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_%E4%B8%8A%E7%AF%87/">
 
 
 <script id="page-configurations">
@@ -71,7 +75,7 @@
   };
 </script>
 
-  <title>重启 | ellendan</title>
+  <title>聊聊研发效能治理方案的理论框架_上篇 | ellendan</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158099564-1"></script>
     <script pjax>
@@ -213,7 +217,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2022/04/29/%E9%87%8D%E5%90%AF/">
+    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_%E4%B8%8A%E7%AF%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -226,7 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          重启
+          聊聊研发效能治理方案的理论框架_上篇
         </h1>
 
         <div class="post-meta">
@@ -236,7 +240,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-04-29 12:12:00" itemprop="dateCreated datePublished" datetime="2022-04-29T12:12:00+08:00">2022-04-29</time>
+              <time title="创建时间：2022-07-02 00:00:00" itemprop="dateCreated datePublished" datetime="2022-07-02T00:00:00+08:00">2022-07-02</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -245,17 +249,6 @@
                 <span class="post-meta-item-text">更新于</span>
                 <time title="修改时间：2022-07-04 09:46:17" itemprop="dateModified" datetime="2022-07-04T09:46:17+08:00">2022-07-04</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-            </span>
 
           
   
@@ -266,8 +259,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2022/04/29/%E9%87%8D%E5%90%AF/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/29/重启/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_%E4%B8%8A%E7%AF%87/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/07/01/聊聊研发效能治理方案的理论框架_上篇/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -277,14 +270,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>342</span>
+              <span>3.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -296,14 +289,62 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。<br>因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只见云雾不见青山。<br>所以，现觉得对自身的知识储备进行重构，迫在眉睫。<br>那么，有没有一种看起来比较靠谱的架构解决方案可以达到此目的呢？<br>重读《金字塔原理》之后，我觉得使用“金字塔结构”可以一试。</p>
-<a id="more"></a>
-<p><strong>为何使用“金字塔结构”有利于知识重构？</strong>  </p>
-<ol>
-<li>金字塔纵向的“疑问/回答式”结构，符合软件构建的思路——从意图推导方案，从问题域到解决方案域。  </li>
-<li>金字塔的纵向结构，将知识和思想进行了不同层次的抽象和汇总。  </li>
-<li>金字塔的横向结构，强调了同一个主题思想下的子思想项之间必须符合逻辑关系。  </li>
-</ol>
+        <hr>
+<p>title: 聊聊研发效能治理方案的理论框架（上篇）<br>date: 2022-07-02 20:00:00<br>tags: [精益]<br>categories: [敏捷精益软件]  </p>
+<hr>
+<p>最近几年，国内业界越来越常提及<code>“研发效能”</code>这个词，追其根源大部分是始于<code>“DevOps”</code>运动的活跃。<br>知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。<br>很多云厂商在推广自己 DevOps 平台服务的时候，也会提及对<code>“研发效能”</code>的大幅度影响，比如<code>AWS</code>对 DevOps 的描述：</p>
+<blockquote>
+</blockquote>
+<p>DevOps is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications and services at high velocity: evolving and improving products at a faster pace than organizations using traditional software development and infrastructure management processes. This speed enables organizations to better serve their customers and compete more effectively in the market.</p>
+<p>那么，研发效能 == DevOps 吗？<br>答案自然是否定 。<br>研发效能 明显是<code>&quot;问题域&quot;</code>。<br>DevOps 是一种解决方案，且是一种已经被验证、非常成熟的、可以提升软件研发效能的解决方案。<br>但就像人感冒发烧一样，吃 A 药可以痊愈，吃 B 药也可以痊愈，打针也可以痊愈，甚至有时候发现吃药效果不理想，最后还是去打了针。<br><code>研发效能低</code>，就像人感冒发烧一样，是个 “问题” 。<code>DevOps</code>, 是解决这个问题的一种 “药”。</p>
+<p>因此，弄清楚了<code>问题域</code>和<code>解空间</code>的关系之后，我们来看看研发效能和它的解空间，并且主要聊一聊解空间（研发效能治理）。</p>
+<h3 id="1-研发效能的定义"><a href="#1-研发效能的定义" class="headerlink" title="1. 研发效能的定义"></a>1. 研发效能的定义</h3><p>研发效能，即持续快速交付价值的能力。<br>将其拆解一下：<code>研发效能</code> = <code>效率</code> + <code>质量</code>+ <code>有效价值</code>，还有这三项可重复和稳定发生的<code>持续性</code>。  </p>
+<p>展开来讲，就是</p>
+<ul>
+<li>要在保证系统可靠性、不降低交付质量的情况下，尽量缩短从业务构想到功能上线的时间  （质量 + 效率）  </li>
+<li>从而使“最小化可行需求”能快速被验证，确保有效价值，减少浪费  （有效价值）  </li>
+<li>且整个过程效果可重复发生（持续性）  </li>
+</ul>
+<h3 id="2-研发效能的治理"><a href="#2-研发效能的治理" class="headerlink" title="2. 研发效能的治理"></a>2. 研发效能的治理</h3><p>有了定义之后，就来看看如何对研发效能进行治理。<br>根据市面上大部分公司的软件工程能力状况，针对研发效能治理，这里提炼了一条“研发效能治理成熟度模型”。</p>
+<p><img src="./%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/%E6%B2%BB%E7%90%86%E6%88%90%E7%86%9F%E5%BA%A6%E6%9B%B2%E7%BA%BF.png" alt="研发效能治理成熟度"><br>从左至右，研发效能治理分为5个阶段，每个阶段也必须包含它左边所有阶段的成果。<br>举个例子：某IT部门采购了一个 DevOps 平台服务，但日常仅仅当做 CI/CD流水线 甚至是“发布工具”来使用，对效能治理没什么概念，这时候该IT部门的治理成熟度自然是低的，可能只在“度量和评估”的位置。</p>
+<p>接着，展开来看看效能治理成熟度每一个阶段。</p>
+<h4 id="2-1-度量和评估"><a href="#2-1-度量和评估" class="headerlink" title="2.1. 度量和评估"></a>2.1. 度量和评估</h4><p>管理学之父彼得德鲁克曾经说过：“如果你无法度量它，就无法管理它”。<br>对管理如此，对效能治理亦是如此。因此，度量和评估，对于研发效能的治理必不可少。</p>
+<p>那么，再来看看为何把“度量和评估”放在治理的第一步呢：</p>
+<ul>
+<li>首先，想要对研发效能进行治理，必须知道当前效能处于一个什么阶段，对现状有了度量评估和自我认知之后，才能明确之后治理的方向和力度。  </li>
+<li>同时，度量和评估模型在持续治理的过程中，可以阶段性地重复使用，用以呈现治理成果的效果和进行快速反馈。  </li>
+</ul>
+<p>因此，度量和评估，作为研发效能治理的第一步不可或缺。</p>
+<p><strong>接着，来看看如何做度量和评估？</strong><br><strong>从 “健康度指标” 和 “局部诊断性指标” 分两层来看。</strong><br>首先，借鉴于<code>DORA</code>(DevOps研究和评估组织) 的2021年报告中的Four Key Metrics，将其作为研发效能的4个关键 <strong><code>健康度指标</code></strong>:</p>
+<p><img src="./%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/four_key_metrics.png" alt="four key metrics"></p>
+<ul>
+<li><strong>研发效率</strong>：<ul>
+<li>部署频率 </li>
+<li>前置时间（Lead time）</li>
+</ul>
+</li>
+<li><strong>研发质量</strong>：<ul>
+<li>故障恢复时间 （MTTR）</li>
+<li>部署失败率  </li>
+</ul>
+</li>
+</ul>
+<p><code>特别注意</code>：区别于 DevOps 只关注于“从代码提交到功能发布”这个区间的前置时间，研发效能中的“前置时间”延伸了覆盖范围 —— 从业务构想到功能发布，涉及研发运营的整个研发周期。<br>其他三项，与 DevOps 报告相同。</p>
+<p>至于，研发效能中的<strong><code>有效价值</code></strong>，其与业务关系紧密，度量数据模型需要根据具体业务来设计，因此目前仅给予该项 <code>健康度评估模型</code>：</p>
+<blockquote>
+<p>Measurement involves collecting factual information about the value of a deployed feature and evaluating it against the original hypothesis statement.</p>
+</blockquote>
+<p>Rate your team’s ability to collect objective information about the actual value realized by deployed features so that it can inform strategic financial decisions.<br>Sit (1-2): We don’t define or measure the value of Features.<br>Crawl (3-4): We’ve defined what “value” is but don’t know how to measure it.<br>Walk (5-6): We capture qualitative feedback from the business about the value of our Features.<br>Run (7-8): We capture qualitative and quantitative feedback from the business and our monitoring systems about the value of our features.<br>Fly (9-10): We aggregate the quantitative and qualitative feedback to objectively validate the original hypothesis and inform pivot-or-persevere decisions.</p>
+<p>看到这里，是不是有点眼熟，如果原本预想的解决方案是 “DevOps一体化” 的话，加上有效价值的度量，是不是方案就要考虑<code>&quot;BizDevOps&quot;</code>?! 是不是仅仅一个DevOps的方案就不够匹配了？</p>
+<p><strong>接着，再来聊下“局部诊断性指标”。</strong><br>也许有人会觉得，对比下其他类型的度量和评估报告上繁多的指标量，上面这几个指标未免有些简陋。<br>比如，连常见的评估应用架构维度的指标都没有。<br>其实，应用架构指标是有的，但并不属于效能“健康度指标”，而是“局部诊断性指标”。</p>
+<ul>
+<li>当发现健康度不理想，需要分析、定位和形成改进建议时，这时就要借助于局部诊断性指标。</li>
+<li>当实施了改进建议，对局部指标进行了优化，最终效果又会传导到健康度指标上。<br>如果局部指标改进了，但健康度未提升，这时可能需要回过头来分析和反思一下：是诊断和改进建议的问题，还是本身局部指标需要调整。</li>
+</ul>
+<p><img src="./%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/%E5%B1%80%E9%83%A8%E8%AF%8A%E6%96%AD%E6%80%A7%E6%8C%87%E6%A0%87.png" alt="局部诊断性指标示例"></p>
+<p>有了这两层指标，整个研发效能的度量和评估模型才大体完整。<br>而在整个研发的过程中，可以常常阶段性的使用模型进行度量和评估一下，比如每次发布周期完成 或者 每次sprint完成的时候等等。<br>使用指标值的时候，也需要注意：<strong>指标值本身并不重要，重要的是通过数据驱动出洞见。而在持续改进的过程中，数据趋势比数据值更重要。</strong></p>
+<p><img src="./%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6/key_metrics_report.png" alt="趋势图"></p>
+<p>《下篇》讲接着聊剩下的4个成熟度。</p>
 
     </div>
 
@@ -314,10 +355,6 @@
 
 
       <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"><i class="fa fa-tag"></i> 随笔</a>
-          </div>
 
         
 
@@ -325,13 +362,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/" rel="prev" title="微服务线上治理之监控">
-      <i class="fa fa-chevron-left"></i> 微服务线上治理之监控
+    <a href="/2022/05/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84ACID%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" rel="prev" title="数据库的ACID和分布式事务">
+      <i class="fa fa-chevron-left"></i> 数据库的ACID和分布式事务
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/" rel="next" title="分布式架构必须重视的CAP理论">
-      分布式架构必须重视的CAP理论 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -398,6 +432,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-研发效能的定义"><span class="nav-text">1. 研发效能的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-研发效能的治理"><span class="nav-text">2. 研发效能的治理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-度量和评估"><span class="nav-text">2.1. 度量和评估</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -614,9 +649,9 @@ window.addEventListener('pjax:success', () => {
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://ellendan.com/2022/04/29/%E9%87%8D%E5%90%AF/";
-    this.page.identifier = "2022/04/29/重启/";
-    this.page.title = "重启";
+    this.page.url = "https://ellendan.com/2022/07/01/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6_%E4%B8%8A%E7%AF%87/";
+    this.page.identifier = "2022/07/01/聊聊研发效能治理方案的理论框架_上篇/";
+    this.page.title = "聊聊研发效能治理方案的理论框架_上篇";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
