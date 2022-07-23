@@ -46,26 +46,24 @@
   };
 </script>
 
-  <meta name="description" content="CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。来，再展开说说？这时候，多数人的回答就会是是而非，模棱两可。也许不少应用级开发工程师觉得 —— 我又不自研集群数据库，也不开发云平台，没必要那么了解 CAP 理论。那么，你开发的应用系统，是否使">
+  <meta name="description" content="已经过了一旬，下篇居然还没开始动笔。反思了一下人生：P 其实就是反思一下因何而出发，于是暂时放下了手头的工作。书接上回。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分布式架构必须重视的CAP理论">
-<meta property="og:url" content="https://ellendan.com/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/index.html">
+<meta property="og:title" content="聊聊研发效能治理方案的理论框架（下篇）">
+<meta property="og:url" content="https://ellendan.com/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/index.html">
 <meta property="og:site_name" content="ellendan">
-<meta property="og:description" content="CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。来，再展开说说？这时候，多数人的回答就会是是而非，模棱两可。也许不少应用级开发工程师觉得 —— 我又不自研集群数据库，也不开发云平台，没必要那么了解 CAP 理论。那么，你开发的应用系统，是否使">
+<meta property="og:description" content="已经过了一旬，下篇居然还没开始动笔。反思了一下人生：P 其实就是反思一下因何而出发，于是暂时放下了手头的工作。书接上回。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ellendan.com/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/CAP_CP.png">
-<meta property="og:image" content="https://ellendan.com/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/CAP_AP.png">
-<meta property="og:image" content="https://ellendan.com/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/CAP.png">
-<meta property="og:image" content="https://ellendan.com/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/PACELE.png">
-<meta property="og:image" content="https://ellendan.com/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/PACELE_2.png">
-<meta property="article:published_time" content="2022-05-03T12:00:00.000Z">
-<meta property="article:modified_time" content="2022-07-23T07:47:56.725Z">
+<meta property="og:image" content="https://ellendan.com/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/lead&cycle_time.png">
+<meta property="og:image" content="https://ellendan.com/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/vsm.png">
+<meta property="og:image" content="https://ellendan.com/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/three-steps-method.png">
+<meta property="article:published_time" content="2022-07-18T08:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-23T07:47:56.733Z">
 <meta property="article:author" content="Ellen Dan">
-<meta property="article:tag" content="分布式架构">
+<meta property="article:tag" content="精益">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ellendan.com/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/CAP_CP.png">
+<meta name="twitter:image" content="https://ellendan.com/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/lead&cycle_time.png">
 
-<link rel="canonical" href="https://ellendan.com/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/">
+<link rel="canonical" href="https://ellendan.com/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/">
 
 
 <script id="page-configurations">
@@ -77,7 +75,7 @@
   };
 </script>
 
-  <title>分布式架构必须重视的CAP理论 | ellendan</title>
+  <title>聊聊研发效能治理方案的理论框架（下篇） | ellendan</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158099564-1"></script>
     <script pjax>
@@ -219,7 +217,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/">
+    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -232,7 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          分布式架构必须重视的CAP理论
+          聊聊研发效能治理方案的理论框架（下篇）
         </h1>
 
         <div class="post-meta">
@@ -242,7 +240,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-05-03 20:00:00" itemprop="dateCreated datePublished" datetime="2022-05-03T20:00:00+08:00">2022-05-03</time>
+              <time title="创建时间：2022-07-18 16:00:00" itemprop="dateCreated datePublished" datetime="2022-07-18T16:00:00+08:00">2022-07-18</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -257,8 +255,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">分布式架构</span>
+                  <a href="/categories/%E6%95%8F%E6%8D%B7%E7%B2%BE%E7%9B%8A%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index">
+                    <span itemprop="name">敏捷精益软件</span>
                   </a>
                 </span>
             </span>
@@ -272,8 +270,8 @@
       </span>
       <span class="post-meta-item-text">Disqus：</span>
     
-    <a title="disqus" href="/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/03/分布式架构必须重视的CAP理论/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/07/18/聊聊研发效能治理方案的理论框架（下篇）/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -283,7 +281,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
+              <span>3.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -302,46 +300,54 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。<br>来，再展开说说？这时候，多数人的回答就会是是而非，模棱两可。<br>也许不少应用级开发工程师觉得 —— 我又不自研集群数据库，也不开发云平台，没必要那么了解 CAP 理论。<br>那么，你开发的应用系统，是否使用了分布式架构呢？如果是，CAP 理论可以说是指导构建系统的技术理论基石之一，必须要重视起来。</p>
+        <p>已经过了一旬，下篇居然还没开始动笔。<br>反思了一下人生：P 其实就是反思一下因何而出发，于是暂时放下了手头的工作。<br>书接上回。</p>
 <a id="more"></a>
 
-<h3 id="1-CAP-定理到底讲了什么"><a href="#1-CAP-定理到底讲了什么" class="headerlink" title="1. CAP 定理到底讲了什么?"></a>1. CAP 定理到底讲了什么?</h3><p>CAP 定理对分布式数据存储系统的特性进行高度抽象，提炼成了3个维度：  </p>
+<p>在上一节的健康度指标中，有非常重要的一项 —— Lead Time。<br>Lead Time 的定义来源于传统制造业，指从受订到出货之间间隔的时间。<br>同时，与Lead Time 一同被提起的，还有<code>&quot;Cycle Time&quot;</code>。 而 DevOps 的度量指标，习惯称其为<code>“Process time”</code>。<br>Cycle Time 和 Process Time, 在软件研发和 DevOps 领域基本相互等同，主要指去掉排队等待时长，处于生产任务（增值活动）执行的时长。</p>
+<p>一定要谈下区别的话，对 DevOps 工具自动化来说，基本每个环节的执行动作都是可重复的、标准的，因此“单件”的 Process time 基本可以代表当前任务的生产性能。<br>位于 DevOps 之前的研发环节，每件制品包含知识类的创造、不是标准件、无法准确重复，因此在统计任务时长时（比如：In Dev processing, in QA processing）, 只能通过“多件”运算出均值，亦就是 Cycle time.<br><img src="/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/lead&cycle_time.png" alt="lead Time &amp; cycle time"></p>
+<p>Lead Time 和 Cycle Time 是精益制造中重要的衡量指标。<br>自从精益生产在制造业获得成功之后，为了改善产品开发流程，软件研发行业也将精益思想引入到了产品研发之中。</p>
+<h4 id="2-2-价值流分析和改进建议"><a href="#2-2-价值流分析和改进建议" class="headerlink" title="2.2. 价值流分析和改进建议"></a>2.2. 价值流分析和改进建议</h4><p>从研发效能来看，除了宏观的 lead time 的健康度之外，想要回答 lead time 为何会花费这么长时间、具体那些环节比较耗时、是否可以优化耗时时，就需要将研发工作流程打开来看一看。<br>想要理解和观察研发流程，有一个重要工具，就是 —— 价值流图（Value Stream Mapping， VSM）。  </p>
+<p>软件研发流程，是从需求构想到产品（或功能）发布上线的这个过程中，为了提供用户价值而采取的一系列研发活动。<br>价值流图，就是用来观察和分析价值在研发流程中流动的情况。<br>价值在整个流动的过程中，会经历增值活动、非增值但必要的活动（I型浪费）、以及非增值可以去掉的活动（II型浪费）。价值流图分析的目的，首先就是去掉 II 型浪费，然后再将 I 型浪费转化为 II 型浪费从而消除。<br><img src="/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/vsm.png" alt="VSM"></p>
+<p><em>也许有人会认为，上图中 QA 进行测试、Ops 进行发布，这些怎么能看做是增值行为呢？这主要是因为，不能只是从代码即是生产的角度去看待软件研发。<br>软件研发，其实是一种知识型的创造活动，虽然这些知识最终是通过代码的形式固化下来的。这种知识性的创造活动，包括PO、BA、Dev、QA、Ops所有角色的知识汇总。<br>这也是为何敏捷测试总是强调测试左移的重要性 —— 在需求分析或者 Feature kick off 阶段，QA 尽早参与到知识汇集的阶段，也可以降低 Dev 的返工率。即使是处于“开发”下游的“功能测试”，也可以从提供自动化测试代码的视角，察觉到测试的增值贡献 —— 让代码制品拥有了自动化测试代码。</em>  </p>
+<p>正如图中显示，黄色标签为 I 型浪费，红色为 II 型浪费，比如“等待型浪费” —— 等待联调， “返工型浪费” —— 改 Bug。<br>那如何实施消除浪费呢？比如上面的等待联调、联调后的bug返工修复。<br>没有标准答案，但大体有如下思路：  </p>
+<ol>
+<li>当前后端等待联调，团队的Dev是否可以发展成全栈工程师，这样前后端一个Dev就直接完成了，不存在联调。既消除了联调等待，也降低了返工率。  </li>
+<li>如果不发展全栈工程师，在story开始阶段，前后端是否可以一起设计和约定好契约（包括happy path、unhappy path、异常处理），由契约DSL上传到contract Mock server，这样可以降低联调成本和返工率。  </li>
+</ol>
+<h4 id="2-3-敏捷-amp-DevOps团队能力建设"><a href="#2-3-敏捷-amp-DevOps团队能力建设" class="headerlink" title="2.3. 敏捷 &amp; DevOps团队能力建设"></a>2.3. 敏捷 &amp; DevOps团队能力建设</h4><p>有了前面两步治理成熟度的达成：度量评估和价值流分析，对研发效能有了不同维度整体的了解之后，接着就进入到治理动作的实施中。<br>建议使用带有整体优化能力的理论和实践框架 —— 敏捷 &amp; DevOps。这些理论和实践已经被反复验证，并且非常成熟。</p>
+<p>敏捷，鼓励创建研发的全功能团队，提升交流和互动，以尽早和持续的交付高价值的软件为目标。一些团队甚至还鼓励成员打破角色边界，比如身兼 QA 能力的 Dev、具备 ops 能力的 Dev 等等。在这个阶段，基于Scrum、Kanban软件研发模式的普及，持续交付理念（Continuous Delivery, Jez Humble 提到的宏观角度的持续交付）也越来越被重视。  </p>
+<p>到2009年，终于有人在借鉴敏捷和精益的基础上，创造了 DevOps 这个词，旨在强调将 Ops 加入到产品研发全功能团队的充分必要性，并且兼顾开发思维、实行 infra as code的运维方式和方法，旨在提升产品交付效率和可靠性。  </p>
+<p>随着 DevOps 运动的兴起和推广， DevOps 逐渐发展，包括和涵盖了方法论、流程、自动化工具，以及特别强调的 DevOps 文化，并且逐渐影响到了整个研发价值流的参与者们遵循 DevOps 精神进行群策群力。<br>比如：Sec、QA 将安全和测试脚本加入Pipeline —— 不需要等到环境验证，在build运行的过程中就可以快速反馈到Dev，进行代码修复。  </p>
+<p>《凤凰项目》在DevOps原则，总结了三步工作法：  </p>
 <ul>
-<li><p><code>Consistency 一致性</code>, 每一次读取操作，要么系统返回最新的数据写入值（无论读取到哪一个数据节点），要么返回系统错误。<br>这里的一致性，代表的强一致性、线性一致性（Linearizability）。</p>
-</li>
-<li><p><code>Availability 可用性</code>, 每一次读取操作都能获得系统的返回，但不保证返回的是最新的数据写入值。</p>
-</li>
-<li><p><code>Partition Tolerance 分区容错性</code>，当数据节点之间发生网络分区（包括网络丢包、连接中断阻塞等），系统仍然要继续工作。  </p>
-</li>
+<li>流动原则。实现开发到运维的工作快速地从左往右流动。</li>
+<li>反馈原则。从右往左的每个阶段中，应持续、快速地获得工作反馈。</li>
+<li>持续学习和实验原则。团队建立持续学习和实践的文化。</li>
 </ul>
-<p>这其中的底层逻辑是：分布式数据存储各节点之间通过网络连接，在运行期间不可避免存在网络分区的风险。<br>当网络分区发生时，无论是节点之间的状态同步还是数据复制，都会发生异常，部分节点的数据滞留在过去时刻的某种状态。  </p>
-<p>而保证<code>分区容错性</code>，就是当发生网络分区异常时，整个系统仍然运行并继续工作，这时候提供的服务维度只可能在 Consistency 和 Availability 中保证一项：</p>
+<p><img src="/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/three-steps-method.png" alt="三步法"></p>
+<p>因此，团队针对敏捷 &amp; DevOps 进行能力建设，可以从整体优化的角度对效能进行治理和提升。<br>在具备了敏捷 &amp; DevOps 能力下，再去探索局部优化和治理。  </p>
+<h4 id="2-4-交付和运营方式转变"><a href="#2-4-交付和运营方式转变" class="headerlink" title="2.4. 交付和运营方式转变"></a>2.4. 交付和运营方式转变</h4><p>在敏捷 &amp; DevOps 团队具备稳定和高效地研发效率、高质量、降低了发布成本和发布风险后，让原本正确、但看起来不可实现地交付和运营方式变得可能：</p>
 <ul>
-<li><p>确保一致性，牺牲可用性。<br>  系统会通过内部策略，自动修复集群，最终确保<code>Consistency</code>声明的强一致性。在自动修复完成之前，外部请求会返回系统出错或者超时。<br>  <img src="/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/CAP_CP.png" alt="CP"><br>  <em>上图简化了集群中的一些问题描述，比如共识算法至少需要三个节点。</em><br>  <em>当节点 2 与 节点 1 之间因为通讯异常，未能对 x 的值达成一致，此时外部请求读取 x 的值，系统将返回“系统出错”或者超时。</em>  </p>
-</li>
-<li><p>确保可用性，牺牲一致性。<br>  系统在自动修复集群期间，没有达成数据一致性的各节点仍会对外及时响应，确保<code>Availability</code>声明的高可用性。<br>   <img src="/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/CAP_AP.png" alt="CP"></p>
-</li>
+<li>系统3~6个月一次大批量发布上线 <code>--&gt;</code> 每个月/甚至更短周期 小批量发布上线</li>
+<li>由需求批量压入迭代的 Scrum 研发管理模式 <code>--&gt;</code> 需求拉动的 Kanban 研发管理模式</li>
+<li>DevOps 2.0、持续交付2.0 逐渐实现。</li>
 </ul>
-<p>以上，即是 CAP 理论中 CP 和 AP 的由来。<br>然而，在分布式数据存储架构中，虽然网络分区是不可回避的风险，但也不意味着系统任何时候都处于网络分区的状态之下。在没有发生网络分区的时候，CA 应该是主要状态。 </p>
-<p>有人也许会对此产生质疑：即使分布式集群一切运行正常，没有发生网络故障，但节点间的数据传输也需要时间、存在网络延时，不可能在未完成数据同步的中间状态下，既保证可用，又保证所有节点数据一致性。<br>是的，这种问法很对。<br>因此，针对 CAP 理论中的 C，一些专家解释：Consistency，是忽略数据复制延时的，是假设数据复制不存在延时的理论场景。  </p>
-<p>然而数据复制的延时，在现实分布式系统运行期间始终存在，因此这时无 <code>P</code> 的 <code>CA</code> 很难与现实进行相互映射，使用时可能会造成困扰，不如理解为:  </p>
+<p>研发效能被提及，其目标是快速验证产品、获取用户反馈的能力，位于行业前台的系统的快速推出，还能带来抢占市场的机会。<br>因此，交付和运营方式的转变，在完成治理成熟度3之后，必要、且可顺势而行。</p>
+<h4 id="2-5-共享的、自助的研发运营XXX一体化平台"><a href="#2-5-共享的、自助的研发运营XXX一体化平台" class="headerlink" title="2.5. 共享的、自助的研发运营XXX一体化平台"></a>2.5. 共享的、自助的研发运营XXX一体化平台</h4><p>也许有人会奇怪，在达成前 4 步效能成熟度之后，第 5 阶次的成熟度居然是推出 研发运营XXX一体化平台？（XXX可能是业务运营等等，反正随着 DevOps 2.0、持续交付2.0、bizDevOps这些相似概念的提出，大家旨在将产品的从概念到投入用户群体，这其中正向、反向的活动都组成一个闭环的整体）<br>将研发运营XXX一体化平台放在效能治理成熟度最后一步的逻辑是：</p>
 <ul>
-<li><code>Consistency</code> 是包含正常水平的复制延时的，这部分延时会计算在响应时间中，而不算影响 <code>Availability</code>。而当达成一致性的处理时长超出这个正常水平，才算作影响 <code>Availability</code>。<br>当然，更好的解释，也许应该看下 <code>PACELC 理论</code>，可以对此场景进行补充。</li>
+<li>即使不依托一体化平台，循序前四个成熟度治理，效能治理也可以在不同的企业和组织中开展。</li>
+<li>当团队达成前四步治理成熟度，可以考虑将局部优化转化成全局优化。借助研发运营XXX一体化平台，对支持企业和组织内的全局优化事半功倍。</li>
+<li>研发运营XXX一体化平台，说白了，只是一个工具，投入需要大成本。如果没有前四步成熟度的认知和达成，它也仅仅只是个工具。</li>
 </ul>
-<h3 id="2-CAP-的扩展：PACELC-理论"><a href="#2-CAP-的扩展：PACELC-理论" class="headerlink" title="2. CAP 的扩展：PACELC 理论"></a>2. CAP 的扩展：PACELC 理论</h3><p>通过上面对<code>CAP 定理</code>的了解，可以总结为在分布式数据存储架构设计中，至少需要一条 baseline 策略，应对出现网络分区这种危险状况。<br><img src="/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/CAP.png" alt="CAP"></p>
-<p>在没有出现网络分区、正常运行的系统状态下，CAP 理论中的 CA 可以达成，但<code>数据一致性</code>的状态、以及隐藏在达成该状态背后的<code>延时时长</code> —— 这两个现实系统中过于常见的维度，如一双在 CAP 定理中说不清、道不明、又无处安放的小手，又该如何衡量和取舍呢？</p>
-<p>这时候，就可以看一下 <code>PACELE 理论</code>。<br><code>PACELE</code> 是 <code>CAP 理论</code> 的扩展， <code>PAC</code> 各字母同 <code>CAP 理论</code>， <code>E (Else)</code> 仅是连接词，<code>L (latency)</code>、<code>C (consistency)</code>。意思就是，当没有出现网络分区、系统正常运行时，<code>低延时</code>（低于数据达成一致所需的平均延时水平） 和 <code>数据一致性</code>，二者需要选择其一，不能同时保证。<br><img src="/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/PACELE.png" alt="PACELE"></p>
-<p>当有了基于<code>CAP</code>扩展出的<code>PACELE</code>，个人觉得，分布式数据存储的特性架构描述才比较完整。<br>比如，MongoDB 集群的就是典型的 <code>PA/EC</code> 系统：在出现网络分区时，MongoDB 集群优先保证可用性，数据可能不是最新；在集群正常状态下，优先保证数据一致性。<br>这也就防止了用户一听到 AP 架构就造成的恐慌 —— 以为系统状态正常下，程序员仍需要大量编码、自己处理数据一致性的问题。</p>
-<p>下图是<code>PACELE 理论</code>中的特性搭配图，（横轴是发生 P 时的A or C 选择，纵轴是没有发生 P 时对 C or L 的选择）：<br><img src="/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/PACELE_2.png" alt="PACELE"></p>
-<h3 id="3-为什么做分布式架构要重视-CAP-理论？"><a href="#3-为什么做分布式架构要重视-CAP-理论？" class="headerlink" title="3. 为什么做分布式架构要重视 CAP 理论？"></a>3. 为什么做分布式架构要重视 CAP 理论？</h3><h4 id="3-1-对分布式应用架构有借鉴和指导作用"><a href="#3-1-对分布式应用架构有借鉴和指导作用" class="headerlink" title="3.1. 对分布式应用架构有借鉴和指导作用"></a>3.1. 对分布式应用架构有借鉴和指导作用</h4><p>当前主流的分布式应用架构如微服务架构，在领域微服务之间不可避免地存在数据复制，比如：服务边界内实体、同时也是其他微服务的值对象；采用 CQRS 模式构建微服务；使用事件驱动架构搭建微服务等等。<br>只要存在数据在不同服务之间的复制：</p>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h3><p>研发效能治理方案的理论框架，基本到这里就阐述完了。<br>总结一下，就是：</p>
 <ul>
-<li>当复制机制出现连通故障、阻塞、高延迟等（比如消息组件消息堆积等），都可以近似的理解为 <code>网络分区</code>， 当发生<code>网络分区</code>时，需要有对应策略，无论是优先保证<code>数据一致性</code>，还是优先<code>可用性</code>？</li>
-<li>当复制机制正常，数据同步仍存在时间成本。这时候，是优先保证<code>数据一致性</code>，还是优先<code>低延时</code>？<br>虽然以上的 “数据一致性” 不一定是 CAP 中的 “线性一致性” 这种强一致性，但 CAP 理论的这种思考维度和框架，以及扩展出的分布式算法和实践，在分布式应用架构设计中，也有很强的借鉴和指导作用。</li>
+<li>先度量和评估，再价值流分析</li>
+<li>敏捷 &amp; DevOps 团队能力建设</li>
+<li>交付和运营模式转变</li>
+<li>推出 共享的、自助的研发运营XXX一体化平台</li>
 </ul>
-<h4 id="3-2-指导数据存储方案的选型"><a href="#3-2-指导数据存储方案的选型" class="headerlink" title="3.2. 指导数据存储方案的选型"></a>3.2. 指导数据存储方案的选型</h4><p>分布式应用架构，不可避免地会面临对各种数据存储产品的选型，除了根据应用业务特性以及存储/读/写维度性能的需求，提供容量扩展、高可用的集群特性，也是必不可少的一个考察维度。<br>比如，业务特性需要的是一个 PA/EC 特性的集群能力，PA/EL 特性的产品自然是不匹配需求的。  </p>
-<h4 id="3-3-帮助完善数据存储方案落地"><a href="#3-3-帮助完善数据存储方案落地" class="headerlink" title="3.3. 帮助完善数据存储方案落地"></a>3.3. 帮助完善数据存储方案落地</h4><p>前面提了集群数据库的选型，但离方案可落地仍有一段距离，需要完美适配应用的业务场景，可能除了正确执行客户端调用以外，还需要一些额外配置 或者 二次加工，才能达到某些特性目标。  </p>
-<p>比如 MongoDB 的 readConcern 和 writeConcern，没接触过 <code>Quorum NWR</code> 算法策略的人，可能无法快速意识到 —— MongoDB 即使在 <code>AP</code> 状态下，依然可以通过客户端配置 readConcern/writeConcern 有选择地达成数据强一致性。<br>而不了解 <code>Quorum NWR</code> 的，可能会舍近求远地设计出一些复杂度较高的自研策略。</p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener">CAP理论维基百科及链接</a><br><a href="https://en.wikipedia.org/wiki/PACELC_theorem" target="_blank" rel="noopener">PACELC理论维基百科及链接</a>  </p>
+<h3 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h3><p>在我写完（上篇）的时候，一些朋友表达了对国内越来越看重“研发效能”、“研发效能治理”这些命题和观点的不满，我其实也一样。<br>但是国内这方面的对软件定制和咨询的商机，又的确会经常出现。从我们这些公司的角度，就会去想 —— 是跪着把这钱给赚了，还是站着把这钱给赚了的问题。我自己也一直没有结论。<br>直到最近我在做一个售前方案的时候，跟公司内的一个咨询师交流，发现他对于“研发效能”这词的排斥。我内心颇有点恼，因为他讲的那些其实大家都心知肚明，反而我好像变成那个不道德和狭隘的一方。<br>因此，对于赚钱的问题，有了结论 —— 那就站着把钱给赚了吧，以后就只谈 价值交付、持续交付 2.0、DevOps。  </p>
+<p>不管怎样，立Flag后第二篇文章，总算是完成了，yeah~</p>
 
     </div>
 
@@ -349,12 +355,21 @@
     
     
       
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2020/02/08/从精益来看价值交付是什么/" rel="bookmark">从精益来看价值交付是什么</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/2022/07/02/聊聊研发效能治理方案的理论框架（上篇）/" rel="bookmark">聊聊研发效能治理方案的理论框架（上篇）</a></div>
+    </li>
+  </ul>
 
 
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> 分布式架构</a>
+              <a href="/tags/%E7%B2%BE%E7%9B%8A/" rel="tag"><i class="fa fa-tag"></i> 精益</a>
           </div>
 
         
@@ -363,13 +378,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/04/29/%E9%87%8D%E5%90%AF/" rel="prev" title="重启">
-      <i class="fa fa-chevron-left"></i> 重启
+    <a href="/2022/07/02/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8A%E7%AF%87%EF%BC%89/" rel="prev" title="聊聊研发效能治理方案的理论框架（上篇）">
+      <i class="fa fa-chevron-left"></i> 聊聊研发效能治理方案的理论框架（上篇）
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/05/10/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84ACID%E5%92%8C%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" rel="next" title="数据库的ACID和分布式事务">
-      数据库的ACID和分布式事务 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -436,7 +448,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-CAP-定理到底讲了什么"><span class="nav-text">1. CAP 定理到底讲了什么?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-CAP-的扩展：PACELC-理论"><span class="nav-text">2. CAP 的扩展：PACELC 理论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-为什么做分布式架构要重视-CAP-理论？"><span class="nav-text">3. 为什么做分布式架构要重视 CAP 理论？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-对分布式应用架构有借鉴和指导作用"><span class="nav-text">3.1. 对分布式应用架构有借鉴和指导作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-指导数据存储方案的选型"><span class="nav-text">3.2. 指导数据存储方案的选型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-帮助完善数据存储方案落地"><span class="nav-text">3.3. 帮助完善数据存储方案落地</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-价值流分析和改进建议"><span class="nav-text">2.2. 价值流分析和改进建议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-敏捷-amp-DevOps团队能力建设"><span class="nav-text">2.3. 敏捷 &amp; DevOps团队能力建设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-交付和运营方式转变"><span class="nav-text">2.4. 交付和运营方式转变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-共享的、自助的研发运营XXX一体化平台"><span class="nav-text">2.5. 共享的、自助的研发运营XXX一体化平台</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-总结"><span class="nav-text">3. 总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后话"><span class="nav-text">后话</span></a></div>
       </div>
       <!--/noindex-->
 
@@ -653,9 +665,9 @@ window.addEventListener('pjax:success', () => {
 </script>
 <script>
   var disqus_config = function() {
-    this.page.url = "https://ellendan.com/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/";
-    this.page.identifier = "2022/05/03/分布式架构必须重视的CAP理论/";
-    this.page.title = "分布式架构必须重视的CAP理论";
+    this.page.url = "https://ellendan.com/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/";
+    this.page.identifier = "2022/07/18/聊聊研发效能治理方案的理论框架（下篇）/";
+    this.page.title = "聊聊研发效能治理方案的理论框架（下篇）";
     };
   NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
     if (window.DISQUS) {
