@@ -6,7 +6,7 @@
     <content><![CDATA[<p>已经过了一旬，下篇居然还没开始动笔。<br>反思了一下人生：P 其实就是反思一下因何而出发，于是暂时放下了手头的工作。<br>书接上回。</p>
 <a id="more"></a>
 
-<p>在上一节的健康度指标中，有非常重要的一项 —— Lead Time。<br>Lead Time 的定义来源于传统制造业，指从受订到出货之间间隔的时间。<br>同时，与Lead Time 一同被提起的，还有<code>&quot;Cycle Time&quot;</code>。 而 DevOps 的度量指标，习惯称其为<code>“Process time”</code>。<br>Cycle Time 和 Process Time, 在软件研发和 DevOps 领域基本相互等同，主要指去掉排队等待时长，处于生产任务（增值活动）执行的时长。</p>
+<h3 id="2-接上篇"><a href="#2-接上篇" class="headerlink" title="2. 接上篇"></a>2. 接上篇</h3><p>在上一节的健康度指标中，有非常重要的一项 —— Lead Time。<br>Lead Time 的定义来源于传统制造业，指从受订到出货之间间隔的时间。<br>同时，与Lead Time 一同被提起的，还有<code>&quot;Cycle Time&quot;</code>。 而 DevOps 的度量指标，习惯称其为<code>“Process time”</code>。<br>Cycle Time 和 Process Time, 在软件研发和 DevOps 领域基本相互等同，主要指去掉排队等待时长，处于生产任务（增值活动）执行的时长。</p>
 <p>一定要谈下区别的话，对 DevOps 工具自动化来说，基本每个环节的执行动作都是可重复的、标准的，因此“单件”的 Process time 基本可以代表当前任务的生产性能。<br>位于 DevOps 之前的研发环节，每件制品包含知识类的创造、不是标准件、无法准确重复，因此在统计任务时长时（比如：In Dev processing, in QA processing）, 只能通过“多件”运算出均值，亦就是 Cycle time.<br><img src="/2022/07/18/%E8%81%8A%E8%81%8A%E7%A0%94%E5%8F%91%E6%95%88%E8%83%BD%E6%B2%BB%E7%90%86%E6%96%B9%E6%A1%88%E7%9A%84%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%8B%E7%AF%87%EF%BC%89/lead&cycle_time.png" alt="lead Time &amp; cycle time"></p>
 <p>Lead Time 和 Cycle Time 是精益制造中重要的衡量指标。<br>自从精益生产在制造业获得成功之后，为了改善产品开发流程，软件研发行业也将精益思想引入到了产品研发之中。</p>
 <h4 id="2-2-价值流分析和改进建议"><a href="#2-2-价值流分析和改进建议" class="headerlink" title="2.2. 价值流分析和改进建议"></a>2.2. 价值流分析和改进建议</h4><p>从研发效能来看，除了宏观的 lead time 的健康度之外，想要回答 lead time 为何会花费这么长时间、具体那些环节比较耗时、是否可以优化耗时时，就需要将研发工作流程打开来看一看。<br>想要理解和观察研发流程，有一个重要工具，就是 —— 价值流图（Value Stream Mapping， VSM）。  </p>
