@@ -111,3 +111,23 @@ search:
   field: post
   format: html
   limit: 10000
+
+needmoreshare:
+  enable: true
+  cdn:
+    js: //cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js
+    css: //cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css
+  postbottom:
+    enable: true
+    options:
+      iconStyle: box
+      boxForm: horizontal
+      position: bottomCenter
+      networks: Wechat
+  float:
+    enable: false
+    options:
+      iconStyle: box
+      boxForm: vertical
+      position: bottomLeft
+      networks: Wechat

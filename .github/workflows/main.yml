@@ -19,6 +19,7 @@ jobs:
           node-version: '12.x'
 
       # Runs a set of commands using the runners shell
+      # git submodule update --remote --merge
       - name: Before install
         run: |
           sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
