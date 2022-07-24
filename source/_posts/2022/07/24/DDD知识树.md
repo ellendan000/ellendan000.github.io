@@ -8,7 +8,7 @@ categories: [知识树]
 DDD知识树。
 <!-- more -->
 
-{% pullquote mindmap mindmap-md %}
+{% pullquote mindmap mindmap-lg %}
 - Domain Driven Design
     - 战略设计
     - 战术设计
