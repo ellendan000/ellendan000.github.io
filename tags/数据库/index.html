@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 4.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -24,7 +24,7 @@
     scheme: 'Mist',
     version: '7.7.1',
     exturl: false,
-    sidebar: {"position":"left","width":320,"display":"post","padding":60,"offset":12,"onmobile":true},
+    sidebar: {"position":"right","width":320,"display":"post","padding":60,"offset":12,"onmobile":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
@@ -79,19 +79,6 @@
   border-radius: 3px;
   display: initial;
   padding: 1px 4px;
-}
-</style><style>
-#needsharebutton-float {
-  bottom: 88px;
-  cursor: pointer;
-  left: -8px;
-  position: fixed;
-  z-index: 9999;
-}
-#needsharebutton-float .btn {
-  border: 1px solid $btn-default-border-color;
-  border-radius: 4px;
-  padding: 0 10px 0 14px;
 }
 </style>
   <title>标签: 数据库 | ellendan</title>
@@ -363,20 +350,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -431,7 +418,7 @@
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     <span title="站点阅读时长">27 分钟</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.2.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.1
@@ -551,11 +538,7 @@ window.addEventListener('pjax:success', () => {
   
 
   
-<div id="needsharebutton-float">
-      <span class="btn">
-        <i class="fa fa-share-alt" aria-hidden="true"></i>
-      </span>
-    </div>
+
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
   <script>
       pbOptions = {};
@@ -564,12 +547,6 @@ window.addEventListener('pjax:success', () => {
         pbOptions.position = "bottomCenter";
         pbOptions.networks = "Wechat";
       new needShareButton('#needsharebutton-postbottom', pbOptions);
-      flOptions = {};
-        flOptions.iconStyle = "box";
-        flOptions.boxForm = "vertical";
-        flOptions.position = "bottomLeft";
-        flOptions.networks = "Wechat";
-      new needShareButton('#needsharebutton-float', flOptions);
   </script>
 <script>
   function loadCount() {

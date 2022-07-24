@@ -337,31 +337,28 @@ td {
   margin-top: 3px;
 }
 .toggle.toggle-arrow .toggle-line-first {
-  left: 50%;
   top: 2px;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
   width: 50%;
 }
 .toggle.toggle-arrow .toggle-line-middle {
-  left: 2px;
   width: 90%;
 }
 .toggle.toggle-arrow .toggle-line-last {
-  left: 50%;
   top: -2px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
   width: 50%;
 }
 .toggle.toggle-close .toggle-line-first {
-  transform: rotate(-45deg);
   top: 5px;
+  transform: rotate(-45deg);
 }
 .toggle.toggle-close .toggle-line-middle {
   opacity: 0;
 }
 .toggle.toggle-close .toggle-line-last {
-  transform: rotate(45deg);
   top: -5px;
+  transform: rotate(45deg);
 }
 .highlight,
 pre {
@@ -915,16 +912,16 @@ pre .javascript .function {
 }
 .main-inner {
   margin: 0 auto;
-  width: 700px;
+  width: 60%;
 }
 @media (min-width: 1200px) {
   .main-inner {
-    width: 800px;
+    width: 60%;
   }
 }
 @media (min-width: 1600px) {
   .main-inner {
-    width: 900px;
+    width: 60%;
   }
 }
 .header {
@@ -933,16 +930,16 @@ pre .javascript .function {
 .header-inner {
   margin: 0 auto;
   position: relative;
-  width: 700px;
+  width: 60%;
 }
 @media (min-width: 1200px) {
   .header-inner {
-    width: 800px;
+    width: 60%;
   }
 }
 @media (min-width: 1600px) {
   .header-inner {
-    width: 900px;
+    width: 60%;
   }
 }
 .headband {
@@ -1220,7 +1217,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #79c839;
+  background: #20ffe0;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1445,16 +1442,16 @@ pre .javascript .function {
   box-sizing: border-box;
   margin: 0 auto;
   text-align: center;
-  width: 700px;
+  width: 60%;
 }
 @media (min-width: 1200px) {
   .footer-inner {
-    width: 800px;
+    width: 60%;
   }
 }
 @media (min-width: 1600px) {
   .footer-inner {
-    width: 900px;
+    width: 60%;
   }
 }
 .with-love {
@@ -2569,10 +2566,24 @@ hr {
   border-bottom-color: #222;
 }
 .sidebar {
-  left: -320px;
+  right: -320px;
 }
 .sidebar.sidebar-active {
-  left: 0;
+  right: 0;
+}
+.sidebar-toggle,
+.back-to-top {
+  left: auto;
+  right: 30px;
+}
+@media (max-width: 991px) {
+  .sidebar-toggle,
+  .back-to-top {
+    right: 20px;
+  }
+}
+.book-mark-link {
+  left: 30px;
 }
 .sidebar {
   transition: all 0.4s;

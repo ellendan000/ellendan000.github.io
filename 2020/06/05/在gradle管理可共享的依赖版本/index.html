@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
+<meta name="generator" content="Hexo 4.2.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -24,7 +24,7 @@
     scheme: 'Mist',
     version: '7.7.1',
     exturl: false,
-    sidebar: {"position":"left","width":320,"display":"post","padding":60,"offset":12,"onmobile":true},
+    sidebar: {"position":"right","width":320,"display":"post","padding":60,"offset":12,"onmobile":true},
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://ellendan.com/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/Spring-dependencies-management.png">
 <meta property="og:image" content="https://ellendan.com/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/Spring-cloud-dependencies.png">
 <meta property="article:published_time" content="2020-06-05T06:18:20.000Z">
-<meta property="article:modified_time" content="2022-07-23T18:09:59.703Z">
+<meta property="article:modified_time" content="2022-07-24T05:11:28.649Z">
 <meta property="article:author" content="Ellen Dan">
 <meta property="article:tag" content="gradle">
 <meta property="article:tag" content="Java开发实践">
@@ -87,19 +87,6 @@
   border-radius: 3px;
   display: initial;
   padding: 1px 4px;
-}
-</style><style>
-#needsharebutton-float {
-  bottom: 88px;
-  cursor: pointer;
-  left: -8px;
-  position: fixed;
-  z-index: 9999;
-}
-#needsharebutton-float .btn {
-  border: 1px solid $btn-default-border-color;
-  border-radius: 4px;
-  padding: 0 10px 0 14px;
 }
 </style>
   <title>在gradle管理可共享的依赖版本管理 | ellendan</title>
@@ -274,7 +261,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-24 02:09:59" itemprop="dateModified" datetime="2022-07-24T02:09:59+08:00">2022-07-24</time>
+                <time title="修改时间：2022-07-24 13:11:28" itemprop="dateModified" datetime="2022-07-24T13:11:28+08:00">2022-07-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -328,38 +315,38 @@
 
       
         <p>“可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。<br>对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。<br>没用过 Maven 的小伙伴们也不用被劝退，想想在使用Spring plugin <code>io.spring.dependency-management</code>时，<br><code>imports.mavenBom</code>到底在做什么，有没有想要了解一下？</p>
-<span id="more"></span>
+<a id="more"></a>
 
-<h3 id="1-BOM是什么？"><a href="#1-BOM是什么？" class="headerlink" title="1. BOM是什么？"></a>1. BOM是什么？</h3><p>在说 BOM 之前，先了解一下 Maven 的一些基本概念。<br>Maven __POM__，全名 <code>Project Object Model</code>, 是 Maven 使用中的重要配置文件，xml格式，主要用来导入依赖和进行项目构建。<br>Maven __BOM__，全名 <code>Bill Of Materials</code>, 是一种特殊的 POM，主要用来集中管理项目依赖的版本，更加灵活地维护所有依赖的版本信息。<br>配置好的 BOM，可以放在单个项目中自用，也可以传阅和分享给其他项目进行公用。</p>
-<p>讲的直观一点，效果就是（见下图）：<br><img src="/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/Spring-dependencies-management.png" alt="Spring-dependencies-management"><br>dependencies中依赖的那些库为何可以不用标明版本？<br>正是因为使用了<em>dependency-management</em> 插件，当 gradle plugin <em>org.springframework.boot</em> 检测到此插件启用时，会自动导入Spring boot dependencies BOM，这样依赖库们会主动使用 BOM 中推荐的版本。<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies">链接</a></p>
-<p>下面是Spring Cloud BOM的一部分展示(完整见<a target="_blank" rel="noopener" href="https://github.com/spring-cloud/spring-cloud-release/blob/vHoxton.SR5/spring-cloud-dependencies/pom.xml">链接</a>)：</p>
+<h3 id="1-BOM是什么？"><a href="#1-BOM是什么？" class="headerlink" title="1. BOM是什么？"></a>1. BOM是什么？</h3><p>在说 BOM 之前，先了解一下 Maven 的一些基本概念。<br>Maven <strong>POM</strong>，全名 <code>Project Object Model</code>, 是 Maven 使用中的重要配置文件，xml格式，主要用来导入依赖和进行项目构建。<br>Maven <strong>BOM</strong>，全名 <code>Bill Of Materials</code>, 是一种特殊的 POM，主要用来集中管理项目依赖的版本，更加灵活地维护所有依赖的版本信息。<br>配置好的 BOM，可以放在单个项目中自用，也可以传阅和分享给其他项目进行公用。</p>
+<p>讲的直观一点，效果就是（见下图）：<br><img src="/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/Spring-dependencies-management.png" alt="Spring-dependencies-management"><br>dependencies中依赖的那些库为何可以不用标明版本？<br>正是因为使用了<em>dependency-management</em> 插件，当 gradle plugin <em>org.springframework.boot</em> 检测到此插件启用时，会自动导入Spring boot dependencies BOM，这样依赖库们会主动使用 BOM 中推荐的版本。<a href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies" target="_blank" rel="noopener">链接</a></p>
+<p>下面是Spring Cloud BOM的一部分展示(完整见<a href="https://github.com/spring-cloud/spring-cloud-release/blob/vHoxton.SR5/spring-cloud-dependencies/pom.xml" target="_blank" rel="noopener">链接</a>)：</p>
 <p><img src="/2020/06/05/%E5%9C%A8gradle%E7%AE%A1%E7%90%86%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC/Spring-cloud-dependencies.png" alt="Spring-cloud-dependencies"></p>
-<p>看到这里，是不是觉得有 BOM 的情况下便捷不少，再也不用一条条dependency分别查阅、选择和维护版本了？<br>日常开发中，我们已经见识过了Spring boot &#x2F; Spring Cloud &#x2F;junit 这些常用 BOMs。</p>
+<p>看到这里，是不是觉得有 BOM 的情况下便捷不少，再也不用一条条dependency分别查阅、选择和维护版本了？<br>日常开发中，我们已经见识过了Spring boot / Spring Cloud /junit 这些常用 BOMs。</p>
 <p>当有了已经被验证过的依赖版本管理，setup projects时候直接拿来复用，是不是感觉省事不少？<br>同时 BOM 不可避免地还支持版本升级。<br>下面我们就来看看如何在 gradle 中定义我们自己的 BOM。</p>
-<h3 id="2-gradle-Java-platform-plugin"><a href="#2-gradle-Java-platform-plugin" class="headerlink" title="2. gradle Java platform plugin"></a>2. gradle Java platform plugin</h3><p><code>gradle Java platform plugin</code>是 gradle 对定义、发布 BOM 提供的一款实用插件。<br>引入它，我们就可以开始动手工作了。<a target="_blank" rel="noopener" href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header">官方链接</a></p>
+<h3 id="2-gradle-Java-platform-plugin"><a href="#2-gradle-Java-platform-plugin" class="headerlink" title="2. gradle Java platform plugin"></a>2. gradle Java platform plugin</h3><p><code>gradle Java platform plugin</code>是 gradle 对定义、发布 BOM 提供的一款实用插件。<br>引入它，我们就可以开始动手工作了。<a href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header" target="_blank" rel="noopener">官方链接</a></p>
 <p><em><code>build.gradle</code></em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#x27;maven-publish&#x27;</span><br><span class="line">    id &#x27;java-platform&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">version &#x27;0.1.1-SNAPSHOT&#x27;</span><br><span class="line"></span><br><span class="line">javaPlatform &#123;</span><br><span class="line">    allowDependencies()</span><br><span class="line">&#125;</span><br><span class="line">dependencies &#123;</span><br><span class="line">    api platform(&#x27;org.springframework.boot:spring-boot-dependencies:2.2.6.RELEASE&#x27;)</span><br><span class="line">    api platform(&#x27;org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR3&#x27;)</span><br><span class="line">    api platform(&#x27;org.springframework.cloud:spring-cloud-contract-dependencies:2.2.3.RELEASE&#x27;)</span><br><span class="line">    api platform(&#x27;org.junit:junit-bom:5.3.2&#x27;)</span><br><span class="line">    constraints &#123;</span><br><span class="line">        api &#x27;com.google.guava:guava:27.0.1-jre&#x27;</span><br><span class="line"></span><br><span class="line">        api &#x27;ch.vorburger.mariaDB4j:mariaDB4j-springboot:2.4.0&#x27;</span><br><span class="line">        api &#x27;org.mariadb.jdbc:mariadb-java-client:2.2.5&#x27;</span><br><span class="line"></span><br><span class="line">        api &#x27;org.mockito:mockito-core:2.22.0&#x27;</span><br><span class="line">        api &#x27;org.mockito:mockito-junit-jupiter:2.22.0&#x27;</span><br><span class="line">        api &#x27;org.assertj:assertj-core:3.11.1&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">publishing &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123;</span><br><span class="line">            credentials &#123;</span><br><span class="line">                username = &#x27;jfrog&#x27;</span><br><span class="line">                password = &#x27;jfrog123456&#x27;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            def releasesRepoUrl = &#x27;http://localhost:8082/artifactory/libs-release/&#x27;</span><br><span class="line">            def snapshotsRepoUrl = &#x27;http://localhost:8082/artifactory/libs-snapshot/&#x27;</span><br><span class="line">            url = version.endsWith(&#x27;SNAPSHOT&#x27;) ? snapshotsRepoUrl : releasesRepoUrl</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    publications &#123;</span><br><span class="line">        myPlatform(MavenPublication) &#123;</span><br><span class="line">            from components.javaPlatform</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#39;maven-publish&#39;</span><br><span class="line">    id &#39;java-platform&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">version &#39;0.1.1-SNAPSHOT&#39;</span><br><span class="line"></span><br><span class="line">javaPlatform &#123;</span><br><span class="line">    allowDependencies()</span><br><span class="line">&#125;</span><br><span class="line">dependencies &#123;</span><br><span class="line">    api platform(&#39;org.springframework.boot:spring-boot-dependencies:2.2.6.RELEASE&#39;)</span><br><span class="line">    api platform(&#39;org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR3&#39;)</span><br><span class="line">    api platform(&#39;org.springframework.cloud:spring-cloud-contract-dependencies:2.2.3.RELEASE&#39;)</span><br><span class="line">    api platform(&#39;org.junit:junit-bom:5.3.2&#39;)</span><br><span class="line">    constraints &#123;</span><br><span class="line">        api &#39;com.google.guava:guava:27.0.1-jre&#39;</span><br><span class="line"></span><br><span class="line">        api &#39;ch.vorburger.mariaDB4j:mariaDB4j-springboot:2.4.0&#39;</span><br><span class="line">        api &#39;org.mariadb.jdbc:mariadb-java-client:2.2.5&#39;</span><br><span class="line"></span><br><span class="line">        api &#39;org.mockito:mockito-core:2.22.0&#39;</span><br><span class="line">        api &#39;org.mockito:mockito-junit-jupiter:2.22.0&#39;</span><br><span class="line">        api &#39;org.assertj:assertj-core:3.11.1&#39;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">publishing &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven &#123;</span><br><span class="line">            credentials &#123;</span><br><span class="line">                username &#x3D; &#39;jfrog&#39;</span><br><span class="line">                password &#x3D; &#39;jfrog123456&#39;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            def releasesRepoUrl &#x3D; &#39;http:&#x2F;&#x2F;localhost:8082&#x2F;artifactory&#x2F;libs-release&#x2F;&#39;</span><br><span class="line">            def snapshotsRepoUrl &#x3D; &#39;http:&#x2F;&#x2F;localhost:8082&#x2F;artifactory&#x2F;libs-snapshot&#x2F;&#39;</span><br><span class="line">            url &#x3D; version.endsWith(&#39;SNAPSHOT&#39;) ? snapshotsRepoUrl : releasesRepoUrl</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    publications &#123;</span><br><span class="line">        myPlatform(MavenPublication) &#123;</span><br><span class="line">            from components.javaPlatform</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>当然, 作为一个服务级的 BOM，自然无需从零开始逐条定义，可以直接先 import 框架级的 BOMs，如上例中的Spring boot &#x2F; Spring cloud &#x2F; Spring cloud contract &#x2F; Junit。<br>但由于需要使用第三方platform bom, 则不得不打开配置约束 ——<code>javaPlatform.allowDependencies</code>。具体使用请见<a target="_blank" rel="noopener" href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#sec:java_platform_bom_import">官方链接</a></p>
+<p>当然, 作为一个服务级的 BOM，自然无需从零开始逐条定义，可以直接先 import 框架级的 BOMs，如上例中的Spring boot / Spring cloud / Spring cloud contract / Junit。<br>但由于需要使用第三方platform bom, 则不得不打开配置约束 ——<code>javaPlatform.allowDependencies</code>。具体使用请见<a href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#sec:java_platform_bom_import" target="_blank" rel="noopener">官方链接</a></p>
 <p>这里，通过gradle生成的 BOM 会发布到一个我本地自己搭建的JFrog artifactory OSS中。<br>(为什么不在云上搭一个？啊哈哈，因为JFrog artifactory OSS最低预配是4核4G内存，自己掏钱就手短了。。)<br>当然,也可以生成本地的 POM 文件，手动复制传阅，但这样就不容易进行后续的版本管理和保持更新了。</p>
 <p>maven publish 成功后，我们就可以来使用 BOM 导入依赖版本了。</p>
-<h3 id="3-gradle-platform"><a href="#3-gradle-platform" class="headerlink" title="3. gradle platform"></a>3. gradle platform</h3><p>导入方式也非常简单，直接使用platform组件即可。<a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/platforms.html">官方链接</a></p>
+<h3 id="3-gradle-platform"><a href="#3-gradle-platform" class="headerlink" title="3. gradle platform"></a>3. gradle platform</h3><p>导入方式也非常简单，直接使用platform组件即可。<a href="https://docs.gradle.org/current/userguide/platforms.html" target="_blank" rel="noopener">官方链接</a></p>
 <p>创建一个example项目试一下, 编写<code>build.gradle</code>文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    maven &#123;</span><br><span class="line">        credentials &#123;</span><br><span class="line">            username = &quot;jfrog&quot;</span><br><span class="line">            password = &quot;jfrog123456&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        url &quot;http://localhost:8082/artifactory/libs-snapshot/&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation platform(&#x27;com.ellendan.service.template:dependencies-bom:0.1.1-SNAPSHOT&#x27;)</span><br><span class="line"></span><br><span class="line">    implementation &#x27;org.springframework.boot:spring-boot-starter-web&#x27;</span><br><span class="line">    implementation &#x27;org.springframework.boot:spring-boot-starter-security&#x27;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    maven &#123;</span><br><span class="line">        credentials &#123;</span><br><span class="line">            username &#x3D; &quot;jfrog&quot;</span><br><span class="line">            password &#x3D; &quot;jfrog123456&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        url &quot;http:&#x2F;&#x2F;localhost:8082&#x2F;artifactory&#x2F;libs-snapshot&#x2F;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation platform(&#39;com.ellendan.service.template:dependencies-bom:0.1.1-SNAPSHOT&#39;)</span><br><span class="line"></span><br><span class="line">    implementation &#39;org.springframework.boot:spring-boot-starter-web&#39;</span><br><span class="line">    implementation &#39;org.springframework.boot:spring-boot-starter-security&#39;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对，就是使用platform()引入即可。  </p>
 <p>也许有人会问：大家用 spring-dependency-management 习惯了，这个 BOM 是否支持 spring-dependency-management 的 <code>imports.mavenBom</code>。<br>理论上是支持的。<br>但本人在写代码的时候，发现自定义 BOM 中spring boot dependencies BOM 无法被成功引入，而其他 BOMs 都没有此问题、可以成功导入。<br>因此，我这里并不推荐通过spring-dependency-management的<code>imports.mavenBom</code>来导入。</p>
 <h3 id="4-为什么要做“可共享的依赖版本管理”"><a href="#4-为什么要做“可共享的依赖版本管理”" class="headerlink" title="4. 为什么要做“可共享的依赖版本管理”"></a>4. 为什么要做“可共享的依赖版本管理”</h3><p>这还要从本人最近的一个任务说起。<br>任务本身是做 —— “启动模板”。<br>但“启动模板”，这四个字，怎么看都觉得非常的静态。<br>结合Rebecca《演进式架构》中“服务模板”的概念（虽然“模板”这命名还是怎么看怎么静态）。在构建服务的过程中，为了防止有害的重复，如果技术上的适当耦合避免不了，那就尽量让其黑盒复用。  </p>
 <blockquote>
 <p>通过在服务模板中定义适当的技术架构耦合点，并让基础设施团队管理这些耦合，就能使各个服务团队免于这些苦恼。  </p>
 </blockquote>
-<p>所以，这里决定尝试做一个“服务模板”。<br>依赖版本管理只是其中的一个小的部分, 并且使用 gradle 来实现也非常简单。<br>具体代码地址：<a target="_blank" rel="noopener" href="https://github.com/ellendan000/service_template">https://github.com/ellendan000/service_template</a></p>
+<p>所以，这里决定尝试做一个“服务模板”。<br>依赖版本管理只是其中的一个小的部分, 并且使用 gradle 来实现也非常简单。<br>具体代码地址：<a href="https://github.com/ellendan000/service_template" target="_blank" rel="noopener">https://github.com/ellendan000/service_template</a></p>
 <h3 id="PS-废话篇"><a href="#PS-废话篇" class="headerlink" title="PS. 废话篇"></a>PS. 废话篇</h3><p>眼看2020就要过半，由于2020开局乱来，受种种因素影响，计划一团混乱变更。<br>一鼓作气，再而衰，三而竭，各种计划目标债。期望2020后半段能走好吧~</p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
-<li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies">https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header">https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/platforms.html">https://docs.gradle.org/current/userguide/platforms.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/#introduction">https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/#introduction</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.baeldung.com/spring-maven-bom">https://www.baeldung.com/spring-maven-bom</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies" target="_blank" rel="noopener">https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies</a></li>
+<li><a href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header" target="_blank" rel="noopener">https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header</a></li>
+<li><a href="https://docs.gradle.org/current/userguide/platforms.html" target="_blank" rel="noopener">https://docs.gradle.org/current/userguide/platforms.html</a></li>
+<li><a href="https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/#introduction" target="_blank" rel="noopener">https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/#introduction</a></li>
+<li><a href="https://www.baeldung.com/spring-maven-bom" target="_blank" rel="noopener">https://www.baeldung.com/spring-maven-bom</a></li>
 </ol>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
     </div>
@@ -463,7 +450,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-BOM%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">1. BOM是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-gradle-Java-platform-plugin"><span class="nav-text">2. gradle Java platform plugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-gradle-platform"><span class="nav-text">3. gradle platform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9A%E2%80%9C%E5%8F%AF%E5%85%B1%E4%BA%AB%E7%9A%84%E4%BE%9D%E8%B5%96%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E2%80%9D"><span class="nav-text">4. 为什么要做“可共享的依赖版本管理”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PS-%E5%BA%9F%E8%AF%9D%E7%AF%87"><span class="nav-text">PS. 废话篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-BOM是什么？"><span class="nav-text">1. BOM是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-gradle-Java-platform-plugin"><span class="nav-text">2. gradle Java platform plugin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-gradle-platform"><span class="nav-text">3. gradle platform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-为什么要做“可共享的依赖版本管理”"><span class="nav-text">4. 为什么要做“可共享的依赖版本管理”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PS-废话篇"><span class="nav-text">PS. 废话篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -479,20 +466,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -547,7 +534,7 @@
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     <span title="站点阅读时长">27 分钟</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.2.0
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.1
@@ -667,11 +654,7 @@ window.addEventListener('pjax:success', () => {
   
 
   
-<div id="needsharebutton-float">
-      <span class="btn">
-        <i class="fa fa-share-alt" aria-hidden="true"></i>
-      </span>
-    </div>
+
   <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
   <script>
       pbOptions = {};
@@ -680,12 +663,6 @@ window.addEventListener('pjax:success', () => {
         pbOptions.position = "bottomCenter";
         pbOptions.networks = "Wechat";
       new needShareButton('#needsharebutton-postbottom', pbOptions);
-      flOptions = {};
-        flOptions.iconStyle = "box";
-        flOptions.boxForm = "vertical";
-        flOptions.position = "bottomLeft";
-        flOptions.networks = "Wechat";
-      new needShareButton('#needsharebutton-float', flOptions);
   </script>
 <script>
   function loadCount() {
