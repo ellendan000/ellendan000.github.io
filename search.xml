@@ -6,7 +6,7 @@
     <content><![CDATA[<p>DDD知识树。</p>
 <a id="more"></a>
 
-<blockquote class="pullquote mindmap mindmap-md"><ul>
+<blockquote class="pullquote mindmap mindmap-lg"><ul>
 <li>Domain Driven Design<ul>
 <li>战略设计</li>
 <li>战术设计</li>
@@ -72,6 +72,62 @@
       </categories>
       <tags>
         <tag>DevOps</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>雷达知识树</title>
+    <url>/2022/07/23/%E9%9B%B7%E8%BE%BE%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
+    <content><![CDATA[<p>雷达知识树。</p>
+<a id="more"></a>
+
+<blockquote class="pullquote mindmap mindmap-lg"><ul>
+<li>雷达<ul>
+<li>语言和框架<ul>
+<li>Java<ul>
+<li>framework<ul>
+<li>Spring Boot</li>
+<li>Spring Cloud</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Kotlin</li>
+<li>Python<ul>
+<li>data<ul>
+<li>Pandas</li>
+<li>Sklearn</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>工具<ul>
+<li>MQ</li>
+</ul>
+</li>
+<li>平台<ul>
+<li>AWS</li>
+<li>Azure</li>
+<li>Gitlab</li>
+<li>Ali</li>
+<li>TT</li>
+</ul>
+</li>
+<li>技术<ul>
+<li>AOP</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>知识树</category>
+      </categories>
+      <tags>
+        <tag>雷达</tag>
       </tags>
   </entry>
   <entry>
