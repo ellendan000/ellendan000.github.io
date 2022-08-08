@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>车联网知识树</title>
+    <url>/2022/07/27/%E8%BD%A6%E8%81%94%E7%BD%91%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
+    <content><![CDATA[<p>雷达知识树。</p>
+<a id="more"></a>
+
+<blockquote class="pullquote mindmap mindmap-lg"><ul>
+<li>车联网</li>
+</ul>
+</blockquote>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+      <categories>
+        <category>知识树</category>
+      </categories>
+      <tags>
+        <tag>车联网</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>DDD知识树</title>
     <url>/2022/07/23/DDD%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
     <content><![CDATA[<p>DDD知识树。</p>
