@@ -792,8 +792,10 @@
   </entry>
   <entry>
     <title>Scrum形外之神</title>
-    <url>/2019/10/23/Scrum%E5%BD%A2%E5%A4%96%E4%B9%8B%E7%A5%9E/</url>
-    <content><![CDATA[<p><img src="/2019/10/23/Scrum%E5%BD%A2%E5%A4%96%E4%B9%8B%E7%A5%9E/cover.png" alt="封面"></p>
+    <url>/2019/10/22/Scrum%E5%BD%A2%E5%A4%96%E4%B9%8B%E7%A5%9E/</url>
+    <content><![CDATA[<hr>
+<p>title: Scrum形外之神<br>date: 2019-10-23 11:39:00<br>tags: [敏捷]<br>categories: [敏捷]  </p>
+<hr>
 <p>什么是Scrum?<br>Scrum是敏捷软件开发过程的一种框架，用以实现迭代式增量开发。<br>好吧，很抽象。  </p>
 <p>那是不是 —— 只要有了sprint、IPM、Showcase、Retrospective、可视化卡墙、每日站会，这些流程和工具，就已经实现Scrum了呢？<br>也许有人会说是。这看起来基本就是一个Scrum的MVP(Minimum viable product)。  </p>
 <p>好，那假设我们的团队已经实现了Scrum流程的MVP。<br>现在，我们来进行一下每日站会。请每个人依次对三个问题进行描述。<br>三个问题，哪三个问题？  </p>
@@ -844,13 +846,8 @@
 <li>《Scrum 敏捷软件开发》，Mike Cohn 著  </li>
 <li>《硝烟中的 Scrum和 XP》，Henrik Kniberg 著  </li>
 </ol>
+<p><img src="/2019/10/22/Scrum%E5%BD%A2%E5%A4%96%E4%B9%8B%E7%A5%9E/cover.png" alt="封面"></p>
 <script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
-      <categories>
-        <category>敏捷</category>
-      </categories>
-      <tags>
-        <tag>敏捷</tag>
-      </tags>
   </entry>
   <entry>
     <title>为什么不鼓励加班</title>
