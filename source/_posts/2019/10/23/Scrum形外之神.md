@@ -4,8 +4,8 @@ title: Scrum形外之神
 date: 2019-10-23 11:39:00  
 tags: [敏捷]   
 categories: [敏捷]  
----
-![封面](./Scrum形外之神/cover.png)
+---  
+
 
 什么是Scrum?  
 Scrum是敏捷软件开发过程的一种框架，用以实现迭代式增量开发。  
@@ -142,3 +142,5 @@ sprint之所以叫冲刺，是可以让人产生一种紧张激烈的感觉。
 1. 《敏捷革命》，Jeff Sutherland 著  
 2. 《Scrum 敏捷软件开发》，Mike Cohn 著  
 3. 《硝烟中的 Scrum和 XP》，Henrik Kniberg 著  
+
+![封面](./Scrum形外之神/cover.png)
