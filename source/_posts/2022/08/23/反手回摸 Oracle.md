@@ -55,6 +55,7 @@ build成功之后，通过`docker images`查看image，总大小6个多G，体�
 ```
 docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD=123456 -v ~/tmp-oradata:/opt/oracle/oradata oracle/database/19.3.0-se2
 ```
+这时候，通过docker host本地 11521 端口，就可以连接docker oracle了。  
 
 ### 2. Oracle Database 基础概念和语句图谱
 
@@ -103,7 +104,6 @@ docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD=123456 -
                     - 查询grantee用户的对象权限：select grantee, table_name, privilege from dba_tab_privs where lower(grantee) = ‘ogg’;
                     - 分配对象权限：grant all on t_employees to ogg;
                     - 收回权限：revoke delete on t_employees from ogg;
-
     - 逻辑结构
         - 数据库/表空间/表
             - 数据库
@@ -129,5 +129,4 @@ docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD=123456 -
                 - SQL
                     - 查询当前用户和schema：select sys_context('userenv', 'current_user') current_user, sys_context('userenv', 'current_user') current_schema from dual;
             - 对象
-
 {% endpullquote %}
