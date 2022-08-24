@@ -18,12 +18,10 @@
 <p><em>注意</em> 运行命令build之前，确保本地没有开启任何网络代理，不然 build 时会失败。<br>build成功之后，通过<code>docker images</code>查看image，总大小6个多G，体量感人。。 </p>
 <p>另外，如果想要安装其他版本，比如18.4.0 和 xe 版本，相同的步骤和方式，但可能需要修改dockerfile的部分语句。<br>即使进行了dockerfile修改，xe 版本本人build并没有成功过，这个需要再次检验和查看。  </p>
 <h4 id="1-6-docker-run"><a href="#1-6-docker-run" class="headerlink" title="1.6 docker run"></a>1.6 docker run</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD&#x3D;123456 -v ~&#x2F;tmp-oradata:&#x2F;opt&#x2F;oracle&#x2F;oradata oracle&#x2F;database&#x2F;19.3.0-se2</span><br></pre></td></tr></table></figure>
-
+<p>这时候，通过docker host本地 11521 端口，就可以连接docker oracle了。  </p>
 <h3 id="2-Oracle-Database-基础概念和语句图谱"><a href="#2-Oracle-Database-基础概念和语句图谱" class="headerlink" title="2. Oracle Database 基础概念和语句图谱"></a>2. Oracle Database 基础概念和语句图谱</h3><blockquote class="pullquote mindmap mindmap-lg"><ul>
-<li><p>Oracle Database</p>
-<ul>
-<li><p>数据库概念</p>
-<ul>
+<li>Oracle Database<ul>
+<li>数据库概念<ul>
 <li>数据库<ul>
 <li>SQL <ul>
 <li>查看当前数据库：select name from V$DATABASE;</li>
@@ -42,8 +40,7 @@
 <li>CDB &amp; PDB</li>
 </ul>
 </li>
-<li><p>SQLPLUS</p>
-<ul>
+<li>SQLPLUS<ul>
 <li>tnsnames.ora</li>
 <li>sqlnet.ora</li>
 <li>连接<ul>
@@ -53,8 +50,7 @@
 </li>
 </ul>
 </li>
-<li><p>用户/角色/权限</p>
-<ul>
+<li>用户/角色/权限<ul>
 <li>用户<ul>
 <li>SQL<ul>
 <li>创建用户：create user ogg identified by ogg default tablespace customer;</li>
@@ -102,8 +98,7 @@
 </li>
 </ul>
 </li>
-<li><p>逻辑结构</p>
-<ul>
+<li>逻辑结构<ul>
 <li>数据库/表空间/表<ul>
 <li>数据库<ul>
 <li>SQL</li>
