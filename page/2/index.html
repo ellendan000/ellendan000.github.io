@@ -223,6 +223,121 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Ellen Dan">
+      <meta itemprop="description" content="人生如逆水行舟，不进则退。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ellendan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/" class="post-title-link" itemprop="url">微服务线上治理之监控</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-18 10:54:20" itemprop="dateCreated datePublished" datetime="2021-01-18T10:54:20+08:00">2021-01-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-24 12:00:31" itemprop="dateModified" datetime="2022-08-24T12:00:31+08:00">2022-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务治理</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2021/01/18/微服务线上治理之监控/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>微服务架构已经是时下后端应用开发的主流架构之一。微服务的整个生命周期包括<code>微服务拆分和定义（产品规划）</code>、<code>微服务研发</code>、<code>微服务构建与部署</code>、<code>监控与运维</code>几个阶段。</p>
+<p>对于一般企业的微服务改造而言，极少部分企业认为用上微服务概念 + Spring cloud套件就是整活微服务架构了；一部分企业还能认识到针对微服务构建和部署所必需的DevOps流水线或平台；接着，越来越多的企业开始接受支持微服务拆分和设计思想的<code>Domain Driven Design</code>；在完成前三步的基础上，最终还有少部分企业意识到线上分布式系统带来的复杂性，需要进行微服务线上治理——分层次的监控、诊断及最终的治理方案。</p>
+<p>这里就主要从可观测性、层次性、时效性上，聊聊微服务线上治理中的监控。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/18/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BA%BF%E4%B8%8A%E6%B2%BB%E7%90%86%E4%B9%8B%E7%9B%91%E6%8E%A7/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      
+
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://ellendan.com/2020/12/27/MySQL_InnoDB%E8%81%9A%E9%9B%86%E7%B4%A2%E5%BC%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -254,7 +369,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-14 10:26:27" itemprop="dateModified" datetime="2022-08-14T10:26:27+08:00">2022-08-14</time>
+                <time title="修改时间：2022-08-24 12:00:31" itemprop="dateModified" datetime="2022-08-24T12:00:31+08:00">2022-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -370,7 +485,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-14 10:26:27" itemprop="dateModified" datetime="2022-08-14T10:26:27+08:00">2022-08-14</time>
+                <time title="修改时间：2022-08-24 12:00:31" itemprop="dateModified" datetime="2022-08-24T12:00:31+08:00">2022-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -487,7 +602,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-14 10:26:27" itemprop="dateModified" datetime="2022-08-14T10:26:27+08:00">2022-08-14</time>
+                <time title="修改时间：2022-08-24 12:00:31" itemprop="dateModified" datetime="2022-08-24T12:00:31+08:00">2022-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -600,7 +715,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-14 10:26:27" itemprop="dateModified" datetime="2022-08-14T10:26:27+08:00">2022-08-14</time>
+                <time title="修改时间：2022-08-24 12:00:31" itemprop="dateModified" datetime="2022-08-24T12:00:31+08:00">2022-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -714,7 +829,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-14 10:26:27" itemprop="dateModified" datetime="2022-08-14T10:26:27+08:00">2022-08-14</time>
+                <time title="修改时间：2022-08-24 12:00:31" itemprop="dateModified" datetime="2022-08-24T12:00:31+08:00">2022-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -828,7 +943,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-14 10:26:27" itemprop="dateModified" datetime="2022-08-14T10:26:27+08:00">2022-08-14</time>
+                <time title="修改时间：2022-08-24 12:00:31" itemprop="dateModified" datetime="2022-08-24T12:00:31+08:00">2022-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -942,7 +1057,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-14 10:26:27" itemprop="dateModified" datetime="2022-08-14T10:26:27+08:00">2022-08-14</time>
+                <time title="修改时间：2022-08-24 12:00:31" itemprop="dateModified" datetime="2022-08-24T12:00:31+08:00">2022-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1057,7 +1172,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-14 10:26:27" itemprop="dateModified" datetime="2022-08-14T10:26:27+08:00">2022-08-14</time>
+                <time title="修改时间：2022-08-24 12:00:31" itemprop="dateModified" datetime="2022-08-24T12:00:31+08:00">2022-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1178,7 +1293,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-14 10:26:27" itemprop="dateModified" datetime="2022-08-14T10:26:27+08:00">2022-08-14</time>
+                <time title="修改时间：2022-08-24 12:00:31" itemprop="dateModified" datetime="2022-08-24T12:00:31+08:00">2022-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1247,121 +1362,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/10/23/Scrum%E5%BD%A2%E5%A4%96%E4%B9%8B%E7%A5%9E/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      
-
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2019/10/15/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E9%BC%93%E5%8A%B1%E5%8A%A0%E7%8F%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Ellen Dan">
-      <meta itemprop="description" content="人生如逆水行舟，不进则退。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ellendan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/15/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E9%BC%93%E5%8A%B1%E5%8A%A0%E7%8F%AD/" class="post-title-link" itemprop="url">为什么不鼓励加班</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-15 10:31:00" itemprop="dateCreated datePublished" datetime="2019-10-15T10:31:00+08:00">2019-10-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-14 10:26:27" itemprop="dateModified" datetime="2022-08-14T10:26:27+08:00">2022-08-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2019/10/15/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E9%BC%93%E5%8A%B1%E5%8A%A0%E7%8F%AD/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/15/为什么不鼓励加班/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>首先，此篇文章有个大前提，主要针对知识性工作。<br>“知识性工作”与“可重复性的生产活动”对立。  </p>
-<p>看到这个标题的时候，大概很多人都会想——这是一篇996员工 ICU 的软文：不鼓励加班，是为了让员工过平衡的生活。<br>欧美不少公司不鼓励加班，是因为——他们重视员工的工作和生活。<br>我只想说：图样图森破。当然，也有可能仅仅是公司不想付加班费。  </p>
-<p>Scrum 之父杰夫·萨瑟兰 ，直接指出：“<strong>工时越长，效率越低。</strong>”<br>在一些管理者眼中：加班加点地工作不是敬业的标志，而是失败的标志。让员工早点下班，不是想让他们过一种平衡的生活，而是为了他们可以完成更多的工作。  </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/10/15/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E9%BC%93%E5%8A%B1%E5%8A%A0%E7%8F%AD/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1455,7 +1455,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1515,13 +1515,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">46k</span>
+    <span title="站点总字数">49k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">42 分钟</span>
+    <span title="站点阅读时长">44 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
