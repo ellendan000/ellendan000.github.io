@@ -22,7 +22,7 @@ categories: [数据库]
 ```
 $ git clone git@github.com:oracle/docker-images.git
 ```
-子目录是 Oracle 各种产品和版本的 dockerfile。比如database，就是 `OracleDatabase`, OGG 就是 `OracleGoldenGate`。  
+子目录是 Oracle 各种产品目录。比如database，就是 `OracleDatabase`, OGG 就是 `OracleGoldenGate`。  
 
 #### 1.2. 查看 dockerfile
 进入到本地 repo 目录 `OracleDatabase/SingleInstance/dockerfiles`，可以看到目前支持的数据库版本：  
@@ -51,7 +51,7 @@ build成功之后，通过`docker images`查看image，总大小6个多G，体�
 另外，如果想要安装其他版本，比如18.4.0 和 xe 版本，相同的步骤和方式，但可能需要修改dockerfile的部分语句。  
 即使进行了dockerfile修改，xe 版本本人build并没有成功过，这个需要再次检验和查看。  
 
-#### 1.6 docker run
+#### 1.6. docker run
 ```
 docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD=123456 -v ~/tmp-oradata:/opt/oracle/oradata oracle/database/19.3.0-se2
 ```
