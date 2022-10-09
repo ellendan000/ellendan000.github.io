@@ -223,6 +223,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2022/08/26/%E8%BD%A6%E4%BC%81%E6%95%B4%E8%BD%A6%E9%9B%B6%E5%94%AE%E7%BA%BF%E7%B4%A2%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Ellen Dan">
+      <meta itemprop="description" content="人生如逆水行舟，不进则退。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ellendan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/26/%E8%BD%A6%E4%BC%81%E6%95%B4%E8%BD%A6%E9%9B%B6%E5%94%AE%E7%BA%BF%E7%B4%A2%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">车企整车零售线索模型</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-08-26 12:31:00" itemprop="dateCreated datePublished" datetime="2022-08-26T12:31:00+08:00">2022-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-10-09 12:08:34" itemprop="dateModified" datetime="2022-10-09T12:08:34+08:00">2022-10-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DDD/" itemprop="url" rel="index">
+                    <span itemprop="name">DDD</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/08/26/%E8%BD%A6%E4%BC%81%E6%95%B4%E8%BD%A6%E9%9B%B6%E5%94%AE%E7%BA%BF%E7%B4%A2%E6%A8%A1%E5%9E%8B/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/08/26/车企整车零售线索模型/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>729</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最早在17、18年的时候，做了大约一年多的厂商系统 —— 经销商线索管理服务。<br>外人看线索管理，感觉就那点东西，然而团队内的人自己知道 —— 那真是水深火热。<br>时隔多年，再次接触到线索管理，不同的是：这次的线索管理虽依然是厂商的系统，但包含了厂商线索、门店线索，门店线索又分经销商门店、直营门店。<br>相比之前稍微好一点的是细节复杂度有所降低，就好比一个花费 300W 的线索管理与 3000W 的线索管理的差距。  </p>
+<p>线索管理从根本上来说，每一个流程和环节都是为了提升客户转化率，最终达成交易。<br>从上下游关系来看，厂商进行“线索收集”至“线索分配”，目标是将线索推入到可以由指定门店接待的阶段；接下来，门店完成线索的线下跟进一系列活动，目标是让客户买车和车辆交付。<br>如果车企仅有直营这一种模式，宏观上这就是一个比较简单的流程，看起来是同一个问题域，一个线索模型就可以搞定了。<br><img src="/2022/08/26/%E8%BD%A6%E4%BC%81%E6%95%B4%E8%BD%A6%E9%9B%B6%E5%94%AE%E7%BA%BF%E7%B4%A2%E6%A8%A1%E5%9E%8B/leads-simple.png" alt="leads-simple"></p>
+<p>然而当前现状，车企大部分都是直营和经销两种共存的混杂模式。<br>还有部分车企的经销商并不依赖厂商进行线索管理，即便依赖了厂商的线索管理系统，对线索的权限归属和流程控制也与直营门店有不同的诉求。<br>因此，看上去就变成了一横一纵 两块问题子域。<br><img src="/2022/08/26/%E8%BD%A6%E4%BC%81%E6%95%B4%E8%BD%A6%E9%9B%B6%E5%94%AE%E7%BA%BF%E7%B4%A2%E6%A8%A1%E5%9E%8B/leads-complex.png" alt="leads-complex"><br>或者，也有人会说这里应该是 三块问题子域。其实也对。  </p>
+<p>如果要提供解决方案的话，我们的模型应该如何划分呢？如果要用微服务实现的话，应该是几个线索领域模型呢？<br>这个问题，当我拿到现有代码，需要在一个微服务中同时实现线索从厂商到经销门店、从厂商到直营门店线索的业务流程时，陷入了沉默。<br>最后，通过和项目同事的流程梳理和交流讨论，最终确认，3 个领域模型，分别是 厂商线索、经销商门店线索、直营门店线索。  </p>
+<h3 id="1-拆分成3个领域模型的原因"><a href="#1-拆分成3个领域模型的原因" class="headerlink" title="1. 拆分成3个领域模型的原因"></a>1. 拆分成3个领域模型的原因</h3><h3 id="2-在同一个微服务中实现-3-个线索模型的方式"><a href="#2-在同一个微服务中实现-3-个线索模型的方式" class="headerlink" title="2. 在同一个微服务中实现 3 个线索模型的方式"></a>2. 在同一个微服务中实现 3 个线索模型的方式</h3><h3 id="3-扩展成-3-个微服务行不行？2个呢？"><a href="#3-扩展成-3-个微服务行不行？2个呢？" class="headerlink" title="3. 扩展成 3 个微服务行不行？2个呢？"></a>3. 扩展成 3 个微服务行不行？2个呢？</h3><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
+      
+    </div>
+
+    
+    
+    
+      
+
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://ellendan.com/2022/08/22/%E5%8F%8D%E6%89%8B%E5%9B%9E%E6%91%B8%20Oracle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -254,7 +363,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 12:23:52" itemprop="dateModified" datetime="2022-08-24T12:23:52+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-09 12:08:34" itemprop="dateModified" datetime="2022-10-09T12:08:34+08:00">2022-10-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -367,7 +476,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 12:23:52" itemprop="dateModified" datetime="2022-08-24T12:23:52+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-09 12:08:34" itemprop="dateModified" datetime="2022-10-09T12:08:34+08:00">2022-10-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -480,7 +589,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 12:23:52" itemprop="dateModified" datetime="2022-08-24T12:23:52+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-09 12:08:34" itemprop="dateModified" datetime="2022-10-09T12:08:34+08:00">2022-10-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -593,7 +702,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 12:23:52" itemprop="dateModified" datetime="2022-08-24T12:23:52+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-09 12:08:34" itemprop="dateModified" datetime="2022-10-09T12:08:34+08:00">2022-10-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -706,7 +815,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 12:23:52" itemprop="dateModified" datetime="2022-08-24T12:23:52+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-09 12:08:34" itemprop="dateModified" datetime="2022-10-09T12:08:34+08:00">2022-10-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -819,7 +928,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 12:23:52" itemprop="dateModified" datetime="2022-08-24T12:23:52+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-09 12:08:34" itemprop="dateModified" datetime="2022-10-09T12:08:34+08:00">2022-10-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -932,7 +1041,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 12:23:52" itemprop="dateModified" datetime="2022-08-24T12:23:52+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-09 12:08:34" itemprop="dateModified" datetime="2022-10-09T12:08:34+08:00">2022-10-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1049,7 +1158,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 12:23:52" itemprop="dateModified" datetime="2022-08-24T12:23:52+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-09 12:08:34" itemprop="dateModified" datetime="2022-10-09T12:08:34+08:00">2022-10-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1165,7 +1274,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 12:23:52" itemprop="dateModified" datetime="2022-08-24T12:23:52+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-09 12:08:34" itemprop="dateModified" datetime="2022-10-09T12:08:34+08:00">2022-10-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1222,119 +1331,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2022/05/03/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84%E5%BF%85%E9%A1%BB%E9%87%8D%E8%A7%86%E7%9A%84CAP%E7%90%86%E8%AE%BA/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      
-
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ellendan.com/2022/04/29/%E9%87%8D%E5%90%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Ellen Dan">
-      <meta itemprop="description" content="人生如逆水行舟，不进则退。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ellendan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/29/%E9%87%8D%E5%90%AF/" class="post-title-link" itemprop="url">重启</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-29 12:12:00" itemprop="dateCreated datePublished" datetime="2022-04-29T12:12:00+08:00">2022-04-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 12:23:52" itemprop="dateModified" datetime="2022-08-24T12:23:52+08:00">2022-08-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2022/04/29/%E9%87%8D%E5%90%AF/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/04/29/重启/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>342</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。<br>因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只见云雾不见青山。<br>所以，现觉得对自身的知识储备进行重构，迫在眉睫。<br>那么，有没有一种看起来比较靠谱的架构解决方案可以达到此目的呢？<br>重读《金字塔原理》之后，我觉得使用“金字塔结构”可以一试。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/29/%E9%87%8D%E5%90%AF/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1428,7 +1424,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1488,13 +1484,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">49k</span>
+    <span title="站点总字数">50k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">44 分钟</span>
+    <span title="站点阅读时长">45 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>

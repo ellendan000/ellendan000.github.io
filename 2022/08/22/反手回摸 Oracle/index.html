@@ -57,7 +57,7 @@
 <meta property="og:image" content="https://ellendan.com/2022/08/22/%E5%8F%8D%E6%89%8B%E5%9B%9E%E6%91%B8%20Oracle/oracle_download_page.png">
 <meta property="og:image" content="https://ellendan.com/2022/08/22/%E5%8F%8D%E6%89%8B%E5%9B%9E%E6%91%B8%20Oracle/zip_into_directory.png">
 <meta property="article:published_time" content="2022-08-22T18:31:00.000Z">
-<meta property="article:modified_time" content="2022-08-24T04:23:52.689Z">
+<meta property="article:modified_time" content="2022-10-09T04:08:34.752Z">
 <meta property="article:author" content="Ellen Dan">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
@@ -260,7 +260,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-24 12:23:52" itemprop="dateModified" datetime="2022-08-24T12:23:52+08:00">2022-08-24</time>
+                <time title="修改时间：2022-10-09 12:08:34" itemprop="dateModified" datetime="2022-10-09T12:08:34+08:00">2022-10-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -319,7 +319,7 @@
 <h3 id="1-MacOS-安装-Oracle"><a href="#1-MacOS-安装-Oracle" class="headerlink" title="1. MacOS 安装 Oracle"></a>1. MacOS 安装 Oracle</h3><p>对于已经习惯了所有工具都要本地装一装、摸一摸的工程师而言，装个单例数据库这事儿自然不在话下。<br>然而search homebrew 和 dockerhub，突然发现 —— 居然没有oracle database。这不就尴尬了嘛？<br>去 Oracle 官网查看了一下，要想在 MacOS 上安装Oracle，两种方式：1. visualBox 2. 本地 dockerfile build。<br>那自然是选择2了。  </p>
 <h4 id="1-1-Oracle-官方dockerfile大合集"><a href="#1-1-Oracle-官方dockerfile大合集" class="headerlink" title="1.1. Oracle 官方dockerfile大合集"></a>1.1. Oracle 官方dockerfile大合集</h4><p>访问 Oracle 官方在 github 上 repo <a href="https://github.com/oracle/docker-images" target="_blank" rel="noopener">docker-images</a>。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com:oracle&#x2F;docker-images.git</span><br></pre></td></tr></table></figure>
-<p>子目录是 Oracle 各种产品和版本的 dockerfile。比如database，就是 <code>OracleDatabase</code>, OGG 就是 <code>OracleGoldenGate</code>。  </p>
+<p>子目录是 Oracle 各种产品目录。比如database，就是 <code>OracleDatabase</code>, OGG 就是 <code>OracleGoldenGate</code>。  </p>
 <h4 id="1-2-查看-dockerfile"><a href="#1-2-查看-dockerfile" class="headerlink" title="1.2. 查看 dockerfile"></a>1.2. 查看 dockerfile</h4><p>进入到本地 repo 目录 <code>OracleDatabase/SingleInstance/dockerfiles</code>，可以看到目前支持的数据库版本：<br><img src="/2022/08/22/%E5%8F%8D%E6%89%8B%E5%9B%9E%E6%91%B8%20Oracle/dockerfile_list.png" alt="dockerfile_list"><br>选择一个版本，比如 19.3.0，进入目录。</p>
 <h4 id="1-3-下载-Linux-Oracle-Database-程序包"><a href="#1-3-下载-Linux-Oracle-Database-程序包" class="headerlink" title="1.3. 下载 Linux Oracle Database 程序包"></a>1.3. 下载 Linux Oracle Database 程序包</h4><p>可以查找官网，也可以通过 readme 文件上的链接跳入下载页面。<br>点击链接，手动下载。<br><img src="/2022/08/22/%E5%8F%8D%E6%89%8B%E5%9B%9E%E6%91%B8%20Oracle/oracle_download_page.png" alt="download_page"><br>对，2.8G。  </p>
 <h4 id="1-4-将下载的database程序包移入OracleDatabase-SingleInstance-dockerfiles-19-3-0"><a href="#1-4-将下载的database程序包移入OracleDatabase-SingleInstance-dockerfiles-19-3-0" class="headerlink" title="1.4. 将下载的database程序包移入OracleDatabase/SingleInstance/dockerfiles/19.3.0/"></a>1.4. 将下载的database程序包移入<code>OracleDatabase/SingleInstance/dockerfiles/19.3.0/</code></h4><p><img src="/2022/08/22/%E5%8F%8D%E6%89%8B%E5%9B%9E%E6%91%B8%20Oracle/zip_into_directory.png" alt="zip into directory"></p>
@@ -327,7 +327,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;buildContainerImage.sh -h</span><br><span class="line">$ .&#x2F;buildContainerImage.sh -v 19.3.0 -s</span><br></pre></td></tr></table></figure>
 <p><em>注意</em> 运行命令build之前，确保本地没有开启任何网络代理，不然 build 时会失败。<br>build成功之后，通过<code>docker images</code>查看image，总大小6个多G，体量感人。。 </p>
 <p>另外，如果想要安装其他版本，比如18.4.0 和 xe 版本，相同的步骤和方式，但可能需要修改dockerfile的部分语句。<br>即使进行了dockerfile修改，xe 版本本人build并没有成功过，这个需要再次检验和查看。  </p>
-<h4 id="1-6-docker-run"><a href="#1-6-docker-run" class="headerlink" title="1.6 docker run"></a>1.6 docker run</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD&#x3D;123456 -v ~&#x2F;tmp-oradata:&#x2F;opt&#x2F;oracle&#x2F;oradata oracle&#x2F;database&#x2F;19.3.0-se2</span><br></pre></td></tr></table></figure>
+<h4 id="1-6-docker-run"><a href="#1-6-docker-run" class="headerlink" title="1.6. docker run"></a>1.6. docker run</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD&#x3D;123456 -v ~&#x2F;tmp-oradata:&#x2F;opt&#x2F;oracle&#x2F;oradata oracle&#x2F;database&#x2F;19.3.0-se2</span><br></pre></td></tr></table></figure>
 <p>这时候，通过docker host本地 11521 端口，就可以连接docker oracle了。  </p>
 <h3 id="2-Oracle-Database-基础概念和语句图谱"><a href="#2-Oracle-Database-基础概念和语句图谱" class="headerlink" title="2. Oracle Database 基础概念和语句图谱"></a>2. Oracle Database 基础概念和语句图谱</h3><blockquote class="pullquote mindmap mindmap-lg"><ul>
 <li>Oracle Database<ul>
@@ -499,7 +499,10 @@
     <a href="/2022/07/27/%E8%BD%A6%E8%81%94%E7%BD%91%E7%9F%A5%E8%AF%86%E6%A0%91/" rel="prev" title="车联网知识树">
       <i class="fa fa-chevron-left"></i> 车联网知识树
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/08/26/%E8%BD%A6%E4%BC%81%E6%95%B4%E8%BD%A6%E9%9B%B6%E5%94%AE%E7%BA%BF%E7%B4%A2%E6%A8%A1%E5%9E%8B/" rel="next" title="车企整车零售线索模型">
+      车企整车零售线索模型 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -566,7 +569,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MacOS-安装-Oracle"><span class="nav-text">1. MacOS 安装 Oracle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Oracle-官方dockerfile大合集"><span class="nav-text">1.1. Oracle 官方dockerfile大合集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-查看-dockerfile"><span class="nav-text">1.2. 查看 dockerfile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-下载-Linux-Oracle-Database-程序包"><span class="nav-text">1.3. 下载 Linux Oracle Database 程序包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-将下载的database程序包移入OracleDatabase-SingleInstance-dockerfiles-19-3-0"><span class="nav-text">1.4. 将下载的database程序包移入OracleDatabase&#x2F;SingleInstance&#x2F;dockerfiles&#x2F;19.3.0&#x2F;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-运行buildContainerImage"><span class="nav-text">1.5. 运行buildContainerImage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-docker-run"><span class="nav-text">1.6 docker run</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Oracle-Database-基础概念和语句图谱"><span class="nav-text">2. Oracle Database 基础概念和语句图谱</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MacOS-安装-Oracle"><span class="nav-text">1. MacOS 安装 Oracle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Oracle-官方dockerfile大合集"><span class="nav-text">1.1. Oracle 官方dockerfile大合集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-查看-dockerfile"><span class="nav-text">1.2. 查看 dockerfile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-下载-Linux-Oracle-Database-程序包"><span class="nav-text">1.3. 下载 Linux Oracle Database 程序包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-将下载的database程序包移入OracleDatabase-SingleInstance-dockerfiles-19-3-0"><span class="nav-text">1.4. 将下载的database程序包移入OracleDatabase&#x2F;SingleInstance&#x2F;dockerfiles&#x2F;19.3.0&#x2F;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-运行buildContainerImage"><span class="nav-text">1.5. 运行buildContainerImage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-docker-run"><span class="nav-text">1.6. docker run</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Oracle-Database-基础概念和语句图谱"><span class="nav-text">2. Oracle Database 基础概念和语句图谱</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -582,7 +585,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -642,13 +645,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">49k</span>
+    <span title="站点总字数">50k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">44 分钟</span>
+    <span title="站点阅读时长">45 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
