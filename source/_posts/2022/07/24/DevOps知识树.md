@@ -11,7 +11,7 @@ notshow: true
 DevOps知识树。
 <!-- more -->
 
-{% pullquote mindmap mindmap-lg %}
+{% markmap 400px %}
 - DevOps
     - 敏捷
         - 敏捷宣言
@@ -35,4 +35,4 @@ DevOps知识树。
                 - 能在特定时间内
                 - 满足用户需求的特定产品
     - DevOps
-{% endpullquote %}
+{% endmarkmap %}
