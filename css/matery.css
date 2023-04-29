@@ -1,3 +1,52 @@
+.theme-default {
+    --main-color: #0f9d58;
+    --secondary-color: #4cbf30;
+    --text-color: var(--text-color);
+    --text-bg-color: var(--text-color)1a;
+}
+
+.theme-red {
+    --main-color: #bd0e2b;
+    --secondary-color: #d0273e;
+    --text-color: #d55f6f;
+    --text-bg-color: #d55f6f1a;
+}
+
+.theme-green {
+    --main-color: #3d6658;
+    --secondary-color: #507564;
+    --text-color: #a9d5c2;
+    --text-bg-color: #a9d5c21a;
+}
+
+.theme-brown {
+    --main-color: #8e4b43;
+    --secondary-color: #92513d;
+    --text-color: #dba97f;
+    --text-bg-color: #dba97f1a;
+}
+
+.theme-blue {
+    --main-color: #355389;
+    --secondary-color: #3f689e;
+    --text-color: #94d3f2;
+    --text-bg-color: #94d3f21a;
+}
+
+.theme-purple {
+    --main-color: #2c1c4b;
+    --secondary-color: #584572;
+    --text-color: #d4c0cb;
+    --text-bg-color: #d4c0cb1a;
+}
+
+.theme-cyan-blue {
+    --main-color: #4c564b;
+    --secondary-color: #3d573e;
+    --text-color: #b1d097;
+    --text-bg-color: #b1d0971a;
+}
+
 /*全局基础样式*/
 /*小屏幕下(手机类)的样式*/
 @media only screen and (max-width: 601px) {
@@ -94,10 +143,10 @@ hr {
 }
 
 blockquote {
-    border-left: 5px solid #42b983;
+    border-left: 5px solid var(--text-color);
     padding: 1rem 0.8rem 0.2rem 0.8rem;
     color: #666;
-    background-color: rgba(66, 185, 131, .1);
+    background-color: var(--text-bg-color);
 }
 
 pre {
@@ -241,11 +290,11 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #8241B8 0%, #6C33A3 100%);
+    background-image: linear-gradient(to right, var(--secondary-color) 0%, var(--main-color) 100%);
 }
 
 .text-color {
-    color: #6C33A3 !important;
+    color: var(--main-color) !important;
 }
 
 .white-color {
@@ -257,7 +306,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #8241B8 0%, #6C33A3 100%);
+    background: linear-gradient(to right, var(--secondary-color) 0%, var(--main-color) 100%);
     opacity: 0.8;
 }
 
@@ -282,7 +331,8 @@ nav {
 header .nav-transparent {
     background-color: transparent !important;
     background-image: none;
-    box-shadow: none;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 7px 10px 0 rgba(0,0,0,.12);
+    opacity: .8;
 }
 
 header nav .brand-span {
@@ -595,7 +645,7 @@ header .go-back i {
 
 @-webkit-keyframes rainbow {
 
-    0%,
+    /* 0%,
     100% {
         background: rgba(156, 39, 176, 0.75);
         background: linear-gradient(45deg, rgba(156, 39, 176, 0.75) 0%, rgba(156, 39, 176, 0.65) 100%);
@@ -636,12 +686,12 @@ header .go-back i {
         background: linear-gradient(45deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -moz-linear-gradient(135deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
-    }
+    } */
 }
 
 @keyframes rainbow {
 
-    0%,
+    /* 0%,
     100% {
         background: rgba(156, 39, 176, 0.75);
         background: linear-gradient(45deg, rgba(156, 39, 176, 0.75) 0%, rgba(156, 39, 176, 0.65) 100%);
@@ -682,7 +732,7 @@ header .go-back i {
         background: linear-gradient(45deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -moz-linear-gradient(135deg, rgba(233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
         background: -webkit-linear-gradient(135deg, rgba(2233, 30, 99, 0.75) 0%, rgba(233, 30, 99, 0.65) 100%);
-    }
+    } */
 }
 
 .index-card {
@@ -875,7 +925,7 @@ article a {
 
 article a:hover {
     font-weight: bold;
-    color: #42b983;
+    color: var(--text-color);
     text-decoration: underline;
 }
 
@@ -1058,7 +1108,7 @@ article .article-tags .chip {
     border-radius: 15px;
     margin-right: 5px;
     margin-bottom: 2px;
-    color: #42b983;
+    color: var(--text-color);
     background: #fff;
     border: 1px solid;
     transition: all 0.6s ease-in-out;
@@ -1066,17 +1116,17 @@ article .article-tags .chip {
 
 #artDetail .tag_share .article-tag .chip:hover {
     color: #fff;
-    background: #42b983;
+    background: var(--text-color);
 }
 
 #artDetail .post-cate {
     float: right;
-    color: #42b983;
+    color: var(--text-color);
 }
 
 #artDetail .post-cate a {
     padding-right: 5px;
-    color: #42b983;
+    color: var(--text-color);
     font-weight: 500;
 }
 
@@ -1095,7 +1145,7 @@ article .article-tags .chip {
 
 #artDetail .post-info .post-category:hover {
     font-weight: bold;
-    color: #42b983;
+    color: var(--text-color);
     text-decoration: underline;
 }
 
@@ -1158,7 +1208,7 @@ article .article-tags .chip {
 
 #artDetail .reprint a {
     font-size: 1.05rem;
-    color: #42b983;
+    color: var(--text-color);
     font-weight: 500;
 }
 
@@ -1174,7 +1224,7 @@ article .article-tags .chip {
 
 #articleContent a {
     padding: 0 2px;
-    color: #42b983;
+    color: var(--text-color);
     font-weight: 500;
     text-decoration: underline;
     word-wrap: break-word;
@@ -1317,7 +1367,7 @@ thead {
 
 .chip-container .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #8241B8 0%, #6C33A3 100%) !important;
+    background: linear-gradient(to right, var(--secondary-color) 0%, var(--main-color) 100%) !important;
 }
 
 .chip .tag-length {
@@ -1393,7 +1443,7 @@ thead {
     left: 18px;
     height: 100%;
     width: 4px;
-    background: #6C33A3;
+    background: var(--main-color);
 }
 
 @media only screen and (min-width: 900px) {
@@ -1608,7 +1658,7 @@ thead {
 }
 
 .post-statis .statis .count a {
-    color: #42b983;
+    color: var(--text-color);
 }
 
 .post-statis .statis .name {
@@ -1629,8 +1679,8 @@ thead {
     margin: 0 0.5rem;
     padding: 0;
     color: #fff;
-    border: 1px solid #6C33A3;
-    background: radial-gradient(#8241B8, #6C33A3);
+    border: 1px solid var(--main-color);
+    background: radial-gradient(var(--secondary-color), var(--main-color));
     font-size: 0.9rem;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .21), 0 2px 3px rgba(0, 0, 0, .1);
@@ -1806,8 +1856,8 @@ thead {
 
 .other-skills .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #8241B8 0%, #6C33A3 100%);
-    border: 1px solid #8241B8;
+    background: linear-gradient(to right, var(--secondary-color) 0%, var(--main-color) 100%);
+    border: 1px solid var(--secondary-color);
     box-shadow: 0 5px 5px rgba(0, 0, 0, .25)
 }
 
@@ -1878,7 +1928,7 @@ p.search-result-summary{
 
 .search-result-list .search-result-title {
     font-size: 1.4rem;
-    color: #42b983;
+    color: var(--text-color);
 }
 
 .search-result-list li {

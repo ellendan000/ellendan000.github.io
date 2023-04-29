@@ -54,56 +54,6 @@
     
     
     <entry>
-      <title>车联网知识树</title>
-      <link href="/2022/07/27/%E8%BD%A6%E8%81%94%E7%BD%91%E7%9F%A5%E8%AF%86%E6%A0%91/"/>
-      <url>/2022/07/27/%E8%BD%A6%E8%81%94%E7%BD%91%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
-      
-        <content type="html"><![CDATA[<p>雷达知识树。</p><span id="more"></span><blockquote class="pullquote mindmap mindmap-lg"><ul><li>车联网</li></ul></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> 知识树 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 车联网 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>DDD知识树</title>
-      <link href="/2022/07/23/DDD%E7%9F%A5%E8%AF%86%E6%A0%91/"/>
-      <url>/2022/07/23/DDD%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
-      
-        <content type="html"><![CDATA[<p>DDD知识树。</p><span id="more"></span><blockquote class="pullquote mindmap mindmap-lg"><ul><li>Domain Driven Design<ul><li>战略设计</li><li>战术设计</li></ul></li></ul></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> 知识树 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> DDD </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>DevOps知识树</title>
       <link href="/2022/07/23/DevOps%E7%9F%A5%E8%AF%86%E6%A0%91/"/>
       <url>/2022/07/23/DevOps%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
@@ -113,7 +63,7 @@
       
       <categories>
           
-          <category> 知识树 </category>
+          <category> 敏捷精益软件 </category>
           
       </categories>
       
@@ -121,31 +71,6 @@
         <tags>
             
             <tag> DevOps </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>雷达知识树</title>
-      <link href="/2022/07/23/%E9%9B%B7%E8%BE%BE%E7%9F%A5%E8%AF%86%E6%A0%91/"/>
-      <url>/2022/07/23/%E9%9B%B7%E8%BE%BE%E7%9F%A5%E8%AF%86%E6%A0%91/</url>
-      
-        <content type="html"><![CDATA[<p>雷达知识树。</p><span id="more"></span><blockquote class="pullquote mindmap mindmap-lg"><ul><li>雷达<ul><li>语言和框架<ul><li>Java<ul><li>framework<ul><li>Spring Boot</li><li>Spring Cloud</li></ul></li></ul></li><li>Kotlin</li><li>Python<ul><li>data<ul><li>Pandas</li><li>Sklearn</li></ul></li></ul></li></ul></li><li>工具<ul><li>MQ</li></ul></li><li>平台<ul><li>AWS</li><li>Azure</li><li>Gitlab</li><li>Ali</li><li>TT</li></ul></li><li>技术<ul><li>AOP</li></ul></li></ul></li></ul></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> 知识树 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 雷达 </tag>
             
         </tags>
       
