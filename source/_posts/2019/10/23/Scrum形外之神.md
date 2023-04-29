@@ -1,8 +1,10 @@
 ---
 title: Scrum形外之神
 date: 2019-10-23 11:39:00  
-tags: [敏捷]   
-categories: [敏捷]  
+tags: 
+    - 敏捷
+categories: 
+    - 敏捷
 ---
 
 

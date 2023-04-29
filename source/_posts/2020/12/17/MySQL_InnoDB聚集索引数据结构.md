@@ -1,8 +1,11 @@
 ---
 title: MySQL InnoDB 聚集索引数据结构
 date: 2020-12-27 22:00:20  
-tags: [数据库, MySQL]  
-categories: [MySQL]  
+tags: 
+  - 数据库
+  - MySQL
+categories: 
+  - MySQL
 ---
 
 > 关系型数据库系统的世界是非常复杂的 —— 如果我们思考一下我们需要做哪些事情才能满足SQL语句的查询需求，就能意识到这种复杂是必然的。但具有讽刺意味的是，书写SQL是如此简单，表、行与列的概念也非常容易理解。

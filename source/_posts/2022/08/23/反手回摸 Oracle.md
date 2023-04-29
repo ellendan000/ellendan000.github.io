@@ -1,8 +1,10 @@
 ---
 title: 反手回摸Oracle   
 date: 2022-08-23 02:31:00  
-tags: [数据库]   
-categories: [数据库]  
+tags: 
+    - 数据库
+categories: 
+    - 数据库
 ---
 
 最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。  

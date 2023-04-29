@@ -1,8 +1,10 @@
 ---
 title: 数据库的ACID和分布式事务  
 date: 2022-05-10 20:00:00  
-tags: [数据库]   
-categories: [数据库]  
+tags: 
+	- 数据库
+categories: 
+	- 数据库
 ---
 
 前面写了一篇关于`CAP原理`的博文，说到`一致性 Consistency`，有人往往会想到事务`ACID`特性中的`C: Consistency`，虽然都叫一致性，但完全是两个东西。  

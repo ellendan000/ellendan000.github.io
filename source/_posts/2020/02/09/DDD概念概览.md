@@ -1,8 +1,10 @@
 ---
 title: DDD概念概览
 date: 2020-02-09 14:50:44
-tags: [DDD]
-categories: [DDD]
+tags: 
+    - DDD
+categories: 
+    - DDD
 ---
 软件的核心，是为其用户解决领域相关问题的能力。
 
