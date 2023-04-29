@@ -152,3 +152,6 @@ needmoreshare:
       boxForm: vertical
       position: bottomLeft
       networks: Wechat
+
+hexo_markmap:
+  pjax: true
