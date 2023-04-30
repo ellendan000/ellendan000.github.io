@@ -119,22 +119,22 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/about" class="waves-effect waves-light">
+    <a href="/graph" class="waves-effect waves-light">
       
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      <i class="fa fa-graduation-cap" style="zoom: 0.6;"></i>
       
-      <span>关于</span>
+      <span>知识图谱</span>
     </a>
     
   </li>
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/contact" class="waves-effect waves-light">
+    <a href="/about" class="waves-effect waves-light">
       
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
-      <span>留言板</span>
+      <span>关于</span>
     </a>
     
   </li>
@@ -214,22 +214,22 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/about" class="waves-effect waves-light">
+		<a href="/graph" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-user-circle"></i>
+			    <i class="fa-fw fa fa-graduation-cap"></i>
 			
-			关于
+			知识图谱
 		</a>
           
         </li>
         
         <li class="m-nav-item">
 	  
-		<a href="/contact" class="waves-effect waves-light">
+		<a href="/about" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-comments"></i>
+			    <i class="fa-fw fas fa-user-circle"></i>
 			
-			留言板
+			关于
 		</a>
           
         </li>
@@ -356,7 +356,7 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">20</a></span>
+    <span class="count"><a href="/">18</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -370,7 +370,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">14</a></span>
+    <span class="count"><a href="/tags">13</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -386,7 +386,7 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">20</a></span>
+    <span class="count"><a href="/">18</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -400,7 +400,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">14</a></span>
+    <span class="count"><a href="/tags">13</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -475,7 +475,7 @@
                     </div>
                 </div>
 
-                <div class="introduction center-align" data-aos="fade-up">If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as your brother and hope as your sentry.</div>
+                <div class="introduction center-align" data-aos="fade-up">吾生也有涯，而知也无涯。以有涯随无涯，殆已。</div>
 
                 <style type="text/css">
     #posts-chart,
@@ -536,7 +536,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [1,2,0,3,2,0,0,0,0,0,0,0,0],
+                data: [1,2,0,2,1,0,0,0,0,0,0,0,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -578,7 +578,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"DDD","value":3},{"name":"随笔","value":2},{"name":"敏捷","value":3},{"name":"咨询","value":1},{"name":"敏捷精益软件","value":5},{"name":"微服务治理","value":2},{"name":"数据库","value":3},{"name":"分布式架构","value":1}],
+                data: [{"name":"敏捷精益软件","value":4},{"name":"DDD","value":2},{"name":"随笔","value":2},{"name":"敏捷","value":3},{"name":"咨询","value":1},{"name":"微服务治理","value":2},{"name":"数据库","value":3},{"name":"分布式架构","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -602,7 +602,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["DDD","敏捷测试","精益","数据库","敏捷","微服务治理","咨询","价值交付","gradle","研发效能"]
+                data: ["敏捷测试","精益","数据库","DDD","敏捷","微服务治理","咨询","价值交付","gradle","研发效能"]
             }
         ],
         yAxis: [
@@ -615,7 +615,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [3,3,3,3,2,2,1,1,1,1],
+                data: [3,3,3,2,2,2,1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -676,7 +676,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">34.4k</span>
+                        class="white-color">33.5k</span>
             
             
             
@@ -954,6 +954,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-</body>
+<script src="/js/markmap.js"></script></body>
 
 </html>

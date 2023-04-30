@@ -5,9 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="在gradle管理可共享的依赖版本管理, ellendan">
-    <meta name="description" content="“可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。
-对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。
-没用过 Maven 的小伙伴们也不用被劝退，想想在使用Spring plugin i">
+    <meta name="description" content="“可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。没用过 Maven 的小伙伴们也不用被劝退，想想在使用Spring plugin io.">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -121,22 +119,22 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/about" class="waves-effect waves-light">
+    <a href="/graph" class="waves-effect waves-light">
       
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      <i class="fa fa-graduation-cap" style="zoom: 0.6;"></i>
       
-      <span>关于</span>
+      <span>知识图谱</span>
     </a>
     
   </li>
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/contact" class="waves-effect waves-light">
+    <a href="/about" class="waves-effect waves-light">
       
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
-      <span>留言板</span>
+      <span>关于</span>
     </a>
     
   </li>
@@ -216,22 +214,22 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/about" class="waves-effect waves-light">
+		<a href="/graph" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-user-circle"></i>
+			    <i class="fa-fw fa fa-graduation-cap"></i>
 			
-			关于
+			知识图谱
 		</a>
           
         </li>
         
         <li class="m-nav-item">
 	  
-		<a href="/contact" class="waves-effect waves-light">
+		<a href="/about" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-comments"></i>
+			    <i class="fa-fw fas fa-user-circle"></i>
 			
-			留言板
+			关于
 		</a>
           
         </li>
@@ -315,7 +313,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -404,68 +402,109 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>“可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。<br>
-对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。<br>
-没用过 Maven 的小伙伴们也不用被劝退，想想在使用Spring plugin <code>io.spring.dependency-management</code>时，<br>
-<code>imports.mavenBom</code>到底在做什么，有没有想要了解一下？</p>
+                <p>“可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。<br>对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。<br>没用过 Maven 的小伙伴们也不用被劝退，想想在使用Spring plugin <code>io.spring.dependency-management</code>时，<br><code>imports.mavenBom</code>到底在做什么，有没有想要了解一下？</p>
 <span id="more"></span>
-<h3 id="1-BOM是什么？">1. BOM是什么？</h3>
-<p>在说 BOM 之前，先了解一下 Maven 的一些基本概念。<br>
-Maven <strong>POM</strong>，全名 <code>Project Object Model</code>, 是 Maven 使用中的重要配置文件，xml格式，主要用来导入依赖和进行项目构建。<br>
-Maven <strong>BOM</strong>，全名 <code>Bill Of Materials</code>, 是一种特殊的 POM，主要用来集中管理项目依赖的版本，更加灵活地维护所有依赖的版本信息。<br>
-配置好的 BOM，可以放在单个项目中自用，也可以传阅和分享给其他项目进行公用。</p>
-<p>讲的直观一点，效果就是（见下图）：<br>
-<img src="/2020/06/05/zai-gradle-guan-li-ke-gong-xiang-de-yi-lai-ban-ben/Spring-dependencies-management.png" alt="Spring-dependencies-management"><br>
-dependencies中依赖的那些库为何可以不用标明版本？<br>
-正是因为使用了<em>dependency-management</em> 插件，当 gradle plugin <em>org.springframework.boot</em> 检测到此插件启用时，会自动导入Spring boot dependencies BOM，这样依赖库们会主动使用 BOM 中推荐的版本。<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies">链接</a></p>
+
+<h3 id="1-BOM是什么？"><a href="#1-BOM是什么？" class="headerlink" title="1. BOM是什么？"></a>1. BOM是什么？</h3><p>在说 BOM 之前，先了解一下 Maven 的一些基本概念。<br>Maven __POM__，全名 <code>Project Object Model</code>, 是 Maven 使用中的重要配置文件，xml格式，主要用来导入依赖和进行项目构建。<br>Maven __BOM__，全名 <code>Bill Of Materials</code>, 是一种特殊的 POM，主要用来集中管理项目依赖的版本，更加灵活地维护所有依赖的版本信息。<br>配置好的 BOM，可以放在单个项目中自用，也可以传阅和分享给其他项目进行公用。</p>
+<p>讲的直观一点，效果就是（见下图）：<br><img src="/2020/06/05/zai-gradle-guan-li-ke-gong-xiang-de-yi-lai-ban-ben/Spring-dependencies-management.png" alt="Spring-dependencies-management"><br>dependencies中依赖的那些库为何可以不用标明版本？<br>正是因为使用了<em>dependency-management</em> 插件，当 gradle plugin <em>org.springframework.boot</em> 检测到此插件启用时，会自动导入Spring boot dependencies BOM，这样依赖库们会主动使用 BOM 中推荐的版本。<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies">链接</a></p>
 <p>下面是Spring Cloud BOM的一部分展示(完整见<a target="_blank" rel="noopener" href="https://github.com/spring-cloud/spring-cloud-release/blob/vHoxton.SR5/spring-cloud-dependencies/pom.xml">链接</a>)：</p>
 <p><img src="/2020/06/05/zai-gradle-guan-li-ke-gong-xiang-de-yi-lai-ban-ben/Spring-cloud-dependencies.png" alt="Spring-cloud-dependencies"></p>
-<p>看到这里，是不是觉得有 BOM 的情况下便捷不少，再也不用一条条dependency分别查阅、选择和维护版本了？<br>
-日常开发中，我们已经见识过了Spring boot / Spring Cloud /junit 这些常用 BOMs。</p>
-<p>当有了已经被验证过的依赖版本管理，setup projects时候直接拿来复用，是不是感觉省事不少？<br>
-同时 BOM 不可避免地还支持版本升级。<br>
-下面我们就来看看如何在 gradle 中定义我们自己的 BOM。</p>
-<h3 id="2-gradle-Java-platform-plugin">2. gradle Java platform plugin</h3>
-<p><code>gradle Java platform plugin</code>是 gradle 对定义、发布 BOM 提供的一款实用插件。<br>
-引入它，我们就可以开始动手工作了。<a target="_blank" rel="noopener" href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header">官方链接</a></p>
+<p>看到这里，是不是觉得有 BOM 的情况下便捷不少，再也不用一条条dependency分别查阅、选择和维护版本了？<br>日常开发中，我们已经见识过了Spring boot / Spring Cloud /junit 这些常用 BOMs。</p>
+<p>当有了已经被验证过的依赖版本管理，setup projects时候直接拿来复用，是不是感觉省事不少？<br>同时 BOM 不可避免地还支持版本升级。<br>下面我们就来看看如何在 gradle 中定义我们自己的 BOM。</p>
+<h3 id="2-gradle-Java-platform-plugin"><a href="#2-gradle-Java-platform-plugin" class="headerlink" title="2. gradle Java platform plugin"></a>2. gradle Java platform plugin</h3><p><code>gradle Java platform plugin</code>是 gradle 对定义、发布 BOM 提供的一款实用插件。<br>引入它，我们就可以开始动手工作了。<a target="_blank" rel="noopener" href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header">官方链接</a></p>
 <p><em><code>build.gradle</code></em></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">plugins {</span><br><span class="line">    id 'maven-publish'</span><br><span class="line">    id 'java-platform'</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">version '0.1.1-SNAPSHOT'</span><br><span class="line"></span><br><span class="line">javaPlatform {</span><br><span class="line">    allowDependencies()</span><br><span class="line">}</span><br><span class="line">dependencies {</span><br><span class="line">    api platform('org.springframework.boot:spring-boot-dependencies:2.2.6.RELEASE')</span><br><span class="line">    api platform('org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR3')</span><br><span class="line">    api platform('org.springframework.cloud:spring-cloud-contract-dependencies:2.2.3.RELEASE')</span><br><span class="line">    api platform('org.junit:junit-bom:5.3.2')</span><br><span class="line">    constraints {</span><br><span class="line">        api 'com.google.guava:guava:27.0.1-jre'</span><br><span class="line"></span><br><span class="line">        api 'ch.vorburger.mariaDB4j:mariaDB4j-springboot:2.4.0'</span><br><span class="line">        api 'org.mariadb.jdbc:mariadb-java-client:2.2.5'</span><br><span class="line"></span><br><span class="line">        api 'org.mockito:mockito-core:2.22.0'</span><br><span class="line">        api 'org.mockito:mockito-junit-jupiter:2.22.0'</span><br><span class="line">        api 'org.assertj:assertj-core:3.11.1'</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">publishing {</span><br><span class="line">    repositories {</span><br><span class="line">        maven {</span><br><span class="line">            credentials {</span><br><span class="line">                username = 'jfrog'</span><br><span class="line">                password = 'jfrog123456'</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            def releasesRepoUrl = 'http://localhost:8082/artifactory/libs-release/'</span><br><span class="line">            def snapshotsRepoUrl = 'http://localhost:8082/artifactory/libs-snapshot/'</span><br><span class="line">            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    publications {</span><br><span class="line">        myPlatform(MavenPublication) {</span><br><span class="line">            from components.javaPlatform</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<p>当然, 作为一个服务级的 BOM，自然无需从零开始逐条定义，可以直接先 import 框架级的 BOMs，如上例中的Spring boot / Spring cloud / Spring cloud contract / Junit。<br>
-但由于需要使用第三方platform bom, 则不得不打开配置约束 ——<code>javaPlatform.allowDependencies</code>。具体使用请见<a target="_blank" rel="noopener" href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#sec:java_platform_bom_import">官方链接</a></p>
-<p>这里，通过gradle生成的 BOM 会发布到一个我本地自己搭建的JFrog artifactory OSS中。<br>
-(为什么不在云上搭一个？啊哈哈，因为JFrog artifactory OSS最低预配是4核4G内存，自己掏钱就手短了。。)<br>
-当然,也可以生成本地的 POM 文件，手动复制传阅，但这样就不容易进行后续的版本管理和保持更新了。</p>
+<pre class="line-numbers language-none"><code class="language-none">plugins {
+    id 'maven-publish'
+    id 'java-platform'
+}
+
+version '0.1.1-SNAPSHOT'
+
+javaPlatform {
+    allowDependencies()
+}
+dependencies {
+    api platform('org.springframework.boot:spring-boot-dependencies:2.2.6.RELEASE')
+    api platform('org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR3')
+    api platform('org.springframework.cloud:spring-cloud-contract-dependencies:2.2.3.RELEASE')
+    api platform('org.junit:junit-bom:5.3.2')
+    constraints {
+        api 'com.google.guava:guava:27.0.1-jre'
+
+        api 'ch.vorburger.mariaDB4j:mariaDB4j-springboot:2.4.0'
+        api 'org.mariadb.jdbc:mariadb-java-client:2.2.5'
+
+        api 'org.mockito:mockito-core:2.22.0'
+        api 'org.mockito:mockito-junit-jupiter:2.22.0'
+        api 'org.assertj:assertj-core:3.11.1'
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            credentials {
+                username = 'jfrog'
+                password = 'jfrog123456'
+            }
+
+            def releasesRepoUrl = 'http://localhost:8082/artifactory/libs-release/'
+            def snapshotsRepoUrl = 'http://localhost:8082/artifactory/libs-snapshot/'
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        }
+    }
+
+    publications {
+        myPlatform(MavenPublication) {
+            from components.javaPlatform
+        }
+    }
+}
+
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>当然, 作为一个服务级的 BOM，自然无需从零开始逐条定义，可以直接先 import 框架级的 BOMs，如上例中的Spring boot / Spring cloud / Spring cloud contract / Junit。<br>但由于需要使用第三方platform bom, 则不得不打开配置约束 ——<code>javaPlatform.allowDependencies</code>。具体使用请见<a target="_blank" rel="noopener" href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#sec:java_platform_bom_import">官方链接</a></p>
+<p>这里，通过gradle生成的 BOM 会发布到一个我本地自己搭建的JFrog artifactory OSS中。<br>(为什么不在云上搭一个？啊哈哈，因为JFrog artifactory OSS最低预配是4核4G内存，自己掏钱就手短了。。)<br>当然,也可以生成本地的 POM 文件，手动复制传阅，但这样就不容易进行后续的版本管理和保持更新了。</p>
 <p>maven publish 成功后，我们就可以来使用 BOM 导入依赖版本了。</p>
-<h3 id="3-gradle-platform">3. gradle platform</h3>
-<p>导入方式也非常简单，直接使用platform组件即可。<a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/platforms.html">官方链接</a></p>
+<h3 id="3-gradle-platform"><a href="#3-gradle-platform" class="headerlink" title="3. gradle platform"></a>3. gradle platform</h3><p>导入方式也非常简单，直接使用platform组件即可。<a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/platforms.html">官方链接</a></p>
 <p>创建一个example项目试一下, 编写<code>build.gradle</code>文件。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">repositories {</span><br><span class="line">    maven {</span><br><span class="line">        credentials {</span><br><span class="line">            username = "jfrog"</span><br><span class="line">            password = "jfrog123456"</span><br><span class="line">        }</span><br><span class="line">        url "http://localhost:8082/artifactory/libs-snapshot/"</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">dependencies {</span><br><span class="line">    implementation platform('com.ellendan.service.template:dependencies-bom:0.1.1-SNAPSHOT')</span><br><span class="line"></span><br><span class="line">    implementation 'org.springframework.boot:spring-boot-starter-web'</span><br><span class="line">    implementation 'org.springframework.boot:spring-boot-starter-security'</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<p>对，就是使用platform()引入即可。</p>
-<p>也许有人会问：大家用 spring-dependency-management 习惯了，这个 BOM 是否支持 spring-dependency-management 的 <code>imports.mavenBom</code>。<br>
-理论上是支持的。<br>
-但本人在写代码的时候，发现自定义 BOM 中spring boot dependencies BOM 无法被成功引入，而其他 BOMs 都没有此问题、可以成功导入。<br>
-因此，我这里并不推荐通过spring-dependency-management的<code>imports.mavenBom</code>来导入。</p>
-<h3 id="4-为什么要做“可共享的依赖版本管理”">4. 为什么要做“可共享的依赖版本管理”</h3>
-<p>这还要从本人最近的一个任务说起。<br>
-任务本身是做 —— “启动模板”。<br>
-但“启动模板”，这四个字，怎么看都觉得非常的静态。<br>
-结合Rebecca《演进式架构》中“服务模板”的概念（虽然“模板”这命名还是怎么看怎么静态）。在构建服务的过程中，为了防止有害的重复，如果技术上的适当耦合避免不了，那就尽量让其黑盒复用。</p>
+<pre class="line-numbers language-none"><code class="language-none">repositories {
+    maven {
+        credentials {
+            username = "jfrog"
+            password = "jfrog123456"
+        }
+        url "http://localhost:8082/artifactory/libs-snapshot/"
+    }
+}
+
+dependencies {
+    implementation platform('com.ellendan.service.template:dependencies-bom:0.1.1-SNAPSHOT')
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>对，就是使用platform()引入即可。  </p>
+<p>也许有人会问：大家用 spring-dependency-management 习惯了，这个 BOM 是否支持 spring-dependency-management 的 <code>imports.mavenBom</code>。<br>理论上是支持的。<br>但本人在写代码的时候，发现自定义 BOM 中spring boot dependencies BOM 无法被成功引入，而其他 BOMs 都没有此问题、可以成功导入。<br>因此，我这里并不推荐通过spring-dependency-management的<code>imports.mavenBom</code>来导入。</p>
+<h3 id="4-为什么要做“可共享的依赖版本管理”"><a href="#4-为什么要做“可共享的依赖版本管理”" class="headerlink" title="4. 为什么要做“可共享的依赖版本管理”"></a>4. 为什么要做“可共享的依赖版本管理”</h3><p>这还要从本人最近的一个任务说起。<br>任务本身是做 —— “启动模板”。<br>但“启动模板”，这四个字，怎么看都觉得非常的静态。<br>结合Rebecca《演进式架构》中“服务模板”的概念（虽然“模板”这命名还是怎么看怎么静态）。在构建服务的过程中，为了防止有害的重复，如果技术上的适当耦合避免不了，那就尽量让其黑盒复用。  </p>
 <blockquote>
-<p>通过在服务模板中定义适当的技术架构耦合点，并让基础设施团队管理这些耦合，就能使各个服务团队免于这些苦恼。</p>
+<p>通过在服务模板中定义适当的技术架构耦合点，并让基础设施团队管理这些耦合，就能使各个服务团队免于这些苦恼。  </p>
 </blockquote>
-<p>所以，这里决定尝试做一个“服务模板”。<br>
-依赖版本管理只是其中的一个小的部分, 并且使用 gradle 来实现也非常简单。<br>
-具体代码地址：<a target="_blank" rel="noopener" href="https://github.com/ellendan000/service_template">https://github.com/ellendan000/service_template</a></p>
-<h3 id="PS-废话篇">PS. 废话篇</h3>
-<p>眼看2020就要过半，由于2020开局乱来，受种种因素影响，计划一团混乱变更。<br>
-一鼓作气，再而衰，三而竭，各种计划目标债。期望2020后半段能走好吧~</p>
-<h3 id="参考资料">参考资料</h3>
-<ol>
+<p>所以，这里决定尝试做一个“服务模板”。<br>依赖版本管理只是其中的一个小的部分, 并且使用 gradle 来实现也非常简单。<br>具体代码地址：<a target="_blank" rel="noopener" href="https://github.com/ellendan000/service_template">https://github.com/ellendan000/service_template</a></p>
+<h3 id="PS-废话篇"><a href="#PS-废话篇" class="headerlink" title="PS. 废话篇"></a>PS. 废话篇</h3><p>眼看2020就要过半，由于2020开局乱来，受种种因素影响，计划一团混乱变更。<br>一鼓作气，再而衰，三而竭，各种计划目标债。期望2020后半段能走好吧~</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ol>
 <li><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies">https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#managing-dependencies</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header">https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/platforms.html">https://docs.gradle.org/current/userguide/platforms.html</a></li>
@@ -862,7 +901,7 @@ dependencies中依赖的那些库为何可以不用标明版本？<br>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="研发效能之层级测试">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="研发效能之层级测试">
                         
                         <span class="card-title">研发效能之层级测试</span>
                     </div>
@@ -918,7 +957,7 @@ dependencies中依赖的那些库为何可以不用标明版本？<br>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="DDD概念概览">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="DDD概念概览">
                         
                         <span class="card-title">DDD概念概览</span>
                     </div>
@@ -927,9 +966,7 @@ dependencies中依赖的那些库为何可以不用标明版本？<br>
                     <div class="summary block-with-text">
                         
                             软件的核心，是为其用户解决领域相关问题的能力。
-1. 何为DDD
-DDD是Domain Driven Design的简称。领域驱动设计，“领域”指业务领域，“设计”指软件设计。
-DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思
+1. 何为DDDDDD是Domain Driven Design的简称。领域驱动设计，“领域”指业务领域，“设计”指软件设计。DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思维方
                         
                     </div>
                     <div class="publish-info">
@@ -1007,6 +1044,9 @@ DDD可以看成一种开发思想体系，促成了一种新的以领域为中�
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -1130,7 +1170,7 @@ DDD可以看成一种开发思想体系，促成了一种新的以领域为中�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">34.4k</span>
+                        class="white-color">33.5k</span>
             
             
             
@@ -1408,6 +1448,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-</body>
+<script src="/js/markmap.js"></script></body>
 
 </html>

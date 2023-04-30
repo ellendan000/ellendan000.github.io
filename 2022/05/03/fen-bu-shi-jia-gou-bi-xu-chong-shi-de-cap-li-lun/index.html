@@ -5,8 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="分布式架构必须重视的CAP理论, ellendan">
-    <meta name="description" content="CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。
-来，再展开说说？这时候，多数人的">
+    <meta name="description" content="CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。来，再展开说说？这时候，多数人的回">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -120,22 +119,22 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/about" class="waves-effect waves-light">
+    <a href="/graph" class="waves-effect waves-light">
       
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      <i class="fa fa-graduation-cap" style="zoom: 0.6;"></i>
       
-      <span>关于</span>
+      <span>知识图谱</span>
     </a>
     
   </li>
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/contact" class="waves-effect waves-light">
+    <a href="/about" class="waves-effect waves-light">
       
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
-      <span>留言板</span>
+      <span>关于</span>
     </a>
     
   </li>
@@ -215,22 +214,22 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/about" class="waves-effect waves-light">
+		<a href="/graph" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-user-circle"></i>
+			    <i class="fa-fw fa fa-graduation-cap"></i>
 			
-			关于
+			知识图谱
 		</a>
           
         </li>
         
         <li class="m-nav-item">
 	  
-		<a href="/contact" class="waves-effect waves-light">
+		<a href="/about" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-comments"></i>
+			    <i class="fa-fw fas fa-user-circle"></i>
 			
-			留言板
+			关于
 		</a>
           
         </li>
@@ -314,7 +313,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -399,88 +398,54 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。<br>
-来，再展开说说？这时候，多数人的回答就会是是而非，模棱两可。<br>
-也许不少应用级开发工程师觉得 —— 我又不自研集群数据库，也不开发云平台，没必要那么了解 CAP 理论。<br>
-那么，你开发的应用系统，是否使用了分布式架构呢？如果是，CAP 理论可以说是指导构建系统的技术理论基石之一，必须要重视起来。</p>
+                <p>CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。<br>来，再展开说说？这时候，多数人的回答就会是是而非，模棱两可。<br>也许不少应用级开发工程师觉得 —— 我又不自研集群数据库，也不开发云平台，没必要那么了解 CAP 理论。<br>那么，你开发的应用系统，是否使用了分布式架构呢？如果是，CAP 理论可以说是指导构建系统的技术理论基石之一，必须要重视起来。</p>
 <span id="more"></span>
-<h3 id="1-CAP-定理到底讲了什么">1. CAP 定理到底讲了什么?</h3>
-<p>CAP 定理对分布式数据存储系统的特性进行高度抽象，提炼成了3个维度：</p>
+
+<h3 id="1-CAP-定理到底讲了什么"><a href="#1-CAP-定理到底讲了什么" class="headerlink" title="1. CAP 定理到底讲了什么?"></a>1. CAP 定理到底讲了什么?</h3><p>CAP 定理对分布式数据存储系统的特性进行高度抽象，提炼成了3个维度：  </p>
 <ul>
-<li>
-<p><code>Consistency 一致性</code>, 每一次读取操作，要么系统返回最新的数据写入值（无论读取到哪一个数据节点），要么返回系统错误。<br>
-这里的一致性，代表的强一致性、线性一致性（Linearizability）。</p>
+<li><p><code>Consistency 一致性</code>, 每一次读取操作，要么系统返回最新的数据写入值（无论读取到哪一个数据节点），要么返回系统错误。<br>这里的一致性，代表的强一致性、线性一致性（Linearizability）。</p>
 </li>
-<li>
-<p><code>Availability 可用性</code>, 每一次读取操作都能获得系统的返回，但不保证返回的是最新的数据写入值。</p>
+<li><p><code>Availability 可用性</code>, 每一次读取操作都能获得系统的返回，但不保证返回的是最新的数据写入值。</p>
 </li>
-<li>
-<p><code>Partition Tolerance 分区容错性</code>，当数据节点之间发生网络分区（包括网络丢包、连接中断阻塞等），系统仍然要继续工作。</p>
+<li><p><code>Partition Tolerance 分区容错性</code>，当数据节点之间发生网络分区（包括网络丢包、连接中断阻塞等），系统仍然要继续工作。</p>
 </li>
 </ul>
-<p>这其中的底层逻辑是：分布式数据存储各节点之间通过网络连接，在运行期间不可避免存在网络分区的风险。<br>
-当网络分区发生时，无论是节点之间的状态同步还是数据复制，都会发生异常，部分节点的数据滞留在过去时刻的某种状态。</p>
+<p>这其中的底层逻辑是：分布式数据存储各节点之间通过网络连接，在运行期间不可避免存在网络分区的风险。<br>当网络分区发生时，无论是节点之间的状态同步还是数据复制，都会发生异常，部分节点的数据滞留在过去时刻的某种状态。  </p>
 <p>而保证<code>分区容错性</code>，就是当发生网络分区异常时，整个系统仍然运行并继续工作，这时候提供的服务维度只可能在 Consistency 和 Availability 中保证一项：</p>
 <ul>
-<li>
-<p>确保一致性，牺牲可用性。<br>
-系统会通过内部策略，自动修复集群，最终确保<code>Consistency</code>声明的强一致性。在自动修复完成之前，外部请求会返回系统出错或者超时。<br>
-<img src="/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/CAP_CP.png" alt="CP"><br>
-<em>上图简化了集群中的一些问题描述，比如共识算法至少需要三个节点。</em><br>
-<em>当节点 2 与 节点 1 之间因为通讯异常，未能对 x 的值达成一致，此时外部请求读取 x 的值，系统将返回“系统出错”或者超时。</em></p>
+<li><p>确保一致性，牺牲可用性。<br>  系统会通过内部策略，自动修复集群，最终确保<code>Consistency</code>声明的强一致性。在自动修复完成之前，外部请求会返回系统出错或者超时。<br>  <img src="/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/CAP_CP.png" alt="CP"><br>  <em>上图简化了集群中的一些问题描述，比如共识算法至少需要三个节点。</em><br>  <em>当节点 2 与 节点 1 之间因为通讯异常，未能对 x 的值达成一致，此时外部请求读取 x 的值，系统将返回“系统出错”或者超时。</em>  </p>
 </li>
-<li>
-<p>确保可用性，牺牲一致性。<br>
-系统在自动修复集群期间，没有达成数据一致性的各节点仍会对外及时响应，确保<code>Availability</code>声明的高可用性。<br>
-<img src="/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/CAP_AP.png" alt="CP"></p>
+<li><p>确保可用性，牺牲一致性。<br>  系统在自动修复集群期间，没有达成数据一致性的各节点仍会对外及时响应，确保<code>Availability</code>声明的高可用性。<br>   <img src="/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/CAP_AP.png" alt="CP"></p>
 </li>
 </ul>
-<p>以上，即是 CAP 理论中 CP 和 AP 的由来。<br>
-然而，在分布式数据存储架构中，虽然网络分区是不可回避的风险，但也不意味着系统任何时候都处于网络分区的状态之下。在没有发生网络分区的时候，CA 应该是主要状态。</p>
-<p>有人也许会对此产生质疑：即使分布式集群一切运行正常，没有发生网络故障，但节点间的数据传输也需要时间、存在网络延时，不可能在未完成数据同步的中间状态下，既保证可用，又保证所有节点数据一致性。<br>
-是的，这种问法很对。<br>
-因此，针对 CAP 理论中的 C，一些专家解释：Consistency，是忽略数据复制延时的，是假设数据复制不存在延时的理论场景。</p>
-<p>然而数据复制的延时，在现实分布式系统运行期间始终存在，因此这时无 <code>P</code> 的 <code>CA</code> 很难与现实进行相互映射，使用时可能会造成困扰，不如理解为:</p>
+<p>以上，即是 CAP 理论中 CP 和 AP 的由来。<br>然而，在分布式数据存储架构中，虽然网络分区是不可回避的风险，但也不意味着系统任何时候都处于网络分区的状态之下。在没有发生网络分区的时候，CA 应该是主要状态。 </p>
+<p>有人也许会对此产生质疑：即使分布式集群一切运行正常，没有发生网络故障，但节点间的数据传输也需要时间、存在网络延时，不可能在未完成数据同步的中间状态下，既保证可用，又保证所有节点数据一致性。<br>是的，这种问法很对。<br>因此，针对 CAP 理论中的 C，一些专家解释：Consistency，是忽略数据复制延时的，是假设数据复制不存在延时的理论场景。  </p>
+<p>然而数据复制的延时，在现实分布式系统运行期间始终存在，因此这时无 <code>P</code> 的 <code>CA</code> 很难与现实进行相互映射，使用时可能会造成困扰，不如理解为:  </p>
 <ul>
-<li><code>Consistency</code> 是包含正常水平的复制延时的，这部分延时会计算在响应时间中，而不算影响 <code>Availability</code>。而当达成一致性的处理时长超出这个正常水平，才算作影响 <code>Availability</code>。<br>
-当然，更好的解释，也许应该看下 <code>PACELC 理论</code>，可以对此场景进行补充。</li>
+<li><code>Consistency</code> 是包含正常水平的复制延时的，这部分延时会计算在响应时间中，而不算影响 <code>Availability</code>。而当达成一致性的处理时长超出这个正常水平，才算作影响 <code>Availability</code>。<br>当然，更好的解释，也许应该看下 <code>PACELC 理论</code>，可以对此场景进行补充。</li>
 </ul>
-<h3 id="2-CAP-的扩展：PACELC-理论">2. CAP 的扩展：PACELC 理论</h3>
-<p>通过上面对<code>CAP 定理</code>的了解，可以总结为在分布式数据存储架构设计中，至少需要一条 baseline 策略，应对出现网络分区这种危险状况。<br>
-<img src="/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/CAP.png" alt="CAP"></p>
+<h3 id="2-CAP-的扩展：PACELC-理论"><a href="#2-CAP-的扩展：PACELC-理论" class="headerlink" title="2. CAP 的扩展：PACELC 理论"></a>2. CAP 的扩展：PACELC 理论</h3><p>通过上面对<code>CAP 定理</code>的了解，可以总结为在分布式数据存储架构设计中，至少需要一条 baseline 策略，应对出现网络分区这种危险状况。<br><img src="/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/CAP.png" alt="CAP"></p>
 <p>在没有出现网络分区、正常运行的系统状态下，CAP 理论中的 CA 可以达成，但<code>数据一致性</code>的状态、以及隐藏在达成该状态背后的<code>延时时长</code> —— 这两个现实系统中过于常见的维度，如一双在 CAP 定理中说不清、道不明、又无处安放的小手，又该如何衡量和取舍呢？</p>
-<p>这时候，就可以看一下 <code>PACELE 理论</code>。<br>
-<code>PACELE</code> 是 <code>CAP 理论</code> 的扩展， <code>PAC</code> 各字母同 <code>CAP 理论</code>， <code>E (Else)</code> 仅是连接词，<code>L (latency) </code>、<code>C (consistency)</code>。意思就是，当没有出现网络分区、系统正常运行时，<code>低延时</code>（低于数据达成一致所需的平均延时水平） 和 <code>数据一致性</code>，二者需要选择其一，不能同时保证。<br>
-<img src="/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/PACELE.png" alt="PACELE"></p>
-<p>当有了基于<code>CAP</code>扩展出的<code>PACELE</code>，个人觉得，分布式数据存储的特性架构描述才比较完整。<br>
-比如，MongoDB 集群的就是典型的 <code>PA/EC</code> 系统：在出现网络分区时，MongoDB 集群优先保证可用性，数据可能不是最新；在集群正常状态下，优先保证数据一致性。<br>
-这也就防止了用户一听到 AP 架构就造成的恐慌 —— 以为系统状态正常下，程序员仍需要大量编码、自己处理数据一致性的问题。</p>
-<p>下图是<code>PACELE 理论</code>中的特性搭配图，（横轴是发生 P 时的A or C 选择，纵轴是没有发生 P 时对 C or L 的选择）：<br>
-<img src="/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/PACELE_2.png" alt="PACELE"></p>
-<h3 id="3-为什么做分布式架构要重视-CAP-理论？">3. 为什么做分布式架构要重视 CAP 理论？</h3>
-<h4 id="3-1-对分布式应用架构有借鉴和指导作用">3.1. 对分布式应用架构有借鉴和指导作用</h4>
-<p>当前主流的分布式应用架构如微服务架构，在领域微服务之间不可避免地存在数据复制，比如：服务边界内实体、同时也是其他微服务的值对象；采用 CQRS 模式构建微服务；使用事件驱动架构搭建微服务等等。<br>
-只要存在数据在不同服务之间的复制：</p>
+<p>这时候，就可以看一下 <code>PACELE 理论</code>。<br><code>PACELE</code> 是 <code>CAP 理论</code> 的扩展， <code>PAC</code> 各字母同 <code>CAP 理论</code>， <code>E (Else)</code> 仅是连接词，<code>L (latency) </code>、<code>C (consistency)</code>。意思就是，当没有出现网络分区、系统正常运行时，<code>低延时</code>（低于数据达成一致所需的平均延时水平） 和 <code>数据一致性</code>，二者需要选择其一，不能同时保证。<br><img src="/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/PACELE.png" alt="PACELE"></p>
+<p>当有了基于<code>CAP</code>扩展出的<code>PACELE</code>，个人觉得，分布式数据存储的特性架构描述才比较完整。<br>比如，MongoDB 集群的就是典型的 <code>PA/EC</code> 系统：在出现网络分区时，MongoDB 集群优先保证可用性，数据可能不是最新；在集群正常状态下，优先保证数据一致性。<br>这也就防止了用户一听到 AP 架构就造成的恐慌 —— 以为系统状态正常下，程序员仍需要大量编码、自己处理数据一致性的问题。</p>
+<p>下图是<code>PACELE 理论</code>中的特性搭配图，（横轴是发生 P 时的A or C 选择，纵轴是没有发生 P 时对 C or L 的选择）：<br><img src="/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/PACELE_2.png" alt="PACELE"></p>
+<h3 id="3-为什么做分布式架构要重视-CAP-理论？"><a href="#3-为什么做分布式架构要重视-CAP-理论？" class="headerlink" title="3. 为什么做分布式架构要重视 CAP 理论？"></a>3. 为什么做分布式架构要重视 CAP 理论？</h3><h4 id="3-1-对分布式应用架构有借鉴和指导作用"><a href="#3-1-对分布式应用架构有借鉴和指导作用" class="headerlink" title="3.1. 对分布式应用架构有借鉴和指导作用"></a>3.1. 对分布式应用架构有借鉴和指导作用</h4><p>当前主流的分布式应用架构如微服务架构，在领域微服务之间不可避免地存在数据复制，比如：服务边界内实体、同时也是其他微服务的值对象；采用 CQRS 模式构建微服务；使用事件驱动架构搭建微服务等等。<br>只要存在数据在不同服务之间的复制：</p>
 <ul>
 <li>当复制机制出现连通故障、阻塞、高延迟等（比如消息组件消息堆积等），都可以近似的理解为 <code>网络分区</code>， 当发生<code>网络分区</code>时，需要有对应策略，无论是优先保证<code>数据一致性</code>，还是优先<code>可用性</code>？</li>
-<li>当复制机制正常，数据同步仍存在时间成本。这时候，是优先保证<code>数据一致性</code>，还是优先<code>低延时</code>？<br>
-虽然以上的 “数据一致性” 不一定是 CAP 中的 “线性一致性” 这种强一致性，但 CAP 理论的这种思考维度和框架，以及扩展出的分布式算法和实践，在分布式应用架构设计中，也有很强的借鉴和指导作用。</li>
+<li>当复制机制正常，数据同步仍存在时间成本。这时候，是优先保证<code>数据一致性</code>，还是优先<code>低延时</code>？<br>虽然以上的 “数据一致性” 不一定是 CAP 中的 “线性一致性” 这种强一致性，但 CAP 理论的这种思考维度和框架，以及扩展出的分布式算法和实践，在分布式应用架构设计中，也有很强的借鉴和指导作用。</li>
 </ul>
-<h4 id="3-2-指导数据存储方案的选型">3.2. 指导数据存储方案的选型</h4>
-<p>分布式应用架构，不可避免地会面临对各种数据存储产品的选型，除了根据应用业务特性以及存储/读/写维度性能的需求，提供容量扩展、高可用的集群特性，也是必不可少的一个考察维度。<br>
-比如，业务特性需要的是一个 PA/EC 特性的集群能力，PA/EL 特性的产品自然是不匹配需求的。</p>
-<h4 id="3-3-帮助完善数据存储方案落地">3.3. 帮助完善数据存储方案落地</h4>
-<p>前面提了集群数据库的选型，但离方案可落地仍有一段距离，需要完美适配应用的业务场景，可能除了正确执行客户端调用以外，还需要一些额外配置 或者 二次加工，才能达到某些特性目标。</p>
-<p>比如 MongoDB 的 readConcern 和 writeConcern，没接触过 <code>Quorum NWR</code> 算法策略的人，可能无法快速意识到 —— MongoDB 即使在 <code>AP</code> 状态下，依然可以通过客户端配置 readConcern/writeConcern 有选择地达成数据强一致性。<br>
-而不了解 <code>Quorum NWR</code> 的，可能会舍近求远地设计出一些复杂度较高的自研策略。</p>
-<h3 id="参考资料">参考资料</h3>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/CAP_theorem">CAP理论维基百科及链接</a><br>
-<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/PACELC_theorem">PACELC理论维基百科及链接</a></p>
+<h4 id="3-2-指导数据存储方案的选型"><a href="#3-2-指导数据存储方案的选型" class="headerlink" title="3.2. 指导数据存储方案的选型"></a>3.2. 指导数据存储方案的选型</h4><p>分布式应用架构，不可避免地会面临对各种数据存储产品的选型，除了根据应用业务特性以及存储/读/写维度性能的需求，提供容量扩展、高可用的集群特性，也是必不可少的一个考察维度。<br>比如，业务特性需要的是一个 PA/EC 特性的集群能力，PA/EL 特性的产品自然是不匹配需求的。  </p>
+<h4 id="3-3-帮助完善数据存储方案落地"><a href="#3-3-帮助完善数据存储方案落地" class="headerlink" title="3.3. 帮助完善数据存储方案落地"></a>3.3. 帮助完善数据存储方案落地</h4><p>前面提了集群数据库的选型，但离方案可落地仍有一段距离，需要完美适配应用的业务场景，可能除了正确执行客户端调用以外，还需要一些额外配置 或者 二次加工，才能达到某些特性目标。  </p>
+<p>比如 MongoDB 的 readConcern 和 writeConcern，没接触过 <code>Quorum NWR</code> 算法策略的人，可能无法快速意识到 —— MongoDB 即使在 <code>AP</code> 状态下，依然可以通过客户端配置 readConcern/writeConcern 有选择地达成数据强一致性。<br>而不了解 <code>Quorum NWR</code> 的，可能会舍近求远地设计出一些复杂度较高的自研策略。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/CAP_theorem">CAP理论维基百科及链接</a><br><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/PACELC_theorem">PACELC理论维基百科及链接</a>  </p>
 
                 
             </div>
@@ -867,7 +832,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="数据库的ACID和分布式事务">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="数据库的ACID和分布式事务">
                         
                         <span class="card-title">数据库的ACID和分布式事务</span>
                     </div>
@@ -875,9 +840,9 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前面写了一篇关于CAP原理的博文，说到一致性 Consistency，有人往往会想到事务ACID特性中的C: Consistency，虽然都叫一致性，但完全是两个东西。
+                            前面写了一篇关于CAP原理的博文，说到一致性 Consistency，有人往往会想到事务ACID特性中的C: Consistency，虽然都叫一致性，但完全是两个东西。  
 
-CAP的一致性指：数据库的同一复制集（replicaSet）之间数据
+CAP的一致性指：数据库的同一复制集（replicaSet）之间
                         
                     </div>
                     <div class="publish-info">
@@ -918,7 +883,7 @@ CAP的一致性指：数据库的同一复制集（replicaSet）之间数据
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="重启">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="重启">
                         
                         <span class="card-title">重启</span>
                     </div>
@@ -926,8 +891,7 @@ CAP的一致性指：数据库的同一复制集（replicaSet）之间数据
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。
-因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只
+                            最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只见
                         
                     </div>
                     <div class="publish-info">
@@ -1005,6 +969,9 @@ CAP的一致性指：数据库的同一复制集（replicaSet）之间数据
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -1128,7 +1095,7 @@ CAP的一致性指：数据库的同一复制集（replicaSet）之间数据
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">34.4k</span>
+                        class="white-color">33.5k</span>
             
             
             
@@ -1406,6 +1373,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-</body>
+<script src="/js/markmap.js"></script></body>
 
 </html>

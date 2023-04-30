@@ -5,10 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="反手回摸Oracle, ellendan">
-    <meta name="description" content="最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。
-没想到现在还有反手回摸的时候。
-回摸也就算了，等准备好 Oracle 知识回顾，最后发现计划赶不上变化，暂时用不上了。
-重新 review 了一把自己的kanba">
+    <meta name="description" content="最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。没想到现在还有反手回摸的时候。回摸也就算了，等准备好 Oracle 知识回顾，最后发现计划赶不上变化，暂时用不上了。重新 review 了一把自己的kanban和计">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -122,22 +119,22 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/about" class="waves-effect waves-light">
+    <a href="/graph" class="waves-effect waves-light">
       
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      <i class="fa fa-graduation-cap" style="zoom: 0.6;"></i>
       
-      <span>关于</span>
+      <span>知识图谱</span>
     </a>
     
   </li>
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/contact" class="waves-effect waves-light">
+    <a href="/about" class="waves-effect waves-light">
       
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
       
-      <span>留言板</span>
+      <span>关于</span>
     </a>
     
   </li>
@@ -217,22 +214,22 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/about" class="waves-effect waves-light">
+		<a href="/graph" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-user-circle"></i>
+			    <i class="fa-fw fa fa-graduation-cap"></i>
 			
-			关于
+			知识图谱
 		</a>
           
         </li>
         
         <li class="m-nav-item">
 	  
-		<a href="/contact" class="waves-effect waves-light">
+		<a href="/about" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-comments"></i>
+			    <i class="fa-fw fas fa-user-circle"></i>
 			
-			留言板
+			关于
 		</a>
           
         </li>
@@ -316,7 +313,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -401,65 +398,43 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。<br>
-没想到现在还有反手回摸的时候。<br>
-回摸也就算了，等准备好 Oracle 知识回顾，最后发现计划赶不上变化，暂时用不上了。<br>
-重新 review 了一把自己的kanban和计划清单，赶紧记录一下，回到目标的事务上去。</p>
+                <p>最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。<br>没想到现在还有反手回摸的时候。<br>回摸也就算了，等准备好 Oracle 知识回顾，最后发现计划赶不上变化，暂时用不上了。<br>重新 review 了一把自己的kanban和计划清单，赶紧记录一下，回到目标的事务上去。  </p>
 <span id="more"></span>
-<h3 id="1-MacOS-安装-Oracle">1. MacOS 安装 Oracle</h3>
-<p>对于已经习惯了所有工具都要本地装一装、摸一摸的工程师而言，装个单例数据库这事儿自然不在话下。<br>
-然而search homebrew 和 dockerhub，突然发现 —— 居然没有oracle database。这不就尴尬了嘛？<br>
-去 Oracle 官网查看了一下，要想在 MacOS 上安装Oracle，两种方式：1. visualBox 2. 本地 dockerfile build。<br>
-那自然是选择2了。</p>
-<h4 id="1-1-Oracle-官方dockerfile大合集">1.1. Oracle 官方dockerfile大合集</h4>
-<p>访问 Oracle 官方在 github 上 repo <a target="_blank" rel="noopener" href="https://github.com/oracle/docker-images">docker-images</a>。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com:oracle/docker-images.git</span><br></pre></td></tr></tbody></table></figure>
-<p>子目录是 Oracle 各种产品目录。比如database，就是 <code>OracleDatabase</code>, OGG 就是 <code>OracleGoldenGate</code>。</p>
-<h4 id="1-2-查看-dockerfile">1.2. 查看 dockerfile</h4>
-<p>进入到本地 repo 目录 <code>OracleDatabase/SingleInstance/dockerfiles</code>，可以看到目前支持的数据库版本：<br>
-<img src="/2022/08/22/fan-shou-hui-mo-oracle/dockerfile_list.png" alt="dockerfile_list"><br>
-选择一个版本，比如 19.3.0，进入目录。</p>
-<h4 id="1-3-下载-Linux-Oracle-Database-程序包">1.3. 下载 Linux Oracle Database 程序包</h4>
-<p>可以查找官网，也可以通过 readme 文件上的链接跳入下载页面。<br>
-点击链接，手动下载。<br>
-<img src="/2022/08/22/fan-shou-hui-mo-oracle/oracle_download_page.png" alt="download_page"><br>
-对，2.8G。</p>
-<h4 id="1-4-将下载的database程序包移入OracleDatabase-SingleInstance-dockerfiles-19-3-0">1.4. 将下载的database程序包移入<code>OracleDatabase/SingleInstance/dockerfiles/19.3.0/</code></h4>
-<p><img src="/2022/08/22/fan-shou-hui-mo-oracle/zip_into_directory.png" alt="zip into directory"></p>
-<h4 id="1-5-运行buildContainerImage">1.5. 运行buildContainerImage</h4>
-<p>回到<code>OracleDatabase/SingleInstance/dockerfiles</code>目录，运行命令<code>buildContainerImage.sh</code>。</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./buildContainerImage.sh -h</span><br><span class="line">$ ./buildContainerImage.sh -v 19.3.0 -s</span><br></pre></td></tr></tbody></table></figure>
-<p><em>注意</em> 运行命令build之前，确保本地没有开启任何网络代理，不然 build 时会失败。<br>
-build成功之后，通过<code>docker images</code>查看image，总大小6个多G，体量感人。。</p>
-<p>另外，如果想要安装其他版本，比如18.4.0 和 xe 版本，相同的步骤和方式，但可能需要修改dockerfile的部分语句。<br>
-即使进行了dockerfile修改，xe 版本本人build并没有成功过，这个需要再次检验和查看。</p>
-<h4 id="1-6-docker-run">1.6. docker run</h4>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD=123456 -v ~/tmp-oradata:/opt/oracle/oradata oracle/database/19.3.0-se2</span><br></pre></td></tr></tbody></table></figure>
-<p>这时候，通过docker host本地 11521 端口，就可以连接docker oracle了。</p>
-<h3 id="2-Oracle-Database-基础概念和语句图谱">2. Oracle Database 基础概念和语句图谱</h3>
-<blockquote class="pullquote mindmap mindmap-lg"><ul>
-<li>Oracle Database
-<ul>
-<li>数据库概念
-<ul>
-<li>数据库
-<ul>
-<li>SQL
-<ul>
+
+<h3 id="1-MacOS-安装-Oracle"><a href="#1-MacOS-安装-Oracle" class="headerlink" title="1. MacOS 安装 Oracle"></a>1. MacOS 安装 Oracle</h3><p>对于已经习惯了所有工具都要本地装一装、摸一摸的工程师而言，装个单例数据库这事儿自然不在话下。<br>然而search homebrew 和 dockerhub，突然发现 —— 居然没有oracle database。这不就尴尬了嘛？<br>去 Oracle 官网查看了一下，要想在 MacOS 上安装Oracle，两种方式：1. visualBox 2. 本地 dockerfile build。<br>那自然是选择2了。  </p>
+<h4 id="1-1-Oracle-官方dockerfile大合集"><a href="#1-1-Oracle-官方dockerfile大合集" class="headerlink" title="1.1. Oracle 官方dockerfile大合集"></a>1.1. Oracle 官方dockerfile大合集</h4><p>访问 Oracle 官方在 github 上 repo <a target="_blank" rel="noopener" href="https://github.com/oracle/docker-images">docker-images</a>。  </p>
+<pre class="line-numbers language-none"><code class="language-none">$ git clone git@github.com:oracle/docker-images.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>子目录是 Oracle 各种产品目录。比如database，就是 <code>OracleDatabase</code>, OGG 就是 <code>OracleGoldenGate</code>。  </p>
+<h4 id="1-2-查看-dockerfile"><a href="#1-2-查看-dockerfile" class="headerlink" title="1.2. 查看 dockerfile"></a>1.2. 查看 dockerfile</h4><p>进入到本地 repo 目录 <code>OracleDatabase/SingleInstance/dockerfiles</code>，可以看到目前支持的数据库版本：<br><img src="/2022/08/22/fan-shou-hui-mo-oracle/dockerfile_list.png" alt="dockerfile_list"><br>选择一个版本，比如 19.3.0，进入目录。</p>
+<h4 id="1-3-下载-Linux-Oracle-Database-程序包"><a href="#1-3-下载-Linux-Oracle-Database-程序包" class="headerlink" title="1.3. 下载 Linux Oracle Database 程序包"></a>1.3. 下载 Linux Oracle Database 程序包</h4><p>可以查找官网，也可以通过 readme 文件上的链接跳入下载页面。<br>点击链接，手动下载。<br><img src="/2022/08/22/fan-shou-hui-mo-oracle/oracle_download_page.png" alt="download_page"><br>对，2.8G。  </p>
+<h4 id="1-4-将下载的database程序包移入OracleDatabase-SingleInstance-dockerfiles-19-3-0"><a href="#1-4-将下载的database程序包移入OracleDatabase-SingleInstance-dockerfiles-19-3-0" class="headerlink" title="1.4. 将下载的database程序包移入OracleDatabase/SingleInstance/dockerfiles/19.3.0/"></a>1.4. 将下载的database程序包移入<code>OracleDatabase/SingleInstance/dockerfiles/19.3.0/</code></h4><p><img src="/2022/08/22/fan-shou-hui-mo-oracle/zip_into_directory.png" alt="zip into directory"></p>
+<h4 id="1-5-运行buildContainerImage"><a href="#1-5-运行buildContainerImage" class="headerlink" title="1.5. 运行buildContainerImage"></a>1.5. 运行buildContainerImage</h4><p>回到<code>OracleDatabase/SingleInstance/dockerfiles</code>目录，运行命令<code>buildContainerImage.sh</code>。</p>
+<pre class="line-numbers language-none"><code class="language-none">$ ./buildContainerImage.sh -h
+$ ./buildContainerImage.sh -v 19.3.0 -s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><em>注意</em> 运行命令build之前，确保本地没有开启任何网络代理，不然 build 时会失败。<br>build成功之后，通过<code>docker images</code>查看image，总大小6个多G，体量感人。。 </p>
+<p>另外，如果想要安装其他版本，比如18.4.0 和 xe 版本，相同的步骤和方式，但可能需要修改dockerfile的部分语句。<br>即使进行了dockerfile修改，xe 版本本人build并没有成功过，这个需要再次检验和查看。  </p>
+<h4 id="1-6-docker-run"><a href="#1-6-docker-run" class="headerlink" title="1.6. docker run"></a>1.6. docker run</h4><pre class="line-numbers language-none"><code class="language-none">docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD=123456 -v ~/tmp-oradata:/opt/oracle/oradata oracle/database/19.3.0-se2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这时候，通过docker host本地 11521 端口，就可以连接docker oracle了。  </p>
+<h3 id="2-Oracle-Database-基础概念和语句图谱"><a href="#2-Oracle-Database-基础概念和语句图谱" class="headerlink" title="2. Oracle Database 基础概念和语句图谱"></a>2. Oracle Database 基础概念和语句图谱</h3><blockquote class="pullquote mindmap mindmap-lg"><ul>
+<li>Oracle Database<ul>
+<li>数据库概念<ul>
+<li>数据库<ul>
+<li>SQL <ul>
 <li>查看当前数据库：select name from V$DATABASE;</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>数据库实例
-<ul>
-<li>SQL
-<ul>
+<li>数据库实例<ul>
+<li>SQL <ul>
 <li>查看当前数据库实例：select name from V$INSTANCE;</li>
 </ul>
 </li>
@@ -469,24 +444,19 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
 <li>CDB &amp; PDB</li>
 </ul>
 </li>
-<li>SQLPLUS
-<ul>
+<li>SQLPLUS<ul>
 <li>tnsnames.ora</li>
 <li>sqlnet.ora</li>
-<li>连接
-<ul>
+<li>连接<ul>
 <li>sqlplus username/password@host:port/SID</li>
 <li>conn username/password</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>用户/角色/权限
-<ul>
-<li>用户
-<ul>
-<li>SQL
-<ul>
+<li>用户/角色/权限<ul>
+<li>用户<ul>
+<li>SQL<ul>
 <li>创建用户：create user ogg identified by ogg default tablespace customer;</li>
 <li>查询用户：select * from dba_users where lower(username)=‘ogg’;</li>
 <li>删除用户：drop user ogg;</li>
@@ -494,10 +464,8 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
 </li>
 </ul>
 </li>
-<li>角色
-<ul>
-<li>SQL
-<ul>
+<li>角色<ul>
+<li>SQL<ul>
 <li>创建角色：create role etl;</li>
 <li>查询角色：select * from DBA_ROLES;</li>
 <li>角色授权（系统）：grant connect,resource,create session, alter session to etl;</li>
@@ -508,26 +476,21 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
 </li>
 </ul>
 </li>
-<li>权限
-<ul>
-<li>定义
-<ul>
+<li>权限<ul>
+<li>定义<ul>
 <li>系统权限</li>
 <li>对象权限：指用户对已有对象的操作权限。</li>
 </ul>
 </li>
-<li>SQL
-<ul>
-<li>系统权限
-<ul>
+<li>SQL<ul>
+<li>系统权限<ul>
 <li>查询系统权限：select distinct PRIVILEGE from DBA_SYS_PRIVS;</li>
-<li>查询grantee拥有的权限：select * from DBA_SYS_PRIVS where lower(grantee)='ogg’;</li>
+<li>查询grantee拥有的权限：select * from DBA_SYS_PRIVS where lower(grantee)=’ogg’;</li>
 <li>给用户添加权限：grant create session,alter session to ogg;</li>
 <li>收回权限：revoke alter session from ogg;</li>
 </ul>
 </li>
-<li>对象权限
-<ul>
+<li>对象权限<ul>
 <li>查询grantee用户的对象权限：select grantee, table_name, privilege from dba_tab_privs where lower(grantee) = ‘ogg’;</li>
 <li>分配对象权限：grant all on t_employees to ogg;</li>
 <li>收回权限：revoke delete on t_employees from ogg;</li>
@@ -539,19 +502,14 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
 </li>
 </ul>
 </li>
-<li>逻辑结构
-<ul>
-<li>数据库/表空间/表
-<ul>
-<li>数据库
-<ul>
+<li>逻辑结构<ul>
+<li>数据库/表空间/表<ul>
+<li>数据库<ul>
 <li>SQL</li>
 </ul>
 </li>
-<li>表空间
-<ul>
-<li>SQL
-<ul>
+<li>表空间<ul>
+<li>SQL<ul>
 <li>创建表空间：CREATE TABLESPACE customer datafile ‘/opt/oracle/oradata/XE/customer.dbf’ SIZE 100M autoextend on next 20M Maxsize 500M;</li>
 <li>删除表空间：drop tablespace customer including contents and datafiles;</li>
 <li>查看表空间数据文件：select file_name, tablespace_name from DBA_DATA_FILES order by FILE_NAME;</li>
@@ -563,33 +521,26 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
 <li>表</li>
 </ul>
 </li>
-<li>用户/schema/对象
-<ul>
-<li>用户
-<ul>
-<li>SYS/SYSTEM
-<ul>
+<li>用户/schema/对象<ul>
+<li>用户<ul>
+<li>SYS/SYSTEM<ul>
 <li>SYS 是 SYSDBA。可创建数据库。</li>
 <li>SYSTEM 是 SYSOPER。权限次之。</li>
 </ul>
 </li>
-<li>SQL
-<ul>
+<li>SQL<ul>
 <li>查看当前库下所有用户：select username,ACCOUNT_STATUS,DEFAULT_TABLESPACE, TEMPORARY_TABLESPACE from DBA_USERS;</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>schema
-<ul>
-<li>定义
-<ul>
+<li>schema<ul>
+<li>定义<ul>
 <li>Schema 是用户拥有的所有对象的集合。对象包括：表、索引、视图等等。</li>
 <li>每个用户都会有独立的schema，schema 必须依赖用户的存在而存在。</li>
 </ul>
 </li>
-<li>SQL
-<ul>
+<li>SQL<ul>
 <li>查询当前用户和schema：select sys_context(‘userenv’, ‘current_user’) current_user, sys_context(‘userenv’, ‘current_user’) current_schema from dual;</li>
 </ul>
 </li>
@@ -981,46 +932,48 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/08/26/che-qi-zheng-che-ling-shou-xian-suo-mo-xing/">
+                <a href="/2022/08/22/fan-shou-hui-mo-oracle/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="车企整车零售线索模型">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="反手回摸Oracle">
                         
-                        <span class="card-title">车企整车零售线索模型</span>
+                        <span class="card-title">反手回摸Oracle</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。没想到现在还有反手回摸的时候。回摸也就算了，等准备好 Oracle 知识回顾，最后发现计划赶不上变化，暂时用不上了。重新 review 了一把自己的kanban和计
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/DDD/" class="post-category">
-                                    DDD
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DDD/">
-                        <span class="chip bg-color">DDD</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>
@@ -1034,24 +987,24 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/23/devops-zhi-shi-shu/">
+                <a href="/2022/07/18/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-xia-pian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="DevOps知识树">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="聊聊研发效能治理方案的理论框架（下篇）">
                         
-                        <span class="card-title">DevOps知识树</span>
+                        <span class="card-title">聊聊研发效能治理方案的理论框架（下篇）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DevOps知识树。
+                            已经过了一旬，下篇居然还没开始动笔。反思了一下人生：P书接上回。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-18
                             </span>
                         <span class="publish-author">
                             
@@ -1068,8 +1021,8 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/DevOps/">
-                        <span class="chip bg-color">DevOps</span>
+                    <a href="/tags/%E7%B2%BE%E7%9B%8A/">
+                        <span class="chip bg-color">精益</span>
                     </a>
                     
                 </div>
@@ -1124,6 +1077,9 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -1247,7 +1203,7 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">34.4k</span>
+                        class="white-color">33.5k</span>
             
             
             
@@ -1525,6 +1481,6 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-</body>
+<script src="/js/markmap.js"></script></body>
 
 </html>
