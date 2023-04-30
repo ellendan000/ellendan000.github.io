@@ -1,8 +1,8 @@
 [
     { "id": "Root", "isroot": true, "topic": "知识图谱" ,"isLink": false},
-    { "id": "Languages", "parentid": "root", "isLink": false, "topic": "Languages",  "direction": "right", "expanded": true},
-    { "id": "Java", "parentid": "Language", "isLink": false, "topic": "Java",  "direction": "right", "expanded": true},
-    { "id": "Python", "parentid": "Language", "isLink": false, "topic": "Python",  "direction": "right", "expanded": true},
+    { "id": "Languages", "parentid": "Root", "isLink": false, "topic": "Languages",  "direction": "right", "expanded": true},
+    { "id": "Java", "parentid": "Languages", "isLink": false, "topic": "Java",  "direction": "right", "expanded": true},
+    { "id": "Python", "parentid": "Languages", "isLink": false, "topic": "Python",  "direction": "right", "expanded": true},
     { "id": "Platforms", "parentid": "Root", "isLink": false, "topic": "Platforms",  "direction": "right", "expanded": true},
     { "id": "Azure", "parentid": "Platforms", "isLink": false, "topic": "Azure",  "direction": "right", "expanded": true},
     { "id": "Tools", "parentid": "Root", "isLink": false, "topic": "Tools",  "direction": "right", "expanded": true},
