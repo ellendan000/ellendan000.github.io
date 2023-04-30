@@ -41,7 +41,6 @@ dependencies中依赖的那些库为何可以不用标明版本？
 引入它，我们就可以开始动手工作了。[官方链接](https://docs.gradle.org/5.6.3/userguide/java_platform_plugin.html#header)
 
 _`build.gradle`_
-
 ```
 plugins {
     id 'maven-publish'
