@@ -1,15 +1,31 @@
 [
     { "id": "Root", "isroot": true, "topic": "知识图谱" ,"isLink": false},
+    
     { "id": "Languages", "parentid": "Root", "isLink": false, "topic": "Languages",  "direction": "right", "expanded": true},
     { "id": "Java", "parentid": "Languages", "isLink": false, "topic": "Java",  "direction": "right", "expanded": true},
     { "id": "Python", "parentid": "Languages", "isLink": false, "topic": "Python",  "direction": "right", "expanded": true},
+    { "id": "Nodejs", "parentid": "Languages", "isLink": false, "topic": "Nodejs",  "direction": "right", "expanded": true},
+    { "id": "Kotlin", "parentid": "Languages", "isLink": false, "topic": "Kotlin",  "direction": "right", "expanded": true},
+    
     { "id": "Platforms", "parentid": "Root", "isLink": false, "topic": "Platforms",  "direction": "right", "expanded": true},
     { "id": "Azure", "parentid": "Platforms", "isLink": false, "topic": "Azure",  "direction": "right", "expanded": true},
-    { "id": "Tools", "parentid": "Root", "isLink": false, "topic": "Tools",  "direction": "right", "expanded": true},
-    { "id": "ChatGPT", "parentid": "Tools", "isLink": false, "topic": "ChatGPT",  "direction": "right", "expanded": true},
-    { "id": "RDS", "parentid": "Tools", "isLink": false, "topic": "关系型数据库",  "direction": "right", "expanded": true},
-    { "id": "DDS", "parentid": "Tools", "isLink": false, "topic": "分布式数据库",  "direction": "right", "expanded": true},
-    { "id": "Techniques", "parentid": "Root", "isLink": false, "topic": "Techniques",  "direction": "right", "expanded": true},
-    { "id": "Mircoservices", "parentid": "Techniques", "isLink": false, "topic": "微服务架构",  "direction": "right", "expanded": true}
+    { "id": "AWS", "parentid": "Platforms", "isLink": false, "topic": "AWS",  "direction": "right", "expanded": true},
+
+    { "id": "Tools", "parentid": "Root", "isLink": false, "topic": "Tools",  "direction": "left", "expanded": true},
+    { "id": "ChatGPT", "parentid": "Tools", "isLink": false, "topic": "ChatGPT",  "direction": "left", "expanded": true},
+    { "id": "RDS", "parentid": "Tools", "isLink": false, "topic": "关系型数据库",  "direction": "left", "expanded": true},
+    { "id": "DDS", "parentid": "Tools", "isLink": false, "topic": "分布式数据库",  "direction": "left", "expanded": true},
+    { "id": "DataFlow", "parentid": "Tools", "isLink": false, "topic": "流运算",  "direction": "left", "expanded": true},
+    { "id": "Flink", "parentid": "DataFlow", "isLink": false, "topic": "Flink",  "direction": "left", "expanded": true},
+    { "id": "Spark", "parentid": "Tools", "isLink": false, "topic": "Spark",  "direction": "left", "expanded": true},
+
+    { "id": "Techniques", "parentid": "Root", "isLink": false, "topic": "Techniques",  "direction": "left", "expanded": true},
+    { "id": "Mircoservices", "parentid": "Techniques", "isLink": false, "topic": "微服务架构",  "direction": "left", "expanded": true},
+    { "id": "Blockchain", "parentid": "Techniques", "isLink": false, "topic": "区块链",  "direction": "left", "expanded": true},
+    { "id": "Blockchain-app", "parentid": "Blockchain", "isLink": false, "topic": "应用",  "direction": "left", "expanded": true},
+    { "id": "Bitcoin", "parentid": "Blockchain-app", "isLink": false, "topic": "比特币",  "direction": "left", "expanded": true},
+    { "id": "Ethereum", "parentid": "Blockchain-app", "isLink": false, "topic": "以太坊",  "direction": "left", "expanded": true},
+    { "id": "Bigdata", "parentid": "Techniques", "isLink": false, "topic": "Bigdata",  "direction": "left", "expanded": true},
+    { "id": "ML", "parentid": "Techniques", "isLink": false, "topic": "MachineLearning",  "direction": "left", "expanded": true}
 
 ]

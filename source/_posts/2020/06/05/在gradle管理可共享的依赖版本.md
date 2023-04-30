@@ -89,10 +89,6 @@ publishing {
         }
     }
 }
-
-
-
-
 ```
 
 当然, 作为一个服务级的 BOM，自然无需从零开始逐条定义，可以直接先 import 框架级的 BOMs，如上例中的Spring boot / Spring cloud / Spring cloud contract / Junit。  
