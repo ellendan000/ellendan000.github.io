@@ -6,7 +6,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="DDD概念概览, ellendan">
     <meta name="description" content="软件的核心，是为其用户解决领域相关问题的能力。
-1. 何为DDDDDD是Domain Driven Design的简称。领域驱动设计，“领域”指业务领域，“设计”指软件设计。DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思维方">
+1. 何为DDD
+DDD是Domain Driven Design的简称。领域驱动设计，“领域”指业务领域，“设计”指软件设计。
+DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -311,6 +313,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -408,18 +423,25 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>软件的核心，是为其用户解决领域相关问题的能力。</p>
-<h3 id="1-何为DDD"><a href="#1-何为DDD" class="headerlink" title="1. 何为DDD"></a>1. 何为DDD</h3><p>DDD是Domain Driven Design的简称。<strong>领域驱动设计</strong>，“<strong>领域</strong>”指业务领域，“<strong>设计</strong>”指软件设计。<br>DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思维方式，使得团队可以高效管理——用于复杂问题域的软件的构造和维护。</p>
+<h3 id="1-何为DDD">1. 何为DDD</h3>
+<p>DDD是Domain Driven Design的简称。<strong>领域驱动设计</strong>，“<strong>领域</strong>”指业务领域，“<strong>设计</strong>”指软件设计。<br>
+DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思维方式，使得团队可以高效管理——用于复杂问题域的软件的构造和维护。</p>
 <span id="more"></span>
-
-<h3 id="2-为什么DDD"><a href="#2-为什么DDD" class="headerlink" title="2. 为什么DDD"></a>2. 为什么DDD</h3><p>对于一个复杂业务系统，无视业务复杂度而割裂式地进行软件设计，往往会造成软件的<strong>大泥球模式（BBoM）</strong>，后果就是：</p>
+<h3 id="2-为什么DDD">2. 为什么DDD</h3>
+<p>对于一个复杂业务系统，无视业务复杂度而割裂式地进行软件设计，往往会造成软件的<strong>大泥球模式（BBoM）</strong>，后果就是：</p>
 <ol>
 <li>对统一语言和问题域知识缺乏重视，导致代码库可用但无法揭示业务意图。</li>
 <li>缺乏基于问题域模型的应用程序设计的重视，让代码库缺乏与业务行为的协同效应，当有后续功能的扩展就会变得棘手。领域复杂性和技术复杂性混合在了一起。</li>
 <li>会扼杀开发。对开发人员来说，软件杂乱、变更易出错。对企业来说，降低了软件快速实现商业价值的能力。</li>
-<li>缺乏对问题域的关注和正确认识，构建出来的软件系统往往会失败。<br>注：<strong>问题域</strong> ，涉及你当前正在构建软件的主题领域。是确定软件价值的关键点。</li>
+<li>缺乏对问题域的关注和正确认识，构建出来的软件系统往往会失败。<br>
+注：<strong>问题域</strong> ，涉及你当前正在构建软件的主题领域。是确定软件价值的关键点。</li>
 </ol>
-<h3 id="3-DDD模式"><a href="#3-DDD模式" class="headerlink" title="3. DDD模式"></a>3. DDD模式</h3><p>DDD具有两种模式类型：战略模式和战术模式。<br>战略模式影响的是解决方案，战术模式用于实现富领域模型。<br><img src="/2020/02/09/ddd-gai-nian-gai-lan/ddd-summary.png" alt="Domain Drive Design Summary.png"></p>
-<h4 id="3-1-DDD战略模式"><a href="#3-1-DDD战略模式" class="headerlink" title="3.1. DDD战略模式"></a>3.1. DDD战略模式</h4><p>领域驱动设计的战略模式会提炼问题域并塑造应用程序的架构。</p>
+<h3 id="3-DDD模式">3. DDD模式</h3>
+<p>DDD具有两种模式类型：战略模式和战术模式。<br>
+战略模式影响的是解决方案，战术模式用于实现富领域模型。<br>
+<img src="/2020/02/09/ddd-gai-nian-gai-lan/ddd-summary.png" alt="Domain Drive Design Summary.png"></p>
+<h4 id="3-1-DDD战略模式">3.1. DDD战略模式</h4>
+<p>领域驱动设计的战略模式会提炼问题域并塑造应用程序的架构。</p>
 <ol>
 <li>提炼问题域以揭示重要之处是什么 —— 核心子域。核心域是编写软件的原因，保留最大价值的关键区域，决定软件成功与否的关键。并非一个系统的所有部分都需要被精心设计，团队可以更专注于核心领域。</li>
 <li>在解空间构建一个软件模型，以处理领域问题并让软件与业务保持一致。</li>
@@ -427,9 +449,16 @@
 <li>限界上下文（Bounded Context），定义了模型的适用性并确保保留其完整性和独立发展的能力。统一语言和模型的适用边界应该是要在具体的限界上下文内。</li>
 <li>上下文映射（Context Map）。上下文映射提供了整个系统各上下文边界之间的宏观状况，揭示了上下文之间的关系和交互方式，同时表现出各上下文内模型的有多少差异，以及它们的交换哪些数据来实现业务处理过程。</li>
 </ol>
-<p><strong>问题空间 &amp; 解空间</strong><br>战略模式中强调问题空间和解空间的区别。只有明确确定了问题空间，才能分析出对应的解空间，最终才能构建出满足解决业务问题的成功软件。<br>上1，是解决问题空间复杂度的管理模式。问题空间将问题提炼成更多可管理的子域。<br>上2、3、4、5， 是解空间的管理模式。</p>
-<p>战略模式强调了DDD的侧重点是：知识消化、知识提炼、协作沟通、统一语言、上下文、模型持续发展。<br>后面战术模式，其实只是支持其实现而推荐的手段。</p>
-<h4 id="3-2-DDD战术模式"><a href="#3-2-DDD战术模式" class="headerlink" title="3.2. DDD战术模式"></a>3.2. DDD战术模式</h4><p>DDD的战术模式（也称模型构造块）是一个帮助创建用于复杂有界上下文的有效模型的模式集合。<br>许多模式都早于DDD概念的出现，但依然有一些被推荐为DDD战术的标准模式。<br>在战略模式提供的架构和原则的基础上，共用这些标准模式可以让设计有序进行，也使项目组成员能够更方便地了解彼此的工作内容。</p>
+<p><strong>问题空间 &amp; 解空间</strong><br>
+战略模式中强调问题空间和解空间的区别。只有明确确定了问题空间，才能分析出对应的解空间，最终才能构建出满足解决业务问题的成功软件。<br>
+上1，是解决问题空间复杂度的管理模式。问题空间将问题提炼成更多可管理的子域。<br>
+上2、3、4、5， 是解空间的管理模式。</p>
+<p>战略模式强调了DDD的侧重点是：知识消化、知识提炼、协作沟通、统一语言、上下文、模型持续发展。<br>
+后面战术模式，其实只是支持其实现而推荐的手段。</p>
+<h4 id="3-2-DDD战术模式">3.2. DDD战术模式</h4>
+<p>DDD的战术模式（也称模型构造块）是一个帮助创建用于复杂有界上下文的有效模型的模式集合。<br>
+许多模式都早于DDD概念的出现，但依然有一些被推荐为DDD战术的标准模式。<br>
+在战略模式提供的架构和原则的基础上，共用这些标准模式可以让设计有序进行，也使项目组成员能够更方便地了解彼此的工作内容。</p>
 <ol>
 <li>实体（Entity）</li>
 <li>值对象（Value Object）</li>
@@ -442,7 +471,8 @@
 <li>集成限界上下文</li>
 <li>六边形架构</li>
 </ol>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><ol>
+<h3 id="参考文献">参考文献</h3>
+<ol>
 <li>《领域驱动设计：软件核心复杂性应对之道》，Eric Evans 著</li>
 <li>《实现领域驱动设计》，Vaughn Vemon 著</li>
 <li>《领域驱动设计模式、原理与实践》，Scott Millett / Nick Tune 著</li>
@@ -841,7 +871,9 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            “可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。没用过 Maven 的小伙伴们也不用被劝退，想想在使用Spring plugin io.
+                            “可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。
+对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。
+没用过 Maven 的小伙伴们也不用被劝退，想想在使用Spring plugin i
                         
                     </div>
                     <div class="publish-info">
@@ -894,8 +926,10 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前一段时间在做U内的价值交付。个人也从最开始的可意会不可言传的状态，到后来可以聊些概念和措施的阶段。
-老实说，曾经在我司经常听到Dev challenge BA：“你这个需求的价值是什么？”现在反而听到越来越少。曾经我们坚持要去做有价值的事
+                            前一段时间在做U内的价值交付。
+个人也从最开始的可意会不可言传的状态，到后来可以聊些概念和措施的阶段。
+老实说，曾经在我司经常听到Dev challenge BA：“你这个需求的价值是什么？”现在反而听到越来越少。
+曾经我们坚持要去做有价值
                         
                     </div>
                     <div class="publish-info">
@@ -1103,7 +1137,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.5k</span>
+                        class="white-color">33.6k</span>
             
             
             
@@ -1375,6 +1409,8 @@ $(function () {
 
     
 
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
     
 
     

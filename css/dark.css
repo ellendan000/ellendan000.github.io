@@ -238,7 +238,7 @@ body.DarkMode #map_container {
     filter: invert(1);
 }
 body.DarkMode header .brand-logo .logo-img {
-    display: none;
+    display: inline;
 }
 
 .DarkMode #readmode, 

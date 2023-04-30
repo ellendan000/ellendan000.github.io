@@ -5,9 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="数据库的ACID和分布式事务, ellendan">
-    <meta name="description" content="前面写了一篇关于CAP原理的博文，说到一致性 Consistency，有人往往会想到事务ACID特性中的C: Consistency，虽然都叫一致性，但完全是两个东西。  
+    <meta name="description" content="前面写了一篇关于CAP原理的博文，说到一致性 Consistency，有人往往会想到事务ACID特性中的C: Consistency，虽然都叫一致性，但完全是两个东西。
 
-CAP的一致性指：数据库的同一复制集（replicaSet）之间">
+CAP的一致性指：数据库的同一复制集（replicaSet）之间数据">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -312,6 +312,19 @@ CAP的一致性指：数据库的同一复制集（replicaSet）之间">
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -408,18 +421,26 @@ CAP的一致性指：数据库的同一复制集（replicaSet）之间">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>前面写了一篇关于<code>CAP原理</code>的博文，说到<code>一致性 Consistency</code>，有人往往会想到事务<code>ACID</code>特性中的<code>C: Consistency</code>，虽然都叫一致性，但完全是两个东西。  </p>
+                <p>前面写了一篇关于<code>CAP原理</code>的博文，说到<code>一致性 Consistency</code>，有人往往会想到事务<code>ACID</code>特性中的<code>C: Consistency</code>，虽然都叫一致性，但完全是两个东西。</p>
 <ul>
-<li><code>CAP</code>的一致性指：数据库的同一复制集（replicaSet）之间数据相同。<br>  <em>这里的“数据库”，可以是主从、主备、集群架构，但没有单机架构。</em></li>
-<li><code>ACID</code>的一致性指：在数据库单一实例中(暂不涉及多个数据源的分布式事务)，成功写入的数据不违反已定义的数据规则，如约束、级联规则等等。<br>接着，来通过本地事务的详细说一下<code>ACID</code>，以及跨多数据源的分布式事务。  <span id="more"></span></li>
+<li><code>CAP</code>的一致性指：数据库的同一复制集（replicaSet）之间数据相同。<br>
+<em>这里的“数据库”，可以是主从、主备、集群架构，但没有单机架构。</em></li>
+<li><code>ACID</code>的一致性指：在数据库单一实例中(暂不涉及多个数据源的分布式事务)，成功写入的数据不违反已定义的数据规则，如约束、级联规则等等。<br>
+接着，来通过本地事务的详细说一下<code>ACID</code>，以及跨多数据源的分布式事务。</li>
 </ul>
-<h3 id="1-本地事务ACID"><a href="#1-本地事务ACID" class="headerlink" title="1. 本地事务ACID"></a>1. 本地事务ACID</h3><p><code>本地事务</code>，这里指单个业务服务仅操作单一数据源，完全由 DBMS 提供的事务能力。<br>除去上面对<code>Consistency</code>的解释外，剩下的三项：  </p>
+<span id="more"></span>
+<h3 id="1-本地事务ACID">1. 本地事务ACID</h3>
+<p><code>本地事务</code>，这里指单个业务服务仅操作单一数据源，完全由 DBMS 提供的事务能力。<br>
+除去上面对<code>Consistency</code>的解释外，剩下的三项：</p>
 <ul>
-<li><code>Atomic(原子性)</code>：在事务边界内的所有写操作，要么一起成功，要么一起失败(也叫 All-or-Nothing）。<br>阻止出现只有部分更新的数据异常。  </li>
-<li><code>Isolation(隔离性)</code>：存在并发的情况下，不同的连接的读、写操作相互之间独立，尽量不受影响。<br>从低到高分为四个隔离级别：<code>Read uncommitted</code>、<code>Read committed</code>、<code>Repeatable read</code>、<code>Serializable</code>。各数据库厂商实现方式不同，造成标准的表现性有些许差别。比如 MySQL InnoDB采用 MVCC 机制实现事务隔离，Repeatable read 级别可以防止幻读。</li>
+<li><code>Atomic(原子性)</code>：在事务边界内的所有写操作，要么一起成功，要么一起失败(也叫 All-or-Nothing）。<br>
+阻止出现只有部分更新的数据异常。</li>
+<li><code>Isolation(隔离性)</code>：存在并发的情况下，不同的连接的读、写操作相互之间独立，尽量不受影响。<br>
+从低到高分为四个隔离级别：<code>Read uncommitted</code>、<code>Read committed</code>、<code>Repeatable read</code>、<code>Serializable</code>。各数据库厂商实现方式不同，造成标准的表现性有些许差别。比如 MySQL InnoDB采用 MVCC 机制实现事务隔离，Repeatable read 级别可以防止幻读。</li>
 <li><code>Durability(持久性)</code>：保证所有成功提交的数据都能正确被持久化，不会被丢失。</li>
 </ul>
-<h3 id="跨多数据源的分布式事务"><a href="#跨多数据源的分布式事务" class="headerlink" title="跨多数据源的分布式事务"></a>跨多数据源的分布式事务</h3><p><strong>（未完待续）</strong></p>
+<h3 id="跨多数据源的分布式事务">跨多数据源的分布式事务</h3>
+<p><strong>（未完待续）</strong></p>
 
                 
             </div>
@@ -814,7 +835,9 @@ CAP的一致性指：数据库的同一复制集（replicaSet）之间">
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            最近几年，国内业界越来越常提及“研发效能”这个词，追其根源大部分是始于“DevOps”运动的活跃。知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。很多云厂商在推广自己 De
+                            最近几年，国内业界越来越常提及“研发效能”这个词，追其根源大部分是始于“DevOps”运动的活跃。
+知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。
+很多云厂商在推广自己 
                         
                     </div>
                     <div class="publish-info">
@@ -863,7 +886,8 @@ CAP的一致性指：数据库的同一复制集（replicaSet）之间">
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。来，再展开说说？这时候，多数人的回
+                            CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。
+来，再展开说说？这时候，多数人的
                         
                     </div>
                     <div class="publish-info">
@@ -1067,7 +1091,7 @@ CAP的一致性指：数据库的同一复制集（replicaSet）之间">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.5k</span>
+                        class="white-color">33.6k</span>
             
             
             
@@ -1339,6 +1363,8 @@ $(function () {
 
     
 
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
     
 
     

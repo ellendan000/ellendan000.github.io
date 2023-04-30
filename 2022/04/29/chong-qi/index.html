@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="重启, ellendan">
-    <meta name="description" content="最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只见">
+    <meta name="description" content="最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。
+因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -310,6 +311,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -406,12 +420,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。<br>因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只见云雾不见青山。<br>所以，现觉得对自身的知识储备进行重构，迫在眉睫。<br>那么，有没有一种看起来比较靠谱的架构解决方案可以达到此目的呢？<br>重读《金字塔原理》之后，我觉得使用“金字塔结构”可以一试。</p>
+                <p>最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。<br>
+因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只见云雾不见青山。<br>
+所以，现觉得对自身的知识储备进行重构，迫在眉睫。<br>
+那么，有没有一种看起来比较靠谱的架构解决方案可以达到此目的呢？<br>
+重读《金字塔原理》之后，我觉得使用“金字塔结构”可以一试。</p>
 <span id="more"></span>
-<p><strong>为何使用“金字塔结构”有利于知识重构？</strong>  </p>
+<p><strong>为何使用“金字塔结构”有利于知识重构？</strong></p>
 <ol>
-<li>金字塔纵向的“疑问/回答式”结构，符合软件构建的思路——从意图推导方案，从问题域到解决方案域。  </li>
-<li>金字塔的纵向结构，将知识和思想进行了不同层次的抽象和汇总。  </li>
+<li>金字塔纵向的“疑问/回答式”结构，符合软件构建的思路——从意图推导方案，从问题域到解决方案域。</li>
+<li>金字塔的纵向结构，将知识和思想进行了不同层次的抽象和汇总。</li>
 <li>金字塔的横向结构，强调了同一个主题思想下的子思想项之间必须符合逻辑关系。</li>
 </ol>
 
@@ -808,7 +826,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。来，再展开说说？这时候，多数人的回
+                            CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。
+来，再展开说说？这时候，多数人的
                         
                     </div>
                     <div class="publish-info">
@@ -1062,7 +1081,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.5k</span>
+                        class="white-color">33.6k</span>
             
             
             
@@ -1334,6 +1353,8 @@ $(function () {
 
     
 
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
     
 
     

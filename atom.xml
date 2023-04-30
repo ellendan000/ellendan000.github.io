@@ -6,7 +6,7 @@
   <link href="https://ellendan.com/atom.xml" rel="self"/>
   
   <link href="https://ellendan.com/"/>
-  <updated>2023-04-30T11:09:51.928Z</updated>
+  <updated>2023-04-30T14:11:22.942Z</updated>
   <id>https://ellendan.com/</id>
   
   <author>
@@ -17,14 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ChatGPT API</title>
+    <link href="https://ellendan.com/2023/04/30/chatgpt-api/"/>
+    <id>https://ellendan.com/2023/04/30/chatgpt-api/</id>
+    <published>2023-04-30T14:08:08.000Z</published>
+    <updated>2023-04-30T14:11:22.942Z</updated>
+    
+    
+    
+    
+    <category term="ChatGPT" scheme="https://ellendan.com/categories/ChatGPT/"/>
+    
+    
+    <category term="ChatGPT" scheme="https://ellendan.com/tags/ChatGPT/"/>
+    
+  </entry>
+  
+  <entry>
     <title>反手回摸Oracle</title>
     <link href="https://ellendan.com/2022/08/22/fan-shou-hui-mo-oracle/"/>
     <id>https://ellendan.com/2022/08/22/fan-shou-hui-mo-oracle/</id>
     <published>2022-08-22T18:31:00.000Z</published>
-    <updated>2023-04-30T11:09:51.928Z</updated>
+    <updated>2023-04-30T14:11:22.942Z</updated>
     
     
-    <summary type="html">&lt;p&gt;最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。&lt;br&gt;没想到现在还有反手回摸的时候。&lt;br&gt;回摸也就算了，等准备好 Oracle 知识回顾，最后发现计划赶不上变化，暂时用不上了。&lt;br&gt;重新 review 了一把自己的kanban和计划清单，赶紧记录一下，回到目标的事务上去。  &lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。&lt;br&gt;
+没想到现在还有反手回摸的时候。&lt;br&gt;
+回摸也就算了，等准备好 Oracle 知识回顾，最后发现计划赶不上变化，暂时用不上了。&lt;br&gt;
+重新 review 了一把自己的kanban和计划清单，赶紧记录一下，回到目标的事务上去。&lt;/p&gt;</summary>
     
     
     
@@ -40,10 +60,12 @@
     <link href="https://ellendan.com/2022/07/18/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-xia-pian/"/>
     <id>https://ellendan.com/2022/07/18/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-xia-pian/</id>
     <published>2022-07-18T08:00:00.000Z</published>
-    <updated>2023-04-30T11:09:51.924Z</updated>
+    <updated>2023-04-30T14:11:22.938Z</updated>
     
     
-    <summary type="html">&lt;p&gt;已经过了一旬，下篇居然还没开始动笔。&lt;br&gt;反思了一下人生：P&lt;br&gt;书接上回。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;已经过了一旬，下篇居然还没开始动笔。&lt;br&gt;
+反思了一下人生：P&lt;br&gt;
+书接上回。&lt;/p&gt;</summary>
     
     
     
@@ -59,14 +81,17 @@
     <link href="https://ellendan.com/2022/07/02/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-shang-pian/"/>
     <id>https://ellendan.com/2022/07/02/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-shang-pian/</id>
     <published>2022-07-02T12:00:00.000Z</published>
-    <updated>2023-04-30T11:09:51.920Z</updated>
+    <updated>2023-04-30T14:11:22.934Z</updated>
     
     
-    <summary type="html">&lt;p&gt;最近几年，国内业界越来越常提及&lt;code&gt;“研发效能”&lt;/code&gt;这个词，追其根源大部分是始于&lt;code&gt;“DevOps”&lt;/code&gt;运动的活跃。&lt;br&gt;知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。&lt;br&gt;很多云厂商在推广自己 DevOps 平台服务的时候，也会提及对&lt;code&gt;“研发效能”&lt;/code&gt;的大幅度影响，比如 AWS 对 DevOps 的描述：&lt;/p&gt;
+    <summary type="html">&lt;p&gt;最近几年，国内业界越来越常提及&lt;code&gt;“研发效能”&lt;/code&gt;这个词，追其根源大部分是始于&lt;code&gt;“DevOps”&lt;/code&gt;运动的活跃。&lt;br&gt;
+知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。&lt;br&gt;
+很多云厂商在推广自己 DevOps 平台服务的时候，也会提及对&lt;code&gt;“研发效能”&lt;/code&gt;的大幅度影响，比如 AWS 对 DevOps 的描述：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;DevOps is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications and services at high velocity: evolving and improving products at a faster pace than organizations using traditional software development and infrastructure management processes. This speed enables organizations to better serve their customers and compete more effectively in the market.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;那么，研发效能 == DevOps 吗？&lt;br&gt;答案自然是否定 。  &lt;/p&gt;</summary>
+&lt;p&gt;那么，研发效能 == DevOps 吗？&lt;br&gt;
+答案自然是否定 。&lt;/p&gt;</summary>
     
     
     
@@ -82,13 +107,16 @@
     <link href="https://ellendan.com/2022/05/10/shu-ju-ku-de-acid-he-fen-bu-shi-shi-wu/"/>
     <id>https://ellendan.com/2022/05/10/shu-ju-ku-de-acid-he-fen-bu-shi-shi-wu/</id>
     <published>2022-05-10T12:00:00.000Z</published>
-    <updated>2023-04-30T11:09:51.920Z</updated>
+    <updated>2023-04-30T14:11:22.934Z</updated>
     
     
-    <summary type="html">&lt;p&gt;前面写了一篇关于&lt;code&gt;CAP原理&lt;/code&gt;的博文，说到&lt;code&gt;一致性 Consistency&lt;/code&gt;，有人往往会想到事务&lt;code&gt;ACID&lt;/code&gt;特性中的&lt;code&gt;C: Consistency&lt;/code&gt;，虽然都叫一致性，但完全是两个东西。  &lt;/p&gt;
+    <summary type="html">&lt;p&gt;前面写了一篇关于&lt;code&gt;CAP原理&lt;/code&gt;的博文，说到&lt;code&gt;一致性 Consistency&lt;/code&gt;，有人往往会想到事务&lt;code&gt;ACID&lt;/code&gt;特性中的&lt;code&gt;C: Consistency&lt;/code&gt;，虽然都叫一致性，但完全是两个东西。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;CAP&lt;/code&gt;的一致性指：数据库的同一复制集（replicaSet）之间数据相同。&lt;br&gt;  &lt;em&gt;这里的“数据库”，可以是主从、主备、集群架构，但没有单机架构。&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ACID&lt;/code&gt;的一致性指：在数据库单一实例中(暂不涉及多个数据源的分布式事务)，成功写入的数据不违反已定义的数据规则，如约束、级联规则等等。&lt;br&gt;接着，来通过本地事务的详细说一下&lt;code&gt;ACID&lt;/code&gt;，以及跨多数据源的分布式事务。&lt;/li&gt;&lt;/ul&gt;</summary>
+&lt;li&gt;&lt;code&gt;CAP&lt;/code&gt;的一致性指：数据库的同一复制集（replicaSet）之间数据相同。&lt;br&gt;
+&lt;em&gt;这里的“数据库”，可以是主从、主备、集群架构，但没有单机架构。&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ACID&lt;/code&gt;的一致性指：在数据库单一实例中(暂不涉及多个数据源的分布式事务)，成功写入的数据不违反已定义的数据规则，如约束、级联规则等等。&lt;br&gt;
+接着，来通过本地事务的详细说一下&lt;code&gt;ACID&lt;/code&gt;，以及跨多数据源的分布式事务。&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
@@ -104,10 +132,13 @@
     <link href="https://ellendan.com/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/"/>
     <id>https://ellendan.com/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/</id>
     <published>2022-05-03T12:00:00.000Z</published>
-    <updated>2023-04-30T11:09:51.920Z</updated>
+    <updated>2023-04-30T14:11:22.934Z</updated>
     
     
-    <summary type="html">&lt;p&gt;CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。&lt;br&gt;来，再展开说说？这时候，多数人的回答就会是是而非，模棱两可。&lt;br&gt;也许不少应用级开发工程师觉得 —— 我又不自研集群数据库，也不开发云平台，没必要那么了解 CAP 理论。&lt;br&gt;那么，你开发的应用系统，是否使用了分布式架构呢？如果是，CAP 理论可以说是指导构建系统的技术理论基石之一，必须要重视起来。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。&lt;br&gt;
+来，再展开说说？这时候，多数人的回答就会是是而非，模棱两可。&lt;br&gt;
+也许不少应用级开发工程师觉得 —— 我又不自研集群数据库，也不开发云平台，没必要那么了解 CAP 理论。&lt;br&gt;
+那么，你开发的应用系统，是否使用了分布式架构呢？如果是，CAP 理论可以说是指导构建系统的技术理论基石之一，必须要重视起来。&lt;/p&gt;</summary>
     
     
     
@@ -123,10 +154,14 @@
     <link href="https://ellendan.com/2022/04/29/chong-qi/"/>
     <id>https://ellendan.com/2022/04/29/chong-qi/</id>
     <published>2022-04-29T04:12:00.000Z</published>
-    <updated>2023-04-30T11:09:51.920Z</updated>
+    <updated>2023-04-30T14:11:22.934Z</updated>
     
     
-    <summary type="html">&lt;p&gt;最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。&lt;br&gt;因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只见云雾不见青山。&lt;br&gt;所以，现觉得对自身的知识储备进行重构，迫在眉睫。&lt;br&gt;那么，有没有一种看起来比较靠谱的架构解决方案可以达到此目的呢？&lt;br&gt;重读《金字塔原理》之后，我觉得使用“金字塔结构”可以一试。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。&lt;br&gt;
+因此，予以记忆而言，效率不高，且没有关联的知识块容易遗忘；予以表达而言，易思维阻塞，前后逻辑不顺；予以认清知识本质而言，重复颇多，而且只见云雾不见青山。&lt;br&gt;
+所以，现觉得对自身的知识储备进行重构，迫在眉睫。&lt;br&gt;
+那么，有没有一种看起来比较靠谱的架构解决方案可以达到此目的呢？&lt;br&gt;
+重读《金字塔原理》之后，我觉得使用“金字塔结构”可以一试。&lt;/p&gt;</summary>
     
     
     
@@ -142,7 +177,7 @@
     <link href="https://ellendan.com/2021/01/18/wei-fu-wu-xian-shang-zhi-li-zhi-jian-kong/"/>
     <id>https://ellendan.com/2021/01/18/wei-fu-wu-xian-shang-zhi-li-zhi-jian-kong/</id>
     <published>2021-01-18T02:54:20.000Z</published>
-    <updated>2023-04-30T11:09:51.908Z</updated>
+    <updated>2023-04-30T14:11:22.922Z</updated>
     
     
     <summary type="html">&lt;p&gt;微服务架构已经是时下后端应用开发的主流架构之一。微服务的整个生命周期包括&lt;code&gt;微服务拆分和定义（产品规划）&lt;/code&gt;、&lt;code&gt;微服务研发&lt;/code&gt;、&lt;code&gt;微服务构建与部署&lt;/code&gt;、&lt;code&gt;监控与运维&lt;/code&gt;几个阶段。&lt;/p&gt;
@@ -163,7 +198,7 @@
     <link href="https://ellendan.com/2020/12/27/mysql-innodb-ju-ji-suo-yin-shu-ju-jie-gou/"/>
     <id>https://ellendan.com/2020/12/27/mysql-innodb-ju-ji-suo-yin-shu-ju-jie-gou/</id>
     <published>2020-12-27T14:00:20.000Z</published>
-    <updated>2023-04-30T11:09:51.900Z</updated>
+    <updated>2023-04-30T14:11:22.910Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -187,14 +222,14 @@
     <link href="https://ellendan.com/2020/06/30/yan-fa-xiao-neng-zhi-ceng-ji-ce-shi/"/>
     <id>https://ellendan.com/2020/06/30/yan-fa-xiao-neng-zhi-ceng-ji-ce-shi/</id>
     <published>2020-06-30T06:18:20.000Z</published>
-    <updated>2023-04-30T11:09:51.892Z</updated>
+    <updated>2023-04-30T14:11:22.906Z</updated>
     
     
     <summary type="html">&lt;p&gt;研发效能不等于研发效率。&lt;/p&gt;
 &lt;p&gt;在我司的&lt;code&gt;研发平台解决方案&lt;/code&gt;的定义中，研发效能 = 可持续快速交付价值的能力 = 效率 + 质量 + 用户价值。&lt;/p&gt;
 &lt;p&gt;如果不能达到相应的质量标准和用户价值，再高的研发效率也是枉然。&lt;/p&gt;
 &lt;p&gt;这里我专门聊一下效率和质量之间的结合一个点。&lt;/p&gt;
-&lt;h3 id=&quot;1-在对质量的追求中，如何优化研发效率？&quot;&gt;&lt;a href=&quot;#1-在对质量的追求中，如何优化研发效率？&quot; class=&quot;headerlink&quot; title=&quot;1. 在对质量的追求中，如何优化研发效率？&quot;&gt;&lt;/a&gt;1. 在对质量的追求中，如何优化研发效率？&lt;/h3&gt;</summary>
+&lt;h3 id=&quot;1-在对质量的追求中，如何优化研发效率？&quot;&gt;1. 在对质量的追求中，如何优化研发效率？&lt;/h3&gt;</summary>
     
     
     
@@ -212,10 +247,13 @@
     <link href="https://ellendan.com/2020/06/05/zai-gradle-guan-li-ke-gong-xiang-de-yi-lai-ban-ben/"/>
     <id>https://ellendan.com/2020/06/05/zai-gradle-guan-li-ke-gong-xiang-de-yi-lai-ban-ben/</id>
     <published>2020-06-05T06:18:20.000Z</published>
-    <updated>2023-04-30T11:09:51.888Z</updated>
+    <updated>2023-04-30T14:11:22.902Z</updated>
     
     
-    <summary type="html">&lt;p&gt;“可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。&lt;br&gt;对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。&lt;br&gt;没用过 Maven 的小伙伴们也不用被劝退，想想在使用Spring plugin &lt;code&gt;io.spring.dependency-management&lt;/code&gt;时，&lt;br&gt;&lt;code&gt;imports.mavenBom&lt;/code&gt;到底在做什么，有没有想要了解一下？&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;“可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。&lt;br&gt;
+对，这里聊的就是如何使用 gradle 实现 BOM 生成和导入。&lt;br&gt;
+没用过 Maven 的小伙伴们也不用被劝退，想想在使用Spring plugin &lt;code&gt;io.spring.dependency-management&lt;/code&gt;时，&lt;br&gt;
+&lt;code&gt;imports.mavenBom&lt;/code&gt;到底在做什么，有没有想要了解一下？&lt;/p&gt;</summary>
     
     
     
@@ -233,11 +271,13 @@
     <link href="https://ellendan.com/2020/02/09/ddd-gai-nian-gai-lan/"/>
     <id>https://ellendan.com/2020/02/09/ddd-gai-nian-gai-lan/</id>
     <published>2020-02-09T06:50:44.000Z</published>
-    <updated>2023-04-30T11:09:51.888Z</updated>
+    <updated>2023-04-30T14:11:22.902Z</updated>
     
     
     <summary type="html">&lt;p&gt;软件的核心，是为其用户解决领域相关问题的能力。&lt;/p&gt;
-&lt;h3 id=&quot;1-何为DDD&quot;&gt;&lt;a href=&quot;#1-何为DDD&quot; class=&quot;headerlink&quot; title=&quot;1. 何为DDD&quot;&gt;&lt;/a&gt;1. 何为DDD&lt;/h3&gt;&lt;p&gt;DDD是Domain Driven Design的简称。&lt;strong&gt;领域驱动设计&lt;/strong&gt;，“&lt;strong&gt;领域&lt;/strong&gt;”指业务领域，“&lt;strong&gt;设计&lt;/strong&gt;”指软件设计。&lt;br&gt;DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思维方式，使得团队可以高效管理——用于复杂问题域的软件的构造和维护。&lt;/p&gt;</summary>
+&lt;h3 id=&quot;1-何为DDD&quot;&gt;1. 何为DDD&lt;/h3&gt;
+&lt;p&gt;DDD是Domain Driven Design的简称。&lt;strong&gt;领域驱动设计&lt;/strong&gt;，“&lt;strong&gt;领域&lt;/strong&gt;”指业务领域，“&lt;strong&gt;设计&lt;/strong&gt;”指软件设计。&lt;br&gt;
+DDD可以看成一种开发思想体系，促成了一种新的以领域为中心的思维方式，使得团队可以高效管理——用于复杂问题域的软件的构造和维护。&lt;/p&gt;</summary>
     
     
     
@@ -253,11 +293,14 @@
     <link href="https://ellendan.com/2020/02/08/cong-jing-yi-lai-kan-jie-zhi-jiao-fu-shi-shi-me/"/>
     <id>https://ellendan.com/2020/02/08/cong-jing-yi-lai-kan-jie-zhi-jiao-fu-shi-shi-me/</id>
     <published>2020-02-08T10:27:20.000Z</published>
-    <updated>2023-04-30T11:09:51.884Z</updated>
+    <updated>2023-04-30T14:11:22.898Z</updated>
     
     
-    <summary type="html">&lt;p&gt;前一段时间在做U内的价值交付。&lt;br&gt;个人也从最开始的可意会不可言传的状态，到后来可以聊些概念和措施的阶段。&lt;/p&gt;
-&lt;p&gt;老实说，曾经在我司经常听到Dev challenge BA：“你这个需求的价值是什么？”现在反而听到越来越少。&lt;br&gt;曾经我们坚持要去做有价值的事情，直到我们现在不得不 highlight 出 &lt;code&gt;价值交付&lt;/code&gt; 这个标题。&lt;br&gt;并且常常会被问到 —— 价值交付，它到底指什么？&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;前一段时间在做U内的价值交付。&lt;br&gt;
+个人也从最开始的可意会不可言传的状态，到后来可以聊些概念和措施的阶段。&lt;/p&gt;
+&lt;p&gt;老实说，曾经在我司经常听到Dev challenge BA：“你这个需求的价值是什么？”现在反而听到越来越少。&lt;br&gt;
+曾经我们坚持要去做有价值的事情，直到我们现在不得不 highlight 出 &lt;code&gt;价值交付&lt;/code&gt; 这个标题。&lt;br&gt;
+并且常常会被问到 —— 价值交付，它到底指什么？&lt;/p&gt;</summary>
     
     
     
@@ -275,11 +318,14 @@
     <link href="https://ellendan.com/2020/01/16/wei-shi-me-yue-shen-chu-tuan-dui-yue-nan-gai-jin/"/>
     <id>https://ellendan.com/2020/01/16/wei-shi-me-yue-shen-chu-tuan-dui-yue-nan-gai-jin/</id>
     <published>2020-01-16T12:31:00.000Z</published>
-    <updated>2023-04-30T11:09:51.884Z</updated>
+    <updated>2023-04-30T14:11:22.898Z</updated>
     
     
-    <summary type="html">&lt;p&gt;“为什么越身处团队越难改进？”  &lt;/p&gt;
-&lt;p&gt;最开始我意识到这个问题的时候，那时候我读了一本叫《咨询的奥秘》的书，里面有一个“普雷斯科特腌黄瓜原则”。&lt;br&gt;好吧，不要较真，不要记住这个别扭的原则名字。名字根本无关紧要，这本书的风格是在讲故事，里面的名词大部分对应的故事叙事主题。&lt;br&gt;这个原则的名字，并没有分享性，更没有Brook’s Law这样带有明确的理论体系。&lt;br&gt;因此，每次我提到它的时候，只说成“腌黄瓜原则”。  &lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;“为什么越身处团队越难改进？”&lt;/p&gt;
+&lt;p&gt;最开始我意识到这个问题的时候，那时候我读了一本叫《咨询的奥秘》的书，里面有一个“普雷斯科特腌黄瓜原则”。&lt;br&gt;
+好吧，不要较真，不要记住这个别扭的原则名字。名字根本无关紧要，这本书的风格是在讲故事，里面的名词大部分对应的故事叙事主题。&lt;br&gt;
+这个原则的名字，并没有分享性，更没有Brook’s Law这样带有明确的理论体系。&lt;br&gt;
+因此，每次我提到它的时候，只说成“腌黄瓜原则”。&lt;/p&gt;</summary>
     
     
     
@@ -295,12 +341,14 @@
     <link href="https://ellendan.com/2019/12/01/min-jie-ce-shi-si-xiang-xian-zhi-san-si/"/>
     <id>https://ellendan.com/2019/12/01/min-jie-ce-shi-si-xiang-xian-zhi-san-si/</id>
     <published>2019-12-01T12:31:00.000Z</published>
-    <updated>2023-04-30T11:09:51.884Z</updated>
+    <updated>2023-04-30T14:11:22.898Z</updated>
     
     
-    <summary type="html">&lt;p&gt;接着上篇《敏捷测试四象限之一二》，这里主要讲下剩下的三四象限。&lt;br&gt;这篇就没有上篇那些吐槽生活中的小例子了。  &lt;/p&gt;
+    <summary type="html">&lt;p&gt;接着上篇《敏捷测试四象限之一二》，这里主要讲下剩下的三四象限。&lt;br&gt;
+这篇就没有上篇那些吐槽生活中的小例子了。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/2019/12/01/min-jie-ce-shi-si-xiang-xian-zhi-san-si/agile_testing_quadrant.png&quot; alt=&quot;敏捷测试四象限&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在四象限图的右边部分，区别于“支持团队”，主要目的是来“评价产品”。&lt;br&gt;所谓评价产品，就是以用户体验的角度去测试系统 —— 在测试中尽量重现最终用户的实际体验，或者如beta测试，直接邀请终端用户参与测试。  &lt;/p&gt;</summary>
+&lt;p&gt;在四象限图的右边部分，区别于“支持团队”，主要目的是来“评价产品”。&lt;br&gt;
+所谓评价产品，就是以用户体验的角度去测试系统 —— 在测试中尽量重现最终用户的实际体验，或者如beta测试，直接邀请终端用户参与测试。&lt;/p&gt;</summary>
     
     
     
@@ -316,18 +364,21 @@
     <link href="https://ellendan.com/2019/11/28/min-jie-ce-shi-si-xiang-xian-zhi-yi-er/"/>
     <id>https://ellendan.com/2019/11/28/min-jie-ce-shi-si-xiang-xian-zhi-yi-er/</id>
     <published>2019-11-28T10:31:00.000Z</published>
-    <updated>2023-04-30T11:09:51.884Z</updated>
+    <updated>2023-04-30T14:11:22.898Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本来这篇博文我是想这样开头的：  &lt;/p&gt;
-&lt;p&gt;也许有人看见这篇文章的标题会觉得 —— 这跟开发人员无关。&lt;br&gt;不，你错了，这跟开发人员有关，并且有部分工作是需要开发人员去做的。  &lt;/p&gt;
-&lt;p&gt;但，最近遇到了一些事情，我想换一个开头方式：  &lt;/p&gt;
-&lt;p&gt;人在工作和生活中，风平浪静时，就像在实现 stories。而那些突如其来的、打断风平浪静的局面的事情，就像一个个 bugs。作为一个 Tech，我已经习惯了去解决这些 ”bugs“，但又不免内心会吐槽，这些突如其来的问题，作为产品和服务提供商，就不能重视一下质量建设？  &lt;/p&gt;
+    <summary type="html">&lt;p&gt;本来这篇博文我是想这样开头的：&lt;/p&gt;
+&lt;p&gt;也许有人看见这篇文章的标题会觉得 —— 这跟开发人员无关。&lt;br&gt;
+不，你错了，这跟开发人员有关，并且有部分工作是需要开发人员去做的。&lt;/p&gt;
+&lt;p&gt;但，最近遇到了一些事情，我想换一个开头方式：&lt;/p&gt;
+&lt;p&gt;人在工作和生活中，风平浪静时，就像在实现 stories。而那些突如其来的、打断风平浪静的局面的事情，就像一个个 bugs。作为一个 Tech，我已经习惯了去解决这些 ”bugs“，但又不免内心会吐槽，这些突如其来的问题，作为产品和服务提供商，就不能重视一下质量建设？&lt;/p&gt;
 &lt;p&gt;说到质量建设，就不得不来看一下敏捷测试四象限。（这个转接是不是还蛮丝滑顺畅的）&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/2019/11/28/min-jie-ce-shi-si-xiang-xian-zhi-yi-er/agile_testing_quadrant.png&quot; alt=&quot;敏捷测试四象限&quot;&gt;&lt;/p&gt;
-&lt;p&gt;四象限左边部分，用以”支持团队“ —— 帮助团队开发产品。&lt;br&gt;与左边相异的右边部分，用以”评价产品“ —— 对交付的产品增量进行评测。  &lt;/p&gt;
-&lt;p&gt;四象限下边部分，用以”面向技术“ —— 面向技术领域。&lt;br&gt;与下边相异的上边边部分，用以”面向业务“ —— 面向业务领域。  &lt;/p&gt;
-&lt;p&gt;先声明，敏捷测试四象限可以认为是一个模型，或者工具，大家参照它来划分和搭建项目中的测试“架构”。因此，对于具体的项目而言，并不是每一个部分都必须采用和执行，但至少不要漏掉真正需要的维度和实践。  &lt;/p&gt;</summary>
+&lt;p&gt;四象限左边部分，用以”支持团队“ —— 帮助团队开发产品。&lt;br&gt;
+与左边相异的右边部分，用以”评价产品“ —— 对交付的产品增量进行评测。&lt;/p&gt;
+&lt;p&gt;四象限下边部分，用以”面向技术“ —— 面向技术领域。&lt;br&gt;
+与下边相异的上边边部分，用以”面向业务“ —— 面向业务领域。&lt;/p&gt;
+&lt;p&gt;先声明，敏捷测试四象限可以认为是一个模型，或者工具，大家参照它来划分和搭建项目中的测试“架构”。因此，对于具体的项目而言，并不是每一个部分都必须采用和执行，但至少不要漏掉真正需要的维度和实践。&lt;/p&gt;</summary>
     
     
     
@@ -343,22 +394,32 @@
     <link href="https://ellendan.com/2019/10/23/scrum-xing-wai-zhi-shen/"/>
     <id>https://ellendan.com/2019/10/23/scrum-xing-wai-zhi-shen/</id>
     <published>2019-10-23T03:39:00.000Z</published>
-    <updated>2023-04-30T11:09:51.880Z</updated>
+    <updated>2023-04-30T14:11:22.894Z</updated>
     
     
-    <summary type="html">&lt;p&gt;什么是Scrum?&lt;br&gt;Scrum是敏捷软件开发过程的一种框架，用以实现迭代式增量开发。&lt;br&gt;好吧，很抽象。  &lt;/p&gt;
-&lt;p&gt;那是不是 —— 只要有了sprint、IPM、Showcase、Retrospective、可视化卡墙、每日站会，这些流程和工具，就已经实现Scrum了呢？&lt;br&gt;也许有人会说是。这看起来基本就是一个Scrum的MVP(Minimum viable product)。  &lt;/p&gt;
-&lt;p&gt;好，那假设我们的团队已经实现了Scrum流程的MVP。&lt;br&gt;现在，我们来进行一下每日站会。请每个人依次对三个问题进行描述。&lt;br&gt;三个问题，哪三个问题？  &lt;/p&gt;
+    <summary type="html">&lt;p&gt;什么是Scrum?&lt;br&gt;
+Scrum是敏捷软件开发过程的一种框架，用以实现迭代式增量开发。&lt;br&gt;
+好吧，很抽象。&lt;/p&gt;
+&lt;p&gt;那是不是 —— 只要有了sprint、IPM、Showcase、Retrospective、可视化卡墙、每日站会，这些流程和工具，就已经实现Scrum了呢？&lt;br&gt;
+也许有人会说是。这看起来基本就是一个Scrum的MVP(Minimum viable product)。&lt;/p&gt;
+&lt;p&gt;好，那假设我们的团队已经实现了Scrum流程的MVP。&lt;br&gt;
+现在，我们来进行一下每日站会。请每个人依次对三个问题进行描述。&lt;br&gt;
+三个问题，哪三个问题？&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;你昨天做了什么？  &lt;/li&gt;
-&lt;li&gt;今天计划做什么？  &lt;/li&gt;
-&lt;li&gt;遇到什么阻碍或问题？&lt;br&gt;一般大家都认为是这三个问题是不是？&lt;/li&gt;
+&lt;li&gt;你昨天做了什么？&lt;/li&gt;
+&lt;li&gt;今天计划做什么？&lt;/li&gt;
+&lt;li&gt;遇到什么阻碍或问题？&lt;br&gt;
+一般大家都认为是这三个问题是不是？&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;很多人都容易把每日站会视为一个简单的个人报告会。&lt;br&gt;但其实，Scrum的原版三个问题是：  &lt;/p&gt;
+&lt;p&gt;很多人都容易把每日站会视为一个简单的个人报告会。&lt;br&gt;
+但其实，Scrum的原版三个问题是：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;你昨天做了什么去帮助团队完成冲刺？  &lt;/li&gt;
-&lt;li&gt;今天你打算做什么来帮助团队完成冲刺？  &lt;/li&gt;
-&lt;li&gt;什么因素阻碍了团队的前进之路？&lt;br&gt;请注意，有两个字在这三个问题中一再出现 —— “团队/团队/团队”。&lt;br&gt;也许有人会认为区别不大 —— 每个人做好自己的工作，就是在推进团队整体的进度。&lt;/li&gt;&lt;/ol&gt;</summary>
+&lt;li&gt;你昨天做了什么去帮助团队完成冲刺？&lt;/li&gt;
+&lt;li&gt;今天你打算做什么来帮助团队完成冲刺？&lt;/li&gt;
+&lt;li&gt;什么因素阻碍了团队的前进之路？&lt;br&gt;
+请注意，有两个字在这三个问题中一再出现 —— “团队/团队/团队”。&lt;br&gt;
+也许有人会认为区别不大 —— 每个人做好自己的工作，就是在推进团队整体的进度。&lt;/li&gt;
+&lt;/ol&gt;</summary>
     
     
     
@@ -374,12 +435,16 @@
     <link href="https://ellendan.com/2019/10/15/wei-shi-me-bu-gu-li-jia-ban/"/>
     <id>https://ellendan.com/2019/10/15/wei-shi-me-bu-gu-li-jia-ban/</id>
     <published>2019-10-15T02:31:00.000Z</published>
-    <updated>2023-04-30T11:09:51.880Z</updated>
+    <updated>2023-04-30T14:11:22.894Z</updated>
     
     
-    <summary type="html">&lt;p&gt;首先，此篇文章有个大前提，主要针对知识性工作。&lt;br&gt;“知识性工作”与“可重复性的生产活动”对立。  &lt;/p&gt;
-&lt;p&gt;看到这个标题的时候，大概很多人都会想——这是一篇996员工 ICU 的软文：不鼓励加班，是为了让员工过平衡的生活。&lt;br&gt;欧美不少公司不鼓励加班，是因为——他们重视员工的工作和生活。&lt;br&gt;我只想说：图样图森破。当然，也有可能仅仅是公司不想付加班费。  &lt;/p&gt;
-&lt;p&gt;Scrum 之父杰夫·萨瑟兰 ，直接指出：“&lt;strong&gt;工时越长，效率越低。&lt;/strong&gt;”&lt;br&gt;在一些管理者眼中：加班加点地工作不是敬业的标志，而是失败的标志。让员工早点下班，不是想让他们过一种平衡的生活，而是为了他们可以完成更多的工作。  &lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;首先，此篇文章有个大前提，主要针对知识性工作。&lt;br&gt;
+“知识性工作”与“可重复性的生产活动”对立。&lt;/p&gt;
+&lt;p&gt;看到这个标题的时候，大概很多人都会想——这是一篇996员工 ICU 的软文：不鼓励加班，是为了让员工过平衡的生活。&lt;br&gt;
+欧美不少公司不鼓励加班，是因为——他们重视员工的工作和生活。&lt;br&gt;
+我只想说：图样图森破。当然，也有可能仅仅是公司不想付加班费。&lt;/p&gt;
+&lt;p&gt;Scrum 之父杰夫·萨瑟兰 ，直接指出：“&lt;strong&gt;工时越长，效率越低。&lt;/strong&gt;”&lt;br&gt;
+在一些管理者眼中：加班加点地工作不是敬业的标志，而是失败的标志。让员工早点下班，不是想让他们过一种平衡的生活，而是为了他们可以完成更多的工作。&lt;/p&gt;</summary>
     
     
     
@@ -395,15 +460,30 @@
     <link href="https://ellendan.com/2019/07/19/xie-ye-wu-dai-ma-zhen-de-you-na-me-wu-liao-ma/"/>
     <id>https://ellendan.com/2019/07/19/xie-ye-wu-dai-ma-zhen-de-you-na-me-wu-liao-ma/</id>
     <published>2019-07-19T04:12:00.000Z</published>
-    <updated>2023-04-30T11:09:51.880Z</updated>
+    <updated>2023-04-30T14:11:22.894Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;前面先写一点废话。&lt;/em&gt;&lt;br&gt;&lt;em&gt;由于最近在整理一些DDD、微服务、架构相关的知识总结，一边看一边回忆一些经历，又由于本人看的东西有时候很杂，记忆力又大不如前，本打算仅用私人手账的形式记录一下。&lt;/em&gt;&lt;br&gt;&lt;em&gt;但回看了一下2019年年前立的flag —— 50篇博客（应该是完不成了吧。。），又想到最近一段时间接触到的咨询同事的写作能力，唉。&lt;/em&gt;&lt;br&gt;&lt;em&gt;虽然对自身写作和语言表述能力有些萎靡不振，但，人不能不上进。&lt;/em&gt;&lt;br&gt;&lt;em&gt;因此，准备开始简书。&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;这里有人可能要问了：你不是跑去搞区块链了吗，怎么又跑回来微服务、DDD了？&lt;/em&gt;&lt;br&gt;&lt;em&gt;嗯。。这个问题问的好。这里就不得不提到本人去搞区块链之前的一段近两年的项目经历了。&lt;/em&gt;&lt;br&gt;&lt;em&gt;怎么说呢，这个项目虽然在我的项目经历中已经完结了，但它遗留在我心中的问题还没有完结。&lt;/em&gt;&lt;br&gt;&lt;em&gt;就是这样。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;前面先写一点废话。&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;由于最近在整理一些DDD、微服务、架构相关的知识总结，一边看一边回忆一些经历，又由于本人看的东西有时候很杂，记忆力又大不如前，本打算仅用私人手账的形式记录一下。&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;但回看了一下2019年年前立的flag —— 50篇博客（应该是完不成了吧。。），又想到最近一段时间接触到的咨询同事的写作能力，唉。&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;虽然对自身写作和语言表述能力有些萎靡不振，但，人不能不上进。&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;因此，准备开始简书。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;这里有人可能要问了：你不是跑去搞区块链了吗，怎么又跑回来微服务、DDD了？&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;嗯。。这个问题问的好。这里就不得不提到本人去搞区块链之前的一段近两年的项目经历了。&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;怎么说呢，这个项目虽然在我的项目经历中已经完结了，但它遗留在我心中的问题还没有完结。&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;就是这样。&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&quot;1-有时候你不得不去写的业务代码&quot;&gt;&lt;a href=&quot;#1-有时候你不得不去写的业务代码&quot; class=&quot;headerlink&quot; title=&quot;1. 有时候你不得不去写的业务代码&quot;&gt;&lt;/a&gt;1. 有时候你不得不去写的业务代码&lt;/h4&gt;&lt;p&gt;最近出差回来，遇到一些之前项目上的同事聊到自己当前的新项目，无不感叹——不用再像以前一样不停地写业务代码了。&lt;br&gt;嗯，可以多玩一些技术、或者新的技术，总是可以让搞技术的人兴奋很久。&lt;br&gt;但是，比较可惜，所谓技术要盈利，就要交付产品。要交付产品，必然就会有业务。即使是DevOps平台这种纯技术型的产品，技术上的CI/CD就是它的业务。&lt;br&gt;写业务代码，对每个开发来说，基本上都必不可少。&lt;br&gt;这时候，技术需要通过实现业务，来展现价值。  &lt;/p&gt;
-&lt;h4 id=&quot;2-写了这么多业务代码，你是否真的会写业务代码&quot;&gt;&lt;a href=&quot;#2-写了这么多业务代码，你是否真的会写业务代码&quot; class=&quot;headerlink&quot; title=&quot;2. 写了这么多业务代码，你是否真的会写业务代码&quot;&gt;&lt;/a&gt;2. 写了这么多业务代码，你是否真的会写业务代码&lt;/h4&gt;&lt;p&gt;一定会有人觉得这个问题很奇怪，业务代码不就是一个不断累加的过程么，有什么会与不会？&lt;br&gt;说实话，在没有之前那次两年经验的时候，我也是这样想的。但通过那两年的经历，我意识到 —— &lt;strong&gt;复杂业务系统&lt;/strong&gt;，业务绝对不是 1+1=2 这么简单。&lt;br&gt;但即使这样，在我经历最近一个短期项目，跟客户合作开发的时候，又意识到 —— 即使是 &lt;strong&gt;简单业务系统&lt;/strong&gt;，如果开发人员没有 建模意识、或者面向对象的经验、甚至说是没有业务的理解消化能力，写出的代码甚至连 1+1=2 都做不到。&lt;/p&gt;</summary>
+&lt;h4 id=&quot;1-有时候你不得不去写的业务代码&quot;&gt;1. 有时候你不得不去写的业务代码&lt;/h4&gt;
+&lt;p&gt;最近出差回来，遇到一些之前项目上的同事聊到自己当前的新项目，无不感叹——不用再像以前一样不停地写业务代码了。&lt;br&gt;
+嗯，可以多玩一些技术、或者新的技术，总是可以让搞技术的人兴奋很久。&lt;br&gt;
+但是，比较可惜，所谓技术要盈利，就要交付产品。要交付产品，必然就会有业务。即使是DevOps平台这种纯技术型的产品，技术上的CI/CD就是它的业务。&lt;br&gt;
+写业务代码，对每个开发来说，基本上都必不可少。&lt;br&gt;
+这时候，技术需要通过实现业务，来展现价值。&lt;/p&gt;
+&lt;h4 id=&quot;2-写了这么多业务代码，你是否真的会写业务代码&quot;&gt;2. 写了这么多业务代码，你是否真的会写业务代码&lt;/h4&gt;
+&lt;p&gt;一定会有人觉得这个问题很奇怪，业务代码不就是一个不断累加的过程么，有什么会与不会？&lt;br&gt;
+说实话，在没有之前那次两年经验的时候，我也是这样想的。但通过那两年的经历，我意识到 —— &lt;strong&gt;复杂业务系统&lt;/strong&gt;，业务绝对不是 1+1=2 这么简单。&lt;br&gt;
+但即使这样，在我经历最近一个短期项目，跟客户合作开发的时候，又意识到 —— 即使是 &lt;strong&gt;简单业务系统&lt;/strong&gt;，如果开发人员没有 建模意识、或者面向对象的经验、甚至说是没有业务的理解消化能力，写出的代码甚至连 1+1=2 都做不到。&lt;/p&gt;</summary>
     
     
     
