@@ -5,7 +5,6 @@ tags:
     - DevOps
 categories: 
     - 敏捷精益软件
-hide: true  
 ---
 
 DevOps知识树。
