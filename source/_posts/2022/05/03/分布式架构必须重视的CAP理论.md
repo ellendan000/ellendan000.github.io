@@ -5,6 +5,8 @@ tags:
     - 分布式架构
 categories: 
     - 分布式架构
+top: true
+cover: true
 ---
 
 CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。  
