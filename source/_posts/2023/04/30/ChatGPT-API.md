@@ -1,7 +1,5 @@
 ---
 title: ChatGPT API
-top: true
-cover: false
 toc: true
 date: 2023-04-30 22:08:08
 img:
