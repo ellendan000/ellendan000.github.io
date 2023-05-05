@@ -13,9 +13,20 @@
     { "id": "Azure", "parentid": "Platforms", "isLink": false, "topic": "Azure",  "direction": "right", "expanded": true},
     { "id": "AWS", "parentid": "Platforms", "isLink": false, "topic": "AWS",  "direction": "right", "expanded": true},
 
+    { "id": "Methods", "parentid": "Root", "isLink": false, "topic": "Methods",  "direction": "right", "expanded": true},
+    { "id": "Agile-Lead", "parentid": "Methods", "isLink": false, "topic": "敏捷精益",  "direction": "right", "expanded": true},
+    { "id": "Agile-Lead-1", "parentid": "Agile-Lead", "isLink": true, "topic": "价值交付",  "direction": "right", "expanded": true, "link": "../2020/02/08/cong-jing-yi-lai-kan-jie-zhi-jiao-fu-shi-shi-me/"},
+    { "id": "Agile-Lead-2", "parentid": "Agile-Lead", "isLink": true, "topic": "Srum",  "direction": "right", "expanded": true, "link": "../2019/10/23/scrum-xing-wai-zhi-shen/"},
+    { "id": "Agile-Lead-3", "parentid": "Agile-Lead", "isLink": false, "topic": "敏捷测试四象限",  "direction": "right", "expanded": true},
+
     { "id": "Tools", "parentid": "Root", "isLink": false, "topic": "Tools",  "direction": "left", "expanded": true},
     { "id": "ChatGPT", "parentid": "Tools", "isLink": false, "topic": "ChatGPT",  "direction": "left", "expanded": true},
+
     { "id": "RDS", "parentid": "Tools", "isLink": false, "topic": "关系型数据库",  "direction": "left", "expanded": true},
+    { "id": "MySQL", "parentid": "RDS", "isLink": false, "topic": "MySQL",  "direction": "left", "expanded": false},
+    { "id": "MySQL-1", "parentid": "MySQL", "isLink": true, "topic": "MySQL InnoDB 聚集索引数据结构",  "direction": "left", "expanded": true, "link": "../2020/12/27/mysql-innodb-ju-ji-suo-yin-shu-ju-jie-gou/"},
+    { "id": "Oracle-1", "parentid": "RDS", "isLink": true, "topic": "Oracle docker安装",  "direction": "left", "expanded": true, "link": "../2022/08/22/fan-shou-hui-mo-oracle/"},
+
     { "id": "DDS", "parentid": "Tools", "isLink": false, "topic": "分布式数据库",  "direction": "left", "expanded": true},
     { "id": "DataFlow", "parentid": "Tools", "isLink": false, "topic": "流运算",  "direction": "left", "expanded": true},
     { "id": "Flink", "parentid": "DataFlow", "isLink": false, "topic": "Flink",  "direction": "left", "expanded": true},
@@ -23,6 +34,14 @@
 
     { "id": "Techniques", "parentid": "Root", "isLink": false, "topic": "Techniques",  "direction": "left", "expanded": true},
     { "id": "Mircoservices", "parentid": "Techniques", "isLink": false, "topic": "微服务架构",  "direction": "left", "expanded": true},
+    { "id": "DDD", "parentid": "Mircoservices", "isLink": false, "topic": "Domain Driven Design",  "direction": "left", "expanded": true},
+    { "id": "DDD-1", "parentid": "DDD", "isLink": true, "topic": "DDD 概念概览",  "direction": "left", "expanded": true, "link": "../2020/02/09/ddd-gai-nian-gai-lan/"},
+    { "id": "Mircoservices-govern", "parentid": "Mircoservices", "isLink": false, "topic": "微服务治理",  "direction": "left", "expanded": true},
+    { "id": "Mircoservices-govern-1", "parentid": "Mircoservices-govern", "isLink": true, "topic": "微服务线上治理之监控",  "direction": "left", "expanded": true, "link": "../2021/01/18/wei-fu-wu-xian-shang-zhi-li-zhi-jian-kong/"},
+
+    { "id": "Distributed", "parentid": "Techniques", "isLink": false, "topic": "分布式",  "direction": "left", "expanded": true},
+    { "id": "CAP", "parentid": "Distributed", "isLink": true, "topic": "CAP",  "direction": "left", "expanded": true, "link": "../2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/"},
+
     { "id": "Blockchain", "parentid": "Techniques", "isLink": false, "topic": "区块链",  "direction": "left", "expanded": true},
     { "id": "Blockchain-app", "parentid": "Blockchain", "isLink": false, "topic": "应用",  "direction": "left", "expanded": true},
     { "id": "Bitcoin", "parentid": "Blockchain-app", "isLink": false, "topic": "比特币",  "direction": "left", "expanded": true},
