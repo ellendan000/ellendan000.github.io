@@ -3,6 +3,8 @@
     
     { "id": "Languages", "parentid": "Root", "isLink": false, "topic": "Languages",  "direction": "right", "expanded": true},
     { "id": "Java", "parentid": "Languages", "isLink": false, "topic": "Java",  "direction": "right", "expanded": true},
+    { "id": "JVM", "parentid": "Java", "isLink": false, "topic": "JVM",  "direction": "right", "expanded": true},
+    { "id": "JVM-1", "parentid": "JVM", "isLink": true, "topic": "Docker JVM通用工具诊断指南",  "direction": "right", "expanded": true, "link": "../2021/01/18/docker-jvm-tong-yong-gong-ju-zhen-duan-zhi-nan/"},
     { "id": "Python", "parentid": "Languages", "isLink": false, "topic": "Python",  "direction": "right", "expanded": true},
     { "id": "Nodejs", "parentid": "Languages", "isLink": false, "topic": "Nodejs",  "direction": "right", "expanded": true},
     { "id": "Kotlin", "parentid": "Languages", "isLink": false, "topic": "Kotlin",  "direction": "right", "expanded": true},
