@@ -3,7 +3,7 @@
     
     { "id": "Languages", "parentid": "Root", "isLink": false, "topic": "Languages",  "direction": "right", "expanded": true},
     { "id": "Java", "parentid": "Languages", "isLink": false, "topic": "Java",  "direction": "right", "expanded": true},
-    { "id": "JVM", "parentid": "Java", "isLink": false, "topic": "JVM",  "direction": "right", "expanded": true},
+    { "id": "JVM", "parentid": "Java", "isLink": false, "topic": "JVM",  "direction": "right", "expanded": false},
     { "id": "JVM-1", "parentid": "JVM", "isLink": true, "topic": "Docker JVM通用工具诊断指南",  "direction": "right", "expanded": true, "link": "../2021/01/18/docker-jvm-tong-yong-gong-ju-zhen-duan-zhi-nan/"},
     { "id": "Python", "parentid": "Languages", "isLink": false, "topic": "Python",  "direction": "right", "expanded": true},
     { "id": "Nodejs", "parentid": "Languages", "isLink": false, "topic": "Nodejs",  "direction": "right", "expanded": true},
@@ -14,7 +14,7 @@
     { "id": "AWS", "parentid": "Platforms", "isLink": false, "topic": "AWS",  "direction": "right", "expanded": true},
 
     { "id": "Methods", "parentid": "Root", "isLink": false, "topic": "Methods",  "direction": "right", "expanded": true},
-    { "id": "Agile-Lead", "parentid": "Methods", "isLink": false, "topic": "敏捷精益",  "direction": "right", "expanded": true},
+    { "id": "Agile-Lead", "parentid": "Methods", "isLink": false, "topic": "敏捷精益",  "direction": "right", "expanded": false},
     { "id": "Agile-Lead-1", "parentid": "Agile-Lead", "isLink": true, "topic": "价值交付",  "direction": "right", "expanded": true, "link": "../2020/02/08/cong-jing-yi-lai-kan-jie-zhi-jiao-fu-shi-shi-me/"},
     { "id": "Agile-Lead-2", "parentid": "Agile-Lead", "isLink": true, "topic": "Srum",  "direction": "right", "expanded": true, "link": "../2019/10/23/scrum-xing-wai-zhi-shen/"},
     { "id": "Agile-Lead-3", "parentid": "Agile-Lead", "isLink": false, "topic": "敏捷测试四象限",  "direction": "right", "expanded": true},
@@ -34,12 +34,12 @@
 
     { "id": "Techniques", "parentid": "Root", "isLink": false, "topic": "Techniques",  "direction": "left", "expanded": true},
     { "id": "Mircoservices", "parentid": "Techniques", "isLink": false, "topic": "微服务架构",  "direction": "left", "expanded": true},
-    { "id": "DDD", "parentid": "Mircoservices", "isLink": false, "topic": "Domain Driven Design",  "direction": "left", "expanded": true},
+    { "id": "DDD", "parentid": "Mircoservices", "isLink": false, "topic": "Domain Driven Design",  "direction": "left", "expanded": false},
     { "id": "DDD-1", "parentid": "DDD", "isLink": true, "topic": "DDD 概念概览",  "direction": "left", "expanded": true, "link": "../2020/02/09/ddd-gai-nian-gai-lan/"},
-    { "id": "Mircoservices-govern", "parentid": "Mircoservices", "isLink": false, "topic": "微服务治理",  "direction": "left", "expanded": true},
+    { "id": "Mircoservices-govern", "parentid": "Mircoservices", "isLink": false, "topic": "微服务治理",  "direction": "left", "expanded": false},
     { "id": "Mircoservices-govern-1", "parentid": "Mircoservices-govern", "isLink": true, "topic": "微服务线上治理之监控",  "direction": "left", "expanded": true, "link": "../2021/01/18/wei-fu-wu-xian-shang-zhi-li-zhi-jian-kong/"},
 
-    { "id": "Distributed", "parentid": "Techniques", "isLink": false, "topic": "分布式",  "direction": "left", "expanded": true},
+    { "id": "Distributed", "parentid": "Techniques", "isLink": false, "topic": "分布式",  "direction": "left", "expanded": false},
     { "id": "CAP", "parentid": "Distributed", "isLink": true, "topic": "CAP",  "direction": "left", "expanded": true, "link": "../2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/"},
 
     { "id": "Blockchain", "parentid": "Techniques", "isLink": false, "topic": "区块链",  "direction": "left", "expanded": true},
