@@ -61,7 +61,7 @@ docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD=123456 -
 
 ### 2. Oracle Database 基础概念和语句图谱
 
-{% pullquote mindmap mindmap-lg %}
+{% markmap 800px %}
 - Oracle Database
     - 数据库概念
         - 数据库
@@ -131,4 +131,4 @@ docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD=123456 -
                 - SQL
                     - 查询当前用户和schema：select sys_context('userenv', 'current_user') current_user, sys_context('userenv', 'current_user') current_schema from dual;
             - 对象
-{% endpullquote %}
+{% endmarkmap %}
