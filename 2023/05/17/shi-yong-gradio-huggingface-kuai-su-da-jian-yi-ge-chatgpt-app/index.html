@@ -440,7 +440,7 @@
 <p>这些 API 可以直接调用，使用命令行（科学上网），也可以自己搭建服务器。<br>
 如果仅仅只是想使用 API 构建一个会话服务，或者 Generic 聊天机器人，专门搭建一个服务器没有什么特别大的意义。<br>
 但如果从学习和尝试构建 ChatGPT 应用的角度、从上手程度来衡量的话，Gradio + huggingface 不失为一种快速构建的方式。<br>
-Gradio 是一个可以快速搭建一个Python web的工具包，Huggingface 支持源码管理、 Gradio 应用的快速构建和部署。</p>
+Gradio 是一个可以快速搭建 Python web 的工具包，Huggingface 支持源码管理、 Gradio 应用的快速构建和部署。</p>
 <h3 id="1-使用-ChatGPT-API-编程">1. 使用 ChatGPT API 编程</h3>
 <h4 id="1-1-Python-OpenAI-lib-下载和安装">1.1 Python OpenAI lib 下载和安装</h4>
 <p>在新建的工程目录下，安装 openAI lib。</p>
@@ -470,7 +470,7 @@ Gradio 是一个可以快速搭建一个Python web的工具包，Huggingface 支
 <li><code>openai.ChatCompletion.create</code>方法（背后就是 API Endpoint: /chat/completions）</li>
 <li><code>gpt-3.5-turbo</code> 模型</li>
 </ul>
-<p>查阅过OpenAPI<a target="_blank" rel="noopener" href="https://platform.openai.com/docs/api-reference/chat/create">官方文档</a>，可以发现，OpenAI 提供了多种模型，可以根据自己的需求进行选择。<br>
+<p>查阅过OpenAPI<a target="_blank" rel="noopener" href="https://platform.openai.com/docs/api-reference">官方文档</a>，可以发现，OpenAI 提供了多种模型，可以根据自己的需求进行选择。<br>
 同时，不同API，支持和兼容不同的模型。<br>
 <img src="/2023/05/17/shi-yong-gradio-huggingface-kuai-su-da-jian-yi-ge-chatgpt-app/model_endpoint_compatibility.png" alt="model endpoint compatibility"></p>
 <p>GPT 4 版本以下，较推荐的两个模型，一个是 <code>gpt-3.5-turbo</code>，另一个是 <code>text-davinci-003</code>。<br>
