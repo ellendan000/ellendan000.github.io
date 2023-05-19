@@ -392,14 +392,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    580
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
 
@@ -459,168 +459,11 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
 <pre class="line-numbers language-none"><code class="language-none">docker run --name oracle19 -d -p 11521:1521 -p 15500:5500 -e ORACLE_PWD=123456 -v ~/tmp-oradata:/opt/oracle/oradata oracle/database/19.3.0-se2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这时候，通过docker host本地 11521 端口，就可以连接docker oracle了。</p>
 <h3 id="2-Oracle-Database-基础概念和语句图谱">2. Oracle Database 基础概念和语句图谱</h3>
-<blockquote class="pullquote mindmap mindmap-lg"><ul>
-<li>Oracle Database
-<ul>
-<li>数据库概念
-<ul>
-<li>数据库
-<ul>
-<li>SQL
-<ul>
-<li>查看当前数据库：select name from V$DATABASE;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>数据库实例
-<ul>
-<li>SQL
-<ul>
-<li>查看当前数据库实例：select name from V$INSTANCE;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>SID</li>
-<li>CDB &amp; PDB</li>
-</ul>
-</li>
-<li>SQLPLUS
-<ul>
-<li>tnsnames.ora</li>
-<li>sqlnet.ora</li>
-<li>连接
-<ul>
-<li>sqlplus username/password@host:port/SID</li>
-<li>conn username/password</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>用户/角色/权限
-<ul>
-<li>用户
-<ul>
-<li>SQL
-<ul>
-<li>创建用户：create user ogg identified by ogg default tablespace customer;</li>
-<li>查询用户：select * from dba_users where lower(username)=‘ogg’;</li>
-<li>删除用户：drop user ogg;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>角色
-<ul>
-<li>SQL
-<ul>
-<li>创建角色：create role etl;</li>
-<li>查询角色：select * from DBA_ROLES;</li>
-<li>角色授权（系统）：grant connect,resource,create session, alter session to etl;</li>
-<li>角色授权（对象）：grant insert,update,delete on t_custmer to etl;</li>
-<li>给用户添加角色：grant etl01 to ogg;</li>
-<li>删除角色：drop role etl;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>权限
-<ul>
-<li>定义
-<ul>
-<li>系统权限</li>
-<li>对象权限：指用户对已有对象的操作权限。</li>
-</ul>
-</li>
-<li>SQL
-<ul>
-<li>系统权限
-<ul>
-<li>查询系统权限：select distinct PRIVILEGE from DBA_SYS_PRIVS;</li>
-<li>查询grantee拥有的权限：select * from DBA_SYS_PRIVS where lower(grantee)='ogg’;</li>
-<li>给用户添加权限：grant create session,alter session to ogg;</li>
-<li>收回权限：revoke alter session from ogg;</li>
-</ul>
-</li>
-<li>对象权限
-<ul>
-<li>查询grantee用户的对象权限：select grantee, table_name, privilege from dba_tab_privs where lower(grantee) = ‘ogg’;</li>
-<li>分配对象权限：grant all on t_employees to ogg;</li>
-<li>收回权限：revoke delete on t_employees from ogg;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>逻辑结构
-<ul>
-<li>数据库/表空间/表
-<ul>
-<li>数据库
-<ul>
-<li>SQL</li>
-</ul>
-</li>
-<li>表空间
-<ul>
-<li>SQL
-<ul>
-<li>创建表空间：CREATE TABLESPACE customer datafile ‘/opt/oracle/oradata/XE/customer.dbf’ SIZE 100M autoextend on next 20M Maxsize 500M;</li>
-<li>删除表空间：drop tablespace customer including contents and datafiles;</li>
-<li>查看表空间数据文件：select file_name, tablespace_name from DBA_DATA_FILES order by FILE_NAME;</li>
-<li>查看所有表空间：SELECT TABLESPACE_NAME, STATUS, ALLOCATION_TYPE, CONTENTS FROM DBA_TABLESPACES;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>表</li>
-</ul>
-</li>
-<li>用户/schema/对象
-<ul>
-<li>用户
-<ul>
-<li>SYS/SYSTEM
-<ul>
-<li>SYS 是 SYSDBA。可创建数据库。</li>
-<li>SYSTEM 是 SYSOPER。权限次之。</li>
-</ul>
-</li>
-<li>SQL
-<ul>
-<li>查看当前库下所有用户：select username,ACCOUNT_STATUS,DEFAULT_TABLESPACE, TEMPORARY_TABLESPACE from DBA_USERS;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>schema
-<ul>
-<li>定义
-<ul>
-<li>Schema 是用户拥有的所有对象的集合。对象包括：表、索引、视图等等。</li>
-<li>每个用户都会有独立的schema，schema 必须依赖用户的存在而存在。</li>
-</ul>
-</li>
-<li>SQL
-<ul>
-<li>查询当前用户和schema：select sys_context(‘userenv’, ‘current_user’) current_user, sys_context(‘userenv’, ‘current_user’) current_schema from dual;</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>对象</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
+
+<div class="markmap-container" style="height:800px">
+  <svg data="{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:2,&quot;p&quot;:{&quot;lines&quot;:[0,1]},&quot;v&quot;:&quot;Oracle Database&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[1,2]},&quot;v&quot;:&quot;数据库概念&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[2,3]},&quot;v&quot;:&quot;数据库&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[3,4]},&quot;v&quot;:&quot;SQL&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[4,5]},&quot;v&quot;:&quot;查看当前数据库：select name from V$DATABASE;&quot;}]}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[5,6]},&quot;v&quot;:&quot;数据库实例&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[6,7]},&quot;v&quot;:&quot;SQL&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[7,8]},&quot;v&quot;:&quot;查看当前数据库实例：select name from V$INSTANCE;&quot;}]}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[8,9]},&quot;v&quot;:&quot;SID&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[9,10]},&quot;v&quot;:&quot;CDB &amp;amp; PDB&quot;}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[10,11]},&quot;v&quot;:&quot;SQLPLUS&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[11,12]},&quot;v&quot;:&quot;tnsnames.ora&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[12,13]},&quot;v&quot;:&quot;sqlnet.ora&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[13,14]},&quot;v&quot;:&quot;连接&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[14,15]},&quot;v&quot;:&quot;sqlplus username/password@host:port/SID&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[15,16]},&quot;v&quot;:&quot;conn username/password&quot;}]}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[16,17]},&quot;v&quot;:&quot;用户/角色/权限&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[17,18]},&quot;v&quot;:&quot;用户&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[18,19]},&quot;v&quot;:&quot;SQL&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[19,20]},&quot;v&quot;:&quot;创建用户：create user ogg identified by ogg default tablespace customer;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[20,21]},&quot;v&quot;:&quot;查询用户：select * from dba_users where lower(username)=‘ogg';&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[21,22]},&quot;v&quot;:&quot;删除用户：drop user ogg;&quot;}]}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[22,23]},&quot;v&quot;:&quot;角色&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[23,24]},&quot;v&quot;:&quot;SQL&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[24,25]},&quot;v&quot;:&quot;创建角色：create role etl;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[25,26]},&quot;v&quot;:&quot;查询角色：select * from DBA_ROLES;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[26,27]},&quot;v&quot;:&quot;角色授权（系统）：grant connect,resource,create session, alter session to etl;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[27,28]},&quot;v&quot;:&quot;角色授权（对象）：grant insert,update,delete on t_custmer to etl;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[28,29]},&quot;v&quot;:&quot;给用户添加角色：grant etl01 to ogg;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[29,30]},&quot;v&quot;:&quot;删除角色：drop role etl;&quot;}]}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[30,31]},&quot;v&quot;:&quot;权限&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[31,32]},&quot;v&quot;:&quot;定义&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[32,33]},&quot;v&quot;:&quot;系统权限&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[33,34]},&quot;v&quot;:&quot;对象权限：指用户对已有对象的操作权限。&quot;}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[34,35]},&quot;v&quot;:&quot;SQL&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[35,36]},&quot;v&quot;:&quot;系统权限&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[36,37]},&quot;v&quot;:&quot;查询系统权限：select distinct PRIVILEGE from DBA_SYS_PRIVS;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[37,38]},&quot;v&quot;:&quot;查询grantee拥有的权限：select * from DBA_SYS_PRIVS where lower(grantee)='ogg’;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[38,39]},&quot;v&quot;:&quot;给用户添加权限：grant create session,alter session to ogg;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[39,40]},&quot;v&quot;:&quot;收回权限：revoke alter session from ogg;&quot;}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[40,41]},&quot;v&quot;:&quot;对象权限&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[41,42]},&quot;v&quot;:&quot;查询grantee用户的对象权限：select grantee, table_name, privilege from dba_tab_privs where lower(grantee) = ‘ogg’;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[42,43]},&quot;v&quot;:&quot;分配对象权限：grant all on t_employees to ogg;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[43,44]},&quot;v&quot;:&quot;收回权限：revoke delete on t_employees from ogg;&quot;}]}]}]}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:4,&quot;p&quot;:{&quot;lines&quot;:[44,45]},&quot;v&quot;:&quot;逻辑结构&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[45,46]},&quot;v&quot;:&quot;数据库/表空间/表&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[46,47]},&quot;v&quot;:&quot;数据库&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[47,48]},&quot;v&quot;:&quot;SQL&quot;}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[48,49]},&quot;v&quot;:&quot;表空间&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[49,50]},&quot;v&quot;:&quot;SQL&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[50,51]},&quot;v&quot;:&quot;创建表空间：CREATE TABLESPACE customer datafile '/opt/oracle/oradata/XE/customer.dbf' SIZE 100M autoextend on next 20M Maxsize 500M;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[51,52]},&quot;v&quot;:&quot;删除表空间：drop tablespace customer including contents and datafiles;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[52,53]},&quot;v&quot;:&quot;查看表空间数据文件：select file_name, tablespace_name from DBA_DATA_FILES order by FILE_NAME;&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[53,54]},&quot;v&quot;:&quot;查看所有表空间：SELECT TABLESPACE_NAME, STATUS, ALLOCATION_TYPE, CONTENTS FROM DBA_TABLESPACES;&quot;}]}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[54,55]},&quot;v&quot;:&quot;表&quot;}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:6,&quot;p&quot;:{&quot;lines&quot;:[55,56]},&quot;v&quot;:&quot;用户/schema/对象&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[56,57]},&quot;v&quot;:&quot;用户&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[57,58]},&quot;v&quot;:&quot;SYS/SYSTEM&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[58,59]},&quot;v&quot;:&quot;SYS 是 SYSDBA。可创建数据库。&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[59,60]},&quot;v&quot;:&quot;SYSTEM 是 SYSOPER。权限次之。&quot;}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[60,61]},&quot;v&quot;:&quot;SQL&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[61,62]},&quot;v&quot;:&quot;查看当前库下所有用户：select username,ACCOUNT_STATUS,DEFAULT_TABLESPACE, TEMPORARY_TABLESPACE from DBA_USERS;&quot;}]}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[62,63]},&quot;v&quot;:&quot;schema&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[63,64]},&quot;v&quot;:&quot;定义&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[64,65]},&quot;v&quot;:&quot;Schema 是用户拥有的所有对象的集合。对象包括：表、索引、视图等等。&quot;},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[65,66]},&quot;v&quot;:&quot;每个用户都会有独立的schema，schema 必须依赖用户的存在而存在。&quot;}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:10,&quot;p&quot;:{&quot;lines&quot;:[66,67]},&quot;v&quot;:&quot;SQL&quot;,&quot;c&quot;:[{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:12,&quot;p&quot;:{&quot;lines&quot;:[67,68]},&quot;v&quot;:&quot;查询当前用户和schema：select sys_context('userenv', 'current_user') current_user, sys_context('userenv', 'current_user') current_schema from dual;&quot;}]}]},{&quot;t&quot;:&quot;list_item&quot;,&quot;d&quot;:8,&quot;p&quot;:{&quot;lines&quot;:[68,69]},&quot;v&quot;:&quot;对象&quot;}]}]}]}"></svg>
+</div>
+
                 
             </div>
             <hr/>
@@ -1282,7 +1125,7 @@ build成功之后，通过<code>docker images</code>查看image，总大小6个�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">40k</span>
+                        class="white-color">39.5k</span>
             
             
             
