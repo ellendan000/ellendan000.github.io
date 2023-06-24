@@ -18,6 +18,7 @@ categories:
 ![ChatGPT会话界面](./使用Gradio&huggingface快速搭建一个ChatGPT APP/chatGPT_conversation.png)
 
 但 ChatGPT 并不仅仅是支持以上的聊天会话功能，OpenAI 公司也开放了以上会话聊天背后的 API。
+
 <!-- more -->
 这些 API 可以直接调用，使用命令行（科学上网），也可以自己搭建服务器。
 如果仅仅只是想使用 API 构建一个会话服务，或者 Generic 聊天机器人，专门搭建一个服务器没有什么特别大的意义。
