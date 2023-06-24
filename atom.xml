@@ -6,7 +6,7 @@
   <link href="https://ellendan.com/atom.xml" rel="self"/>
   
   <link href="https://ellendan.com/"/>
-  <updated>2023-05-19T14:53:03.815Z</updated>
+  <updated>2023-06-24T15:25:27.893Z</updated>
   <id>https://ellendan.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://ellendan.com/2023/05/17/shi-yong-gradio-huggingface-kuai-su-da-jian-yi-ge-chatgpt-app/"/>
     <id>https://ellendan.com/2023/05/17/shi-yong-gradio-huggingface-kuai-su-da-jian-yi-ge-chatgpt-app/</id>
     <published>2023-05-17T16:38:39.000Z</published>
-    <updated>2023-05-19T14:53:03.815Z</updated>
+    <updated>2023-06-24T15:25:27.893Z</updated>
     
     
     <summary type="html">&lt;p&gt;在现在的NLP领域，GPT系列模型已经成为了NLP领域的标配之一，而ChatGPT是基于GPT的一个聊天模型，可以用来生成对话，其效果非常好，可以说是目前最好的开源聊天模型了。&lt;br&gt;
@@ -49,7 +49,7 @@
     <link href="https://ellendan.com/2022/08/22/fan-shou-hui-mo-oracle/"/>
     <id>https://ellendan.com/2022/08/22/fan-shou-hui-mo-oracle/</id>
     <published>2022-08-22T18:31:00.000Z</published>
-    <updated>2023-05-19T14:53:03.811Z</updated>
+    <updated>2023-06-24T15:25:27.893Z</updated>
     
     
     <summary type="html">&lt;p&gt;最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。&lt;br&gt;
@@ -71,7 +71,7 @@
     <link href="https://ellendan.com/2022/07/18/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-xia-pian/"/>
     <id>https://ellendan.com/2022/07/18/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-xia-pian/</id>
     <published>2022-07-18T08:00:00.000Z</published>
-    <updated>2023-05-19T14:53:03.807Z</updated>
+    <updated>2023-06-24T15:25:27.889Z</updated>
     
     
     <summary type="html">&lt;p&gt;已经过了一旬，下篇居然还没开始动笔。&lt;br&gt;
@@ -92,7 +92,7 @@
     <link href="https://ellendan.com/2022/07/02/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-shang-pian/"/>
     <id>https://ellendan.com/2022/07/02/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-shang-pian/</id>
     <published>2022-07-02T12:00:00.000Z</published>
-    <updated>2023-05-19T14:53:03.803Z</updated>
+    <updated>2023-06-24T15:25:27.889Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近几年，国内业界越来越常提及&lt;code&gt;“研发效能”&lt;/code&gt;这个词，追其根源大部分是始于&lt;code&gt;“DevOps”&lt;/code&gt;运动的活跃。&lt;br&gt;
@@ -118,7 +118,7 @@
     <link href="https://ellendan.com/2022/05/10/shu-ju-ku-de-acid-he-fen-bu-shi-shi-wu/"/>
     <id>https://ellendan.com/2022/05/10/shu-ju-ku-de-acid-he-fen-bu-shi-shi-wu/</id>
     <published>2022-05-10T12:00:00.000Z</published>
-    <updated>2023-05-19T14:53:03.803Z</updated>
+    <updated>2023-06-24T15:25:27.889Z</updated>
     
     
     <summary type="html">&lt;p&gt;前面写了一篇关于&lt;code&gt;CAP原理&lt;/code&gt;的博文，说到&lt;code&gt;一致性 Consistency&lt;/code&gt;，有人往往会想到事务&lt;code&gt;ACID&lt;/code&gt;特性中的&lt;code&gt;C: Consistency&lt;/code&gt;，虽然都叫一致性，但完全是两个东西。&lt;/p&gt;
@@ -143,7 +143,7 @@
     <link href="https://ellendan.com/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/"/>
     <id>https://ellendan.com/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/</id>
     <published>2022-05-03T12:00:00.000Z</published>
-    <updated>2023-05-19T14:53:03.803Z</updated>
+    <updated>2023-06-24T15:25:27.885Z</updated>
     
     
     <summary type="html">&lt;p&gt;CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。&lt;br&gt;
@@ -165,7 +165,7 @@
     <link href="https://ellendan.com/2022/04/29/chong-qi/"/>
     <id>https://ellendan.com/2022/04/29/chong-qi/</id>
     <published>2022-04-29T04:12:00.000Z</published>
-    <updated>2023-05-19T14:53:03.803Z</updated>
+    <updated>2023-06-24T15:25:27.885Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。&lt;br&gt;
@@ -184,11 +184,32 @@
   </entry>
   
   <entry>
+    <title>微服务线上治理之监控</title>
+    <link href="https://ellendan.com/2021/01/18/wei-fu-wu-xian-shang-zhi-li-zhi-jian-kong/"/>
+    <id>https://ellendan.com/2021/01/18/wei-fu-wu-xian-shang-zhi-li-zhi-jian-kong/</id>
+    <published>2021-01-18T02:54:20.000Z</published>
+    <updated>2023-06-24T15:25:27.873Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;微服务架构已经是时下后端应用开发的主流架构之一。微服务的整个生命周期包括&lt;code&gt;微服务拆分和定义（产品规划）&lt;/code&gt;、&lt;code&gt;微服务研发&lt;/code&gt;、&lt;code&gt;微服务构建与部署&lt;/code&gt;、&lt;code&gt;监控与运维&lt;/code&gt;几个阶段。&lt;/p&gt;
+&lt;p&gt;对于一般企业的微服务改造而言，极少部分企业认为用上微服务概念 + Spring cloud套件就是整活微服务架构了；一部分企业还能认识到针对微服务构建和部署所必需的DevOps流水线或平台；接着，越来越多的企业开始接受支持微服务拆分和设计思想的&lt;code&gt;Domain Driven Design&lt;/code&gt;；在完成前三步的基础上，最终还有少部分企业意识到线上分布式系统带来的复杂性，需要进行微服务线上治理——分层次的监控、诊断及最终的治理方案。&lt;/p&gt;
+&lt;p&gt;这里就主要从可观测性、层次性、时效性上，聊聊微服务线上治理中的监控。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="微服务治理" scheme="https://ellendan.com/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/"/>
+    
+    
+    <category term="微服务治理" scheme="https://ellendan.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Docker JVM通用工具诊断指南</title>
     <link href="https://ellendan.com/2021/01/18/docker-jvm-tong-yong-gong-ju-zhen-duan-zhi-nan/"/>
     <id>https://ellendan.com/2021/01/18/docker-jvm-tong-yong-gong-ju-zhen-duan-zhi-nan/</id>
     <published>2021-01-18T02:54:20.000Z</published>
-    <updated>2023-05-19T14:53:03.779Z</updated>
+    <updated>2023-06-24T15:25:27.865Z</updated>
     
     
       
@@ -211,32 +232,11 @@
   </entry>
   
   <entry>
-    <title>微服务线上治理之监控</title>
-    <link href="https://ellendan.com/2021/01/18/wei-fu-wu-xian-shang-zhi-li-zhi-jian-kong/"/>
-    <id>https://ellendan.com/2021/01/18/wei-fu-wu-xian-shang-zhi-li-zhi-jian-kong/</id>
-    <published>2021-01-18T02:54:20.000Z</published>
-    <updated>2023-05-19T14:53:03.791Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;微服务架构已经是时下后端应用开发的主流架构之一。微服务的整个生命周期包括&lt;code&gt;微服务拆分和定义（产品规划）&lt;/code&gt;、&lt;code&gt;微服务研发&lt;/code&gt;、&lt;code&gt;微服务构建与部署&lt;/code&gt;、&lt;code&gt;监控与运维&lt;/code&gt;几个阶段。&lt;/p&gt;
-&lt;p&gt;对于一般企业的微服务改造而言，极少部分企业认为用上微服务概念 + Spring cloud套件就是整活微服务架构了；一部分企业还能认识到针对微服务构建和部署所必需的DevOps流水线或平台；接着，越来越多的企业开始接受支持微服务拆分和设计思想的&lt;code&gt;Domain Driven Design&lt;/code&gt;；在完成前三步的基础上，最终还有少部分企业意识到线上分布式系统带来的复杂性，需要进行微服务线上治理——分层次的监控、诊断及最终的治理方案。&lt;/p&gt;
-&lt;p&gt;这里就主要从可观测性、层次性、时效性上，聊聊微服务线上治理中的监控。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="微服务治理" scheme="https://ellendan.com/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/"/>
-    
-    
-    <category term="微服务治理" scheme="https://ellendan.com/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
     <title>MySQL InnoDB 聚集索引数据结构</title>
     <link href="https://ellendan.com/2020/12/27/mysql-innodb-ju-ji-suo-yin-shu-ju-jie-gou/"/>
     <id>https://ellendan.com/2020/12/27/mysql-innodb-ju-ji-suo-yin-shu-ju-jie-gou/</id>
     <published>2020-12-27T14:00:20.000Z</published>
-    <updated>2023-05-19T14:53:03.767Z</updated>
+    <updated>2023-06-24T15:25:27.853Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -260,7 +260,7 @@
     <link href="https://ellendan.com/2020/06/30/yan-fa-xiao-neng-zhi-ceng-ji-ce-shi/"/>
     <id>https://ellendan.com/2020/06/30/yan-fa-xiao-neng-zhi-ceng-ji-ce-shi/</id>
     <published>2020-06-30T06:18:20.000Z</published>
-    <updated>2023-05-19T14:53:03.759Z</updated>
+    <updated>2023-06-24T15:25:27.849Z</updated>
     
     
     <summary type="html">&lt;p&gt;研发效能不等于研发效率。&lt;/p&gt;
@@ -285,7 +285,7 @@
     <link href="https://ellendan.com/2020/06/05/zai-gradle-guan-li-ke-gong-xiang-de-yi-lai-ban-ben/"/>
     <id>https://ellendan.com/2020/06/05/zai-gradle-guan-li-ke-gong-xiang-de-yi-lai-ban-ben/</id>
     <published>2020-06-05T06:18:20.000Z</published>
-    <updated>2023-05-19T14:53:03.755Z</updated>
+    <updated>2023-06-24T15:25:27.845Z</updated>
     
     
     <summary type="html">&lt;p&gt;“可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。&lt;br&gt;
@@ -309,7 +309,7 @@
     <link href="https://ellendan.com/2020/02/09/ddd-gai-nian-gai-lan/"/>
     <id>https://ellendan.com/2020/02/09/ddd-gai-nian-gai-lan/</id>
     <published>2020-02-09T06:50:44.000Z</published>
-    <updated>2023-05-19T14:53:03.755Z</updated>
+    <updated>2023-06-24T15:25:27.841Z</updated>
     
     
     <summary type="html">&lt;p&gt;软件的核心，是为其用户解决领域相关问题的能力。&lt;/p&gt;
@@ -331,7 +331,7 @@ DDD可以看成一种开发思想体系，促成了一种新的以领域为中�
     <link href="https://ellendan.com/2020/02/08/cong-jing-yi-lai-kan-jie-zhi-jiao-fu-shi-shi-me/"/>
     <id>https://ellendan.com/2020/02/08/cong-jing-yi-lai-kan-jie-zhi-jiao-fu-shi-shi-me/</id>
     <published>2020-02-08T10:27:20.000Z</published>
-    <updated>2023-05-19T14:53:03.751Z</updated>
+    <updated>2023-06-24T15:25:27.841Z</updated>
     
     
     <summary type="html">&lt;p&gt;前一段时间在做U内的价值交付。&lt;br&gt;
@@ -356,7 +356,7 @@ DDD可以看成一种开发思想体系，促成了一种新的以领域为中�
     <link href="https://ellendan.com/2020/01/16/wei-shi-me-yue-shen-chu-tuan-dui-yue-nan-gai-jin/"/>
     <id>https://ellendan.com/2020/01/16/wei-shi-me-yue-shen-chu-tuan-dui-yue-nan-gai-jin/</id>
     <published>2020-01-16T12:31:00.000Z</published>
-    <updated>2023-05-19T14:53:03.751Z</updated>
+    <updated>2023-06-24T15:25:27.837Z</updated>
     
     
     <summary type="html">&lt;p&gt;“为什么越身处团队越难改进？”&lt;/p&gt;
@@ -379,7 +379,7 @@ DDD可以看成一种开发思想体系，促成了一种新的以领域为中�
     <link href="https://ellendan.com/2019/12/01/min-jie-ce-shi-si-xiang-xian-zhi-san-si/"/>
     <id>https://ellendan.com/2019/12/01/min-jie-ce-shi-si-xiang-xian-zhi-san-si/</id>
     <published>2019-12-01T12:31:00.000Z</published>
-    <updated>2023-05-19T14:53:03.747Z</updated>
+    <updated>2023-06-24T15:25:27.837Z</updated>
     
     
     <summary type="html">&lt;p&gt;接着上篇《敏捷测试四象限之一二》，这里主要讲下剩下的三四象限。&lt;br&gt;
@@ -402,7 +402,7 @@ DDD可以看成一种开发思想体系，促成了一种新的以领域为中�
     <link href="https://ellendan.com/2019/11/28/min-jie-ce-shi-si-xiang-xian-zhi-yi-er/"/>
     <id>https://ellendan.com/2019/11/28/min-jie-ce-shi-si-xiang-xian-zhi-yi-er/</id>
     <published>2019-11-28T10:31:00.000Z</published>
-    <updated>2023-05-19T14:53:03.747Z</updated>
+    <updated>2023-06-24T15:25:27.837Z</updated>
     
     
     <summary type="html">&lt;p&gt;本来这篇博文我是想这样开头的：&lt;/p&gt;
@@ -432,7 +432,7 @@ DDD可以看成一种开发思想体系，促成了一种新的以领域为中�
     <link href="https://ellendan.com/2019/10/23/scrum-xing-wai-zhi-shen/"/>
     <id>https://ellendan.com/2019/10/23/scrum-xing-wai-zhi-shen/</id>
     <published>2019-10-23T03:39:00.000Z</published>
-    <updated>2023-05-19T14:53:03.747Z</updated>
+    <updated>2023-06-24T15:25:27.837Z</updated>
     
     
     <summary type="html">&lt;p&gt;什么是Scrum?&lt;br&gt;
@@ -473,7 +473,7 @@ Scrum是敏捷软件开发过程的一种框架，用以实现迭代式增量开
     <link href="https://ellendan.com/2019/10/15/wei-shi-me-bu-gu-li-jia-ban/"/>
     <id>https://ellendan.com/2019/10/15/wei-shi-me-bu-gu-li-jia-ban/</id>
     <published>2019-10-15T02:31:00.000Z</published>
-    <updated>2023-05-19T14:53:03.747Z</updated>
+    <updated>2023-06-24T15:25:27.837Z</updated>
     
     
     <summary type="html">&lt;p&gt;首先，此篇文章有个大前提，主要针对知识性工作。&lt;br&gt;
@@ -498,7 +498,7 @@ Scrum是敏捷软件开发过程的一种框架，用以实现迭代式增量开
     <link href="https://ellendan.com/2019/07/19/xie-ye-wu-dai-ma-zhen-de-you-na-me-wu-liao-ma/"/>
     <id>https://ellendan.com/2019/07/19/xie-ye-wu-dai-ma-zhen-de-you-na-me-wu-liao-ma/</id>
     <published>2019-07-19T04:12:00.000Z</published>
-    <updated>2023-05-19T14:53:03.743Z</updated>
+    <updated>2023-06-24T15:25:27.833Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
