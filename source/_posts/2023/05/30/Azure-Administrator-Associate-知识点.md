@@ -30,7 +30,7 @@ Azure Administrator Associate 涉及五个知识块，下面是官方考证角�
 				- Azure AD connect
 		- Resources
 			- Management Group
-			- Subscribetion
+			- Subscription
 			- Resource Group
 			- Resource
 		- Resource Manage Tools
@@ -51,6 +51,7 @@ Azure Administrator Associate 涉及五个知识块，下面是官方考证角�
 		- Network expand
 			- VNet Peering
 			- VPN Gateway
+				- VPN transit for VNet Peering
 				- Site-to-Site VPN Connections
 				- Point-to-Site VPN Connections
 			-  ExpressRoute
