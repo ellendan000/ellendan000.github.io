@@ -1,11 +1,24 @@
 ---
-title: Azure Administrator Associate 考证知识点
-tags: Azure, 云认证
+title: Azure Administrator Associate 考试知识点
+top: false
+cover: false
+toc: true
+date: 2023-05-30 17:44:11
+img:
+coverImg:
+password:
+keywords:
+categories: 
+	- Azure
+tags: 
+	- Azure
+	- 云认证
 ---
 
 Azure Administrator Associate 涉及五个知识块，下面是官方考证角度给出的清单：
 ![Azure Administrator Associate Study Area](./Azure-Administrator-Associate-知识点/study_area.png)  
 
+## Azure Administrator Associate 知识图谱
 {% markmap 800px %}
 - Azure Administrator Associate
 	- Azure Basics
@@ -104,8 +117,8 @@ Azure Administrator Associate 涉及五个知识块，下面是官方考证角�
 `Azure Active Directory` 提供了一套基于云的标识管理的完整解决方案。  
 在创建租户时，会同时创建 Directory（目录），Azure Active Directory 对目录进行管理，功能上既有基础的`身份管理和验证`、`单点登录`、`多因认证`，也有进阶一点的`设备管理`、`管理单元`、`应用管理`，同时还有支持 Azure AD 与 on-premises 的 Active Directory Domain Service（即 AD DS） 的混合标识方案等等。
 
-#### 1.1 AAD 基本管理模型
-![AAD model structure tree](./Azure-Administrator-Associate-知识点/basic_structure.png)  
+#### 1.1 AAD 目录-资源层级对应关系
+![AAD 目录-资源层级图](./Azure-Administrator-Associate-知识点/basic_structure.png)  
 1.  目录对租户下的用户、组等进行管理。  
 2. 一个目录可以被多个订阅所信任，但一个订阅仅能关联一个目录、不能关联多个。目录使多租户之间信息、资源独立。  
 3. 订阅对资源进行集中管理，包括逻辑层级 Resource Group 以及各种 Resource。订阅为资源提供统一的账单和结算，同时与其他订阅相互隔离。    
@@ -113,9 +126,9 @@ Azure Administrator Associate 涉及五个知识块，下面是官方考证角�
 
 #### 1.2 Role-Based Access Control
 基于角色的访问控制 (RBAC) 是一种可帮助管理谁可以访问 Azure 资源的机制。 通过 RBAC，可以确定特定用户针对特定资源可以执行的操作，并控制每个用户可以访问的资源区域。  
-在 Azure 中分为：对“订阅资源”的访问授权 和 “Azure AD”的访问授权两类，对“订阅资源”的授权机制即 Azure RBAC(下图)。  
+在 Azure 中分为：对“订阅资源”的访问授权 和 “Azure AD”的访问授权两类。对“订阅资源”的授权机制即 Azure RBAC(下图)。  
 下图描述了 Role-Based Access Control 中的四个核心概念：`Security Principle`(安全主体)  、`Role definition`(角色定义)    、`Scope`(范围)  、`Role Assignment`(分配)。
-![Azure RBAC](./Azure-Administrator-Associate-知识点/RBAC.png)  
+![Azure RBAC 机制](./Azure-Administrator-Associate-知识点/RBAC.png)  
 1. Security principle 即可以是单独的 User，也可以是 某个 Group，也可以是 Service Principle。  
 2. Role definition，可以是 Azure 预定义的，也可以依据 角色定义模板的格式 进行用户自定义。  
 3. Scope 可以涉及多层级，从范围最广的管理组，到粒度更细的具体资源。  
@@ -130,14 +143,14 @@ Azure Administrator Associate 涉及五个知识块，下面是官方考证角�
 
 Azure RBAC Roles 提供了100 多种预定义的角色定义，其中包括四个基本的内置角色定义，以及其他根据各资源服务进行特别控制的角色定义。  
 下图是四个基本角色：`Owner`、`Contributor`、`Reader`、`User Access Administrator`。
-![Azure RBAC basic Roles](./Azure-Administrator-Associate-知识点/basic_roles.png)  
+![Azure RBAC Basic Roles](./Azure-Administrator-Associate-知识点/basic_roles.png)  
 
 __Azure AD Roles:__  
 除了 Azure RBAC Roles 之外，还有另一类 Azure AD Roles，也是基于 Role-Based Access Control 机制，区别主要是 Scope 涉及 AD 的对象和资源。  
 ![Azure AD Roles](./Azure-Administrator-Associate-知识点/AD_access_control.png)  
 
-#### 1.3 AAD 整体管理模型
-![AAD model structure tree](./Azure-Administrator-Associate-知识点/AAD_structure.png)  
+#### 1.3 RBAC Authentication
+![RBAC Authentication](./Azure-Administrator-Associate-知识点/AAD_structure.png)  
 注意上面整体模型中两类 Roles —— Azure AD Roles 和 Azure RBAC Roles 的作用范围。  
 默认情况下，Azure Roles 与 Azure AD Roles 不会跨越 Azure 与 Azure AD 的 Scope 边界。 但是，如果全局管理员通过在 Azure 门户中选择“Azure 资源的访问管理”开关，提升了自己的访问权限，则会针对特定租户的所有订阅为全局管理员授予`User Access Administrator`（用户访问管理员角色）。 用户访问管理员角色可以向其他用户授予对 Azure 资源的访问权限。
 因此，Global Administrator 本身只是 Azure AD 的最高权限角色，本身并不涵盖对 Azure 资源的权限。  
@@ -218,7 +231,7 @@ For ($i = 1; $i -le 3; $i++)
 Azure 资源管理器模板（ARM 模板）实现`infrastructure as code` （基础结构即代码）。
 ARM 模板使用声明性语法、JSON 文件格式，定义部署的基础结构和配置。 
 ARM 模板文件由下列元素组成：
-![ARM Template elements](./Azure-Administrator-Associate-知识点/ARM_template_elements.png)  
+![ARM template elements](./Azure-Administrator-Associate-知识点/ARM_template_elements.png)  
 
 示例：(azuredeploy.json)
 
