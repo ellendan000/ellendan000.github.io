@@ -295,7 +295,7 @@ ARM 模板文件由下列元素组成：
 - 部署已链接的模板
 - 在持续部署管道中进行部署
 
-使用 Azure CLI 命令 az deployment group create 或 Azure PowerShell 命令 New-AzResourceGroupDeployment。
+使用 Azure CLI 命令 `az deployment group create` 或 A`zure PowerShell 命令 New-AzResourceGroupDeployment`。
 
 ```
 $ az login
