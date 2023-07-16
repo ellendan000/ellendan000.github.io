@@ -12,7 +12,7 @@ categories:
 	- Azure
 tags: 
 	- Azure
-	- 云认证
+	- 云平台
 ---
 
 Azure Administrator Associate 涉及五个知识块，下面是官方考证角度给出的清单：
