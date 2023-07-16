@@ -9,10 +9,9 @@ coverImg:
 password:
 keywords:
 categories: 
-	- Azure
+	- 云平台
 tags: 
 	- Azure
-	- 云平台
 ---
 
 Azure Administrator Associate 涉及五个知识块，下面是官方考证角度给出的清单：
