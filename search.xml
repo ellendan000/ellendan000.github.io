@@ -13,7 +13,7 @@
       
       <categories>
           
-          <category> 云平台 </category>
+          <category> Azure </category>
           
       </categories>
       
@@ -21,6 +21,8 @@
         <tags>
             
             <tag> Azure </tag>
+            
+            <tag> 云平台 </tag>
             
         </tags>
       
@@ -39,8 +41,6 @@
       <categories>
           
           <category> ChatGPT </category>
-          
-          <category> Python </category>
           
       </categories>
       
@@ -271,7 +271,7 @@
       
       <categories>
           
-          <category> 数据库 </category>
+          <category> MySQL </category>
           
       </categories>
       
@@ -325,16 +325,16 @@
       
       <categories>
           
-          <category> 微服务治理 </category>
+          <category> Java </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Gradle </tag>
+            <tag> Java </tag>
             
-            <tag> 微服务治理 </tag>
+            <tag> Gradle </tag>
             
         </tags>
       
@@ -658,8 +658,6 @@
       
       <categories>
           
-          <category> Gradle </category>
-          
           <category> Java </category>
           
       </categories>
@@ -689,8 +687,6 @@
           
           <category> Spring Cloud </category>
           
-          <category> Java </category>
-          
       </categories>
       
       
@@ -717,8 +713,6 @@
       <categories>
           
           <category> Spring Cloud </category>
-          
-          <category> Java </category>
           
       </categories>
       
@@ -747,8 +741,6 @@
           
           <category> Spring Cloud </category>
           
-          <category> Java </category>
-          
       </categories>
       
       
@@ -775,8 +767,6 @@
       <categories>
           
           <category> Spring Cloud </category>
-          
-          <category> Java </category>
           
       </categories>
       
@@ -805,8 +795,6 @@
           
           <category> Spring Cloud </category>
           
-          <category> Java </category>
-          
       </categories>
       
       
@@ -833,8 +821,6 @@
       <categories>
           
           <category> Ethereum </category>
-          
-          <category> Blockchain </category>
           
       </categories>
       
@@ -863,8 +849,6 @@
           
           <category> Spring Cloud </category>
           
-          <category> Java </category>
-          
       </categories>
       
       
@@ -891,8 +875,6 @@
       <categories>
           
           <category> Ethereum </category>
-          
-          <category> Blockchain </category>
           
       </categories>
       
@@ -921,14 +903,14 @@
           
           <category> NoSQL </category>
           
-          <category> MongoDB </category>
-          
       </categories>
       
       
         <tags>
             
             <tag> MongoDB </tag>
+            
+            <tag> NoSQL </tag>
             
         </tags>
       
@@ -999,8 +981,6 @@
       <categories>
           
           <category> AWS </category>
-          
-          <category> Java </category>
           
       </categories>
       
