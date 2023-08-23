@@ -8,8 +8,8 @@ categories:
     - Spring Cloud
 ---
 
-## server
-1. 添加依赖  
+### Server端
+#### 1. 添加依赖  
 ```
 dependencies {
     compile 'org.springframework.cloud:spring-cloud-config-server'
@@ -18,7 +18,7 @@ dependencies {
 }
 ```
 
-2. 添加annotation  
+#### 2. 添加annotation  
 ```
 @SpringBootApplication
 @EnableConfigServer
@@ -29,7 +29,7 @@ public class ConfigServerApp {
 }
 ```
 
-3. application.yaml配置文件添加config repo  
+#### 3. application.yaml配置文件添加config repo  
 ```
 spring:
   application:
@@ -45,7 +45,7 @@ server:
 ```
 上面使用的本地文件系统方式进行配置仓库的内容管理，该方式仅用于开发和测试。在生产环境中务必搭建自己的Git配置库。
 
-4. 将config server注册进服务发现，application.yaml
+#### 4. 将config server注册进服务发现，application.yaml
 ```
 eureka:
   client:
@@ -55,7 +55,7 @@ eureka:
       enabled: true
 ```
 
-5. 同时可以考虑开启actuator endpoints。  
+#### 5. 同时可以考虑开启actuator endpoints。  
 endpoints.enabled默认true。其中/health在后面Git配置库中有更多作用。  
 ```
 management:
@@ -63,8 +63,8 @@ management:
     enabled: false
 ```
 
-## clinet
-1. 添加依赖
+### client端
+#### 1. 添加依赖
 ```
 dependencies {
     compile 'org.springframework.cloud:spring-cloud-starter-eureka'
@@ -73,12 +73,12 @@ dependencies {
 }
 ```
 
-2. bootstrap.yml配置  
+#### 2. bootstrap.yml配置  
 ```
 spring:
   cloud:
     config:
-\#      uri: http://localhost:7001
+#      uri: http://localhost:7001
       discovery:
         enabled: true
         service-id: config-server
@@ -100,7 +100,7 @@ server:
 同时从服务发现中查找config-server。如果不使用服务发现，可使用spring.cloud.config.uri指定静态的url。  
 spring.cloud.config.fail-fast用于快速验证config server的连接可用状态，防止container前期load时长过长，到后面config server才发现不能用而启动失败。
 
-3. 添加服务发现的annotation
+#### 3. 添加服务发现的annotation
 ```
 @EnableDiscoveryClient
 @SpringBootApplication
@@ -112,7 +112,7 @@ public class Application {
 }
 ```
 
-4. 开启actuator endpoints。其中/refresh可以对配置进行动态刷新。
+#### 4. 开启actuator endpoints。其中/refresh可以对配置进行动态刷新。
 ```
 management:
   context-path: /actuator
@@ -120,7 +120,7 @@ management:
     enabled: false
 ```
 
-5. 写一个支持刷新Example。
+#### 5. 写一个支持刷新Example。
 ```
 @RefreshScope
 @RestController
@@ -135,12 +135,12 @@ public class HelloController {
 }
 ```
 
-## 刷新操作
+### 刷新操作
 1. 修改配置库内from value。
 2. curl -X POST http://localhost:8001/actuator/refresh。
 3. 再次访问http://localhost:8001/from
 
-## 在config server添加多个配置库
+### 在config server添加多个配置库
 1. application.yaml
 ```
 spring:
@@ -188,15 +188,18 @@ spring.cloud.config.server.health.repositories用来配置/health endpoint中健
 * 再次，ssh key加入ssh-agent。主要要确定config和know_host文件中记录。  
 ```
 $ eval "$(ssh-agent -s)"
-\# 添加config文件
-\# Host gitlab.com
-\# HostName gitlab.com
-\# AddKeysToAgent yes
-\# UseKeychain yes
-\# User TTT
-\# IdentityFile ~/.ssh/id_tw_rsa
+
+# 添加config文件
+# Host gitlab.com
+# HostName gitlab.com
+# AddKeysToAgent yes
+# UseKeychain yes
+# User TTT
+# IdentityFile ~/.ssh/id_tw_rsa
+
 $ ssh-add -K ~/.ssh/id_tw_rsa
-\# 查看agent public keys
+
+# 查看agent public keys
 $ ssh-add -l
 ```
 * 最后，如果key中有设置passphrase，在application.yaml一定要配置spring.cloud.config.server.git.passphrase。
