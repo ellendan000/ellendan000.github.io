@@ -6,7 +6,6 @@ tags:
     - Java
 categories: 
     - Spring Cloud
-    - Java
 ---
 
 #### 1. dependency

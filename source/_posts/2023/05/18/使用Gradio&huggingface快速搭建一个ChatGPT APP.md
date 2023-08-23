@@ -10,7 +10,6 @@ tags:
     - ML
 categories:
     - ChatGPT
-    - Python
 ---
 
 在现在的NLP领域，GPT系列模型已经成为了NLP领域的标配之一，而ChatGPT是基于GPT的一个聊天模型，可以用来生成对话，其效果非常好，可以说是目前最好的开源聊天模型了。

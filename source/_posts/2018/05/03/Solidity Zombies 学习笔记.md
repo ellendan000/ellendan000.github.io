@@ -6,7 +6,6 @@ tags:
     - Blockchain
 categories: 
     - Ethereum
-    - Blockchain  
 ---
 
 以太坊的一个[加密僵尸游戏](https://cryptozombies.io/)。

@@ -6,7 +6,6 @@ tags:
     - Java
 categories: 
     - Spring Cloud
-    - Java
 ---
 
 ### 服务注册中心

@@ -6,7 +6,6 @@ tags:
     - Java
 categories: 
     - Spring Cloud
-    - Java
 ---
 
 上周second vendor在使用我们搭建好的config server向API-Gateway中追加配置项的时候，发生了一个小插曲。  

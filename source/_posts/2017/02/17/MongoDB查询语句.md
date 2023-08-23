@@ -3,9 +3,9 @@ title: MongoDB 查询语句
 date: 2017-02-17 17:40:00  
 tags: 
     - MongoDB
-categories: 
     - NoSQL
-    - MongoDB  
+categories: 
+    - NoSQL  
 ---
 
 [Get Started](https://docs.mongodb.com/getting-started/shell/)  

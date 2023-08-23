@@ -6,7 +6,6 @@ tags:
     - Java
 categories: 
     - Spring Cloud
-    - Java
 ---
 
 一般SpringCloud中超时配置，含Hystrix/Ribbon两部分：

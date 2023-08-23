@@ -6,7 +6,6 @@ tags:
     - Java
 categories: 
     - Spring Cloud
-    - Java
 ---
 
 [1.5.3版本官方doc](https://docs.spring.io/spring-boot/docs/1.5.13.RELEASE/reference/htmlsingle/#production-ready)

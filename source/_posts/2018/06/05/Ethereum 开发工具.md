@@ -6,7 +6,6 @@ tags:
     - Blockchain
 categories: 
     - Ethereum
-    - Blockchain
 ---
 
 ## Using Remix

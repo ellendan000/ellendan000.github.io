@@ -6,7 +6,6 @@ tags:
     - Java
 categories: 
     - AWS
-    - Java
 ---
 
 最近听了一次亮哥他们AWS的首次session，中间稍微提到了一下IAM account的access key。没想到在项目中给别人code review的时候就接触到了，是针对AWS S3的。具体S3说明，见 http://aws.amazon.com/s3/
