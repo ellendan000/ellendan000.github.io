@@ -47,9 +47,9 @@
       
         <tags>
             
-            <tag> ChatGPT </tag>
-            
             <tag> Python </tag>
+            
+            <tag> ChatGPT </tag>
             
             <tag> ML </tag>
             
@@ -539,6 +539,31 @@
         <tags>
             
             <tag> 敏捷 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python bumpvesion 使用</title>
+      <link href="/2019/10/04/python-bumpvesion-shi-yong/"/>
+      <url>/2019/10/04/python-bumpvesion-shi-yong/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
             
         </tags>
       
