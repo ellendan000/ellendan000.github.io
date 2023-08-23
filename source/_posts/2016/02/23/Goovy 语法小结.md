@@ -5,7 +5,6 @@ tags:
     - Groovy
 categories: 
     - Groovy
-    - Java  
 ---
 
 1\. 安全导航操作符 ?.,只有对象引用不为空时才会分派调用。

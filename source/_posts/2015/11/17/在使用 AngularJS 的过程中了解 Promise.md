@@ -1,5 +1,5 @@
 ---
-title: 在使用AngularJS的过程中了解Promise
+title: 在使用AngularJS的过程中了解Promise（一）
 date: 2015-11-17 00:33:00  
 tags: 
     - AngularJS

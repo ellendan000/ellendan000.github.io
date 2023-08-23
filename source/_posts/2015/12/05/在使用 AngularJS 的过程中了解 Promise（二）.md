@@ -2,10 +2,10 @@
 title: 在使用 AngularJS 的过程中了解 Promise（二）
 date: 2015-12-05 20:13:00  
 tags: 
-    - JavaScript
+    - AngularJS
     - Promise
 categories: 
-    - JavaScript
+    - AngularJS
 ---
 
 公司最近有个博客大赛，OP甚至亲自在team stand-up上要求大家积极投稿。对于我这种热爱写代码、记流水账、提炼式总结的人，拽文真的不是太想做，但是，好吧，这是所谓的impact中最容易做到的一种，那就去做吧。

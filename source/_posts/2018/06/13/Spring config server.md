@@ -6,7 +6,7 @@ tags:
     - Java
 categories: 
     - Spring Cloud
-    - Java  
+    - Java
 ---
 
 ## server

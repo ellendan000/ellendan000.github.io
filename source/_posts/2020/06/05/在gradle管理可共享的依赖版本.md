@@ -2,7 +2,7 @@
 title: 在gradle管理可共享的依赖版本管理  
 date: 2020-06-05 14:18:20  
 tags: 
-    - gradle
+    - Gradle
     - 微服务治理
 categories: 
     - 微服务治理

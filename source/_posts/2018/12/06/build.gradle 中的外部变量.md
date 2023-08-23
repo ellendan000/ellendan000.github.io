@@ -6,7 +6,7 @@ tags:
     - Java
 categories: 
     - Gradle
-    - Java  
+    - Java
 ---
 
 使用gradle命令的时候，经常被Option -P\\-D搞得混淆。其实很容易区分一下。

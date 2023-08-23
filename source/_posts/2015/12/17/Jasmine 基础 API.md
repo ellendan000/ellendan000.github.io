@@ -2,10 +2,10 @@
 title: Jasmine 基础 API
 date: 2015-12-17 06:10:00  
 tags: 
-    - Javascript
+    - JavaScript
     - unit test
 categories: 
-    - Javascript  
+    - JavaScript  
 ---
 
 #### 1.  Jasmine官网documen地址 
