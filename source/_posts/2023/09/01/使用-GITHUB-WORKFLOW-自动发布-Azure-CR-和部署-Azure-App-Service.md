@@ -10,7 +10,7 @@ password:
 keywords:
 tags:
     - Azure
-	- 云平台
+	  - 云平台
 categories:
     - Azure
 ---
