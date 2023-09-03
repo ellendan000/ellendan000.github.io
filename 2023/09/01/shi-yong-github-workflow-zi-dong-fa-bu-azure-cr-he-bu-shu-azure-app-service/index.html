@@ -5,12 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="使用 GITHUB WORKFLOW 自动发布 Azure CR 和部署 Azure App Service, ellendan">
-    <meta name="description" content="1. 创建 Azure 资源服务
-1.1 创建 Azure Container Registry
-打开 Azure portal，创建 ACR。
+    <meta name="description" content="Azure 计算服务提供了多种类型：VM、Container apps、App service、static App service、AKS、Logic apps、Functions。
+区别于其他计算服务：
 
-接着需要开启 ACR 的 admin 权限。
-可以选择两种方式：直接打开 ACR admin">
+Azure app servi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -398,14 +396,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    804
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -428,7 +426,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1-创建-Azure-资源服务">1. 创建 Azure 资源服务</h3>
+                <p>Azure 计算服务提供了多种类型：<code>VM</code>、<code>Container apps</code>、<code>App service</code>、<code>static App service</code>、<code>AKS</code>、<code>Logic apps</code>、<code>Functions</code>。<br>
+区别于其他计算服务：</p>
+<ul>
+<li>Azure app service 是一款 PAAS 服务，基于 HTTP 提供托管 Web 应用程序、REST API 和移动后端。</li>
+<li>可以通过 App service plan 购买一套“单位时间固定限额”的即付即用资源池，在此 plan 下可以建立多个应用 share 这份资源；通过 service plan 的变更进行应用计算资源的横向/纵向扩展。</li>
+<li>同时，不同于 IAAS 提供了计算资源之外，还提供应用运营必须的公用域名管理、负载均衡、健康检查、集成 APIM、日志流管理等整套应用技术运营方案。</li>
+</ul>
+<p>以搭建应用服务为目标上，使用 App service 相比 VM、Container apps、AKS，在基础设施的触点和灵活度相对不足，并且着眼点是整包的应用服务，因此更适合于没有整体企业技术架构、不使用微服务的单体应用的搭建运营。</p>
+<p>当应用可能面临外部变化、业务扩张增长，当前想要保留应用架构未来的可选择性、延迟当前服务架构类型的选型，建议使用 App service 时选择 docker 方式部署。这样，除了可以最大程度的避免环境差异以外，在未来架构扩张到需要放弃 App service 部署方式时，迁移到 VM、K8S、或者其他云提供商上时，应用服务在代码变更上可以花费最小的成本。</p>
+<h3 id="1-创建-Azure-资源服务">1. 创建 Azure 资源服务</h3>
 <h4 id="1-1-创建-Azure-Container-Registry">1.1 创建 Azure Container Registry</h4>
 <p>打开 Azure portal，创建 ACR。<br>
 <img src="/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/create_acr.png" alt="create acr"></p>
@@ -440,20 +447,20 @@
 <p>生成 token 的 password。<br>
 <img src="/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/create_acr_token_02.png" alt="create token"></p>
 <h4 id="1-2-创建-Azure-appservice-plan">1.2 创建 Azure appservice plan</h4>
-<pre class="line-numbers language-none"><code class="language-none">这里使用azure cli 命令行创建。
-$ az appservice plan create \
+<p>这里使用azure cli 命令行创建。</p>
+<pre class="line-numbers language-none"><code class="language-none">$ az appservice plan create \
    --name &lt;MY_APP_SERVICE_PLAN_NAME&gt; \
    --resource-group &lt;MY_RESOURCE_GROUP&gt; \
-   --is-linux <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+   --is-linux <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>默认创建出的 SKU tier 是 Basic 的，不支持 deployment slot.<br>
-仅 Standard tier 以上是支持 deployment slot，可以在 plan 创建之后 scale up.</p>
+Standard tier 以上是支持 deployment slot，可以在 plan 创建之后 scale up.</p>
 <h4 id="1-3-创建-Azure-appservice">1.3 创建 Azure appservice</h4>
 <pre class="line-numbers language-none"><code class="language-none">$ az webapp create \
     --name &lt;MY_WEBAPP_NAME&gt; \
     --plan &lt;MY_APP_SERVICE_PLAN_NAME&gt; \
     --resource-group &lt;MY_RESOURCE_GROUP&gt; \
     --deployment-container-image-name &lt;nginx:latest&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在 ACR 中还没有自建的 docker 物料时，可以使用通用的 nginx image 进行初始化，后面使用 github workflow 时会自动更新 image。</p>
+<p>在 ACR 中还没有自建的 docker 物料时，可以使用通用的 nginx image 进行初始化，后面使用 github workflow 时会自动更新 image 设置。</p>
 <h3 id="2-配置机密信息">2. 配置机密信息</h3>
 <h4 id="2-1-下载-appservice-publish-profile">2.1 下载 appservice_publish_profile</h4>
 <p><img src="/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/download_appservice_publish_profile.png" alt="download appservice publish profile"></p>
@@ -468,7 +475,7 @@ $ az appservice plan create \
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
 
-name: Latest build and deploy Python app to Azure Web App - open-ending-backend-prod
+name: Latest build and deploy Python app to Azure Web App
 
 env:
   AZURE_WEBAPP_NAME: &lt;APPSERVICE_NAME&gt;
@@ -541,8 +548,8 @@ jobs:
 <p>需要在 App service 处进行配置【Diagnostic setting】，用以开启日志数据发送。<br>
 <img src="/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/app_service_logging.png" alt="app service logging"></p>
 <p>可以选择日志类型和勾选指标，日志数据的目标也可以复选 —— 发送 Log analytics workspace / event hub / partner solution 以及 保存到 storage account（Azure 存储账户）。<br>
-<img src="/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/app_service_application_logging.png" alt="app service logging config"></p>
-<p>** Log analytics workspace**中进行日志搜索：<br>
+<img src="/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/app_service_logging_config.png" alt="app service logging config"></p>
+<p><strong>Log analytics workspace</strong> 中进行日志搜索：<br>
 <img src="/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/log_analytics_workspace.png" alt="log analytics workspace"></p>
 
                 
@@ -1205,7 +1212,7 @@ jobs:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">67.1k</span>
+                        class="white-color">67.5k</span>
             
             
             
