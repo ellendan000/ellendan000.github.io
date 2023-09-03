@@ -14,16 +14,18 @@ tags:
 categories:
     - Azure
 ---
-
+### Azure App Service 概述
 Azure 计算服务提供了多种类型：`VM`、`Container apps`、`App service`、`static App service`、`AKS`、`Logic apps`、`Functions`。
 区别于其他计算服务：
 - Azure app service 是一款 PAAS 服务，基于 HTTP 提供托管 Web 应用程序、REST API 和移动后端。
 - 可以通过 App service plan 购买一套“单位时间固定限额”的即付即用资源池，在此 plan 下可以建立多个应用 share 这份资源；通过 service plan 的变更进行应用计算资源的横向/纵向扩展。
 - 同时，不同于 IAAS 提供了计算资源之外，还提供应用运营必须的公用域名管理、负载均衡、健康检查、部署槽、APIM 集成、日志流管理等整套应用技术运营方案。
 
-以搭建应用服务为目标上，使用 App service 相比 VM、Container apps、AKS，在基础设施的触点和灵活度相对不足，并且着眼点是整包的应用服务，因此更适合于没有整体企业技术架构、不使用微服务的单体应用的搭建运营。
+以搭建应用服务为目标，使用 App service 相比 VM、Container apps、AKS，在基础设施的触点和灵活度相对不足，并且着眼点是整包的应用服务，因此更适合于没有整体企业技术架构、不使用微服务的单体应用的搭建运营。
 
 当应用可能面临外部变化、业务扩张增长，当前想要保留应用架构未来的可选择性、延迟当前服务架构类型的选型，建议使用 App service 时选择 docker 方式部署。这样，除了可以最大程度的避免环境差异以外，在未来架构扩张到需要放弃 App service 部署方式时，迁移到 VM、K8S、或者其他云提供商上时，应用服务在代码变更上可以花费最小的成本。
+
+下面的步骤，就是通过 App service docker 方式部署。
 
 ### 1. 创建 Azure 资源服务
 #### 1.1 创建 Azure Container Registry
