@@ -164,3 +164,28 @@ hexo_markmap:
   pjax: true
   katex: false
   prism: true
+
+#loading-image
+lazyload:
+  enable: true
+  onlypost: false
+  loadingImg: /medias/loading-1.gif
+
+neat_enable: true
+neat_html:
+  enable: true
+  exclude:
+    - '**/*.md'
+neat_css:
+  enable: true
+  exclude:
+    - '*.min.css'
+neat_js:
+  enable: true
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - '*.min.js'
+    - '**/**/instantpage.js'
+    - '**/matery.js'
