@@ -1,5 +1,5 @@
 ---
-title: sqlalchemy 对于 sequence 的支持
+title: Sqlalchemy 对于 sequence 的支持
 top: false
 cover: false
 toc: false
