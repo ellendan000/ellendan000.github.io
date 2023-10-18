@@ -20,7 +20,11 @@ sqlalchemy 对于 sequence 的支持（底层数据库引擎必须具有 sequenc
 
 ```
 import pinyin
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy import String, BigInteger, Sequence
+
+db = SQLAlchemy()
 
 @dataclass
 class World(db.Model, SerializerMixin):
