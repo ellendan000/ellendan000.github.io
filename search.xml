@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>sqlalchemy 对于 sequence 的支持</title>
+      <link href="/2023/10/18/sqlalchemy-dui-yu-sequence-de-zhi-chi/"/>
+      <url>/2023/10/18/sqlalchemy-dui-yu-sequence-de-zhi-chi/</url>
+      
+        <content type="html"><![CDATA[<p>sqlalchemy 对于 sequence 的支持（底层数据库引擎必须具有 sequence 功能），具有简单易用性。<br>比如下面这个例子：<br>假设创建不同类型的 World 时，需要一个序列码，此序列码单类型内唯一。</p><pre class="line-numbers language-none"><code class="language-none">import pinyinfrom sqlalchemy import String, BigInteger, Sequence@dataclassclass World(db.Model, SerializerMixin):    __tablename__ = 'world'    id = db.Column(BigInteger, primary_key=True)    serial_number = db.Column(String(32), nullable=False)    @staticmethod    def create(world_category_id):        world_category = WorldCategory.get(world_category_id)        style_pinyin = pinyin.get(world_category.style, format="strip")        sequence = Sequence(style_pinyin, start=1)        seq_ddl = CreateSequence(sequence, if_not_exists=True)        session = db.session        session.execute(seq_ddl)        next_value = session.scalar(sequence)        world = World(world_category_id=world_category_id, serial_number=next_value)        session.add(world)        session.commit()        return world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>也正如上面所说，对于不支持 Sequence 的数据库，此段代码并不能生效。</p><p>有时候，反思一下业务，是否真的需要连续性的序列码？其实，序列码的初衷是唯一性，使用 Sequence 来实现，由于其连续和记数性，<br>反而会造成一些业务上统计数据的泄露，并且给技术上 hack API 和 数据带来便捷。<br>因此，是否使用 Sequence 视情况而定。<br>如序列码这样的生成，可以接受数字、字符规则的，可以使用 UUID，仅能接受数字的，可以使用 snowflake 算法。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用 GITHUB WORKFLOW 自动发布 Azure CR 和部署 Azure App Service</title>
       <link href="/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/"/>
       <url>/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/</url>
@@ -332,9 +357,9 @@
       
         <tags>
             
-            <tag> 敏捷测试 </tag>
-            
             <tag> 研发效能 </tag>
+            
+            <tag> 敏捷测试 </tag>
             
         </tags>
       
