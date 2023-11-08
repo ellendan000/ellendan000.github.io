@@ -9,9 +9,9 @@ coverImg:
 password:
 keywords:
 tags:
-    - python
+    - Python
 categories:
-    - python
+    - Python
 ---
 
 sqlalchemy 对于 sequence 的支持（底层数据库引擎必须具有 sequence 功能），具有简单易用性。
