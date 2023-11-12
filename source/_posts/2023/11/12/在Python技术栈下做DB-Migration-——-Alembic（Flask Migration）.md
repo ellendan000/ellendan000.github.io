@@ -24,12 +24,12 @@ categories:
 这在 Groovy/Grails 时代是非常常见的功能，但是在 Java 的 DB Migration 工具中却并不常见。
 
 以下，是我在 Flask + Flask-SQLAlchemy 中直接使用 Flask-Migration 的过程。
-### 安装 Flask-Migration
+#### 1. 安装 Flask-Migration
 ```
 $ pipenv install Flask-Migrate
 ```
 
-### Flask 应用启动项添加 Migration
+#### 2. Flask 应用启动项添加 Migration
 下面是一个普通的Flask + Flask-SQLAlchemy 的应用启动项 Demo 代码，使用 Flask-Migration 仅需要添加第3行、8行即可 —— Flask-Migration 可以读取到 SQLAlchemy 和 DB 的配置信息。
 ```
 from flask import Flask
@@ -46,7 +46,7 @@ class User(db.Model):
     name = db.Column(db.String(128))
 ```
 
-### 初始化 DB Migration 的目录文件结构（Alembic的目录文件结构）
+#### 3. 初始化 DB Migration 的目录文件结构（Alembic的目录文件结构）
 ```
 $ pipenv run flask db init
 ```
@@ -68,7 +68,7 @@ DB migration 脚本，就存放在 migrations/versions 文件夹下。
 Flask-Migration 将 Alembic 的命令进行了封装，相同的命令在 Alembic 是 `alembic init`。
 其他命令基本都如此，因此想要看更详细的命令功能说明，可以查找 Alembic 命令说明。
 
-### 修改配置，为 migration script 添加带时间戳的命名规则
+#### 4. 修改配置，为 migration script 添加带时间戳的命名规则
 使用 Flyway/Liquibase 习惯了的同学，可能比较喜欢 script 文件名上标记有时间 —— 这样可以一眼明了脚本执行的顺序，而不用打开文件查找可读性差的版本号。如下面截图这样
 ![vesrions-with-timestamp](./在Python技术栈下做DB-Migration-——-Flask-Migration/version-with-timestamp.png)
 
@@ -80,7 +80,7 @@ Flask-Migration 将 Alembic 的命令进行了封装，相同的命令在 Alembi
 file_template = %%(year)d_%%(month).2d_%%(day).2d_%%(hour).2d%%(minute).2d-%%(rev)s_%%(slug)s
 ```
 
-### 对比ORM model 和 DB 现有结构，针对差异自动生成 version migration脚本
+#### 5. 对比ORM model 和 DB 现有结构，针对差异自动生成 version migration脚本
 ```
 $ pipenv run flask db migrate -m "Initial migration."
 ```
@@ -114,7 +114,7 @@ def downgrade():
     op.drop_table('account')
 ```
 
-### 执行 DB migration脚本，进行数据库变更
+#### 6. 执行 DB migration脚本，进行数据库变更
 ```
 $ pipenv run flask db upgrade <revision>
 # 或者降级 pipenv run flask db downgrade <revision>
@@ -123,7 +123,7 @@ revison 可以是版本号前缀，也可以是 head（最新版本）、+1（�
 如果 upgrade 不指定 revision，则默认是 head。
 downgrade 不指定 revision，则默认是 -1。
 
-### 不能依赖flask db migrate 生成的情况，需要手动编写迁移upgrade()/downgrade()方法
+#### 7. 不能依赖flask db migrate 生成的情况，需要手动编写迁移upgrade()/downgrade()方法
 比如 Account 表格中需要初始化一个system admin record 时，这种无法通过flask db migrate自动生成。
 使用命令：
 ```
