@@ -2,14 +2,16 @@
 title: 在 Python 技术栈下做 DB Migration —— Alembic（Flask Migration）
 top: false
 cover: false
-toc: true
+toc: false
 date: 2023-11-12 17:09:13
 img:
 coverImg:
 password:
 keywords:
 tags:
+    - Python
 categories:
+    - Python
 ---
 
 
