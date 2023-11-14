@@ -127,10 +127,21 @@ downgrade 不指定 revision，则默认是 -1。
 比如 Account 表格中需要初始化一个system admin record 时，这种无法通过flask db migrate自动生成。
 使用命令：
 ```
-$ pipenv run flask db revision 'Init system admin record.'
+$ pipenv run flask db revision -m 'Init system admin record.'
 ```
 这时会生成一个空的版本脚本文件，其中 upgrade()/downgrade()方法需要程序员使用脚本自行编写。
 语法查看[Alembic Operation Reference](https://alembic.sqlalchemy.org/en/latest/ops.html)
 
+#### 8. 协同开发，需要用到的 merge 操作
+当协同开发，有多人提交时，难免会出现有两个 head revison 的情况。解决方式两种：
+1. 在脚本语句不存在冲突的情况下，提交人将自己的文件中的`down_revision`字段值替换成另一个 head revision 值即可。类似 git pull --rebase 的路线。
+2. 使用`flask db merge`命令。
+```
+# 列出 head revisions
+$ pip run flask db heads
+
+# 生成 merge 脚本
+$ flask db merge <revision-1> <revision-2>
+``` 
 
 **以上日常开发中的基本用法，更多功能探索可以查阅 Alembic official document。**
