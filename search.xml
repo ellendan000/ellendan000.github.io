@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>定时自动删除ACR images</title>
+      <link href="/2023/11/17/ding-shi-zi-dong-shan-chu-acr-images/"/>
+      <url>/2023/11/17/ding-shi-zi-dong-shan-chu-acr-images/</url>
+      
+        <content type="html"><![CDATA[<p>在之前 Azure App Service 部署时，使用到了 Azure Container Register，对于许多项目而言，超过一定时限的历史 images 再次使用的几率近乎为零。<br>因此，无论从制品管理，还是存储成本，定期清除不使用的 images是一项常见的任务。<br>可以使用 Azure 提供的工具 acr purge 和 acr task 来达成该目标。</p><h4 id="1-命令创建定时-ACR-task">1. 命令创建定时 ACR task</h4><p>运行以下命令（使用Azure cli 或者 Azure cloud shell皆可）。</p><pre class="line-numbers language-none"><code class="language-none">$ PURGE_CMD="acr purge --filter '.*:.*' --ago 14d --untagged"$ az acr task create --name purgeTask \    --cmd "$PURGE_CMD" \    --schedule "0 1 * * *" \    --registry &lt;register-name&gt; \    --context /dev/null<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="2-查看-task-runs">2. 查看 task runs</h4><p>命令：</p><pre class="line-numbers language-none"><code class="language-none">$ az acr task list-runs --name purgeTask --registry &lt;register-name&gt; --output table<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h4 id="3-也可以单次手动触发-ACR-purge">3. 也可以单次手动触发 ACR purge</h4><pre class="line-numbers language-none"><code class="language-none">$ PURGE_CMD="acr purge --filter '.*:.*' --ago 14d --untagged"$ az acr run --cmd "$PURGE_CMD" --registry &lt;register-name&gt; /dev/null<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h4 id="相关链接">相关链接</h4><ul><li><a href="https://learn.microsoft.com/zh-cn/azure/container-registry/container-registry-tasks-scheduled">教程：按定义的计划运行 ACR 任务</a></li><li><a href="https://learn.microsoft.com/zh-cn/azure/container-registry/container-registry-auto-purge">自动清除 Azure 容器注册表中的映像</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Azure </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Azure </tag>
+            
+            <tag> 云平台 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在 Python 技术栈下做 DB Migration —— Alembic（Flask Migration）</title>
       <link href="/2023/11/12/zai-python-ji-zhu-zhan-xia-zuo-db-migration-alembic-flask-migration/"/>
       <url>/2023/11/12/zai-python-ji-zhu-zhan-xia-zuo-db-migration-alembic-flask-migration/</url>
