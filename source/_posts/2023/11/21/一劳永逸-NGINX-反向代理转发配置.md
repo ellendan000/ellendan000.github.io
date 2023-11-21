@@ -20,20 +20,28 @@ categories:
 
 下面就是个人建议的 Nginx 配置方式：
 ```
-location ~* ^/api/(players|usage)(.*)$ {
-    proxy_pass https://example.com/api/$1$2$is_args$args;
-    proxy_buffering off;
-    proxy_set_header  X-Forwarded-For $remote_addr;
-}
+http {
+……
+    resovler 8.8.8.8;
 
-location ~* ^/api/(wx\-tokens|orders)(.*)$ {
-    proxy_pass https://example.com/api/$1$2$is_args$args;
-    proxy_buffering off;
-    proxy_set_header  X-Forwarded-For $remote_addr;
+    server {
+        ……
+        location ~* ^/api/(players|usage)(.*)$ {
+            proxy_pass https://example.com/api/$1$2$is_args$args;
+            proxy_buffering off;
+            proxy_set_header  X-Forwarded-For $remote_addr;
+        }
+
+        location ~* ^/api/(wx\-tokens|orders)(.*)$ {
+            proxy_pass https://example.com/api/$1$2$is_args$args;
+            proxy_buffering off;
+            proxy_set_header  X-Forwarded-For $remote_addr;
+        }
+    }
 }
 ```
 如上
 - 使用正则 `~* ^$` 匹配原始的整个请求路径
 - proxy_pass 路径带上整个正则匹配的子组，`$1$2`明确整个URI的部分，`$is_args$args`明确queryString部分（这部分不在location regex的匹配范围内）
 - `proxy_buffering off` 为了使用 chunked 方式透传，需要关闭 proxy_buffering
-
+- 添加`resovler 8.8.8.8;`, 解决一些版本 NGINX 报错`no resolver defined to resolve example.com`的问题
