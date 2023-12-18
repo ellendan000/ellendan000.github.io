@@ -91,4 +91,4 @@ $ ./gradlew :web:sonar \
 最后就可以在
 
 ### 附录：
-![sonarsource docs](https://docs.sonarsource.com/sonarqube/9.9/setup-and-upgrade/install-the-server/#installing-sonarqube-from-the-docker-image)
+[sonarsource docs](https://docs.sonarsource.com/sonarqube/9.9/setup-and-upgrade/install-the-server/#installing-sonarqube-from-the-docker-image)
