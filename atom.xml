@@ -6,7 +6,7 @@
   <link href="https://ellendan.com/atom.xml" rel="self"/>
   
   <link href="https://ellendan.com/"/>
-  <updated>2023-12-18T09:09:33.704Z</updated>
+  <updated>2024-01-16T06:32:14.215Z</updated>
   <id>https://ellendan.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://ellendan.com/2023/12/14/macos-an-zhuang-sonarqube/"/>
     <id>https://ellendan.com/2023/12/14/macos-an-zhuang-sonarqube/</id>
     <published>2023-12-14T11:41:42.000Z</published>
-    <updated>2023-12-18T09:09:33.704Z</updated>
+    <updated>2024-01-16T06:32:14.215Z</updated>
     
     
       
@@ -48,7 +48,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/21/yi-lao-yong-yi-nginx-fan-xiang-dai-li-zhuan-fa-pei-zhi/"/>
     <id>https://ellendan.com/2023/11/21/yi-lao-yong-yi-nginx-fan-xiang-dai-li-zhuan-fa-pei-zhi/</id>
     <published>2023-11-21T07:47:46.000Z</published>
-    <updated>2023-12-18T09:09:33.704Z</updated>
+    <updated>2024-01-16T06:32:14.215Z</updated>
     
     
       
@@ -74,7 +74,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/17/ding-shi-zi-dong-shan-chu-acr-images/"/>
     <id>https://ellendan.com/2023/11/17/ding-shi-zi-dong-shan-chu-acr-images/</id>
     <published>2023-11-17T14:46:56.000Z</published>
-    <updated>2023-12-18T09:09:33.704Z</updated>
+    <updated>2024-01-16T06:32:14.215Z</updated>
     
     
       
@@ -102,7 +102,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/12/zai-python-ji-zhu-zhan-xia-zuo-db-migration-alembic-flask-migration/"/>
     <id>https://ellendan.com/2023/11/12/zai-python-ji-zhu-zhan-xia-zuo-db-migration-alembic-flask-migration/</id>
     <published>2023-11-12T09:09:13.000Z</published>
-    <updated>2023-12-18T09:09:33.700Z</updated>
+    <updated>2024-01-16T06:32:14.211Z</updated>
     
     
       
@@ -129,7 +129,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/10/18/sqlalchemy-dui-yu-sequence-de-zhi-chi/"/>
     <id>https://ellendan.com/2023/10/18/sqlalchemy-dui-yu-sequence-de-zhi-chi/</id>
     <published>2023-10-18T07:16:52.000Z</published>
-    <updated>2023-12-18T09:09:33.700Z</updated>
+    <updated>2024-01-16T06:32:14.211Z</updated>
     
     
       
@@ -157,7 +157,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/"/>
     <id>https://ellendan.com/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/</id>
     <published>2023-09-01T12:21:11.000Z</published>
-    <updated>2023-12-18T09:09:33.688Z</updated>
+    <updated>2024-01-16T06:32:14.199Z</updated>
     
     
       
@@ -185,7 +185,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/05/30/azure-administrator-associate-zhi-shi-dian/"/>
     <id>https://ellendan.com/2023/05/30/azure-administrator-associate-zhi-shi-dian/</id>
     <published>2023-05-30T09:44:11.000Z</published>
-    <updated>2023-12-18T09:09:33.684Z</updated>
+    <updated>2024-01-16T06:32:14.195Z</updated>
     
     
       
@@ -213,7 +213,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/05/17/shi-yong-gradio-huggingface-kuai-su-da-jian-yi-ge-chatgpt-app/"/>
     <id>https://ellendan.com/2023/05/17/shi-yong-gradio-huggingface-kuai-su-da-jian-yi-ge-chatgpt-app/</id>
     <published>2023-05-17T16:38:39.000Z</published>
-    <updated>2023-12-18T09:09:33.672Z</updated>
+    <updated>2024-01-16T06:32:14.183Z</updated>
     
     
     <summary type="html">&lt;p&gt;在现在的NLP领域，GPT系列模型已经成为了NLP领域的标配之一，而ChatGPT是基于GPT的一个聊天模型，可以用来生成对话，其效果非常好，可以说是目前最好的开源聊天模型了。&lt;br&gt;
@@ -239,7 +239,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2022/08/22/fan-shou-hui-mo-oracle/"/>
     <id>https://ellendan.com/2022/08/22/fan-shou-hui-mo-oracle/</id>
     <published>2022-08-22T18:31:00.000Z</published>
-    <updated>2023-12-18T09:09:33.668Z</updated>
+    <updated>2024-01-16T06:32:14.179Z</updated>
     
     
     <summary type="html">&lt;p&gt;最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。&lt;br&gt;
@@ -261,7 +261,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2022/07/18/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-xia-pian/"/>
     <id>https://ellendan.com/2022/07/18/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-xia-pian/</id>
     <published>2022-07-18T08:00:00.000Z</published>
-    <updated>2023-12-18T09:09:33.668Z</updated>
+    <updated>2024-01-16T06:32:14.179Z</updated>
     
     
     <summary type="html">&lt;p&gt;已经过了一旬，下篇居然还没开始动笔。&lt;br&gt;
@@ -282,7 +282,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2022/07/02/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-shang-pian/"/>
     <id>https://ellendan.com/2022/07/02/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-shang-pian/</id>
     <published>2022-07-02T12:00:00.000Z</published>
-    <updated>2023-12-18T09:09:33.664Z</updated>
+    <updated>2024-01-16T06:32:14.175Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近几年，国内业界越来越常提及&lt;code&gt;“研发效能”&lt;/code&gt;这个词，追其根源大部分是始于&lt;code&gt;“DevOps”&lt;/code&gt;运动的活跃。&lt;br&gt;
@@ -308,7 +308,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2022/05/10/shu-ju-ku-de-acid-he-fen-bu-shi-shi-wu/"/>
     <id>https://ellendan.com/2022/05/10/shu-ju-ku-de-acid-he-fen-bu-shi-shi-wu/</id>
     <published>2022-05-10T12:00:00.000Z</published>
-    <updated>2023-12-18T09:09:33.664Z</updated>
+    <updated>2024-01-16T06:32:14.175Z</updated>
     
     
     <summary type="html">&lt;p&gt;前面写了一篇关于&lt;code&gt;CAP原理&lt;/code&gt;的博文，说到&lt;code&gt;一致性 Consistency&lt;/code&gt;，有人往往会想到事务&lt;code&gt;ACID&lt;/code&gt;特性中的&lt;code&gt;C: Consistency&lt;/code&gt;，虽然都叫一致性，但完全是两个东西。&lt;/p&gt;
@@ -333,7 +333,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/"/>
     <id>https://ellendan.com/2022/05/03/fen-bu-shi-jia-gou-bi-xu-chong-shi-de-cap-li-lun/</id>
     <published>2022-05-03T12:00:00.000Z</published>
-    <updated>2023-12-18T09:09:33.660Z</updated>
+    <updated>2024-01-16T06:32:14.171Z</updated>
     
     
     <summary type="html">&lt;p&gt;CAP定理，说起来程序员们应该耳熟能详：C(Consistency)、A(Availability)、P(Partition Tolerance)，构成在分布式数据存储中的“不可能三角”，三者只能保证其二。&lt;br&gt;
@@ -355,7 +355,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2022/04/29/chong-qi/"/>
     <id>https://ellendan.com/2022/04/29/chong-qi/</id>
     <published>2022-04-29T04:12:00.000Z</published>
-    <updated>2023-12-18T09:09:33.660Z</updated>
+    <updated>2024-01-16T06:32:14.171Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近回忆过往工作经历，发现以往知识经验、林林总总，所思所想胡乱堆积，没有整理成一套逻辑明了的结构纲要。&lt;br&gt;
@@ -378,7 +378,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2021/01/18/docker-jvm-tong-yong-gong-ju-zhen-duan-zhi-nan/"/>
     <id>https://ellendan.com/2021/01/18/docker-jvm-tong-yong-gong-ju-zhen-duan-zhi-nan/</id>
     <published>2021-01-18T02:54:20.000Z</published>
-    <updated>2023-12-18T09:09:33.640Z</updated>
+    <updated>2024-01-16T06:32:14.151Z</updated>
     
     
       
@@ -405,7 +405,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2021/01/18/wei-fu-wu-xian-shang-zhi-li-zhi-jian-kong/"/>
     <id>https://ellendan.com/2021/01/18/wei-fu-wu-xian-shang-zhi-li-zhi-jian-kong/</id>
     <published>2021-01-18T02:54:20.000Z</published>
-    <updated>2023-12-18T09:09:33.652Z</updated>
+    <updated>2024-01-16T06:32:14.163Z</updated>
     
     
     <summary type="html">&lt;p&gt;微服务架构已经是时下后端应用开发的主流架构之一。微服务的整个生命周期包括&lt;code&gt;微服务拆分和定义（产品规划）&lt;/code&gt;、&lt;code&gt;微服务研发&lt;/code&gt;、&lt;code&gt;微服务构建与部署&lt;/code&gt;、&lt;code&gt;监控与运维&lt;/code&gt;几个阶段。&lt;/p&gt;
@@ -426,7 +426,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2020/12/27/mysql-innodb-ju-ji-suo-yin-shu-ju-jie-gou/"/>
     <id>https://ellendan.com/2020/12/27/mysql-innodb-ju-ji-suo-yin-shu-ju-jie-gou/</id>
     <published>2020-12-27T14:00:20.000Z</published>
-    <updated>2023-12-18T09:09:33.628Z</updated>
+    <updated>2024-01-16T06:32:14.143Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -450,7 +450,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2020/06/30/yan-fa-xiao-neng-zhi-ceng-ji-ce-shi/"/>
     <id>https://ellendan.com/2020/06/30/yan-fa-xiao-neng-zhi-ceng-ji-ce-shi/</id>
     <published>2020-06-30T06:18:20.000Z</published>
-    <updated>2023-12-18T09:09:33.624Z</updated>
+    <updated>2024-01-16T06:32:14.139Z</updated>
     
     
     <summary type="html">&lt;p&gt;研发效能不等于研发效率。&lt;/p&gt;
@@ -475,7 +475,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2020/06/05/zai-gradle-guan-li-ke-gong-xiang-de-yi-lai-ban-ben/"/>
     <id>https://ellendan.com/2020/06/05/zai-gradle-guan-li-ke-gong-xiang-de-yi-lai-ban-ben/</id>
     <published>2020-06-05T06:18:20.000Z</published>
-    <updated>2023-12-18T09:09:33.620Z</updated>
+    <updated>2024-01-16T06:32:14.135Z</updated>
     
     
     <summary type="html">&lt;p&gt;“可共享的依赖版本管理” —— 用过 Maven 的小伙伴们可能说，这不就是BOM么。&lt;br&gt;
@@ -499,7 +499,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2020/02/09/ddd-gai-nian-gai-lan/"/>
     <id>https://ellendan.com/2020/02/09/ddd-gai-nian-gai-lan/</id>
     <published>2020-02-09T06:50:44.000Z</published>
-    <updated>2023-12-18T09:09:33.620Z</updated>
+    <updated>2024-01-16T06:32:14.131Z</updated>
     
     
     <summary type="html">&lt;p&gt;软件的核心，是为其用户解决领域相关问题的能力。&lt;/p&gt;
