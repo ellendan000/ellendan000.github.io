@@ -22,7 +22,7 @@ categories:
 ```
 http {
 ……
-    resovler 8.8.8.8;
+    resolver 8.8.8.8;
 
     server {
         ……
