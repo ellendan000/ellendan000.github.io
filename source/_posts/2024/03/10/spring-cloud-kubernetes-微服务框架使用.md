@@ -15,7 +15,7 @@ categories:
   - Spring Cloud
 ---
 
-虽然时至当下，微服务架构已经推出了Service Mesh、Serverless等方式，但在企业级技术平台中依然使用 Spring cloud 框架的企业众多。
+虽然时至当下，微服务架构已经推出了Service Mesh、Serverless等方式，但使用 Spring cloud 这种 SDK框架方式搭建微服务的企业仍然众多。
 随着 K8S 的普及、Spring cloud Netflix 套组官方放弃维护，Spring cloud 推出了一些平替用于迁移和升级。
 服务注册：`Eureka` -> k8s
 服务发现：`Eureka client` -> `spring-cloud-kubernetes`
@@ -24,7 +24,8 @@ categories:
 REST API client: `spring-cloud-starter-openfeign`
 配置中心：`spring cloud config` -> k8s configmap + `spring-cloud-kubernetes`
 
-[demo 代码库](https://github.com/open-ending/demo-spring-cloud-kubernetes)构建了`inventory-service`和`order-service`两个子服务，order-service 会远程调用 inventory-service。在代码库根目录中运行`skaffold run`命令，即可自动打包两个images和部署到本地 Kubernetes 上。
+[demo 代码库](https://github.com/open-ending/demo-spring-cloud-kubernetes)构建了`inventory-service`和`order-service`两个子服务，order-service 会远程调用 inventory-service。
+在代码库根目录中运行`skaffold run`命令，即可自动打包两个images并部署到本地 Kubernetes 上。
 也可以切换到各子目录中，同样运行`skaffold run`单独打包和部署。
 
 ### 1. REST API calls
@@ -32,10 +33,10 @@ OpenFeign 作为一个声明式的 HTTP API client lib, 书写方便，非常好
 代码库中由 inventory-service 提供被调用的 API，order-service 引用和配置OpenFeign。
 
 ### 2. 服务注册与发现
-`服务注册`：随着 k8s 的使用，k8s pods 会上报和注册到 k8s API server 中，因此逐渐替代了服务注册，不再需要 application 代码处理。
-`服务发现`：如果是简单的服务调用，k8s 通过安装 DNS 将 service name 与 Cluster IP 进行绑定，客户端可直接使用service name作为host进行调用。但为何还需要使用`spring-cloud-kubernetes`呢？
+`服务注册`：随着 k8s 的使用，k8s pods 会上报和注册到 k8s API server 中，因此逐渐替代了传统服务注册，不再需要应用代码处理。
+`服务发现`：如果是简单的服务调用，k8s 通过安装 DNS 将 service name 与 Cluster IP 进行绑定，客户端可直接使用 service name 作为 host 进行调用。但为何还需要使用`spring-cloud-kubernetes`呢？
 
-`spring-cloud-kubernetes`提供了获取 k8s API server 上 service 背后的 pods 列表的办法 —— 这是使用客户端负载均衡以及failed retry的保证。
+`spring-cloud-kubernetes`提供了获取 k8s API server 上 k8s service 背后的 pods list 的办法 —— 是使用客户端负载均衡以及failed retry的前提。
 #### 2.1 引入依赖
 order-service 的 build.gradle 文件
 ```
@@ -73,7 +74,7 @@ spring:
 
 #### 2.3 deployment 中配置 service account 权限
 项目根路径下的 k8s 目录`privileges.yaml`文件定义了 service account，并且在 order-service/k8s/deployment.yaml 中进行引用。
-![order-deployment-config](./spring-cloud-kubernetes-微服务框架/k8s-order-deployment.png)
+![order-deployment-config](./spring-cloud-kubernetes-微服务框架使用/k8s-order-deployment.png)
 
 #### 2.4 skaffold开发模式
 skaffold支持开发模式，使用命令:
@@ -82,7 +83,7 @@ skaffold dev
 ```
 这时，skaffold 会使用前台终端命令行窗口构建 image 和部署 k8s，显示 spring console 控制台信息，并且 watch 源代码文件的变更进行热加载。
 正常启动后，访问`/actuator/health`, 可以查看到服务发现和 k8s pod信息：
-![health endpoint](./spring-cloud-kubernetes-微服务框架/order-service-k8s-discovery.png)
+![health endpoint](./spring-cloud-kubernetes-微服务框架使用/order-service-k8s-discovery.png)
 
 ### 3. 客户端负载均衡
 有了上面服务发现获取的 pods list，即可供客户端负载均衡使用。
@@ -109,7 +110,7 @@ spring:
 
 #### 3.3 限制 inventory-service k8s service负载均衡策略
 将 k8s order-service 配置成 `sessionAffinity`，如果通过 k8s service 访问 API，来自相同client IP 的请求只会进入同一个pod。
-![k8s-inventory-service](./spring-cloud-kubernetes-微服务框架/k8s-inventory-service.png)
+![k8s-inventory-service](./spring-cloud-kubernetes-微服务框架使用/k8s-inventory-service.png)
 
 而通过`spring-cloud-starter-loadbalancer`调用 pod ip 的请求，会根据 loadbalancer 的策略轮询到不同的 pod 上。
 因此需要屏蔽 k8s service 的负载均衡的轮询策略，才能看到 loadbalancer 的效果。
@@ -179,16 +180,16 @@ management:
 
 #### 4.3 instance naming annotation
 在 feignClient 上使用 annotation 命名instance。
-![resilience4j-spring-boot2 config](./spring-cloud-kubernetes-微服务框架/resilience4j-spring-boot2.png)
+![resilience4j-spring-boot2 config](./spring-cloud-kubernetes-微服务框架使用/resilience4j-spring-boot2.png)
 
 #### 4.4 启动容器和访问health/metrics endpoints
 使用`skaffold dev`构建部署，访问`/actuator/health`确认熔断器状态：
-![health-circuitbreak](./spring-cloud-kubernetes-微服务框架/order-service-circuitbreak-health.png)
+![health-circuitbreak](./spring-cloud-kubernetes-微服务框架使用/order-service-circuitbreak-health.png)
 
 ### 5. 配置管理
 #### 5.1 定义configmap
 使用 order-service/k8s/configmap.yaml 定义configmap：
-![config](./spring-cloud-kubernetes-微服务框架/k8s-order-configmap.png)
+![config](./spring-cloud-kubernetes-微服务框架使用/k8s-order-configmap.png)
 注意：`metadata.name` 必须与spring profile 中的 `spring.application.name`的值保持一致。
 在 order-service/k8s/deployment.yaml 文件中干干净净 —— 不需要引用configmap。
 
