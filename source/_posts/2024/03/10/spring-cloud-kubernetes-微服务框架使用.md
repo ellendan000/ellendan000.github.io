@@ -9,7 +9,10 @@ coverImg:
 password:
 keywords:
 tags:
+  - Spring Cloud
+  - Kubernetes
 categories:
+  - Spring Cloud
 ---
 
 虽然时至当下，微服务架构已经推出了Service Mesh、Serverless等方式，但在企业级技术平台中依然使用 Spring cloud 框架的企业众多。
