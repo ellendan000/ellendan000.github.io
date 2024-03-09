@@ -97,8 +97,7 @@ dependencies {
 ```
 
 #### 3.2 切换负载均衡实现
-`spring-cloud-starter-openfeign`默认开启的是Ribbon负载均衡，想要生效 spring-cloud-starter-loadbalancer，必须
-在 order-service 的 application.yml 中配置：
+`spring-cloud-starter-openfeign`默认开启的是Ribbon负载均衡，想要生效 spring-cloud-starter-loadbalancer，必须在 order-service 的 application.yml 中配置：
 ```
 spring:
   cloud:
@@ -125,7 +124,7 @@ dependencies {
 }
 ```
 这里是直接引用的`resilience4j-spring-boot2`, 而不是`spring-cloud-starter-circuitbreaker`。
-因为 spring 官方提供封装的库 spring-cloud-starter-circuitbreaker-resilience4j 文档和代码数量不多，比不上 resilience4j 提供的库。
+因为 spring 官方提供封装的库 spring-cloud-starter-circuitbreaker-resilience4j 文档和代码数量不多，不如使用 resilience4j 提供的库。
 
 #### 4.2 进行配置
 resilience4j 本身包含功能：`CircuitBreaker`、`Fallback`、`Bulkhead`、`Ratelimiter`、`Timelimiter`、`Retry`、`Cache`。
@@ -196,7 +195,7 @@ management:
 #### 5.2 引入依赖
 ```
 dependencies {
-    implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-fabric8'
+    implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-fabric8-config'
     ……
 }
 ```
