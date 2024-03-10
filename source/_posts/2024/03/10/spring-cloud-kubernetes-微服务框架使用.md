@@ -202,7 +202,7 @@ demo 的 inventory-service 添加了random exception，用以支持简单的 API
 
 ### 5. 配置管理
 demo order-service 默认的 application.yml 中，并不会开启 web logging。
-这里会通过 spring-cloud-kubernetes 将 configmap 管理的配置读取到 spring 加载中。
+这里会通过 spring-cloud-kubernetes 将 configmap 管理的配置读取到 spring 加载中，用以开启 web logging。
 #### 5.1 定义configmap
 使用 order-service/k8s/configmap.yaml 定义configmap：
 ![config](./spring-cloud-kubernetes-微服务框架使用/k8s-order-configmap.png)
