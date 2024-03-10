@@ -135,12 +135,12 @@ dependencies {
 }
 ```
 这里是直接引用的`resilience4j-spring-boot2`, 而不是`spring-cloud-starter-circuitbreaker`。
-因为 spring 官方提供封装的库 spring-cloud-starter-circuitbreaker-resilience4j 文档和代码数量不多，不如使用 resilience4j 提供的库。
+因为 spring 官方提供封装的库 spring-cloud-starter-circuitbreaker-resilience4j 文档和代码数量不多，推荐使用 resilience4j 提供的库。
 
 #### 4.2 进行配置
 resilience4j 本身包含功能：`CircuitBreaker`、`Fallback`、`Bulkhead`、`Ratelimiter`、`Timelimiter`、`Retry`、`Cache`。
 但针对OpenFeign的支持目前仅有：CircuitBreaker、Fallback、Ratelimiter 和 Retry。
-Bulkhead 不直接兼容OpenFeign，需要额外的处理。
+Bulkhead 不直接兼容OpenFeign，需要额外的代码处理。
 [官方配置参数说明见](https://resilience4j.readme.io/docs/getting-started-3)
 
 以 circuitbreaker 和 retry 举例，application.yml中配置：
@@ -186,17 +186,23 @@ management:
 - 与 hystrix 机制一样，resilience4 熔断器分5种状态：开启（OPEN）、关闭（CLOSE）、半开（HALF_OPEN），以及 禁用（DISABLED）和强开（FORCED_OPEN）。
 判断熔断器是否开启，有两种滑动窗口进行汇聚计算的方式：`COUNT_BASED`和`TIME_BASED`, 可以通过配置文件进行计算规则和阈值设置。
 当熔断器开启，多长时间后开始半开尝试 `waitDurationInOpenState`、如何在半开期间判断熔断可关闭等等，都可通过 application.yml 进行参数定制。
-- 开启 actuator `health`/`metric` endpoints, 将熔断器状态添加入 /health 显示。
+- 开启 actuator endpoints, 将熔断器状态添加入 /health 显示。
 
 #### 4.3 instance naming annotation
 在 feignClient 上使用 annotation 命名instance。
 ![resilience4j-spring-boot2 config](./spring-cloud-kubernetes-微服务框架使用/resilience4j-spring-boot2.png)
+resilience4j 的 annotation 支持标注在 class/method 两种level。
 
 #### 4.4 启动容器和访问health/metrics endpoints
 使用`skaffold dev`构建部署，访问`/actuator/health`确认熔断器状态：
 ![health-circuitbreak](./spring-cloud-kubernetes-微服务框架使用/order-service-circuitbreak-health.png)
 
+demo 的 inventory-service 添加了random exception，用以支持简单的 API failed效果。
+调用 demo 的 API `http://localhost:31002/orders`, 然后可观察`/actuator/health`里熔断器的数据变化。
+
 ### 5. 配置管理
+demo order-service 默认的 application.yml 中，并不会开启 web logging。
+这里会通过 spring-cloud-kubernetes 将 configmap 管理的配置读取到 spring 加载中。
 #### 5.1 定义configmap
 使用 order-service/k8s/configmap.yaml 定义configmap：
 ![config](./spring-cloud-kubernetes-微服务框架使用/k8s-order-configmap.png)
