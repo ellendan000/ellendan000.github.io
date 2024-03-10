@@ -27,6 +27,10 @@ REST API client: `spring-cloud-starter-openfeign`
 [demo 代码库](https://github.com/open-ending/demo-spring-cloud-kubernetes)构建了`inventory-service`和`order-service`两个子服务，order-service 会远程调用 inventory-service。
 在代码库根目录中运行`skaffold run`命令，即可自动打包两个images并部署到本地 Kubernetes 上。
 也可以切换到各子目录中，同样运行`skaffold run`单独打包和部署。
+运行预安装要求：
+- docker
+- minikuber（或者像 macOS上的docker desktop for kubernetes）
+- Skaffold
 
 ### 1. REST API calls
 OpenFeign 作为一个声明式的 HTTP API client lib, 书写方便，非常好用。
@@ -73,7 +77,7 @@ spring:
 ```
 
 #### 2.3 deployment 中配置 service account 权限
-项目根路径下的 k8s 目录`privileges.yaml`文件定义了 service account，并且在 order-service/k8s/deployment.yaml 中进行引用。
+项目根路径下的 k8s 目录`privileges.yaml`文件定义了 service account，并且在 `order-service/k8s/deployment.yaml` 中进行引用。
 ![order-deployment-config](./spring-cloud-kubernetes-微服务框架使用/k8s-order-deployment.png)
 
 #### 2.4 skaffold开发模式
@@ -108,11 +112,18 @@ spring:
 ```
 
 #### 3.3 限制 inventory-service k8s service负载均衡策略
-将 k8s order-service 配置成 `sessionAffinity`，如果通过 k8s service 访问 API，来自相同client IP 的请求只会进入同一个pod。
+为了能明确表现出客户端负载均衡的效果，这里特别将 k8s order-service 配置成 `sessionAffinity` —— 如果通过 k8s service 访问 API，来自相同client IP 的请求只会进入同一个pod。
+这里 service 通过设置成`sessionAffinity`, 主动屏蔽 k8s service 的负载均衡的轮询策略，然后请求通过`spring-cloud-starter-loadbalancer`的负载均衡能力 —— 调用到不同 pod。
+
 ![k8s-inventory-service](./spring-cloud-kubernetes-微服务框架使用/k8s-inventory-service.png)
 
-而通过`spring-cloud-starter-loadbalancer`调用 pod ip 的请求，会根据 loadbalancer 的策略轮询到不同的 pod 上。
-因此需要屏蔽 k8s service 的负载均衡的轮询策略，才能看到 loadbalancer 的效果。
+#### 3.4 运行和验证
+项目根路径下`skaffold dev`，调用 order-service 的API：
+```
+$ curl http://localhost:31002/orders --header 'Content-Type: application/json' --data '{"productId": "123"}'
+```
+这时候，看 inventory-service 控制台，可以看到来自不同inventory-service的被调用日志：
+![loadbalance](./spring-cloud-kubernetes-微服务框架使用/order-service-loadbalance.png)
 
 ### 4. 断路器与容错
 #### 4.1 引入依赖
