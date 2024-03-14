@@ -27,9 +27,9 @@ categories:
 _注意: kubectl命令背后是在与`Kube-apiserver`进行交互，并非直接操作工作节点。具体概念，可先看下文，这里并不是非常重要。_
 
 本文依然提供[demo repo](https://github.com/open-ending/demo-kubernetes-kubectl)，预安装 minikube、docker 即可练习使用。
-- 子目录`k8s/basic`中，尽量覆盖了本文中提到的概念使用。
-- 子目录`k8s/share-pod` 是第二节同 Pod 内两个Container的一个操作示例。
-- 子目录`k8s/service-without-label`是第四节 no selecter service 的一个操作示例。
+- 子目录`k8s/basic`中，尽量覆盖了本文中提到的概念的基本使用，并持续更新。
+- 子目录`k8s/share-pod` 是第二节同 Pod 内两个Container的一个简单操作示例。
+- 子目录`k8s/service-without-label`是第四节 No selecter service 的一个操作示例。
 
 ## Kubernetes 基本模型和逻辑架构
 ![kubernetes logic model](./kubernetes-逻辑模型和使用回顾/kubernetes-models.png)
