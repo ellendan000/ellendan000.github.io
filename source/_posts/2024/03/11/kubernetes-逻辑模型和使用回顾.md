@@ -1,5 +1,5 @@
 ---
-title: kubernetes 架构和使用回顾
+title: kubernetes 逻辑模型和使用回顾
 top: false
 cover: false
 toc: true
@@ -14,30 +14,34 @@ tags:
 categories:
     - Kubernetes
 ---
-
-全篇按照先逻辑架构，再组件架构的方式回顾Kubernetes知识，同时在各章节内使用分层图的方式进行细化展开。  
-各概念实体的定义模版，此文中不会详细涉及。  
+ 
+各模型概念的定义模版，此文中不会详细涉及。  
 如果想使用 kubectl 命令单个调用，常用的命令规则：
-`创建/更新`：`kubectl [create\apply] -f [file-name.yaml]>`
+`创建/更新`：`kubectl [create\apply] -f [file_name.yaml]>`
 `list`: `kubectl get [type]`
 `get detail`: `kubectl get [type] -o yaml`
 `describe`: `kubectl describe [type] [name]`
 `删除`：`kubectl delete [type] [name]`
 以上`[type]`是资源类型，包括 [nodes|pods|rs|deployments|svc|endpoints|namespaces] 等。
 如果需要限制 namespace，命令后带上`-n [namespace_name]`
-_注意: kubectl背后是在与`Kube-apiserver`进行交互，并非直接操作工作节点。具体概念，可先看下文，这里并不是非常重要。_
+_注意: kubectl命令背后是在与`Kube-apiserver`进行交互，并非直接操作工作节点。具体概念，可先看下文，这里并不是非常重要。_
 
-## Kubernetes 基本术语和逻辑架构
+本文依然提供[demo repo](https://github.com/open-ending/demo-kubernetes-kubectl)，预安装 minikube、docker 即可练习使用。
+- 子目录`k8s/basic`中，尽量覆盖了本文中提到的全部概念使用。
+- 子目录`k8s/share-pod` 是第二节同 Pod 内两个Container的一个操作示例。
+- 子目录`k8s/service-without-label`是第四节 no selecter service 的一个操作示例。
+
+## Kubernetes 基本模型和逻辑架构
 ![kubernetes logic model](./kubernetes-架构和使用回顾/kubernetes-models.png)
 
 ### 1. Master 和 Node
 Kubernetes 集群中服务器分为两种角色：`Master` 和 `Node`。  
 Master 是整个集群的大脑，负责集群的管理和协调。它运行着几个关键的组件，如`Kube-apiserver`、`kube-contoller-manager`、`kube-scheduler`、`etcd`。  
 Node 机器上除了必要安装的`kubelet`、`docker`、`kube-proxy`以外，大部分运算资源都会供给到用户业务应用服务中。  
-Node 安装好之后，会向 Master 注册和持续上报自己。  
+Node 安装好之后，需要向 Master 注册和持续上报自己。  
 
 #### Node 管理
-使用 minikube 可以启动多节点集群：`minikube start --nodes 2 -p $profile_name`。  
+本地可以使用 minikube 快速启动多节点集群：`minikube start --nodes 2 -p multinode-demo`。  
 查看 node 状态，`kubectl get nodes`：  
 ![multi-nodes](./kubernetes-架构和使用回顾/multinodes.png)  
 
@@ -59,6 +63,7 @@ Pod 的定义文件，至少包括两项信息：
 - 标签lables
 - 容器定义
 ![pod-template](./kubernetes-架构和使用回顾/pod-template.png)
+_在 demo 的目录 ./k8s/share-pod 中是一个最简单的单 Pod 内同时安装了app和redis，同时创建了service和ingress将app http API 通过内部域名 share-pod.test 暴露出 Kubernetes cluster。可拿来练习试手。_
 
 #### 类型
 Pod 分为两种类型：`普通 Pod` 和 `Static Pod`。
@@ -136,8 +141,8 @@ Container 有两种探针：
 #### Pod 的节点调度
 将 Pod 调度部署到哪个 Node 上，除了内置的默认调度之外，还可以显示指定：
 - NodeSelecter：定向调度，通过 `.template.spec.nodeSelecter` 设置，精确匹配 Node label。
-- NodeAffinity：亲和性调度，通过 `.template.spec.affinity.nodeAffinity`设置，比起 NodeSelecter 有更灵活的调度策略。NodeAffinity 可以和NodeSelecter一起使用。
-- DaemonSet: 每个 Node 都需要运行一份相同 Pod 的副本，场景比如日志采集 Fluentd 或 logstash。
+- NodeAffinity：亲和性调度，通过 `.template.spec.affinity.nodeAffinity`设置，比起 NodeSelecter 有更灵活的调度策略。NodeAffinity 可以和 NodeSelecter 一起使用。
+- DaemonSet: 集群的每个 Node 都需要运行某一份相同的 Pod 副本，场景比如日志采集 Fluentd 或 logstash。
 - Job: 批处理调度。
 
 NodeSelecter 示例：
@@ -208,14 +213,14 @@ spec:
 
 #### 滚动升级
 Deployment 让滚动升级变得容易，仅需要修改 Deployment中的镜像即可。
-- 直接执行命令
+- `直接执行命令`
 ```
 $ kubectl set image deployment/[deployment_name] [container_name]=[image_name]:[image_version]
 # 查看上线状态
 $ kubectl rollout status deployment/[deployment_name]
 ```
 
-- 修改 Deployment yaml文件，修改`.spec.template.spec.containers[].image`后保存，会触发 Deployment 发布。
+- `修改 Deployment yaml文件`，修改`.spec.template.spec.containers[].image`后保存，会触发 Deployment 发布。
 ```
 $ kubectl edit deployment/nginx-deployment
 ```
@@ -237,10 +242,10 @@ kubernetes 集群通过创建 Service 定义了一个服务的访问入口地址
 Service 与 背后的 Pod 副本集之间是通过 labelSelecter 进行匹配关联，并且逻辑上 Service 提供了负载均衡的能力。
 
 service type 有四种类型：
-- ClusterIp: 通过集群的内部 IP 公开 Service，选择该值时 Service 只能够在集群内部访问。不设置 type 时，默认此值。
-- NodePort: 通过 Node IP 和 NodePort 公开 Service。Kubernetes 在 Node 上为需要外部访问的 Service 开启一个对应的 TCP 监听端口，外部系统只需要 Node IP + 具体的 NodePort 即可访问此服务。
-- LoadBalancer: 使用云平台 或 其他Kubernetes集群外 的负载均衡器向外部公开 Service。
-- ExternalName: 将 Service 映射到一个 DNS 名称。并且不需要设置 selector。
+- `ClusterIp`: 通过集群的内部 IP 公开 Service，选择该值时 Service 只能够在集群内部访问。不设置 type 时，默认此值。
+- `NodePort`: 通过 Node IP 和 NodePort 公开 Service。Kubernetes 在 Node 上为需要外部访问的 Service 开启一个对应的 TCP 监听端口，外部系统只需要 Node IP + 具体的 NodePort 即可访问此服务。
+- `LoadBalancer`: 使用云平台 或 其他Kubernetes集群外 的负载均衡器向外部公开 Service。
+- `ExternalName`: 将 Service 映射到一个 DNS 名称。并且不需要设置 selector。
 
 除了四种类型外，Service 还可以定义成：
 - `no selector`  
@@ -248,7 +253,7 @@ service type 有四种类型：
 - `Headless`
   设置 spec.clusterIP=None，Service 不提供负载均衡，直接返回背后的 pod list。
 
-demo k8s/service-without-label，提供了`endpointSlice`映射外部 redis 连接端口。
+在 demo 目录 ./k8s/service-without-label中，编写了一个 no selecter service 示例，定义了一个`endpointSlice`来映射外部 redis 连接端口。
 `endpoints-external-redis.yaml`：
 ```
 apiVersion: discovery.k8s.io/v1
@@ -279,7 +284,6 @@ Kubernetes Volume 分 临时卷、持久卷、configmap、secret等。
   PV 是 Kubernetes 集群中的一种网络存储，是一种集群资源，但独立于 Node 之外。如果某个 Pod 想要申请 PV, 需要新定义一个 PVC（PersistentVolumeClaim），然后在 Pod 定义的 Volume 引用这个 PVC。
 - `configmap`，应用部署的一个最佳实践是将配置信息与程序进行分离，configmap 就是 Kubernetes 提供的一种统一配置管理方案。
 - `secret`，与configmap相似，但用来存放更机密的信息、秘钥等。
-
 
 ### 6. Namespace
 在 Kubernetes 集群中，Namespace（命名空间）是一种将群集内的资源分隔成独立组的方法。命名空间提供了一个逻辑隔离的分区，使得多个团队或项目可以在同一个物理集群上共存，而不会相互干扰。
