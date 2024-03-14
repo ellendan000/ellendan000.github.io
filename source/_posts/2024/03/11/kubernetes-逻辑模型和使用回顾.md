@@ -40,7 +40,7 @@ Master 是整个集群的大脑，负责集群的管理和协调。它运行着�
 Node 机器上除了必要安装的`kubelet`、`docker`、`kube-proxy`以外，大部分运算资源都会供给到用户业务应用服务中。  
 Node 安装好之后，需要向 Master 注册和持续上报自己。  
 
-#### Node 管理
+#### 1.1 Node 管理
 本地可以使用 minikube 快速启动多节点集群：`minikube start --nodes 2 -p multinode-demo`。  
 查看 node 状态，`kubectl get nodes`：  
 ![multi-nodes](./kubernetes-架构和使用回顾/multinodes.png)  
@@ -51,7 +51,7 @@ Node 可以手动维护，标记为不可调度，将阻止新 Pod 调度到该 
 Node 重新纳入调度，命令：`kubectl uncordon $node_name`  
 
 ### 2. Pod 和 Container(容器)
-#### 概述
+#### 2.1 概述
 Container，即 Docker Container。Kubernetes 给 Container 分了不同的类型，这里暂时不展开。  
 Pod 是 Kubernetes 中用于部署和管理容器的基本单元，它将一个或多个 container 封装为一个可管理的单元。  
 Pod 内部自带有一个根容器（名叫 Pause），通过根容器，同一个 Pod 内的所有容器：共享一个网络命名空间（Pod IP 和 Port range）；共享存储卷（Volume）。  
@@ -65,14 +65,14 @@ Pod 的定义文件，至少包括两项信息：
 ![pod-template](./kubernetes-架构和使用回顾/pod-template.png)
 _在 demo 的目录 ./k8s/share-pod 中是一个最简单的单 Pod 内同时安装了app和redis，同时创建了service和ingress将app http API 通过内部域名 share-pod.test 暴露出 Kubernetes cluster。可拿来练习试手。_
 
-#### 类型
+#### 2.2 类型
 Pod 分为两种类型：`普通 Pod` 和 `Static Pod`。
 普通 Pod 是短暂的实体，它们由 Kubernetes 自动部署到集群中的 Node 上，并在容器失败时，自动重启 Pod；Node 宕机时，被重新调度到其他 Node。
 
 Static Pod 不由 Master 下令安装和管理，仅在具体的某个节点上通过 kubelet 安装，并且只在当前节点上运行，且不上报健康检查等状态。
 示例：比如 Master 上面的几大关键组件就是以 static pod 存在。
 
-#### 资源限额管理
+#### 2.3 资源限额管理
 每个 Pod 都可对其能使用的服务器上的计算资源设置限额，包括 CPU 和 Memory 两项。
 如果不设置资源限制，默认情况下，Pod 对 Node 的资源使用是无限制的。
 Kubernetes 的配额管理提供了两种约束方式，分别是 LimitRanger 与 ResourceQuota。其中 LimitRanger 作用于 Pod 和 Container，ResourceQuota 作用于 Namespace（见后）。
@@ -103,7 +103,7 @@ spec:
     type: Container
 ```
 
-#### Pod 的生命周期和 Container 重启策略
+#### 2.4 Pod 的生命周期和 Container 重启策略
 Pod 有5种生命周期阶段：`Pending`、`Running`、`Succeeded`、`Failed`、`Unknown`。
 - `Pending`: Kubernetes 已接受创建该 Pod，但至少有一个容器未创建完成。此阶段包括等待 Pod 被调度和通过网络下载镜像的时间。
 - `Running`: Pod 内的所有容器都已创建完成，至少有一个容器在运行 或 处于启动（包括重启）状态。
@@ -126,7 +126,7 @@ Pod 有5种生命周期阶段：`Pending`、`Running`、`Succeeded`、`Failed`�
 总的来说，Pod 的生命周期流转如下图：
 ![pod lifecycle phases](./kubernetes-架构和使用回顾/kubernetes-pod-phases.png)
 
-#### Container 的探针
+#### 2.5 Container 的探针
 探针支持四种机制：`exec`、`gRPC`、`httpGet`和`tcpSocket`。
 每次探测都会得到三种结果之一：
 - `Success`：容器响应成功状态。
@@ -138,7 +138,7 @@ Container 有两种探针：
 - `ReadinessProbe`: 探针如果返回`Success`，则代表容器准备好向外提供服务，可以接受请求；如果返回`Failed`, endpoint controller 将从与 Pod 匹配的所有 Service endpoints 中删除该 Pod 的 IP 地址。
 如果容器不提供探针，则默认一直返回`Success`。
 
-#### Pod 的节点调度
+#### 2.6 Pod 的节点调度
 将 Pod 调度部署到哪个 Node 上，除了内置的默认调度之外，还可以显示指定：
 - NodeSelecter：定向调度，通过 `.template.spec.nodeSelecter` 设置，精确匹配 Node label。
 - NodeAffinity：亲和性调度，通过 `.template.spec.affinity.nodeAffinity`设置，比起 NodeSelecter 有更灵活的调度策略。NodeAffinity 可以和 NodeSelecter 一起使用。
@@ -155,6 +155,7 @@ $ kubectl label --list nodes multinode-demo-m02
 ![nodeSelector](./kubernetes-架构和使用回顾/nodeSelector.png)
 
 ### 3. RC、Deployment、HPA
+#### 3.1 概述
 RC（Replication Controller）：是控制 Pod 水平扩展的关键元件，负责并保证指定数量的 Pod 副本始终运行和可用。通过 RC Kubernetes 实现了用户应用集群的高可用性，同时大大减少了系统管理员在传统 IT 环境中需要完成的手工运维工作。 
 它能够自动替换那些失败的、被删除的或不符合用户定义状态的Pods。
 一个 RC 定义文件中包括3个关键信息：
@@ -167,7 +168,7 @@ Deployment 针对 Pod 提供了更高级的管理功能，比如声明式的更�
 HPA（Horizontal Pod Autoscaler）：自动根据 CPU 使用率或其他指定的度量指标，调整 Pod 副本的数量，以确保应用程序在负载变化时进行自动扩展或缩减。（使用 HPA前，记得要开启集群的 metrics-server）
 ![pod-rs-deployment-hpa](./kubernetes-架构和使用回顾/deployment-rs-hpa.png)
 
-#### Pod 扩容和缩容
+#### 3.2 Pod 扩容和缩容
 - 手动扩(缩)容，命令：
 ```
 $ kubectl scale --replicas=1 deployment/[name]
@@ -211,7 +212,7 @@ spec:
 在增加负载和停止负载后，副本数量自动增加和减少：
 ![hpa](./kubernetes-架构和使用回顾/hpa.png)
 
-#### 滚动升级
+#### 3.3 滚动升级
 Deployment 让滚动升级变得容易，仅需要修改 Deployment中的镜像即可。
 - `直接执行命令`
 ```
