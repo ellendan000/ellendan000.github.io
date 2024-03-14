@@ -17,7 +17,7 @@ categories:
  
 各模型概念的定义模版，此文中不会详细涉及。k8s 模版管理和构建工具，比较推荐 Skaffold 或 helm。  
 如果想使用 kubectl 命令挨个调用的话，常用的命令规则：
-`创建/更新`：`kubectl [create|apply] -f [file_name.yaml]>`
+`创建/更新`：`kubectl [create|apply] -f [file_name.yaml]`
 `list`: `kubectl get [type]`
 `get detail`: `kubectl get [type] -o yaml`
 `describe`: `kubectl describe [type] [name]`
