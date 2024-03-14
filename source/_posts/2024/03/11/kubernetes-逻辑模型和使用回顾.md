@@ -32,7 +32,7 @@ _注意: kubectl命令背后是在与`Kube-apiserver`进行交互，并非直接
 - 子目录`k8s/service-without-label`是第四节 no selecter service 的一个操作示例。
 
 ## Kubernetes 基本模型和逻辑架构
-![kubernetes logic model](./kubernetes-架构和使用回顾/kubernetes-models.png)
+![kubernetes logic model](./kubernetes-逻辑模型和使用回顾/kubernetes-models.png)
 
 ### 1. Master 和 Node
 Kubernetes 集群中服务器分为两种角色：`Master` 和 `Node`。  
@@ -43,11 +43,11 @@ Node 安装好之后，需要向 Master 注册和持续上报自己。
 #### 1.1 Node 管理
 本地可以使用 minikube 快速启动多节点集群：`minikube start --nodes 2 -p multinode-demo`。  
 查看 node 状态，`kubectl get nodes`：  
-![multi-nodes](./kubernetes-架构和使用回顾/multinodes.png)  
+![multi-nodes](./kubernetes-逻辑模型和使用回顾/multinodes.png)  
 
 Node 可以手动维护，标记为不可调度，将阻止新 Pod 调度到该 Node 之上，但不会影响任何已经在其上的 Pod。这是重启节点或者执行其他维护操作之前的一个有用的准备步骤。  
 将 Node 脱离调度，命令：`kubectl cordon $node_name`：  
-![SchedulingDisabled](./kubernetes-架构和使用回顾/SchedulingDisabled.png)
+![SchedulingDisabled](./kubernetes-逻辑模型和使用回顾/SchedulingDisabled.png)
 Node 重新纳入调度，命令：`kubectl uncordon $node_name`  
 
 ### 2. Pod 和 Container(容器)
@@ -56,13 +56,13 @@ Container，即 Docker Container。Kubernetes 给 Container 分了不同的类�
 Pod 是 Kubernetes 中用于部署和管理容器的基本单元，它将一个或多个 container 封装为一个可管理的单元。  
 Pod 内部自带有一个根容器（名叫 Pause），通过根容器，同一个 Pod 内的所有容器：共享一个网络命名空间（Pod IP 和 Port range）；共享存储卷（Volume）。  
 同一个 Pod 内的 Container 想要访问另一个 Container expose port，仅需要使用 localhost + containerPort 即可访问。  
-![pod containers inner access](./kubernetes-架构和使用回顾/kubernetes-pod-localhost.png)  
+![pod containers inner access](./kubernetes-逻辑模型和使用回顾/kubernetes-pod-localhost.png)  
 一般，只有当两个容器为了实现同一个业务功能、关系为紧耦合时，才推荐组装成一个Pod。  
 
 Pod 的定义文件，至少包括两项信息：
 - 标签lables
 - 容器定义
-![pod-template](./kubernetes-架构和使用回顾/pod-template.png)
+![pod-template](./kubernetes-逻辑模型和使用回顾/pod-template.png)
 _在 demo 的目录 ./k8s/share-pod 中是一个最简单的单 Pod 内同时安装了app和redis，同时创建了service和ingress将app http API 通过内部域名 share-pod.test 暴露出 Kubernetes cluster。可拿来练习试手。_
 
 #### 2.2 类型
@@ -124,7 +124,7 @@ Pod 有5种生命周期阶段：`Pending`、`Running`、`Succeeded`、`Failed`�
 - Static Pod：无论设置为何值，容器终止运行时 kubelet 都会重启容器。
 
 总的来说，Pod 的生命周期流转如下图：
-![pod lifecycle phases](./kubernetes-架构和使用回顾/kubernetes-pod-phases.png)
+![pod lifecycle phases](./kubernetes-逻辑模型和使用回顾/kubernetes-pod-phases.png)
 
 #### 2.5 Container 的探针
 探针支持四种机制：`exec`、`gRPC`、`httpGet`和`tcpSocket`。
@@ -152,7 +152,7 @@ $ kubectl label nodes multinode-demo-m02 workload=fulltime
 $ kubectl label --list nodes multinode-demo-m02
 ```
 2. Pod 模版定义时设置`nodeSelector`
-![nodeSelector](./kubernetes-架构和使用回顾/nodeSelector.png)
+![nodeSelector](./kubernetes-逻辑模型和使用回顾/nodeSelector.png)
 
 ### 3. RC、Deployment、HPA
 #### 3.1 概述
@@ -166,7 +166,7 @@ RC（Replication Controller）：是控制 Pod 水平扩展的关键元件，负
 在 Kubernets 1.2 version 之后, Deployment 被提出，同时 RC 被升级为 RS（Replica Set）。
 Deployment 针对 Pod 提供了更高级的管理功能，比如声明式的更新、回滚、缩放和自我修复功能，同时使用 RS 来管理 Pod 的副本级。
 HPA（Horizontal Pod Autoscaler）：自动根据 CPU 使用率或其他指定的度量指标，调整 Pod 副本的数量，以确保应用程序在负载变化时进行自动扩展或缩减。（使用 HPA前，记得要开启集群的 metrics-server）
-![pod-rs-deployment-hpa](./kubernetes-架构和使用回顾/deployment-rs-hpa.png)
+![pod-rs-deployment-hpa](./kubernetes-逻辑模型和使用回顾/deployment-rs-hpa.png)
 
 #### 3.2 Pod 扩容和缩容
 - 手动扩(缩)容，命令：
@@ -210,7 +210,7 @@ spec:
 期望副本数 = ceil[当前副本数 * (当前指标 / 期望指标)]
 ```
 在增加负载和停止负载后，副本数量自动增加和减少：
-![hpa](./kubernetes-架构和使用回顾/hpa.png)
+![hpa](./kubernetes-逻辑模型和使用回顾/hpa.png)
 
 #### 3.3 滚动升级
 Deployment 让滚动升级变得容易，仅需要修改 Deployment中的镜像即可。
