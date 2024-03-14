@@ -17,7 +17,7 @@ categories:
  
 各模型概念的定义模版，此文中不会详细涉及。  
 如果想使用 kubectl 命令单个调用，常用的命令规则：
-`创建/更新`：`kubectl [create\apply] -f [file_name.yaml]>`
+`创建/更新`：`kubectl [create|apply] -f [file_name.yaml]>`
 `list`: `kubectl get [type]`
 `get detail`: `kubectl get [type] -o yaml`
 `describe`: `kubectl describe [type] [name]`
@@ -27,7 +27,7 @@ categories:
 _注意: kubectl命令背后是在与`Kube-apiserver`进行交互，并非直接操作工作节点。具体概念，可先看下文，这里并不是非常重要。_
 
 本文依然提供[demo repo](https://github.com/open-ending/demo-kubernetes-kubectl)，预安装 minikube、docker 即可练习使用。
-- 子目录`k8s/basic`中，尽量覆盖了本文中提到的全部概念使用。
+- 子目录`k8s/basic`中，尽量覆盖了本文中提到的概念使用。
 - 子目录`k8s/share-pod` 是第二节同 Pod 内两个Container的一个操作示例。
 - 子目录`k8s/service-without-label`是第四节 no selecter service 的一个操作示例。
 
@@ -69,8 +69,7 @@ _在 demo 的目录 ./k8s/share-pod 中是一个最简单的单 Pod 内同时安
 Pod 分为两种类型：`普通 Pod` 和 `Static Pod`。
 普通 Pod 是短暂的实体，它们由 Kubernetes 自动部署到集群中的 Node 上，并在容器失败时，自动重启 Pod；Node 宕机时，被重新调度到其他 Node。
 
-Static Pod 不由 Master 下令安装和管理，仅在具体的某个节点上通过 kubelet 安装，并且只在当前节点上运行，且不上报健康检查等状态。
-示例：比如 Master 上面的几大关键组件就是以 static pod 存在。
+Static Pod 不由 Master 下令安装和管理，仅在具体的某个节点上通过 kubelet 安装，并且只在当前节点上运行，且不上报健康检查等状态。比如 Master 上面的几大关键组件就是以 static pod 存在。
 
 #### 2.3 资源限额管理
 每个 Pod 都可对其能使用的服务器上的计算资源设置限额，包括 CPU 和 Memory 两项。
@@ -112,13 +111,13 @@ Pod 有5种生命周期阶段：`Pending`、`Running`、`Succeeded`、`Failed`�
 - `Unknown`：由于某种原因无法获取该 Pod 的状态，可能是网络通讯不畅等。
 
 `restartPolicy` 是用于控制Pod内部容器的重启行为。这意味着它直接影响 Pod 中容器的生命周期，间接影响 Pod 本身的生命周期。
-`restartPolicy` 可以有以下几种设置：
+restartPolicy 可以有以下几种设置：
 - `Always`：当容器终止运行时，无论退出代码是什么，Kubernetes 始终尝试重启容器。
 - `OnFailure`：仅当容器以非零状态（即失败）退出时，才会重启容器。
 - `Never`：无论容器退出代码如何，Kubernetes 都不会尝试重启容器。
-通过在 Pod 定义合适的`restartPolicy`，控制 Pod 中的容器在特定情况下是否应该自动重启。
+通过在 Pod 定义合适的 restartPolicy，控制 Pod 中的容器在特定情况下是否应该自动重启。
 
-`restartPolicy` 需要配合控制器来设置，比如：
+并且 restartPolicy 也需要配合控制器来设置，比如：
 - RS 和 DaemonSet：必须设置为 Always。因为要保证 Pod 持续运行。
 - Job：仅能设置成 OnFailure 或 Never。成功执行并退出的容器，没必要重启。
 - Static Pod：无论设置为何值，容器终止运行时 kubelet 都会重启容器。
@@ -168,13 +167,18 @@ Deployment 针对 Pod 提供了更高级的管理功能，比如声明式的更�
 HPA（Horizontal Pod Autoscaler）：自动根据 CPU 使用率或其他指定的度量指标，调整 Pod 副本的数量，以确保应用程序在负载变化时进行自动扩展或缩减。（使用 HPA前，记得要开启集群的 metrics-server）
 ![pod-rs-deployment-hpa](./kubernetes-逻辑模型和使用回顾/deployment-rs-hpa.png)
 
-#### 3.2 Pod 扩容和缩容
-- 手动扩(缩)容，命令：
+#### 3.2 Label（标签）
+Labels 和 LabelSelectors 是 Kubernetes 用于组织和选择资源的关键工具。
+Label 是附加到  Kubernetes 资源上的键/值对，可以用在几乎所有的 Kubernetes 资源上，它提供了一种灵活的方法来指定对象的属性（key/value都可自定义），且后续通过 LabelSelectors 对这些对象进行范围筛选和组织。
+比如：RS 通过 Label 来确认其管理的 Pod 副本的数量和状态，Service 通过 Label 来确认与哪些 Pod 关联。
+
+#### 3.3 Pod 扩容和缩容
+- 采用手动扩(缩)容，命令：
 ```
 $ kubectl scale --replicas=1 deployment/[name]
 ```
 
-- 自动扩(缩)容，创建 HPA。
+- 采用自动扩(缩)容，创建 HPA。
 HPA 定义文件，包含关键信息：
     - 扩容目标 Deployment
     - 最小副本数
@@ -212,16 +216,16 @@ spec:
 在增加负载和停止负载后，副本数量自动增加和减少：
 ![hpa](./kubernetes-逻辑模型和使用回顾/hpa.png)
 
-#### 3.3 滚动升级
+#### 3.4 滚动升级
 Deployment 让滚动升级变得容易，仅需要修改 Deployment中的镜像即可。
-- `直接执行命令`
+- 采用`直接执行命令`
 ```
 $ kubectl set image deployment/[deployment_name] [container_name]=[image_name]:[image_version]
 # 查看上线状态
 $ kubectl rollout status deployment/[deployment_name]
 ```
 
-- `修改 Deployment yaml文件`，修改`.spec.template.spec.containers[].image`后保存，会触发 Deployment 发布。
+- 或者 `修改 Deployment yaml文件`，修改`.spec.template.spec.containers[].image`后保存，会触发 Deployment 发布。
 ```
 $ kubectl edit deployment/nginx-deployment
 ```
@@ -238,7 +242,7 @@ $ kubectl rollout undo deployment/nginx-deployment
 $ kubectl rollout undo deployment/nginx-deployment --to-revision=2
 ```
 
-### 4. service
+### 4. Service
 kubernetes 集群通过创建 Service 定义了一个服务的访问入口地址，通过这个统一的入口能访问到其背后的一组 Pod 副本集组成的集群实例。
 Service 与 背后的 Pod 副本集之间是通过 labelSelecter 进行匹配关联，并且逻辑上 Service 提供了负载均衡的能力。
 
@@ -249,12 +253,12 @@ service type 有四种类型：
 - `ExternalName`: 将 Service 映射到一个 DNS 名称。并且不需要设置 selector。
 
 除了四种类型外，Service 还可以定义成：
-- `no selector`  
-  `no selecter`除了可以与`type=ExternalName`结合用来映射外部域名以外，还可以与`endpointSlice`一起使用，映射外部endpoints。
+- `No selector`  
+  `No selecter`除了可以与`type=ExternalName`结合用来映射外部域名以外，还可以与`EndpointSlice`一起使用，映射外部endpoints。
 - `Headless`
   设置 spec.clusterIP=None，Service 不提供负载均衡，直接返回背后的 pod list。
 
-在 demo 目录 ./k8s/service-without-label中，编写了一个 no selecter service 示例，定义了一个`endpointSlice`来映射外部 redis 连接端口。
+在 demo 目录 ./k8s/service-without-label中，编写了一个 no selecter service 示例，定义了一个`EndpointSlice`来映射外部 redis 连接端口。
 `endpoints-external-redis.yaml`：
 ```
 apiVersion: discovery.k8s.io/v1
