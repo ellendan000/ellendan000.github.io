@@ -28,7 +28,10 @@ Node 节点上：
 ![Kubernetes components](./kubernetes-组件架构回顾/kubernetes-components.png)
 
 __control-panel__: 除 Node 工作节点外，Master 节点代表的集群控制面角色也被成为`control-panel`。  
-PV（持久卷）是 Kubernetes 集群的资源之一，但并非是安装 Node 和 Master 上，由一些网络磁盘、块或者文件系统提供，然后被控制面进行 PV Provisioning，由 PVC（PersistentVolumeClaim）申请对PV的使用，最后通过 PVC 挂载到 Pod 上以供容器使用。  
+PV（持久卷）是 Kubernetes 集群的资源之一，但并非是安装 Node 和 Master 上，由一些网络磁盘、块或者文件系统提供，然后由 control-panel 进行 PV Provisioning。  
+容器需要使用 PV 时，需要创建 PVC（PersistentVolumeClaim）申请对 PV 的使用，最后通过 PVC 挂载到 Pod 上以供容器使用。  
+
+
 
 
 
