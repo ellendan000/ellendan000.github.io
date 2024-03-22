@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>kubernetes 组件架构回顾</title>
+      <link href="/2024/03/19/kubernetes-zu-jian-jia-gou-hui-gu/"/>
+      <url>/2024/03/19/kubernetes-zu-jian-jia-gou-hui-gu/</url>
+      
+        <content type="html"><![CDATA[<p>前面回顾了 Kubernetes 的逻辑概念模型和使用，这篇主要回顾一下 Kubernetes 的组件架构。<br>之前提到 Kubernetes 将集群中的机器划分为至少一个 Master 节点和一群 Node 节点。</p><p>Master 节点上：</p><ul><li>需要预安装 <code>docker</code> 和 <code>kubectl</code> 程序（运行 Pod 的必需环境）。</li><li>以 static pod 的方式（使用 kubectl 命令安装）运行<code>Kube-apiserver</code>、<code>kube-contoller-manager</code>、<code>kube-scheduler</code>，这些进程实现了整个集群的资源管理、安全控制、系统监控、Pod调度、弹性伸缩等管理功能。</li><li>集群数据集中存储在 <code>etcd</code> 键值存储库中，为了防止单点故障、进行高可用考虑，可将 etcd 以集群方式部署。</li><li>网络组件：<code>kube-proxy</code>、<code>flannel</code>(如果使用 Minikube，Minikube 中使用的网络组件是kindnet，此组件只适合用于开发和测试)</li></ul><p>Node 节点上：</p><ul><li>需要预安装 <code>docker</code> 和 <code>kubectl</code> 程序。</li><li>网络组件：<code>kube-proxy</code>、<code>flannel</code>。</li></ul><p><img src="/2024/03/19/kubernetes-zu-jian-jia-gou-hui-gu/kubernetes-components.png" alt="Kubernetes components"></p><p><strong>control-panel</strong>: 除 Node 工作节点外，Master 节点代表的集群控制面角色也被成为<code>control-panel</code>。<br>PV（持久卷）是 Kubernetes 集群的资源之一，但并非是安装 Node 和 Master 上，由一些网络磁盘、块或者文件系统提供，然后被控制面进行 PV Provisioning，由 PVC（PersistentVolumeClaim）申请对PV的使用，最后通过 PVC 挂载到 Pod 上以供容器使用。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>kubernetes 逻辑模型和使用回顾</title>
       <link href="/2024/03/10/kubernetes-luo-ji-mo-xing-he-shi-yong-hui-gu/"/>
       <url>/2024/03/10/kubernetes-luo-ji-mo-xing-he-shi-yong-hui-gu/</url>
