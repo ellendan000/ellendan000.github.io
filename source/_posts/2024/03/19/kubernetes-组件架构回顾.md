@@ -31,6 +31,38 @@ __control-panel__: 除 Node 工作节点外，Master 节点代表的集群控制
 PV（持久卷）是 Kubernetes 集群的资源之一，但并非是安装 Node 和 Master 上，由一些网络磁盘、块或者文件系统提供，然后由 control-panel 进行 PV Provisioning。  
 容器需要使用 PV 时，需要创建 PVC（PersistentVolumeClaim）申请对 PV 的使用，最后通过 PVC 挂载到 Pod 上以供容器使用。  
 
+### kube-apiserver
+Kubernetes API Server 是 Kubernetes 集群的核心组件，扮演着至关重要的角色，主要功能如下：
+- 提供集群管理的 API ：API Server 提供统一的 RESTful API 接口，实现对集群内各种资源对象（如Pods、Services、ConfigMaps、Deployments等）的 CRUD 和 Watch等操作。API Server 底层连接键值存储库 etcd，对收到的请求进行有效性校验后，将变更操作转化为 etcd 中的键值对变化。
+同时，API Server 作为集群内部各组件间通信的数据总线和数据中心，API Server 不仅响应资源请求，还负责提供集群状态数据变化的监控接口给其他组件和客户端，如 Controller Manager、kubelet等，从而确保整个集群状态的及时更新和同步。
+- 身份认证和授权：API Server 具备强大的安全机制，支持多种认证方式，如 Bearer Token、X509证书、HTTP Base、ServiceAccount 等，并实施精细的授权策略，通过RBAC（Role-Based Access Control）控制用户和组件对 API 资源的访问权限。
+- 准入控制：客户端的请求通过身份认证和授权后，还需要通过准入控制链中的每个控制器的检查，检查通过才能完成 API 操作。
+
+### kube-controller-manager
+Controller Manager 包含一系列子控制器，它们通过 API Server 监听对应的资源对象变化，作出相应的调整以达到用户定义的期望状态。
+这里面包括、但不限于以下几个主要功能：
+- NodeController：节点控制器监控集群中每个 Node 的状态，处理节点加入、离开集群的过程，并对异常节点进行标记、删除或重新调度其上运行的Pod，以保持集群整体健康。
+- ReplicationController：确保用户定义的 Pod 副本数量与集群中实际运行的数量相匹配。如果有差异，副本控制器会自动增加或减少副本来修正差异。
+- ServiceController：服务控制器负责管理服务资源和对应的端点资源，确保服务背后的 Pod 能够被正确地代理和路由流量。
+- NamespaceController | ResourceQuotaContoller：命名空间控制器维护命名空间的生命周期，同时资源配额控制器确保各命名空间内的资源消耗不超过预设限额。
+- DeploymentController | StatefulSetController | DaemonSetController：这些控制器分别管理不同类型的工作负载，确保 Deployment、StatefulSet、DaemonSet 资源定义的状态与实际集群状态一致，处理Pods的创建、更新和删除。  
+通过这些控制器的协调工作，kube-controller-manager 保证了集群的健康与动态调整能力，响应资源变化和节点故障，维持系统的高可用性。
+
+### kube-scheduler
+kube-scheduler 负责监视新创建的、还未指定运行节点的 Pods，然后基于调度算法和策略，确定每个待调度 Pod 应该运行在哪个 Node 上，并将 Pod 与 Node 的绑定信息通过 API Server 写入 etcd。   
+kube-scheduler 会考虑多种因素来做出调度决策，包括但不限于：各个 Node 的资源需求（如 CPU、内存等）、Node 的健康状态、亲和性和反亲和性设置、Pod 的优先级和抢占逻辑，以及集群中已经部署的工作负载分布。通过这些细致的考量，kube-scheduler 能够优化负载的分布，提高集群的资源利用率和可靠性，同时也支持高级调度功能，如横向扩展和自动恢复。  
+kube-scheduler 给一个 Pod 做调度选择时包含两个步骤：
+- 过滤：使用预选策略，遍历所有目标 Node，筛选出符合要求的候选 Node。
+- 打分：使用优选策略，计算出每个候选 Node 的积分，选出最高者。
+
+### kube-proxy
+kube-proxy 是集群中每个节点上所运行的网络代理，实现 Kubernetes Service 概念的一部分。
+kube-proxy 维护节点上的一些网络规则，这些网络规则会允许从集群内部或外部的网络会话与 Pod 进行网络通信。
+
+### Kubernetes 网络
+
+
+
 
 
 
