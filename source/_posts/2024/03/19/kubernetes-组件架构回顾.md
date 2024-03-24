@@ -48,7 +48,8 @@ Controller Manager 包含一系列子控制器，它们通过 API Server 监听�
 - ReplicationController：确保用户定义的 Pod 副本数量与集群中实际运行的数量相匹配。如果有差异，副本控制器会自动增加或减少副本来修正差异。
 - ServiceController：服务控制器负责管理服务资源和对应的端点资源，确保服务背后的 Pod 能够被正确地代理和路由流量。
 - NamespaceController | ResourceQuotaContoller：命名空间控制器维护命名空间的生命周期，同时资源配额控制器确保各命名空间内的资源消耗不超过预设限额。
-- DeploymentController | StatefulSetController | DaemonSetController：这些控制器分别管理不同类型的工作负载，确保 Deployment、StatefulSet、DaemonSet 资源定义的状态与实际集群状态一致，处理Pods的创建、更新和删除。  
+- DeploymentController | StatefulSetController | DaemonSetController：这些控制器分别管理不同类型的工作负载，确保 Deployment、StatefulSet、DaemonSet 资源定义的状态与实际集群状态一致，处理Pods的创建、更新和删除。
+  
 通过这些控制器的协调工作，kube-controller-manager 保证了集群的健康与动态调整能力，响应资源变化和节点故障，维持系统的高可用性。
 
 ### 3. kube-scheduler
