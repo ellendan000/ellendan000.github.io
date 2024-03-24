@@ -42,7 +42,7 @@ Kubernetes API Server 是 Kubernetes 集群的核心组件，扮演着至关重�
 - 准入控制：客户端的请求通过身份认证和授权后，还需要通过准入控制链中的每个控制器的检查，检查通过才能完成 API 操作。
 
 ### 2. kube-controller-manager
-Controller Manager 包含一系列子控制器，它们通过 API Server 监听对应的资源对象变化，作出相应的调整以达到用户定义的期望状态。
+Controller Manager 包含一系列子控制器，它们通过 API Server 监听对应的资源对象变化，作出相应的调整以达到用户定义的期望状态。  
 这里面包括、但不限于以下几个主要功能：
 - NodeController：节点控制器监控集群中每个 Node 的状态，处理节点加入、离开集群的过程，并对异常节点进行标记、删除或重新调度其上运行的Pod，以保持集群整体健康。
 - ReplicationController：确保用户定义的 Pod 副本数量与集群中实际运行的数量相匹配。如果有差异，副本控制器会自动增加或减少副本来修正差异。
