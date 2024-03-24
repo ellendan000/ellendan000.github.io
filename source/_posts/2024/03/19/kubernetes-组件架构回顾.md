@@ -22,11 +22,11 @@ Master 节点上：
 - 需要预安装 `docker` 和 `kubectl` 程序（运行 Pod 的必需环境）。
 - 以 static pod 的方式（使用 kubectl 命令安装）运行`Kube-apiserver`、`kube-contoller-manager`、`kube-scheduler`，这些进程实现了整个集群的资源管理、安全控制、系统监控、Pod调度、弹性伸缩等管理功能。
 - 集群数据集中存储在 `etcd` 键值存储库中，为了防止单点故障、进行高可用考虑，可将 etcd 以集群方式部署。
-- 网络组件：`kube-proxy`、`flannel`(如果使用 Minikube，Minikube 中使用的网络组件是kindnet，此组件只适合用于开发和测试)
+- 网络组件：`kube-proxy`、`Flannel`(如果使用 Minikube，Minikube 中使用的网络组件是kindnet，此组件只适合用于开发和测试)
 
 Node 节点上：  
 - 需要预安装 `docker` 和 `kubectl` 程序。
-- 网络组件：`kube-proxy`、`flannel`。
+- 网络组件：`kube-proxy`、`Flannel`。
 
 ![Kubernetes components](./kubernetes-组件架构回顾/kubernetes-components.png)
 
@@ -64,8 +64,8 @@ kube-scheduler 给一个 Pod 做调度选择时包含两个步骤：
 - 负载均衡：当一个 Service 的后端包含多个 Pod 时，kube-proxy 会负责实现请求的负载均衡，将进入服务的流量均匀地分配给后端的所有 Pod。
 
 ### 5. Kubernetes 网络
-Kubernetes 自身并不直接提供完整的网络组件。相反，Kubernetes定义了一组网络要求和接口，以确保 Pod 间和集群外部的通信。  
-为了满足这些要求，它依赖于第三方网络插件或解决方案，遵循CNI（Container Network Interface）标准。这些CNI插件负责为 Pod 提供网络功能，包括分配 IP 地址、处理网络隔离和路由等。  
+Kubernetes 自身并不直接提供完整的网络组件。相反，Kubernetes 定义了一组网络要求和接口，以确保 Pod 间和集群外部的通信。  
+为了满足这些要求，它依赖于第三方网络插件或解决方案，遵循 CNI（Container Network Interface）标准。这些 CNI 插件负责为 Pod 提供网络功能，包括分配 IP 地址、处理网络隔离和路由等。  
 
 Kubernetes对网络有几个基本的要求，任何想要集成的CNI插件都需要遵守：
 1. **所有Pod都必须能直接通信，无需NAT**：每个Pod应该有一个唯一的IP地址，并且这个IP在整个集群内部都是可路由的。  
