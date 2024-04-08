@@ -16,7 +16,7 @@ categories:
 
 ### 1. 环境准备
 提前预安装好 docker 和 postgresql 数据库。
-sonarqube 除了postgresql数据库以外，只提供对SQLserver和oracle数据一共选择。
+sonarqube 除了postgresql数据库以外，只提供对SQLserver和oracle数据两种选择。
 
 postgresql 安装好以后，使用命令：
 ```
