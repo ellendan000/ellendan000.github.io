@@ -19,7 +19,7 @@ categories:
 如果想使用 kubectl 命令挨个调用的话，常用的命令规则：
 `创建/更新`：`kubectl [create|apply] -f [file_name.yaml]`
 `list`: `kubectl get [type]`
-`get detail`: `kubectl get [type] -o yaml`
+`get detail`: `kubectl get [type] [name] -o yaml`
 `describe`: `kubectl describe [type] [name]`
 `删除`：`kubectl delete [type] [name]`
 以上`[type]`是资源类型，包括 [nodes|pods|rs|deployments|svc|endpoints|namespaces] 等。
