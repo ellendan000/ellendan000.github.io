@@ -44,7 +44,7 @@ docker run -d --name sonarqube \
     -v sonarqube_data:/opt/sonarqube/data \
     -v sonarqube_extensions:/opt/sonarqube/extensions \
     -v sonarqube_logs:/opt/sonarqube/logs \
-    sonarque:lts-community
+    sonarqube:lts-community
 ```
 
 ### 3. 访问本地安装好的 sonarqube
