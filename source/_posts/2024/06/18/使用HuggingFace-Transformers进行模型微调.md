@@ -11,7 +11,7 @@ keywords:
 tags:
     - ML
     - AI
-    - HuggingFace Tranformers
+    - HuggingFace
 categories:
     - AI
 ---
