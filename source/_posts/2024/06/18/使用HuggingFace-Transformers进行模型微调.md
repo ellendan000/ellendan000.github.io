@@ -288,7 +288,7 @@ from transformers import pipeline
 
 id2_label = {0: "差评！", 1: "好评！"}
 model.config.id2label = id2_label
-pipe = pipeline("text-classification", model=model, tokenizer=tokenizer, device=0)
+pipe = pipeline("text-classification", model=model, tokenizer=tokenizer)
 
 sen = "饭菜有些咸！"
 pipe(sen)
@@ -320,7 +320,7 @@ model = AutoModelForSequenceClassification.from_pretrained(local_model_path)
 model.config.id2label = id2_label
 
 tokenizer = AutoTokenizer.from_pretrained(local_model_path)
-pipe = pipeline("text-classification", model=model, tokenizer=tokenizer, device=0)
+pipe = pipeline("text-classification", model=model, tokenizer=tokenizer)
 
 sen = "饭菜有些咸！"
 pipe(sen)
