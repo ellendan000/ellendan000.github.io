@@ -134,7 +134,7 @@ output:
 >})
 
 - `dataset.map` 将原数据集的每条数据进行处理，小批量地执行 map function `process_function`，并且`remove_columns` 返回的结果集删除掉未加工的原始数据列。
-- tokenizer 将每条数据超出最大长度`128`的数据进行截断。
+- `tokenizer` 将每条数据超出最大长度`128`的数据进行截断。
 
 ##### 分割数据集
 ```
@@ -154,7 +154,7 @@ output:
 >    })
 >})
 
-- 将数据集中的 10% 作为测试数据集。即 90% 为训练数据集。返回结果为 DatasetDict 包含 train 和 test。
+- 将数据集中的 10% 作为测试数据集，即 90% 为训练数据集。返回结果为 DatasetDict 包含 train 和 test。
 
 #### 3.3 加载预训练模型
 ```
@@ -173,7 +173,7 @@ model
 因此，上面注释中的 torch 部分代码完全可以删掉。
 
 但如果编写 PyTorch 代码的话，还是必须加上。
-如果跟我一样，使用的是 Mac 的话、并且是 M1 芯片之后的版本，在写 PyTorch 代码时，需要把模型和参数传给`mps`。 
+如果跟我一样，使用的是 MacOS 的话、并且是 M1 芯片之后的版本，在写 PyTorch 代码时，需要把模型和参数传给`mps`。 
 因为 PyTorch 在 M1 之后使用 mps 进行了加速，虽然比起 GPU 速度上还是有不小差距，但是比起直接使用 CPU 来说，还是快上不少。
 如果是 M1 之前的 Mac 的话，就不要勉强了，直接去使用 Google colab 或者 白嫖下阿里云PAI平台的免费限额，不然速度会慢到落泪。
 
@@ -201,12 +201,12 @@ def eval_metric(eval_predict):
 - FP （False Positive）：假*正例，即实际为负类，”错误“预测为正类的样本数。
 - FN （False Negative）：假*负例，即实际为正类，”错误“预测为负类的样本数。
   
-`acc = \frac{TP+TN}{TP+TN+FP+FN} `,被称为准确率。  
+`acc = {% mathjax%} \frac{TP+TN}{TP+TN+FP+FN} {% endmathjax %}`,被称为准确率。  
 
 了解`F1分值`前需要了解 `精确率 Precision`（也叫查准率） 和 `召回率 Recall`（也叫查全率）。  
-- `Precison = \frac{TP}{TP+FP}`，在所有被预测为正类的样本中，实际的确是正类的比例。  
-- `Recall = \frac{TP}{TP+FN}`， 在所有正类的数据集范围内被成功预测对的比例。
-- `F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall}`，是 Presion 和 Recall 的调和平均值，旨在提供一个综合评价指标，特别是针对类别不平衡的数据集。
+- `Precison = {% mathjax%} \frac{TP}{TP+FP} {% endmathjax %}`，在所有被预测为正类的样本中，实际的确是正类的比例。  
+- `Recall = {% mathjax%} \frac{TP}{TP+FN} {% endmathjax %}`， 在所有正类的数据集范围内被成功预测对的比例。
+- `F1 = {% mathjax%} 2 \times \frac{Precision \times Recall}{Precision + Recall} {% endmathjax %}`，是 Presion 和 Recall 的调和平均值，旨在提供一个综合评价指标，特别是针对类别不平衡的数据集。
   F1分值在0到1之间，值越接近1表示模型的性能越好，既考虑了模型预测的准确性（Precision），也考虑了模型识别出所有正例的能力（Recall）。 
 
 ##### 定义训练参数
