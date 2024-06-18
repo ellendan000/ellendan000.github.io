@@ -93,7 +93,7 @@ from datasets import load_dataset
 #### 3.2 准备数据
 随着模型训练和微调的库越来越多，代码其实都已经模式化，甚至已经出现直接使用 WebUI 界面进行模型训练和微调（比如 LLaMA-Factory），
 因此对于追求训练和微调为目的来说，最重要的其实就是两块 —— 数据集和显卡。
-这里我们使用 github 上的一个[中文外卖评价数据集](https://github.com/SophonPlus/ChineseNlpCorpus/blob/master/datasets/waimai_10k/waimai_10k.csv)，实现把它下载下来，保存到项目本地。
+这里我们使用 github 上的一个[中文外卖评价数据集](https://github.com/SophonPlus/ChineseNlpCorpus/blob/master/datasets/waimai_10k/waimai_10k.csv)，直接把它下载下来，保存到项目本地。
 
 ##### 加载数据集
 ```
@@ -133,6 +133,9 @@ output:
 >    num_rows: 11987
 >})
 
+- `dataset.map` 将原数据集的每条数据进行处理，小批量地执行 map function `process_function`，并且`remove_columns` 返回的结果集删除掉未加工的原始数据列。
+- tokenizer 将每条数据超出最大长度`128`的数据进行截断。
+
 ##### 分割数据集
 ```
 tokenized_datasets = tokenized_dataset.train_test_split(test_size=0.1)
@@ -151,7 +154,7 @@ output:
 >    })
 >})
 
-- 将数据集中的 10% 作为测试数据集。
+- 将数据集中的 10% 作为测试数据集。即 90% 为训练数据集。返回结果为 DatasetDict 包含 train 和 test。
 
 #### 3.3 加载预训练模型
 ```
@@ -167,11 +170,11 @@ model
 ```
 
 加载预训练模型非常简单，HuggingFace 也不需要像 PyTorch 那样显性的将模型和参数传给GPU，底层已经帮助实现。
-因此，上面注释中的torch代码完全可以删掉。
+因此，上面注释中的 torch 部分代码完全可以删掉。
 
 但如果编写 PyTorch 代码的话，还是必须加上。
 如果跟我一样，使用的是 Mac 的话、并且是 M1 芯片之后的版本，在写 PyTorch 代码时，需要把模型和参数传给`mps`。 
-因为 PyTorch 在 M1 之后使用 mps 进行了加速，虽然比起 GPU 速度上还是有不小差异，但是比起直接使用 cpu 来说，还是快上不少。
+因为 PyTorch 在 M1 之后使用 mps 进行了加速，虽然比起 GPU 速度上还是有不小差距，但是比起直接使用 CPU 来说，还是快上不少。
 如果是 M1 之前的 Mac 的话，就不要勉强了，直接去使用 Google colab 或者 白嫖下阿里云PAI平台的免费限额，不然速度会慢到落泪。
 
 #### 3.4 训练和评估
@@ -191,7 +194,20 @@ def eval_metric(eval_predict):
     return acc
 ```
 
-- `evaluate` 库已经提供了大量评估函数的实现
+`evaluate` 库已经提供了大量评估函数的实现。这里使用了最简单的`准确率acc`和`F1分值`。
+在二分类中，样本预测结果分为4类：
+- TP （True Positive）：真*正例，即实际为正类，”正确“预测为正类的样本数。
+- TN （True Negative）：真*负例，即实际为负类，”正确“预测为负类的样本数。
+- FP （False Positive）：假*正例，即实际为负类，”错误“预测为正类的样本数。
+- FN （False Negative）：假*负例，即实际为正类，”错误“预测为负类的样本数。
+  
+`acc = \frac{TP+TN}{TP+TN+FP+FN} `,被称为准确率。  
+
+了解`F1分值`前需要了解 `精确率 Precision`（也叫查准率） 和 `召回率 Recall`（也叫查全率）。  
+- `Precison = \frac{TP}{TP+FP}`，在所有被预测为正类的样本中，实际的确是正类的比例。  
+- `Recall = \frac{TP}{TP+FN}`， 在所有正类的数据集范围内被成功预测对的比例。
+- `F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall}`，是 Presion 和 Recall 的调和平均值，旨在提供一个综合评价指标，特别是针对类别不平衡的数据集。
+  F1分值在0到1之间，值越接近1表示模型的性能越好，既考虑了模型预测的准确性（Precision），也考虑了模型识别出所有正例的能力（Recall）。 
 
 ##### 定义训练参数
 ```
@@ -215,6 +231,13 @@ trainer = Trainer(model=model,
                   data_collator=DataCollatorWithPadding(tokenizer=tokenizer),
                   compute_metrics=eval_metric)
 ```
+- HuggingFace 库对训练的实现细节已经进行了封装，只需要传参即可控制过程。当然这些参数背后代表的过程控制，需要了解一部分模型训练的知识和细节。
+- `batch`与`step`相关，比如这里训练数据集全量是1w多条，`per_device_train_batch_size`设置为64, `step`即 1w / 64 约为 156，也就是训练数据集跑一次全量需要 156 step
+- `logging_steps=10` 每10个step打印一下进度
+- `eval_strategy="epoch"` 每个epoch（也就是跑一次全量）进行一次评估
+- `save_strategy="epoch"` 每个epoch进行一次磁盘保存
+- `learning_rate` 和 `weight_decay` 深度学习训练模型的超参数设置
+- 以`metric_for_best_model`为标准，加载最优模型`load_best_model_at_end`
 
 ##### 执行训练
 ```
@@ -240,6 +263,8 @@ output:
 >100%|██████████| 507/507 [03:04<00:00,  2.75it/s]
 >{'train_runtime': 184.3464, 'train_samples_per_second': 175.561, 'train_steps_per_second': 2.75, 'train_loss': 0.27392145938421847, 'epoch': 3.0}
 
+- 在训练的过程中，会按照之前的参数设置`logging_steps`、`eval_strategy`来打印进度反馈。
+
 ##### 评估
 ```
 trainer.evaluate()
@@ -253,6 +278,9 @@ Output:
 > 'eval_samples_per_second': 542.056,
 > 'eval_steps_per_second': 4.521,
 > 'epoch': 3.0}
+
+- 这里默认使用参数设置的`eval_dataset`进行评估。
+- 想要重新针对训练集进行评估需要调用`trainer.evaluate(tokenized_datasets["train"])`
 
 #### 3.5 模型预测
 ```
@@ -268,6 +296,8 @@ pipe(sen)
 
 Output:
 >[{'label': '差评！', 'score': 0.9463842511177063}]
+
+- 明显比微调之前的预训练模型要靠谱许多。
 
 #### 3.6 微调模型保存
 ##### 保存到本地
