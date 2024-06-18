@@ -1,7 +1,7 @@
 ---
 title: 使用HuggingFace Transformers进行NLP模型微调
-top: false
-cover: false
+top: true
+cover: true
 toc: true
 date: 2024-06-18 13:56:28
 img:
