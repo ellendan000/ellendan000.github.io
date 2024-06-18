@@ -29,7 +29,7 @@ categories:
 2. 从学习的角度来说，首先从宏观上了解问题和知识域，会比直接进入细节和微观更有利于快速的学习。HuggingFace libs 比 PyTorch/TensorFlow 有着更高级的封装和功能展现，通过它掌握了宏观的概念和知识之后，想要了解更细节的知识，可以再去学习底层的内容。HuggingFace libs 的使用普及率也很高，不用担心学到小众的工具而浪费时间。
 3. HuggingFace docs 官方基本会保持实时更新，时效性比起市面上的文档、书籍、视频要高上不少。
 
-这篇文章，就用来介绍和演示一下如何使用 HuggingFace Transformers库来完成一个NLP模型的简单微调。微调不是目的，学习和熟悉使用库来进行微调的概念和步骤，才是目的。  
+这篇文章，就用来介绍和演示一下如何使用 HuggingFace Transformers库来完成一个NLP模型的简单微调。微调不是目的，学习和熟悉使用库来学习微调的概念和步骤，才是目的。  
 下面将要在一个很小的 NLP 预训练模型上进行微调，以实现对外卖评价的文本分类 —— 好评和差评两类。  
 
 
@@ -38,6 +38,7 @@ categories:
 - 安装好 环境/包管理工具，conda 或者 pip。（如果同本人一样比较钟爱 pipenv，可以在安装好 pip 后，执行 `pip install pipenv`，然后使用`pipenv`来替代`pip`使用即可。）
 - 用管理工具安装依赖库：`pipenv/pip install transformers datasets evaluate accelerate torch scikit-learn pandas jupyterlab`。  
   前4个就是 HuggingFace libs，剩下的针对不同的运行环境可以酌情安装，比如使用了Google colab，就不需要安装 jupyterlab。
+详细代码已经上传到 github [hugging-face-demo/00-transformers](https://github.com/ellendan000/hugging-face-demo/tree/main/00-transformers)。
 
 ### 2. 确认模型任务的原有行为
 #### 2.1 想要调用模型，使用 HuggingFace Pipeline 来做非常简单
@@ -50,7 +51,7 @@ pipe(sen)
 ```
 - `text-classification` 是任务名，即完成文本分类任务。
 - `hfl/rbt3` 是预训练好的模型名。pipeline 会从远程 huggingFace Hub 上下载开源的预训练模型到本地缓存。(记得开VPN，或者设置国内镜像库)
-  也可以实现将模型库clone或者download到本地，然后将这里的`hfl/rbt3`改为`./your-path-to-model`
+  也可以事先将模型库clone或者download到本地，然后将这里的`hfl/rbt3`改为`./your-path-to-model`
 - `pipe(sen)` 直接传参调用，即执行任务。
 
 output:
@@ -331,4 +332,3 @@ pipe(sen)
 本文仅使用了普通微调训练的方式，会对参数进行全量调整。
 如果涉及到参数千万以上的大模型，这种方式并不适合 —— 需要使用 HuggingFace 的`PEFT`库，针对小部分参数进行微调的同时获得更好的模型预测效果。
 即使这样，也并非普通的显卡就可进行训练，作者本人曾经试过在 Google Colab 上15G显存 仅加载 Llama3 模型 —— 根本加载不进去，直接 OutOfMemory。论数据集和显卡的重要性。
-另外，详细代码已经上传到 github [hugging-face-demo/00-transformers](https://github.com/ellendan000/hugging-face-demo/tree/main/00-transformers)
