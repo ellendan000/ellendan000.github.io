@@ -329,5 +329,5 @@ pipe(sen)
 
 ### 附
 本文仅使用了普通微调训练的方式，会对参数进行全量调整。
-如果涉及到参数千万以上的大模型，这种方式并不适合 —— 需要使用 HuggingFace 的 PEFT 库 —— 针对小部分参数进行微调的同时获得更好的模型预测效果。
+如果涉及到参数千万以上的大模型，这种方式并不适合 —— 需要使用 HuggingFace 的`PEFT`库，针对小部分参数进行微调的同时获得更好的模型预测效果。
 另外，详细代码已经上传到 github [hugging-face-demo/00-transformers](https://github.com/ellendan000/hugging-face-demo/tree/main/00-transformers)
