@@ -128,10 +128,10 @@ tokenized_dataset
 ```
 
 output:
->Dataset({
->    features: ['input_ids', 'token_type_ids', 'attention_mask', 'labels'],
->    num_rows: 11987
->})
+>- Dataset({
+>-    features: ['input_ids', 'token_type_ids', 'attention_mask', 'labels'],
+>-    num_rows: 11987
+>- })
 
 - `dataset.map` 将原数据集的每条数据进行处理，小批量地执行 map function `process_function`，并且`remove_columns` 返回的结果集删除掉未加工的原始数据列。
 - `tokenizer` 将每条数据超出最大长度`128`的数据进行截断。
