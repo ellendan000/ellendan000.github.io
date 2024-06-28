@@ -112,7 +112,7 @@ spring:
 ```
 
 #### 3.3 限制 inventory-service k8s service负载均衡策略
-为了能明确表现出客户端负载均衡的效果，这里特别将 k8s order-service 配置成 `sessionAffinity` —— 如果通过 k8s service 访问 API，来自相同client IP 的请求只会进入同一个pod。
+为了能明确表现出客户端负载均衡的效果，这里特别将 k8s inventory-service 配置成 `sessionAffinity` —— 如果通过 k8s service 访问 API，来自相同client IP 的请求只会进入同一个pod。
 这里 service 通过设置成`sessionAffinity`, 主动屏蔽 k8s service 的负载均衡的轮询策略，然后请求通过`spring-cloud-starter-loadbalancer`的负载均衡能力 —— 调用到不同 pod。
 
 ![k8s-inventory-service](./spring-cloud-kubernetes-微服务框架使用/k8s-inventory-service.png)
