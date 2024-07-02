@@ -14,19 +14,11 @@ tags:
 categories:
     - Azure
 ---
-
----
-Owner: Ellen Dan
-tags:
-  - Post
-Categories: Azure
-Last edited time: 2024-07-02T11:10
----
 Azure Virtual Machine（简称 VM） 是 Azure 云上的一种非常基本的计算资源，同类竞品有 AWS 上的 EC2、阿里云上的 ECS 等。
 
 基本上有上云经验的工程师，最先入门级的云产品就是虚拟机。
 
-云平台上的虚拟机，如阿里云 ECS、AWS EC2、Azure VM，并不是真实的物理机，而是通过虚拟化技术（）在物理服务器上创建的虚拟实例。这些虚拟机为用户提供了类似物理机的计算资源，包括CPU、内存、存储和网络资源，但实际上是共享底层物理硬件的抽象化表示。
+云平台上的虚拟机，如阿里云 ECS、AWS EC2、Azure VM，并不是真实的物理机，而是通过虚拟化技术（Hyper-V、KVM等）在物理服务器上创建的虚拟实例。这些虚拟机为用户提供了类似物理机的计算资源，包括CPU、内存、存储和网络资源，但实际上是共享底层物理硬件的抽象化表示。
 
 ### 一、Azure VM 的特征：
 
