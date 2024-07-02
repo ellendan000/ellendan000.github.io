@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>两日一概念之Azure篇 —— Virtual Machine</title>
+      <link href="/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/"/>
+      <url>/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/</url>
+      
+        <content type="html"><![CDATA[<hr><p>Owner: Ellen Dan<br>tags:</p><ul><li>Post<br>Categories: Azure<br>Last edited time: 2024-07-02T11:10</li></ul><hr><p>Azure Virtual Machine（简称 VM） 是 Azure 云上的一种非常基本的计算资源，同类竞品有 AWS 上的 EC2、阿里云上的 ECS 等。</p><p>基本上有上云经验的工程师，最先入门级的云产品就是虚拟机。</p><p>云平台上的虚拟机，如阿里云 ECS、AWS EC2、Azure VM，并不是真实的物理机，而是通过虚拟化技术（）在物理服务器上创建的虚拟实例。这些虚拟机为用户提供了类似物理机的计算资源，包括CPU、内存、存储和网络资源，但实际上是共享底层物理硬件的抽象化表示。</p><h3 id="一、Azure-VM-的特征：">一、Azure VM 的特征：</h3><ol><li><p>VM 划属于 IaaS（基础结构即服务），VM 提供了操作系统、存储和网络功能，用户可以在此之上运行各种应用程序。</p></li><li><p>VM 可以根据需求快速操作 —— 纵向扩展和缩减。</p></li><li><p>与虚拟机相关的责任由 Microsoft 和客户共同承担。<br>Microsoft 负责基础设施、物理数据中心的管理和网络安全。客户则负责虚拟机内部的操作系统、安全配置、应用程序管理和数据保护。</p><p>这里稍微提一下“云服务责任共担模型”。一般用户上云的目的，除了保障SLA、性能可弹性、节省研发成本之外，获取专业运维能力之上的责任共担是一个重要理由。<br><strong>云服务责任共担模型：</strong><br><img src="/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/responsibility-layers-4ffbf946.png" alt="responsibility-layers-4ffbf946.png"></p></li></ol><h3 id="二、VM-由多个资源组件组成，具体包括：">二、VM 由多个资源组件组成，具体包括：</h3><ol><li>计算单元：vCPU 、 Mem</li><li>存储单元：磁盘</li><li>网络：NIC 、 Virtual Network 、 Security Group</li><li>其他组件：如VM extension、诊断和监控工具</li></ol><p>因此，一般情况下，一个 VM 被创建出来后，会在资源清单中发现如下一批资源项：</p><p><img src="/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/VM_components.png" alt="VM_components.png"></p><h3 id="三、如何选择VM大小规格：">三、如何选择VM大小规格：</h3><ol><li><p>首先，当然是明确用户方的需求，拿着需求来进行规划。</p></li><li><p>然后，对照 Azure VM 的分类，进行业务方案比对：</p><p><img src="/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/VM_%25E5%2588%2586%25E7%25B1%25BB.png" alt="VM_%E5%88%86%E7%B1%BB.png"></p></li><li><p>其次，选择 VM 规格。<br>由于 Azure VM 各分类下的规格和族系实在是太多，想要了解可以参照：</p><blockquote><p>[!info] 虚拟机大小概述 - Azure Virtual Machines<br>列出 Azure 中虚拟机的不同可用实例大小。<br><a href="https://learn.microsoft.com/zh-cn/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#list-of-vm-size-families-by-type">列出 Azure 中虚拟机的不同可用实例大小</a></p></blockquote><p>除非是对 Azure VM 族系非常熟练了解，不然不推荐肉眼遍历清单的方式选择 VM 规格。<br>正常情况，推荐使用以下 VM 选择器，可以根据需求，快速筛选出适合的 VM 族系和规格。</p><blockquote><p>[!info] Microsoft Azure VM 选择器<br>Microsoft Azure VM 选择器：查找所需的 VM<br><a href="https://azure.microsoft.com/zh-cn/pricing/vm-selector/">Microsoft Azure VM 选择器</a></p></blockquote></li><li><p>成本计算。<br>将筛选出的 VM 规格添加到成本计算器中，结合需求成本，最终确定 VM 的规格选择。</p><blockquote><p>[!info] 价格计算器 | Microsoft Azure<br>为特定方案配置 Azure 产品和功能并预估这些产品和功能的成本。<br><a href="https://azure.microsoft.com/zh-cn/pricing/calculator/">价格计算器</a></p></blockquote></li></ol><h3 id="四、创建-VM-的方式">四、创建 VM 的方式</h3><p>创建Azure VM的步骤包括选择区域、操作系统、配置虚拟机大小、设置存储和网络，以及应用安全组和诊断扩展等，这里不细说。</p><p><strong>1、用于创建 VM 的工具</strong><br>对资源的创建和管理，Azure 提供了多种资源管理终端。<br>按交互方式分：</p><ul><li>图形界面：<br>Azure Portal</li><li>命令行：<br>Azure Cloud Shell<br>Azure PowerShell<br>Azure CLI<br>各种终端除了交互方式以外，功能上基本没有什么不同，背后都是连接 ARM（Azure Resource Management）。</li></ul><p><strong>2、Infrastructure as code</strong><br>Azure 提供 ARM Template 作为 Infra as code 脚本，是一种声明式定义，通过ARM Template 脚本可以快速创建和变更 VM。<br>4种终端工具，皆可执行ARM Template。</p><p><strong>3、VM Extension</strong><br>可以在使用 ARM Template 创建虚拟机时，同时声明 VM Extension，以便在虚拟机创建完成时自动安装软件。这样可以自动化创建 VM 的同时，完成 VM 环境的初始化（软件安装和配置流程等等），提高部署效率。<br>当然也可以在 VM 创建好之后，通过 VM Extension 功能手动触发环境安装。</p><h3 id="五、连接-VM-的方式">五、连接 VM 的方式</h3><p>Azure 提供多种方式连接 VM，包括以下几种：</p><ul><li>RDP 协议。Windows VM 推荐，带远程桌面方式。</li><li>SSH 协议。Linux VM 推荐，Linux VM 无法使用 RDP。</li><li>Azure Bastion。支持 Windows 和 Linux 两种 VM 系统，不需要 VM 开放公网 IP 和 NSG inbound 规则。<br>用户只需要网页访问 Azure Portal（https协议），Azure Bastion 将外部连接转换为内部连接接入目标 VM。<br>但<strong>注意</strong>，创建和使用 Azure Bastion  需要额外收费。<br><img src="/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/bastion-connections-29c60c68.png" alt="bastion-connections-29c60c68.png"></li></ul><h3 id="六、约束">六、约束</h3><p>如果是想要进行 Azure 考试 或者 Azure 架构实施，需要注意一些 Azure 产品的约束细节。</p><ul><li>磁盘约束。单个VM可以挂载多个存储磁盘，但每个VM最高支持256T的存储空间。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Azure </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Azure </tag>
+            
+            <tag> 两日一概念 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用HuggingFace Transformers进行NLP模型微调</title>
       <link href="/2024/06/18/shi-yong-huggingface-transformers-jin-xing-mo-xing-wei-diao/"/>
       <url>/2024/06/18/shi-yong-huggingface-transformers-jin-xing-mo-xing-wei-diao/</url>
