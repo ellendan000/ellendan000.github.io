@@ -20,7 +20,7 @@ Azure Virtual Machine（简称 VM） 是 Azure 云上的一种非常基本的计
 
 云平台上的虚拟机，如阿里云 ECS、AWS EC2、Azure VM，并不是真实的物理机，而是通过虚拟化技术（Hyper-V、KVM等）在物理服务器上创建的虚拟实例。这些虚拟机为用户提供了类似物理机的计算资源，包括CPU、内存、存储和网络资源，但实际上是共享底层物理硬件的抽象化表示。
 
-### 一、Azure VM 的特征：
+### 一、Azure VM 的特征
 
 1. VM 划属于 IaaS（基础结构即服务），VM 提供了操作系统、存储和网络功能，用户可以在此之上运行各种应用程序。
 2. VM 可以根据需求快速操作 —— 纵向扩展和缩减。
@@ -32,8 +32,8 @@ Azure Virtual Machine（简称 VM） 是 Azure 云上的一种非常基本的计
     ![responsibility-layers-4ffbf946.png](./两日一概念之Azure篇-——-Virtual-Machine/responsibility-layers-4ffbf946.png)
     
 
-### 二、VM 由多个资源组件组成，具体包括：
-
+### 二、VM 由多个资源组件组成
+具体包括：
 1. 计算单元：vCPU 、 Mem
 2. 存储单元：磁盘
 3. 网络：NIC 、 Virtual Network 、 Security Group
@@ -43,11 +43,9 @@ Azure Virtual Machine（简称 VM） 是 Azure 云上的一种非常基本的计
 
 ![VM_components.png](./两日一概念之Azure篇-——-Virtual-Machine/VM_components.png)
 
-### 三、如何选择VM大小规格：
-
+### 三、如何选择VM大小规格
 1. 首先，当然是明确用户方的需求，拿着需求来进行规划。
 2. 然后，对照 Azure VM 的分类，进行业务方案比对：
-    
     ![VM_%E5%88%86%E7%B1%BB.png](./两日一概念之Azure篇-——-Virtual-Machine/VM_%25E5%2588%2586%25E7%25B1%25BB.png)
     
 3. 其次，选择 VM 规格。  
@@ -56,8 +54,6 @@ Azure Virtual Machine（简称 VM） 是 Azure 云上的一种非常基本的计
     > [!info] 虚拟机大小概述 - Azure Virtual Machines  
     > 列出 Azure 中虚拟机的不同可用实例大小。  
     > [列出 Azure 中虚拟机的不同可用实例大小](https://learn.microsoft.com/zh-cn/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#list-of-vm-size-families-by-type)  
-    
-      
     
     除非是对 Azure VM 族系非常熟练了解，不然不推荐肉眼遍历清单的方式选择 VM 规格。  
     正常情况，推荐使用以下 VM 选择器，可以根据需求，快速筛选出适合的 VM 族系和规格。  
@@ -73,8 +69,7 @@ Azure Virtual Machine（简称 VM） 是 Azure 云上的一种非常基本的计
     > 为特定方案配置 Azure 产品和功能并预估这些产品和功能的成本。  
     > [价格计算器](https://azure.microsoft.com/zh-cn/pricing/calculator/)  
     
-      
-    
+
 ### 四、创建 VM 的方式
 创建Azure VM的步骤包括选择区域、操作系统、配置虚拟机大小、设置存储和网络，以及应用安全组和诊断扩展等，这里不细说。
 
