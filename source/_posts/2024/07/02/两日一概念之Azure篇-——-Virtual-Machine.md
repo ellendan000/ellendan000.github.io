@@ -29,7 +29,7 @@ Azure Virtual Machine（简称 VM） 是 Azure 云上的一种非常基本的计
       
     这里稍微提一下“云服务责任共担模型”。一般用户上云的目的，除了保障SLA、性能可弹性、节省研发成本之外，获取专业运维能力之上的责任共担是一个重要理由。  
     **云服务责任共担模型：**
-    ![responsibility-layers-4ffbf946.png](./两日一概念之Azure篇-——-Virtual-Machine/responsibility-layers-4ffbf946.png)
+    ![responsibility-layers](./两日一概念之Azure篇-——-Virtual-Machine/responsibility-layers-4ffbf946.png)
     
 
 ### 二、VM 由多个资源组件组成
@@ -41,12 +41,12 @@ Azure Virtual Machine（简称 VM） 是 Azure 云上的一种非常基本的计
 
 因此，一般情况下，一个 VM 被创建出来后，会在资源清单中发现如下一批资源项：
 
-![VM_components.png](./两日一概念之Azure篇-——-Virtual-Machine/VM_components.png)
+![VM组件](./两日一概念之Azure篇-——-Virtual-Machine/VM_components.png)
 
 ### 三、如何选择VM大小规格
 1. 首先，当然是明确用户方的需求，拿着需求来进行规划。
 2. 然后，对照 Azure VM 的分类，进行业务方案比对：
-    ![VM_%E5%88%86%E7%B1%BB.png](./两日一概念之Azure篇-——-Virtual-Machine/VM_%25E5%2588%2586%25E7%25B1%25BB.png)
+    ![VM类型](./两日一概念之Azure篇-——-Virtual-Machine/VM_%25E5%2588%2586%25E7%25B1%25BB.png)
     
 3. 其次，选择 VM 规格。  
     由于 Azure VM 各分类下的规格和族系实在是太多，想要了解可以参照：  
@@ -99,7 +99,7 @@ Azure 提供多种方式连接 VM，包括以下几种：
 - Azure Bastion。支持 Windows 和 Linux 两种 VM 系统，不需要 VM 开放公网 IP 和 NSG inbound 规则。
   用户只需要网页访问 Azure Portal（https协议），Azure Bastion 将外部连接转换为内部连接接入目标 VM。
   但**注意**，创建和使用 Azure Bastion  需要额外收费。
-  ![bastion-connections-29c60c68.png](./两日一概念之Azure篇-——-Virtual-Machine/bastion-connections-29c60c68.png)
+  ![bastion connections](./两日一概念之Azure篇-——-Virtual-Machine/bastion-connections-29c60c68.png)
 
 ### 六、约束
 如果是想要进行 Azure 考试 或者 Azure 架构实施，需要注意一些 Azure 产品的约束细节。
