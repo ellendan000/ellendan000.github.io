@@ -16,7 +16,7 @@ categories:
     - Cloud
 ---
 
-前面介绍了Azure VM，VM 仅仅是 IaaS。  
+前面介绍了![Azure VM](../02/两日一概念之Azure篇-——-Virtual-Machine.md)。  
 当部署了 VM 之后，如何从 VM 层面保证 “业务连续性和灾备（BCDR）”计划呢？  
 
 Azure 为 VM 在这方面提供了多个选项和方案：
