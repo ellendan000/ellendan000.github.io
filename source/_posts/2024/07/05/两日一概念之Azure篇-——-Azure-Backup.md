@@ -4,16 +4,16 @@ top: false
 cover: false
 toc: true
 date: 2024-07-05 16:30:13
-img:
-coverImg:
-password:
-keywords:
+img: 
+coverImg: 
+password: 
+keywords: 
 tags:
-    - Azure
-    - 两日一概念
-    - Cloud
+  - Azure
+  - 两日一概念
+  - Cloud
 categories:
-    - Cloud
+  - Cloud
 ---
 
 前面介绍了[Azure VM](../../02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/)。  
@@ -65,12 +65,12 @@ Azure Backup 的主要目标是 —— 维护让你能够及时回退到目标�
     
 - **Snapshots（快照）**  
     Azure Backup 对每种支持的操作系统使用不同的扩展，以生成快照：
-    | OS | 扩展 |
-    | --- | --- |
+    | OS  | 扩展 |
+    | :--- | :--- |
     | Windows | VMSnapshot：使用VSS可获取磁盘和内存中数据的副本。 |
     | Linux | VMSnapshotLinux：快照仅是磁盘数据的副本。 |
     
-    可见，Azure Backup 针对 Windows 系统可以自带内存数据的复制，但 Linux 则没有此特性。    
+    可见，Azure Backup 针对 Windows 系统可以自带内存数据的复制，但 Linux 则没有此特性。   
     
     生成快照的一致性，分以下三种：
     - `Application consistent(应用程序一致性)  `  
