@@ -11,8 +11,9 @@ keywords:
 tags:
     - Azure
     - 两日一概念
+    - Cloud
 categories:
-    - Azure
+    - Cloud
 ---
 Azure Virtual Machine（简称 VM） 是 Azure 云上的一种非常基本的计算资源，同类竞品有 AWS 上的 EC2、阿里云上的 ECS 等。
 
