@@ -4,12 +4,16 @@ top: false
 cover: false
 toc: true
 date: 2024-07-08 23:26:35
-img:
-coverImg:
-password:
-keywords:
+img: 
+coverImg: 
+password: 
+keywords: 
 tags:
+  - Cloud
+  - Azure
+  - 两日一概念
 categories:
+  - Cloud
 ---
 Availability Zones，是当今云平台提供高可用服务的主要方案之一。  
 ”Availability Zones“ 会被翻译为”可用区“、”可用性区“ 或者 ”可用性区域“。  
@@ -50,7 +54,7 @@ Availability Zones 针对不同的 Azure 产品服务提供了两种使用方案
 
 - **Zone-redundant Service（支持可用区冗余的服务）** —— 冗余资源分布于多个 Zone。  
     Azure 自动处理跨 Zones 的数据复制、请求分发、故障转移等问题。
-    PaaS 通常支持 Zone-redundant。比如，Azure VM Scale Set、Azure Database for MySQL等。  
+    PaaS 通常支持 Zone-redundant。比如，Azure VM Scale Set（VM 不直接支持 Zone-redundant，想要使用 Zone-redundant 就使用 Azure VM Scale Set）、Azure Database for MySQL等。  
 
 具体服务是否支持 Zonal / Zone-redundant 可以查找清单：
 [支持可用性区域的 Azure 服务](https://learn.microsoft.com/zh-cn/azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support)
