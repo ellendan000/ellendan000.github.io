@@ -42,7 +42,7 @@ Availability Zones 具有以下特性：
 - 具体哪个 Region 是否支持 Availability Zones，需要查询官方最新 Availability Zones 支持清单。
 [支持可用性区域的 Azure 服务](https://learn.microsoft.com/zh-cn/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support)
 
-## 二、Zonal / Zone-redundant Service
+### 二、Zonal / Zone-redundant Service
 Availability Zones 针对不同的 Azure 产品服务提供了两种使用方案：
 - **Zonal Service（支持可用区的服务）** —— 资源固定到指定的 Zone。  
     用户可以跨多个 Zones 进行合并部署，需要用户自己设计方案 —— 处理数据复制、请求分发、故障转移等问题。  
