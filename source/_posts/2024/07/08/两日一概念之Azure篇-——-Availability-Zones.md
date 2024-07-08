@@ -28,7 +28,7 @@ Region 使用户能够选择最适合其业务需求的数据中心位置，以�
   ![Regions](两日一概念之Azure篇-——-Availability-Zones/regions.png)
   
 在 Azure 云上，有不少 Regions 支持 **Availability Zones**。  
-在这些支持的 Region 中，同一个 Region 内部的数据中心又根据物理、逻辑隔离进行了分组，每个组即是一个 Availability Zone。    
+在这些支持的 Regions 中，同一个 Region 内部的数据中心又根据物理、逻辑隔离进行了分组，每个组即是一个 Availability Zone。    
 Availability Zones 确保用户的应用程序和数据在面对硬件故障、自然灾害等灾难性事件时，依然能够保持高可用性和可靠性。  
 ![Availability Zones](两日一概念之Azure篇-——-Availability-Zones/regions-availability-zones.png)
 
@@ -43,8 +43,7 @@ Availability Zones 具有以下特性：
 
 - Azure 服务更新，一次只会更新一个 Zone 。一个 Zone 更新完，才会更新下一个。
 
-- 具体哪个 Region 是否支持 Availability Zones，需要查询官方最新 Availability Zones 支持清单。
-[支持可用性区域的 Azure 服务](https://learn.microsoft.com/zh-cn/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support)
+- 具体哪个 Region 是否支持 Availability Zones，需要查询官方最新 Availability Zones 支持清单。[支持可用性区域的 Azure 服务](https://learn.microsoft.com/zh-cn/azure/reliability/availability-zones-service-support#azure-regions-with-availability-zone-support)
 
 ### 二、Zonal / Zone-redundant Service
 Availability Zones 针对不同的 Azure 产品服务提供了两种使用方案：
@@ -56,5 +55,4 @@ Availability Zones 针对不同的 Azure 产品服务提供了两种使用方案
     Azure 自动处理跨 Zones 的数据复制、请求分发、故障转移等问题。
     PaaS 通常支持 Zone-redundant。比如，Azure VM Scale Set（VM 不直接支持 Zone-redundant，想要使用 Zone-redundant 就使用 Azure VM Scale Set）、Azure Database for MySQL等。  
 
-具体服务是否支持 Zonal / Zone-redundant 可以查找清单：
-[支持可用性区域的 Azure 服务](https://learn.microsoft.com/zh-cn/azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support)
+具体服务是否支持 Zonal / Zone-redundant 可以查找清单：[支持可用性区域的 Azure 服务](https://learn.microsoft.com/zh-cn/azure/reliability/availability-zones-service-support#azure-services-with-availability-zone-support)
