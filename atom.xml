@@ -6,7 +6,7 @@
   <link href="https://ellendan.com/atom.xml" rel="self"/>
   
   <link href="https://ellendan.com/"/>
-  <updated>2024-07-12T07:47:40.550Z</updated>
+  <updated>2024-07-16T04:00:07.727Z</updated>
   <id>https://ellendan.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>两日一概念之Azure篇 —— VM Scales Sets</title>
+    <link href="https://ellendan.com/2024/07/15/liang-ri-yi-gai-nian-zhi-azure-pian-vm-scales-sets/"/>
+    <id>https://ellendan.com/2024/07/15/liang-ri-yi-gai-nian-zhi-azure-pian-vm-scales-sets/</id>
+    <published>2024-07-15T01:14:03.000Z</published>
+    <updated>2024-07-16T04:00:07.727Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;管理大规模的虚拟机集十分不易，尤其是在使用模式不相同、或者对应的请求量存在波动时 —— 既要保持吞吐量和响应能力，同时最大程度的降低运行成本。&lt;br&gt;
+Azure VMSS 正是应对这种需求的解决方案。&lt;/p&gt;
+&lt;p&gt;区别于前两篇 &lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>两日一概念之Azure篇 —— Availability Sets</title>
     <link href="https://ellendan.com/2024/07/12/liang-ri-yi-gai-nian-zhi-azure-pian-availability-sets/"/>
     <id>https://ellendan.com/2024/07/12/liang-ri-yi-gai-nian-zhi-azure-pian-availability-sets/</id>
     <published>2024-07-12T07:34:04.000Z</published>
-    <updated>2024-07-12T07:47:40.550Z</updated>
+    <updated>2024-07-16T04:00:07.727Z</updated>
     
     
       
@@ -50,7 +73,7 @@
     <link href="https://ellendan.com/2024/07/08/liang-ri-yi-gai-nian-zhi-azure-pian-availability-zones/"/>
     <id>https://ellendan.com/2024/07/08/liang-ri-yi-gai-nian-zhi-azure-pian-availability-zones/</id>
     <published>2024-07-08T15:26:35.000Z</published>
-    <updated>2024-07-12T07:47:40.550Z</updated>
+    <updated>2024-07-16T04:00:07.727Z</updated>
     
     
       
@@ -81,7 +104,7 @@
     <link href="https://ellendan.com/2024/07/05/liang-ri-yi-gai-nian-zhi-azure-pian-azure-backup/"/>
     <id>https://ellendan.com/2024/07/05/liang-ri-yi-gai-nian-zhi-azure-pian-azure-backup/</id>
     <published>2024-07-05T08:30:13.000Z</published>
-    <updated>2024-07-12T07:47:40.550Z</updated>
+    <updated>2024-07-16T04:00:07.727Z</updated>
     
     
       
@@ -111,7 +134,7 @@
     <link href="https://ellendan.com/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/"/>
     <id>https://ellendan.com/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/</id>
     <published>2024-07-02T07:39:45.000Z</published>
-    <updated>2024-07-12T07:47:40.546Z</updated>
+    <updated>2024-07-16T04:00:07.723Z</updated>
     
     
       
@@ -140,7 +163,7 @@
     <link href="https://ellendan.com/2024/06/18/shi-yong-huggingface-transformers-jin-xing-mo-xing-wei-diao/"/>
     <id>https://ellendan.com/2024/06/18/shi-yong-huggingface-transformers-jin-xing-mo-xing-wei-diao/</id>
     <published>2024-06-18T05:56:28.000Z</published>
-    <updated>2024-07-12T07:47:40.546Z</updated>
+    <updated>2024-07-16T04:00:07.723Z</updated>
     
     
       
@@ -170,7 +193,7 @@
     <link href="https://ellendan.com/2024/03/19/kubernetes-zu-jian-jia-gou-hui-gu/"/>
     <id>https://ellendan.com/2024/03/19/kubernetes-zu-jian-jia-gou-hui-gu/</id>
     <published>2024-03-19T09:09:16.000Z</published>
-    <updated>2024-07-12T07:47:40.546Z</updated>
+    <updated>2024-07-16T04:00:07.723Z</updated>
     
     
       
@@ -199,7 +222,7 @@
     <link href="https://ellendan.com/2024/03/10/kubernetes-luo-ji-mo-xing-he-shi-yong-hui-gu/"/>
     <id>https://ellendan.com/2024/03/10/kubernetes-luo-ji-mo-xing-he-shi-yong-hui-gu/</id>
     <published>2024-03-10T17:35:05.000Z</published>
-    <updated>2024-07-12T07:47:40.546Z</updated>
+    <updated>2024-07-16T04:00:07.723Z</updated>
     
     
       
@@ -228,7 +251,7 @@
     <link href="https://ellendan.com/2024/03/09/spring-cloud-kubernetes-wei-fu-wu-kuang-jia-shi-yong/"/>
     <id>https://ellendan.com/2024/03/09/spring-cloud-kubernetes-wei-fu-wu-kuang-jia-shi-yong/</id>
     <published>2024-03-09T19:17:09.000Z</published>
-    <updated>2024-07-12T07:47:40.538Z</updated>
+    <updated>2024-07-16T04:00:07.715Z</updated>
     
     
       
@@ -256,7 +279,7 @@
     <link href="https://ellendan.com/2023/12/14/macos-an-zhuang-sonarqube/"/>
     <id>https://ellendan.com/2023/12/14/macos-an-zhuang-sonarqube/</id>
     <published>2023-12-14T11:41:42.000Z</published>
-    <updated>2024-07-12T07:47:40.534Z</updated>
+    <updated>2024-07-16T04:00:07.711Z</updated>
     
     
       
@@ -283,7 +306,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/21/yi-lao-yong-yi-nginx-fan-xiang-dai-li-zhuan-fa-pei-zhi/"/>
     <id>https://ellendan.com/2023/11/21/yi-lao-yong-yi-nginx-fan-xiang-dai-li-zhuan-fa-pei-zhi/</id>
     <published>2023-11-21T07:47:46.000Z</published>
-    <updated>2024-07-12T07:47:40.534Z</updated>
+    <updated>2024-07-16T04:00:07.711Z</updated>
     
     
       
@@ -309,7 +332,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/17/ding-shi-zi-dong-shan-chu-acr-images/"/>
     <id>https://ellendan.com/2023/11/17/ding-shi-zi-dong-shan-chu-acr-images/</id>
     <published>2023-11-17T14:46:56.000Z</published>
-    <updated>2024-07-12T07:47:40.534Z</updated>
+    <updated>2024-07-16T04:00:07.711Z</updated>
     
     
       
@@ -337,7 +360,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/12/zai-python-ji-zhu-zhan-xia-zuo-db-migration-alembic-flask-migration/"/>
     <id>https://ellendan.com/2023/11/12/zai-python-ji-zhu-zhan-xia-zuo-db-migration-alembic-flask-migration/</id>
     <published>2023-11-12T09:09:13.000Z</published>
-    <updated>2024-07-12T07:47:40.534Z</updated>
+    <updated>2024-07-16T04:00:07.711Z</updated>
     
     
       
@@ -364,7 +387,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/10/18/sqlalchemy-dui-yu-sequence-de-zhi-chi/"/>
     <id>https://ellendan.com/2023/10/18/sqlalchemy-dui-yu-sequence-de-zhi-chi/</id>
     <published>2023-10-18T07:16:52.000Z</published>
-    <updated>2024-07-12T07:47:40.534Z</updated>
+    <updated>2024-07-16T04:00:07.707Z</updated>
     
     
       
@@ -392,7 +415,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/"/>
     <id>https://ellendan.com/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/</id>
     <published>2023-09-01T12:21:11.000Z</published>
-    <updated>2024-07-12T07:47:40.522Z</updated>
+    <updated>2024-07-16T04:00:07.699Z</updated>
     
     
       
@@ -420,7 +443,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/05/30/azure-administrator-associate-zhi-shi-dian/"/>
     <id>https://ellendan.com/2023/05/30/azure-administrator-associate-zhi-shi-dian/</id>
     <published>2023-05-30T09:44:11.000Z</published>
-    <updated>2024-07-12T07:47:40.514Z</updated>
+    <updated>2024-07-16T04:00:07.691Z</updated>
     
     
       
@@ -448,7 +471,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/05/17/shi-yong-gradio-huggingface-kuai-su-da-jian-yi-ge-chatgpt-app/"/>
     <id>https://ellendan.com/2023/05/17/shi-yong-gradio-huggingface-kuai-su-da-jian-yi-ge-chatgpt-app/</id>
     <published>2023-05-17T16:38:39.000Z</published>
-    <updated>2024-07-12T07:47:40.502Z</updated>
+    <updated>2024-07-16T04:00:07.679Z</updated>
     
     
     <summary type="html">&lt;p&gt;在现在的NLP领域，GPT系列模型已经成为了NLP领域的标配之一，而ChatGPT是基于GPT的一个聊天模型，可以用来生成对话，其效果非常好，可以说是目前最好的开源聊天模型了。&lt;br&gt;
@@ -474,7 +497,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2022/08/22/fan-shou-hui-mo-oracle/"/>
     <id>https://ellendan.com/2022/08/22/fan-shou-hui-mo-oracle/</id>
     <published>2022-08-22T18:31:00.000Z</published>
-    <updated>2024-07-12T07:47:40.502Z</updated>
+    <updated>2024-07-16T04:00:07.679Z</updated>
     
     
     <summary type="html">&lt;p&gt;最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。&lt;br&gt;
@@ -496,7 +519,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2022/07/18/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-xia-pian/"/>
     <id>https://ellendan.com/2022/07/18/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-xia-pian/</id>
     <published>2022-07-18T08:00:00.000Z</published>
-    <updated>2024-07-12T07:47:40.498Z</updated>
+    <updated>2024-07-16T04:00:07.675Z</updated>
     
     
     <summary type="html">&lt;p&gt;已经过了一旬，下篇居然还没开始动笔。&lt;br&gt;
@@ -517,7 +540,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2022/07/02/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-shang-pian/"/>
     <id>https://ellendan.com/2022/07/02/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-shang-pian/</id>
     <published>2022-07-02T12:00:00.000Z</published>
-    <updated>2024-07-12T07:47:40.494Z</updated>
+    <updated>2024-07-16T04:00:07.671Z</updated>
     
     
     <summary type="html">&lt;p&gt;最近几年，国内业界越来越常提及&lt;code&gt;“研发效能”&lt;/code&gt;这个词，追其根源大部分是始于&lt;code&gt;“DevOps”&lt;/code&gt;运动的活跃。&lt;br&gt;
@@ -535,32 +558,6 @@ sonarqube</summary>
     
     
     <category term="精益" scheme="https://ellendan.com/tags/%E7%B2%BE%E7%9B%8A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据库的ACID和分布式事务</title>
-    <link href="https://ellendan.com/2022/05/10/shu-ju-ku-de-acid-he-fen-bu-shi-shi-wu/"/>
-    <id>https://ellendan.com/2022/05/10/shu-ju-ku-de-acid-he-fen-bu-shi-shi-wu/</id>
-    <published>2022-05-10T12:00:00.000Z</published>
-    <updated>2024-07-12T07:47:40.494Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;前面写了一篇关于&lt;code&gt;CAP原理&lt;/code&gt;的博文，说到&lt;code&gt;一致性 Consistency&lt;/code&gt;，有人往往会想到事务&lt;code&gt;ACID&lt;/code&gt;特性中的&lt;code&gt;C: Consistency&lt;/code&gt;，虽然都叫一致性，但完全是两个东西。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;CAP&lt;/code&gt;的一致性指：数据库的同一复制集（replicaSet）之间数据相同。&lt;br&gt;
-&lt;em&gt;这里的“数据库”，可以是主从、主备、集群架构，但没有单机架构。&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ACID&lt;/code&gt;的一致性指：在数据库单一实例中(暂不涉及多个数据源的分布式事务)，成功写入的数据不违反已定义的数据规则，如约束、级联规则等等。&lt;br&gt;
-&lt;em&gt;一般在&lt;code&gt;业务流程&lt;/code&gt;这个上下文下，聊&lt;code&gt;数据的一致性&lt;/code&gt;，通常是在聊广义的数据一致性，即&lt;code&gt;ACID&lt;/code&gt;这四项，并非是&lt;code&gt;C&lt;/code&gt;一项。单机数据库就是通过事务来保障&lt;code&gt;数据的一致性&lt;/code&gt;。&lt;/em&gt;&lt;br&gt;
-接着，来通过本地事务的详细说一下&lt;code&gt;ACID&lt;/code&gt;，以及跨多数据源的分布式事务。&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="数据库" scheme="https://ellendan.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="数据库" scheme="https://ellendan.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
