@@ -4,17 +4,20 @@ top: false
 cover: false
 toc: true
 date: 2024-07-15 09:14:03
-img:
-coverImg:
-password:
-keywords:
+img: 
+coverImg: 
+password: 
+keywords: VMSS
 tags:
+  - 两日一概念
+  - Cloud
+  - Azure
 categories:
+  - Cloud
 ---
 管理大规模的虚拟机集十分不易，尤其是在使用模式不相同、或者对应的请求量存在波动时 —— 既要保持吞吐量和响应能力，同时最大程度的降低运行成本。  
 Azure VMSS 正是应对这种需求的解决方案。  
-
-区别于前两篇 [Availability Sets](https://www.notion.so/Availability-Sets-c9ab9ef64d9d43bcabc1667262a600e9?pvs=21)、[Availability Zones](https://www.notion.so/Availability-Zones-0a7daf9c84c741188a45fad7d9e80e79?pvs=21) 两种高可用性机制，VMSS 除了保障高可用以外，提供了更综合的 VMs 的管理面。  
+区别于前两篇 [Availability Sets](../../12/liang-ri-yi-gai-nian-zhi-azure-pian-availability-sets/)、[Availability Zones](../../08/liang-ri-yi-gai-nian-zhi-azure-pian-availability-zones/) 两种高可用性机制，VMSS 除了保障高可用以外，提供了更综合的 VMs 的管理面。  
 
 _讲一个段子：
 在公司的时候，有时会接到这样的需求：客户要进行下云迁移。理由是：每个计算资源打开一看，工作负载仅占分配量的10%。客户觉得预算撑不住了、太费钱了，想通过下云迁移来实现经费收紧的目标。  
@@ -22,7 +25,6 @@ _讲一个段子：
 一般，出现这样需求的客户，不是本身的云管理方案不太完整，就是对云管理和成本优化不太了解。  
 因此，了解一些云知识，是资深程序员或者架构师不可或缺的能力之一。_
 
-进入正题：  
 ### 一、什么是 VM Scale Sets
 Azure VM Scale Sets(Azure 虚拟机规模集，简称 Azure VMSS)，旨在简化管理和扩展 Azure VMs 的大规模部署。VMSS 能解决的问题：  
 - 自动化管理。通过自动化脚本和统一工具，集中管理大量虚拟机，减少手动对每个虚拟机维护的工作量和复杂性。  
@@ -39,7 +41,7 @@ VMSS 支持计算资源、大数据、容器化等场景的工作负载，以基
 - **Web 应用和 API：** 用于支持高流量网站和 API 服务，自动扩展和缩减以应对流量波动。  
 - **游戏服务器：** 动态管理和扩展游戏服务器，以应对高峰期的玩家数量。  
 - **大数据处理：** 处理大规模数据集，如数据仓库和大数据分析平台。  
-- **容器编排：** 支持 Kubernetes 和其他容器编排工具，提供弹性和高可用的基础设施。  
+- **容器编排：** 支持 Kubernetes 和其他容器编排工具，提供弹性和高可用的基础设施。    
 因此，如果处理需求各异且不可预测的大型工作负载，则 VMSS 是很好的解决方案。  
 
 另外，不推荐使用 VMSS 的场景：  
@@ -59,7 +61,7 @@ VMSS 支持计算资源、大数据、容器化等场景的工作负载，以基
 - 一个虚拟网络 VNET  
 - 一个网络安全组 NSG  
 - 一个 VMSS 的控制面，以及背后的自动层  
-![一个VMSS的基本组成](两日一概念之Azure篇-——-VM-Scales-Sets/VMSS%20Components.png)
+![一个 VMSS 的基本组成](两日一概念之Azure篇-——-VM-Scales-Sets/VMSS%20Components.png)
 VMSS 使用负载均衡器在 VMs 之间分配请求。  
 并且 VMSS 通过配置负载均衡器中的 health probes，来确认整个规模集中每个 VM 实例的可用性。   
 - 探针 ping 通，则认为 VM 实例可用。  
@@ -93,8 +95,8 @@ VMSS 的自动缩放分为两种：
 
 **4、Spot instance VMs**  
 Azure 为 VMSS 提供了使用 Spot instances 的选项。  
-Spot instance VMs 不太好翻译，背后代表的意思是：Azure 平台上的一些闲置的 VMs（暂时还没有租户使用的）。  
-可以允许 VMSS 使用这些 Spot instance VM，优点是比正常的售价便宜（根据不同的地区，节省可以高达80%）；缺点是 Azure 平台随时可能回收 —— 回收时只会给用户发个通知，然后会根据用户设置的逐出策略从 VMSS 中删除这些 VMs，所以 SLA 完全不保证。  
+Spot instance VMs 不太好翻译，背后代表的意思是：Azure 平台上的一些闲置的 VM（暂时还没有租户使用的）。  
+可以允许 VMSS 使用这些虚拟机，优点是比正常的售价便宜（根据不同的地区，节省可以高达80%）；缺点是 Azure 平台随时可能回收 —— 回收时只会给用户发个通知，然后会根据用户设置的逐出策略从 VMSS 中删除这些虚拟机，所以 SLA 完全不保证。  
 
 因此，这个 VMSS with Spot instances，只推荐使用于 —— 处理可以服务中断的工作负荷（例如批处理作业）、开发/测试环境等场景。  
 
