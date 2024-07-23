@@ -6,7 +6,7 @@
   <link href="https://ellendan.com/atom.xml" rel="self"/>
   
   <link href="https://ellendan.com/"/>
-  <updated>2024-07-16T04:13:24.536Z</updated>
+  <updated>2024-07-23T15:13:04.854Z</updated>
   <id>https://ellendan.com/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>两日一概念之Azure篇 —— Azure 网络架构关键组件</title>
+    <link href="https://ellendan.com/2024/07/20/liang-ri-yi-gai-nian-zhi-azure-pian-azure-wang-luo-jia-gou-guan-jian-zu-jian/"/>
+    <id>https://ellendan.com/2024/07/20/liang-ri-yi-gai-nian-zhi-azure-pian-azure-wang-luo-jia-gou-guan-jian-zu-jian/</id>
+    <published>2024-07-20T15:30:23.000Z</published>
+    <updated>2024-07-23T15:13:04.854Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Azure网络架构由多个关键组件组成，这些组件相互配合，提供了高度灵活和安全的网络解决方案。&lt;/p&gt;
+&lt;h4 id=&quot;1-虚拟网络-Virtual-Network-VNet&quot;&gt;1. 虚拟网络 (Virtual Network,</summary>
+        
+      
+    
+    
+    
+    <category term="Cloud" scheme="https://ellendan.com/categories/Cloud/"/>
+    
+    
+    <category term="Azure" scheme="https://ellendan.com/tags/Azure/"/>
+    
+    <category term="两日一概念" scheme="https://ellendan.com/tags/%E4%B8%A4%E6%97%A5%E4%B8%80%E6%A6%82%E5%BF%B5/"/>
+    
+    <category term="Cloud" scheme="https://ellendan.com/tags/Cloud/"/>
+    
+  </entry>
+  
+  <entry>
     <title>两日一概念之Azure篇 —— VM Scales Sets</title>
     <link href="https://ellendan.com/2024/07/15/liang-ri-yi-gai-nian-zhi-azure-pian-vm-scales-sets/"/>
     <id>https://ellendan.com/2024/07/15/liang-ri-yi-gai-nian-zhi-azure-pian-vm-scales-sets/</id>
     <published>2024-07-15T01:14:03.000Z</published>
-    <updated>2024-07-16T04:13:24.536Z</updated>
+    <updated>2024-07-23T15:13:04.854Z</updated>
     
     
       
@@ -52,7 +82,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/12/liang-ri-yi-gai-nian-zhi-azure-pian-availability-sets/"/>
     <id>https://ellendan.com/2024/07/12/liang-ri-yi-gai-nian-zhi-azure-pian-availability-sets/</id>
     <published>2024-07-12T07:34:04.000Z</published>
-    <updated>2024-07-16T04:13:24.532Z</updated>
+    <updated>2024-07-23T15:13:04.854Z</updated>
     
     
       
@@ -81,7 +111,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/08/liang-ri-yi-gai-nian-zhi-azure-pian-availability-zones/"/>
     <id>https://ellendan.com/2024/07/08/liang-ri-yi-gai-nian-zhi-azure-pian-availability-zones/</id>
     <published>2024-07-08T15:26:35.000Z</published>
-    <updated>2024-07-16T04:13:24.532Z</updated>
+    <updated>2024-07-23T15:13:04.854Z</updated>
     
     
       
@@ -112,7 +142,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/05/liang-ri-yi-gai-nian-zhi-azure-pian-azure-backup/"/>
     <id>https://ellendan.com/2024/07/05/liang-ri-yi-gai-nian-zhi-azure-pian-azure-backup/</id>
     <published>2024-07-05T08:30:13.000Z</published>
-    <updated>2024-07-16T04:13:24.532Z</updated>
+    <updated>2024-07-23T15:13:04.854Z</updated>
     
     
       
@@ -142,7 +172,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/"/>
     <id>https://ellendan.com/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/</id>
     <published>2024-07-02T07:39:45.000Z</published>
-    <updated>2024-07-16T04:13:24.532Z</updated>
+    <updated>2024-07-23T15:13:04.850Z</updated>
     
     
       
@@ -171,7 +201,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/06/18/shi-yong-huggingface-transformers-jin-xing-mo-xing-wei-diao/"/>
     <id>https://ellendan.com/2024/06/18/shi-yong-huggingface-transformers-jin-xing-mo-xing-wei-diao/</id>
     <published>2024-06-18T05:56:28.000Z</published>
-    <updated>2024-07-16T04:13:24.532Z</updated>
+    <updated>2024-07-23T15:13:04.850Z</updated>
     
     
       
@@ -201,7 +231,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/03/19/kubernetes-zu-jian-jia-gou-hui-gu/"/>
     <id>https://ellendan.com/2024/03/19/kubernetes-zu-jian-jia-gou-hui-gu/</id>
     <published>2024-03-19T09:09:16.000Z</published>
-    <updated>2024-07-16T04:13:24.532Z</updated>
+    <updated>2024-07-23T15:13:04.850Z</updated>
     
     
       
@@ -230,7 +260,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/03/10/kubernetes-luo-ji-mo-xing-he-shi-yong-hui-gu/"/>
     <id>https://ellendan.com/2024/03/10/kubernetes-luo-ji-mo-xing-he-shi-yong-hui-gu/</id>
     <published>2024-03-10T17:35:05.000Z</published>
-    <updated>2024-07-16T04:13:24.528Z</updated>
+    <updated>2024-07-23T15:13:04.850Z</updated>
     
     
       
@@ -259,7 +289,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/03/09/spring-cloud-kubernetes-wei-fu-wu-kuang-jia-shi-yong/"/>
     <id>https://ellendan.com/2024/03/09/spring-cloud-kubernetes-wei-fu-wu-kuang-jia-shi-yong/</id>
     <published>2024-03-09T19:17:09.000Z</published>
-    <updated>2024-07-16T04:13:24.520Z</updated>
+    <updated>2024-07-23T15:13:04.842Z</updated>
     
     
       
@@ -287,7 +317,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2023/12/14/macos-an-zhuang-sonarqube/"/>
     <id>https://ellendan.com/2023/12/14/macos-an-zhuang-sonarqube/</id>
     <published>2023-12-14T11:41:42.000Z</published>
-    <updated>2024-07-16T04:13:24.516Z</updated>
+    <updated>2024-07-23T15:13:04.838Z</updated>
     
     
       
@@ -314,7 +344,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/21/yi-lao-yong-yi-nginx-fan-xiang-dai-li-zhuan-fa-pei-zhi/"/>
     <id>https://ellendan.com/2023/11/21/yi-lao-yong-yi-nginx-fan-xiang-dai-li-zhuan-fa-pei-zhi/</id>
     <published>2023-11-21T07:47:46.000Z</published>
-    <updated>2024-07-16T04:13:24.516Z</updated>
+    <updated>2024-07-23T15:13:04.838Z</updated>
     
     
       
@@ -340,7 +370,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/17/ding-shi-zi-dong-shan-chu-acr-images/"/>
     <id>https://ellendan.com/2023/11/17/ding-shi-zi-dong-shan-chu-acr-images/</id>
     <published>2023-11-17T14:46:56.000Z</published>
-    <updated>2024-07-16T04:13:24.516Z</updated>
+    <updated>2024-07-23T15:13:04.838Z</updated>
     
     
       
@@ -368,7 +398,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/12/zai-python-ji-zhu-zhan-xia-zuo-db-migration-alembic-flask-migration/"/>
     <id>https://ellendan.com/2023/11/12/zai-python-ji-zhu-zhan-xia-zuo-db-migration-alembic-flask-migration/</id>
     <published>2023-11-12T09:09:13.000Z</published>
-    <updated>2024-07-16T04:13:24.516Z</updated>
+    <updated>2024-07-23T15:13:04.838Z</updated>
     
     
       
@@ -395,7 +425,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/10/18/sqlalchemy-dui-yu-sequence-de-zhi-chi/"/>
     <id>https://ellendan.com/2023/10/18/sqlalchemy-dui-yu-sequence-de-zhi-chi/</id>
     <published>2023-10-18T07:16:52.000Z</published>
-    <updated>2024-07-16T04:13:24.516Z</updated>
+    <updated>2024-07-23T15:13:04.834Z</updated>
     
     
       
@@ -423,7 +453,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/"/>
     <id>https://ellendan.com/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/</id>
     <published>2023-09-01T12:21:11.000Z</published>
-    <updated>2024-07-16T04:13:24.504Z</updated>
+    <updated>2024-07-23T15:13:04.826Z</updated>
     
     
       
@@ -451,7 +481,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/05/30/azure-administrator-associate-zhi-shi-dian/"/>
     <id>https://ellendan.com/2023/05/30/azure-administrator-associate-zhi-shi-dian/</id>
     <published>2023-05-30T09:44:11.000Z</published>
-    <updated>2024-07-16T04:13:24.500Z</updated>
+    <updated>2024-07-23T15:13:04.818Z</updated>
     
     
       
@@ -479,7 +509,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/05/17/shi-yong-gradio-huggingface-kuai-su-da-jian-yi-ge-chatgpt-app/"/>
     <id>https://ellendan.com/2023/05/17/shi-yong-gradio-huggingface-kuai-su-da-jian-yi-ge-chatgpt-app/</id>
     <published>2023-05-17T16:38:39.000Z</published>
-    <updated>2024-07-16T04:13:24.484Z</updated>
+    <updated>2024-07-23T15:13:04.806Z</updated>
     
     
     <summary type="html">&lt;p&gt;在现在的NLP领域，GPT系列模型已经成为了NLP领域的标配之一，而ChatGPT是基于GPT的一个聊天模型，可以用来生成对话，其效果非常好，可以说是目前最好的开源聊天模型了。&lt;br&gt;
@@ -505,7 +535,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2022/08/22/fan-shou-hui-mo-oracle/"/>
     <id>https://ellendan.com/2022/08/22/fan-shou-hui-mo-oracle/</id>
     <published>2022-08-22T18:31:00.000Z</published>
-    <updated>2024-07-16T04:13:24.484Z</updated>
+    <updated>2024-07-23T15:13:04.806Z</updated>
     
     
     <summary type="html">&lt;p&gt;最后一次用 Oracle 应该还是在2012的时候，之后就一路用开源数据库。&lt;br&gt;
@@ -527,38 +557,12 @@ sonarqube</summary>
     <link href="https://ellendan.com/2022/07/18/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-xia-pian/"/>
     <id>https://ellendan.com/2022/07/18/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-xia-pian/</id>
     <published>2022-07-18T08:00:00.000Z</published>
-    <updated>2024-07-16T04:13:24.484Z</updated>
+    <updated>2024-07-23T15:13:04.802Z</updated>
     
     
     <summary type="html">&lt;p&gt;已经过了一旬，下篇居然还没开始动笔。&lt;br&gt;
 反思了一下人生：P&lt;br&gt;
 书接上回。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="敏捷精益软件" scheme="https://ellendan.com/categories/%E6%95%8F%E6%8D%B7%E7%B2%BE%E7%9B%8A%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-    <category term="精益" scheme="https://ellendan.com/tags/%E7%B2%BE%E7%9B%8A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>聊聊研发效能治理方案的理论框架（上篇）</title>
-    <link href="https://ellendan.com/2022/07/02/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-shang-pian/"/>
-    <id>https://ellendan.com/2022/07/02/liao-liao-yan-fa-xiao-neng-zhi-li-fang-an-de-li-lun-kuang-jia-shang-pian/</id>
-    <published>2022-07-02T12:00:00.000Z</published>
-    <updated>2024-07-16T04:13:24.480Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;最近几年，国内业界越来越常提及&lt;code&gt;“研发效能”&lt;/code&gt;这个词，追其根源大部分是始于&lt;code&gt;“DevOps”&lt;/code&gt;运动的活跃。&lt;br&gt;
-知道 DevOps 发展历史的，基本都了解 DevOps 是受敏捷的影响，是敏捷原则在软件研发到运维运营层面的延伸。&lt;br&gt;
-很多云厂商在推广自己 DevOps 平台服务的时候，也会提及对&lt;code&gt;“研发效能”&lt;/code&gt;的大幅度影响，比如 AWS 对 DevOps 的描述：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;DevOps is the combination of cultural philosophies, practices, and tools that increases an organization’s ability to deliver applications and services at high velocity: evolving and improving products at a faster pace than organizations using traditional software development and infrastructure management processes. This speed enables organizations to better serve their customers and compete more effectively in the market.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;那么，研发效能 == DevOps 吗？&lt;br&gt;
-答案自然是否定 。&lt;/p&gt;</summary>
     
     
     
