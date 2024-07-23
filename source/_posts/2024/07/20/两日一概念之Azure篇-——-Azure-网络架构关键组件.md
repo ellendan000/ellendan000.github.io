@@ -58,9 +58,9 @@ Azure网络架构由多个关键组件组成，这些组件相互配合，提供
 #### 3. 虚拟私有网络（Virtual Private Network, VPN）
 VPN 允许通过安全的方式将 Azure 虚拟网络与本地网络、Azure 虚拟网络与其他云环境连接起来。它通常使用 IPsec 协议，确保数据在传输过程中的保密性和完整性。
 **特性：**  
-- **站点到站点VPN**（Site to Site）：用于连接Azure VNet 和本地数据中心。
+- **站点到站点VPN**（Site to Site）：用于连接 Azure VNet 和本地数据中心。
 - **点到站点VPN**（Point to Site）：允许个人设备通过 VPN 连接到 Azure 虚拟网络。
-- **安全传输**：确保数据在公共互联网传输中的安全性。
+- **VPN transit for VNet Peering**：是一种混合的网络连接方法，它结合了 VNet Peering 和VPN Gateway 的优势，实现了跨虚拟网络的安全连接和数据传输。可用于 Hub-and-Spoke 网络模型架构。  
   
 #### 4. 服务终结点（Service Endpoints）
 默认情况下，Azure 服务都是针对直接 Internet 访问而设计的。 所有 Azure 资源都有 Public IP，其中包括 PaaS 服务，例如 Azure SQL 数据库和 Azure 存储。 由于这些服务对 Internet 都是公开的，因此任何人都可能访问你的 Azure 服务。
