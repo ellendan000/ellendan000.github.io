@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>两日一概念之Azure篇 —— 奇奇怪怪的SQL数据库,你看明白了吗</title>
+      <link href="/2024/07/26/liang-ri-yi-gai-nian-zhi-azure-pian-yun-shang-de-sql-shu-ju-ku-ni-kan-ming-bai-liao-ma/"/>
+      <url>/2024/07/26/liang-ri-yi-gai-nian-zhi-azure-pian-yun-shang-de-sql-shu-ju-ku-ni-kan-ming-bai-liao-ma/</url>
+      
+        <content type="html"><![CDATA[<p>与 SQL Server 数据库的传统印象不同，如果想在 Azure 上申请一台 SQL Server 数据库，你可能会被导航到以下三种产品：</p><ul><li>SQL 数据库（SQL databases）</li><li>SQL 托管实例（SQL managed instances）</li><li>虚拟机上的 SQL Server（SQL Server on VM）<br><img src="%E4%B8%A4%E6%97%A5%E4%B8%80%E6%A6%82%E5%BF%B5%E4%B9%8BAzure%E7%AF%87-%E2%80%94%E2%80%94-%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84SQL%E6%95%B0%E6%8D%AE%E5%BA%93-%E4%BD%A0%E7%9C%8B%E6%98%8E%E7%99%BD%E4%BA%86%E5%90%97/SQLs.png" alt=""></li></ul><p>用一幅图简单说明这三个产品的不同：<br><img src="%E4%B8%A4%E6%97%A5%E4%B8%80%E6%A6%82%E5%BF%B5%E4%B9%8BAzure%E7%AF%87-%E2%80%94%E2%80%94-%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84SQL%E6%95%B0%E6%8D%AE%E5%BA%93-%E4%BD%A0%E7%9C%8B%E6%98%8E%E7%99%BD%E4%BA%86%E5%90%97/azure-sql-servers.png" alt=""><br>SQL databases 是 serverless， SQL managed instances 是 PaaS，SQL Server on VM 是在VM 上自维护 SQL Server。<br>对 SQL Server 不怎么熟悉的小伙伴可以将 <strong>Database</strong> 想象成 MySQL 的 <strong>schema</strong>, 而 <strong>instance</strong> 则是 MySQL 的 <strong>Database Server</strong>。<br>因此，图上三种产品按从左往右的顺序，用户接触到的底层的配置和维护工作量就越大，但可以使用的原版 SQL Server 的功能就越多、定制的自由度就越高。</p><h2 id="SQL-databases">SQL databases</h2><p>Azure SQL databases，是一种 serverless 服务 —— 它面向用户时，抽离了操作系统和数据库服务器实例的概念，因此用户：</p><ul><li>无需处理复杂的数据库任务，例如配置和管理高可用性、优化和备份</li><li>不能指定 SQL Server 实例的版本，Azure 会自动升级每个 SQL database 底层的 SQL Server 的版本到最新版</li></ul><h3 id="数据库弹性池（elastic-database-pools）">数据库弹性池（elastic database pools）</h3><p>SQL databases 提供了一种动态的纵向可伸缩方案 —— 弹性池，用于管理和缩放负载不断变化且不可预测的多个数据库。<br>同一弹性池中的所有数据库位于单个服务器上，并以固定价格共享固定数量的资源，每个数据库可设定最小/最大的资源使用量。<br><img src="%E4%B8%A4%E6%97%A5%E4%B8%80%E6%A6%82%E5%BF%B5%E4%B9%8BAzure%E7%AF%87-%E2%80%94%E2%80%94-%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E7%9A%84SQL%E6%95%B0%E6%8D%AE%E5%BA%93-%E4%BD%A0%E7%9C%8B%E6%98%8E%E7%99%BD%E4%BA%86%E5%90%97/elastic-pools.png" alt=""></p><h2 id="SQL-managed-instances">SQL managed instances</h2><p>与 SQL databases 一样，SQL managed instances 也是针对 SQL Server 的 PaaS 服务。<br>不同的是，不像 SQL databases 那样剥离了数据库实例的概念和运维，SQL managed instances 为用户提供了 SQL Server instance，但依然是省去了大量虚拟机管理的开销。</p><p>提供了 SQL Server instance 也就意味着，相比 SQL databases 额外拥有以下关键功能：</p><ul><li>同一个 Instance 上、跨不同 databases 的查询和分布式事务功能</li><li>可以使用SQL Server Agent、CLR(公共语言运行时，<a href="http://xn--jhq.net">与.net</a> framework 语言集成开发相关)、数据库虚拟化（与机器学习服务相关）等<br>更详细 Azure SQL databases 与 Azure SQL managed instances 的对比，见<a href="https://learn.microsoft.com/en-us/azure/azure-sql/database/features-comparison?view=azuresql">官方表格</a></li></ul><h3 id="实例池（Instance-Pool）">实例池（Instance Pool）</h3><p>可能借鉴于Azure SQL databases 的弹性池，SQL managed instances 创建了实例池的纵向伸缩方案，同样将多个 instances 部署在同一个服务器上。此功能目前仅标记为 <strong>preview(预览版)</strong>。</p><h2 id="SQL-Server-on-VM">SQL Server on VM</h2><p>使用 SQL Server on VM 服务，可以访问完整版本的 SQL Server 功能，而无需在本地管理计算机服务器。与 SQL databases 和 SQL managed instances 相比，拥有以下关键特征：</p><ul><li>为 SQL Server 和操作系统版本提供了广泛的支持 —— 可以在不同的操作系统上选择不同版本的 SQL Server 进行安装和使用。SQL databases 和 SQL managed instance 始终只能使用最新的 SQL Server 版本。</li><li>可以使用原版 SQL Server 的所有功能，比如 SSAS（SQL Server Analysis Services， OLAP 工具）、SSRS（SQL Server Reporting Services）等。</li><li>需要用户自己负责 VM 操作系统和 SQL Server 版本的更新操作。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Cloud </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Azure </tag>
+            
+            <tag> 两日一概念 </tag>
+            
+            <tag> Cloud </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>两日一概念之Azure篇 —— Azure 网络架构关键组件</title>
       <link href="/2024/07/20/liang-ri-yi-gai-nian-zhi-azure-pian-azure-wang-luo-jia-gou-guan-jian-zu-jian/"/>
       <url>/2024/07/20/liang-ri-yi-gai-nian-zhi-azure-pian-azure-wang-luo-jia-gou-guan-jian-zu-jian/</url>
