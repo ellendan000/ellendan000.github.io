@@ -71,6 +71,7 @@ SQL databases 提供了一种动态的纵向可伸缩方案 —— 弹性池，�
 ## 自动备份
 SQL databases 和 SQL managed instances 支持自动备份。用户了解备份的频率，可以用来衡量 RPO（Recovery Point Objective）。  
 备份的频率：
-- 每周创建[完整备份](https://learn.microsoft.com/zh-cn/sql/relational-databases/backup-restore/full-database-backups-sql-server)
-- 每隔 12 或 24 小时创建[差异备份](https://learn.microsoft.com/zh-cn/sql/relational-databases/backup-restore/differential-backups-sql-server)。
-- 大约每隔 10 分钟创建[事务日志备份](https://learn.microsoft.com/zh-cn/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)。
+- 每周创建[完整备份](https://learn.microsoft.com/zh-cn/sql/relational-databases/backup-restore/full-database-backups-sql-server)  
+- 每隔 12 或 24 小时创建[差异备份](https://learn.microsoft.com/zh-cn/sql/relational-databases/backup-restore/differential-backups-sql-server)。  
+- 大约每隔 10 分钟创建[事务日志备份](https://learn.microsoft.com/zh-cn/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)。  
+详细说明，见[官方文档](https://learn.microsoft.com/zh-cn/azure/azure-sql/database/automated-backups-overview?view=azuresql-db&preserve-view=true)  
