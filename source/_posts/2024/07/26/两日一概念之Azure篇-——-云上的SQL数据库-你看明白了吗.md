@@ -64,6 +64,13 @@ SQL databases 提供了一种动态的纵向可伸缩方案 —— 弹性池，�
   
 - Read scale-out（读取扩展）  
   相比于分片和传统的读写分离，Azure SQL 在实现读取扩展架构方案上也有支持。SQL databases 和 SQL managed instances 的 **Business Critical** 或 **Premium** 这两个高级 SKU 中提供了 **Always On availability group** 的功能( Basic, Standard, General Purpose 这些低中级 SKU 不提供)。借助此功能，SQL databases 和 SQL managed instances 可以较为轻松的实现读取扩展架构。
-![](两日一概念之Azure篇-——-云上的SQL数据库-你看明白了吗/business-critical-service-tier-read-scale-out.png)  
+    ![](两日一概念之Azure篇-——-云上的SQL数据库-你看明白了吗/business-critical-service-tier-read-scale-out.png)  
 
 注意：相比于纵向的弹性池、实例池，Azure 的横向伸缩方案对客户的透明度和易用性没有那么高，特别是需要注意一些有客户端库的场景（比如弹性数据库客户端库仅支持 .net 和 Java 语言，弹性查询仅支持 .net）。因此，横向伸缩方案，个人觉得可以参考和采用一些更广泛和成熟的开源方案。  
+
+## 自动备份
+SQL databases 和 SQL managed instances 支持自动备份。用户了解备份的频率，可以用来衡量 RPO（Recovery Point Objective）。  
+备份的频率：
+- 每周创建[完整备份](https://learn.microsoft.com/zh-cn/sql/relational-databases/backup-restore/full-database-backups-sql-server)
+- 每隔 12 或 24 小时创建[差异备份](https://learn.microsoft.com/zh-cn/sql/relational-databases/backup-restore/differential-backups-sql-server)。
+- 大约每隔 10 分钟创建[事务日志备份](https://learn.microsoft.com/zh-cn/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)。
