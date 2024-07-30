@@ -68,7 +68,7 @@ SQL databases 提供了一种动态的纵向可伸缩方案 —— 弹性池，�
 
 注意：相比于纵向的弹性池、实例池，Azure 的横向伸缩方案对客户的透明度和易用性没有那么高，特别是需要注意一些有客户端库的场景（比如弹性数据库客户端库仅支持 .net 和 Java 语言，弹性查询仅支持 .net）。因此，横向伸缩方案，如果不考虑 Azure 上 OLAP 产品和机器学习的集成因素影响，个人觉得可以参考和采用一些更广泛和成熟的开源方案。  
 
-## 自动备份
+## 5. 自动备份
 SQL databases 和 SQL managed instances 支持自动备份。用户了解备份的频率，可以用来衡量 RPO（Recovery Point Objective）。  
 备份的频率：
 - 每周创建[完整备份](https://learn.microsoft.com/zh-cn/sql/relational-databases/backup-restore/full-database-backups-sql-server)  
