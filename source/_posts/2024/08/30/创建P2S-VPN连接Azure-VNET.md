@@ -1,5 +1,5 @@
 ---
-title: 创建P2S VPN连接Azure VNET
+title: 创建P2S VPN连接Azure VNet
 top: false
 cover: false
 toc: true
@@ -30,7 +30,7 @@ P2S VPN 是一种安全的隧道连接，允许单个客户端设备通过互联
 
 4. **隧道类型**：用于加密数据传输的协议，确保数据在传输过程中不会被窃取或篡改，比如IPsec 或 OpenVPN。
 
-P2S VPN 的优势在于其灵活性和易用性。无论用户位于何地，只要有互联网连接，就可以通过 P2S VPN 安全访问 Azure VNET。  
+P2S VPN 的优势在于其灵活性和易用性。无论用户位于何地，只要有互联网连接，就可以通过 P2S VPN 安全访问 Azure VNet。  
 
 ## 二、身份验证与通道协议  
 身份验证和通道协议是 P2S VPN 的核心组件，它们共同确保连接的安全性和稳定性。  
@@ -134,7 +134,7 @@ vpnconfig.ovpn 文件需要进行编辑，红框位置替换成之前【准备�
 ![](创建P2S-VPN连接Azure-VNET/openvpn-connet-import.png)
 
 
-### 4. 连接到 Azure VNET
+### 4. 连接到 Azure VNet
 选择刚刚配置好的 P2S VPN Gateway。如果连接成功，你的设备将获得分配的 IP 地址，并能通过 VPN 安全访问 Azure VNet 中的资源。
 点击连接，即可以看到连接上的状态。
 ![](创建P2S-VPN连接Azure-VNET/connected.png)
