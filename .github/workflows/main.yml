@@ -13,15 +13,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Gitbook Action
-        uses: ZanderZhao/gitbook-action@v1.2.4
-        with:
-          token: ${{ secrets.FOR_GITPAGE_TOKEN }}
-          source_repo: ellendan000/book-xp
-          source_branch: main
-          publish_branch: stable-source
-          publish_dir: /books/xp
-
       - name: Setup Node
         uses: actions/setup-node@v3.1.1
         with:
