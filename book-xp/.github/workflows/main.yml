@@ -34,3 +34,7 @@ jobs:
           token: ${{ secrets.FOR_GITPAGE_TOKEN }}
           source_branch: main
           publish_branch: gh-pages
+          source2_branch: main
+          publish2_repo: ellendan000/ellendan000.github.io
+          publish2_branch: stable-source
+          publish2_dir: /books/xp
