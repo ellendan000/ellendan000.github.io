@@ -51,7 +51,7 @@ jobs:
           token: ${{ secrets.FOR_GITPAGE_TOKEN }}
           source_repo: ellendan000/book-xp
           source_branch: main
-          publish_branch: master
+          publish_branch: stable-source
           publish_dir: /public/book-xp
 
       - name: Deploy Azure Static App
