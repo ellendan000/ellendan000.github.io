@@ -40,7 +40,7 @@ jobs:
         run: |
           npm run clean
           npm run build -d
-          cp books/xp public/book-xp
+          cp -r books/xp public/book-xp
           
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.6.0
