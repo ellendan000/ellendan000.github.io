@@ -20,8 +20,8 @@ jobs:
           source_repo: ellendan000/book-xp
           source_branch: main
           publish_branch: stable-source
-          publish_dir: /public/book-xp
-          
+          publish_dir: /books/xp
+
       - name: Setup Node
         uses: actions/setup-node@v3.1.1
         with:
@@ -40,6 +40,7 @@ jobs:
         run: |
           npm run clean
           npm run build -d
+          cp books/xp public/book-xp
           
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.6.0
