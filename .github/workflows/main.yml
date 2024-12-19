@@ -44,6 +44,15 @@ jobs:
           commit_message: "git action deployed."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Gitbook Action
+        uses: ZanderZhao/gitbook-action@v1.2.4
+        with:
+          token: ${{ secrets.FOR_GITPAGE_TOKEN }}
+          source_repo: ellendan000/book-xp
+          source_branch: main
+          publish_branch: master
+          publish_dir: /public/book-xp
 
       - name: Deploy Azure Static App
         uses: Azure/static-web-apps-deploy@v1
