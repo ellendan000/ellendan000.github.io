@@ -7,3 +7,8 @@ public/
 .deploy*/
 httpData/
 .obsidian/
+books/*/.github/
+books/*/.gitignore
+books/*/.tool-versions
+books/*/package-lock.json
+books/*/package.json
