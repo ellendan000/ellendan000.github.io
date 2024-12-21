@@ -1,13 +1,13 @@
 ---
-title: 在hexo博客菜单上挂载gitbook自制的wiki
+title: 在hexo菜单上挂载gitbook自制的wiki
 top: false
 cover: false
 toc: true
 date: 2024-12-21 01:39:36
-img:
-coverImg:
-password:
-keywords:
+img: 
+coverImg: 
+password: 
+keywords: 
 tags:
   - 博客搭建
 categories:
