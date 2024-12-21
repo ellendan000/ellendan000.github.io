@@ -193,11 +193,11 @@ neat_js:
 
 math:
   katex:
-    css: 'https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css'
+    css: 'https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.css'
     options:
       throwOnError: false
   mathjax:
-    css: 'https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css'
+    css: false
     options:
       conversion:
         display: false
