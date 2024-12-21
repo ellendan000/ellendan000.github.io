@@ -24,8 +24,8 @@ categories:
 
     如果考虑了以上三点，仍选择 gitbook-cli 作为方案的话，可以继续往下看。
 {% endnote %}
-## 如何在 hexo 上挂载 gitbook 自制的 wiki 呢？
 
+那么，如何在 hexo 上挂载 gitbook 自制的 wiki 呢？
 ### 1. 安装 gitbook-cli
 
 - 预安装环境
