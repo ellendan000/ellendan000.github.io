@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>在hexo博客菜单上挂载gitbook自制的wiki</title>
+      <title>在hexo菜单上挂载gitbook自制的wiki</title>
       <link href="/2024/12/20/zai-hexo-cai-dan-shang-gua-zai-gitbook-zi-zhi-de-wiki/"/>
       <url>/2024/12/20/zai-hexo-cai-dan-shang-gua-zai-gitbook-zi-zhi-de-wiki/</url>
       
@@ -595,9 +595,9 @@
             
             <tag> Python </tag>
             
-            <tag> ML </tag>
-            
             <tag> ChatGPT </tag>
+            
+            <tag> ML </tag>
             
         </tags>
       
