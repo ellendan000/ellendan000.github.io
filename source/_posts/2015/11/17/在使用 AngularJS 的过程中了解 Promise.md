@@ -20,7 +20,7 @@ Promise来自于Promise/A+，CommonJS指定规范。解决JS中的回调地狱�
 
 抛开AngularJS实现的源码不说的话，使用Promise其实主要分为两部分：deferred和promise 两个对象。
 
-```
+```javascript
 var deferred = $q.defer();
 deferred.promise.then(function(){
   console.log('hello');
@@ -36,7 +36,7 @@ promise是deffered的一个属性，带有最主要的then方法，用于注册�
 
 而一个延迟任务，resolve()/reject()只能二选一进行触发。
 
-```
+```javascript
 var deferred = $q.defer();
 var promise = deferred.promise;
 
@@ -78,7 +78,7 @@ notify(progress) -> function notificationCallBack(progress){}
 
 promise对象是可以使用多个then方法连续调用的，即链式书写调用。
 
-```
+```javascript
 var deferred = $q.defer();
 var promise = deferred.promise;
   
@@ -107,7 +107,7 @@ reject('A-')时，将打印：A-，B-
 
 所以上例中需要reject('A-')时，想要打印出：A-，I only want to see who will execute here。则需要
 
-```
+```javascript
 var deferred = $q.defer();
 var promise = deferred.promise;
   
@@ -139,7 +139,7 @@ this is error
 
 error被打印，但任务未中断。
 
-```
+```javascript
   var defer1 = $q.defer(),
     defer2 = $q.defer(),
     promise1 = defer1.promise,
