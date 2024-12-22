@@ -74,7 +74,7 @@ brew install thonny
 {% endnote %}
 ### 4.3 读取当前 WIFI 状态
 本地编写 demo.py 文件，然后点击运行。
-```MicroPython
+```python
 import network
 sta_if = network.WLAN(network.STA_IF)
 ap_if = network.WLAN(network.AP_IF)
@@ -86,7 +86,7 @@ print(ap_if.active())
 
 ## 5. 测试连接 WIFI
 切换成 STA 模式 —— 连接本地WIFI。
-```MicroPython
+```python
 import network
 sta_if = network.WLAN(network.STA_IF)
 ap_if = network.WLAN(network.AP_IF)
