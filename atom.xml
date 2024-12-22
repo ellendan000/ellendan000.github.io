@@ -6,7 +6,7 @@
   <link href="https://ellendan.com/atom.xml" rel="self"/>
   
   <link href="https://ellendan.com/"/>
-  <updated>2024-12-22T03:49:00.369Z</updated>
+  <updated>2024-12-22T18:49:33.628Z</updated>
   <id>https://ellendan.com/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ESP8266 ESP-01S烧录MicroPython固件</title>
+    <link href="https://ellendan.com/2024/12/22/esp8266-esp-01s-shao-lu-micropython-gu-jian/"/>
+    <id>https://ellendan.com/2024/12/22/esp8266-esp-01s-shao-lu-micropython-gu-jian/</id>
+    <published>2024-12-22T03:55:29.000Z</published>
+    <updated>2024-12-22T18:49:33.628Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;三年前，我在淘宝上购买了一块 Raspberry Pi Pico 板。然而，最初的 Pico 板并不带有 WIFI 模块，因此我额外购置了一个小型 WIFI 模块，即 ESP-01S 开发板。&lt;br&gt;
+ESP-01S 开发板出厂时使用的是 AT 指令集，并附带了适用于</summary>
+        
+      
+    
+    
+    
+    <category term="iOT" scheme="https://ellendan.com/categories/iOT/"/>
+    
+    
+    <category term="iOT" scheme="https://ellendan.com/tags/iOT/"/>
+    
+    <category term="树莓派" scheme="https://ellendan.com/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>在hexo菜单上挂载gitbook自制的wiki</title>
     <link href="https://ellendan.com/2024/12/20/zai-hexo-cai-dan-shang-gua-zai-gitbook-zi-zhi-de-wiki/"/>
     <id>https://ellendan.com/2024/12/20/zai-hexo-cai-dan-shang-gua-zai-gitbook-zi-zhi-de-wiki/</id>
     <published>2024-12-20T17:39:36.000Z</published>
-    <updated>2024-12-22T03:49:00.369Z</updated>
+    <updated>2024-12-22T18:49:33.627Z</updated>
     
     
       
@@ -47,7 +75,7 @@
     <link href="https://ellendan.com/2024/09/05/wei-xin-xiao-cheng-xu-xiao-xi-ding-yue-tang-shui-shi-ji-cheng/"/>
     <id>https://ellendan.com/2024/09/05/wei-xin-xiao-cheng-xu-xiao-xi-ding-yue-tang-shui-shi-ji-cheng/</id>
     <published>2024-09-05T03:31:03.000Z</published>
-    <updated>2024-12-22T03:49:00.364Z</updated>
+    <updated>2024-12-22T18:49:33.622Z</updated>
     
     
       
@@ -75,7 +103,7 @@
     <link href="https://ellendan.com/2024/08/30/chuang-jian-p2s-vpn-lian-jie-azure-vnet/"/>
     <id>https://ellendan.com/2024/08/30/chuang-jian-p2s-vpn-lian-jie-azure-vnet/</id>
     <published>2024-08-30T04:08:54.000Z</published>
-    <updated>2024-12-22T03:49:00.354Z</updated>
+    <updated>2024-12-22T18:49:33.611Z</updated>
     
     
       
@@ -103,7 +131,7 @@
     <link href="https://ellendan.com/2024/07/26/liang-ri-yi-gai-nian-zhi-azure-pian-yun-shang-de-sql-shu-ju-ku-ni-kan-ming-bai-liao-ma/"/>
     <id>https://ellendan.com/2024/07/26/liang-ri-yi-gai-nian-zhi-azure-pian-yun-shang-de-sql-shu-ju-ku-ni-kan-ming-bai-liao-ma/</id>
     <published>2024-07-26T04:47:57.000Z</published>
-    <updated>2024-12-22T03:49:00.352Z</updated>
+    <updated>2024-12-22T18:49:33.610Z</updated>
     
     
       
@@ -135,7 +163,7 @@
     <link href="https://ellendan.com/2024/07/20/liang-ri-yi-gai-nian-zhi-azure-pian-azure-wang-luo-jia-gou-guan-jian-zu-jian/"/>
     <id>https://ellendan.com/2024/07/20/liang-ri-yi-gai-nian-zhi-azure-pian-azure-wang-luo-jia-gou-guan-jian-zu-jian/</id>
     <published>2024-07-20T15:30:23.000Z</published>
-    <updated>2024-12-22T03:49:00.351Z</updated>
+    <updated>2024-12-22T18:49:33.609Z</updated>
     
     
       
@@ -165,7 +193,7 @@
     <link href="https://ellendan.com/2024/07/15/liang-ri-yi-gai-nian-zhi-azure-pian-vm-scales-sets/"/>
     <id>https://ellendan.com/2024/07/15/liang-ri-yi-gai-nian-zhi-azure-pian-vm-scales-sets/</id>
     <published>2024-07-15T01:14:03.000Z</published>
-    <updated>2024-12-22T03:49:00.351Z</updated>
+    <updated>2024-12-22T18:49:33.608Z</updated>
     
     
       
@@ -196,7 +224,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/12/liang-ri-yi-gai-nian-zhi-azure-pian-availability-sets/"/>
     <id>https://ellendan.com/2024/07/12/liang-ri-yi-gai-nian-zhi-azure-pian-availability-sets/</id>
     <published>2024-07-12T07:34:04.000Z</published>
-    <updated>2024-12-22T03:49:00.350Z</updated>
+    <updated>2024-12-22T18:49:33.608Z</updated>
     
     
       
@@ -225,7 +253,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/08/liang-ri-yi-gai-nian-zhi-azure-pian-availability-zones/"/>
     <id>https://ellendan.com/2024/07/08/liang-ri-yi-gai-nian-zhi-azure-pian-availability-zones/</id>
     <published>2024-07-08T15:26:35.000Z</published>
-    <updated>2024-12-22T03:49:00.350Z</updated>
+    <updated>2024-12-22T18:49:33.607Z</updated>
     
     
       
@@ -256,7 +284,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/05/liang-ri-yi-gai-nian-zhi-azure-pian-azure-backup/"/>
     <id>https://ellendan.com/2024/07/05/liang-ri-yi-gai-nian-zhi-azure-pian-azure-backup/</id>
     <published>2024-07-05T08:30:13.000Z</published>
-    <updated>2024-12-22T03:49:00.349Z</updated>
+    <updated>2024-12-22T18:49:33.607Z</updated>
     
     
       
@@ -286,7 +314,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/"/>
     <id>https://ellendan.com/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/</id>
     <published>2024-07-02T07:39:45.000Z</published>
-    <updated>2024-12-22T03:49:00.348Z</updated>
+    <updated>2024-12-22T18:49:33.604Z</updated>
     
     
       
@@ -315,7 +343,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/06/18/shi-yong-huggingface-transformers-jin-xing-mo-xing-wei-diao/"/>
     <id>https://ellendan.com/2024/06/18/shi-yong-huggingface-transformers-jin-xing-mo-xing-wei-diao/</id>
     <published>2024-06-18T05:56:28.000Z</published>
-    <updated>2024-12-22T03:49:00.347Z</updated>
+    <updated>2024-12-22T18:49:33.604Z</updated>
     
     
       
@@ -345,7 +373,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/03/19/kubernetes-zu-jian-jia-gou-hui-gu/"/>
     <id>https://ellendan.com/2024/03/19/kubernetes-zu-jian-jia-gou-hui-gu/</id>
     <published>2024-03-19T09:09:16.000Z</published>
-    <updated>2024-12-22T03:49:00.347Z</updated>
+    <updated>2024-12-22T18:49:33.604Z</updated>
     
     
       
@@ -374,7 +402,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/03/10/kubernetes-luo-ji-mo-xing-he-shi-yong-hui-gu/"/>
     <id>https://ellendan.com/2024/03/10/kubernetes-luo-ji-mo-xing-he-shi-yong-hui-gu/</id>
     <published>2024-03-10T17:35:05.000Z</published>
-    <updated>2024-12-22T03:49:00.344Z</updated>
+    <updated>2024-12-22T18:49:33.601Z</updated>
     
     
       
@@ -403,7 +431,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/03/09/spring-cloud-kubernetes-wei-fu-wu-kuang-jia-shi-yong/"/>
     <id>https://ellendan.com/2024/03/09/spring-cloud-kubernetes-wei-fu-wu-kuang-jia-shi-yong/</id>
     <published>2024-03-09T19:17:09.000Z</published>
-    <updated>2024-12-22T03:49:00.339Z</updated>
+    <updated>2024-12-22T18:49:33.596Z</updated>
     
     
       
@@ -431,7 +459,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2023/12/14/macos-an-zhuang-sonarqube/"/>
     <id>https://ellendan.com/2023/12/14/macos-an-zhuang-sonarqube/</id>
     <published>2023-12-14T11:41:42.000Z</published>
-    <updated>2024-12-22T03:49:00.336Z</updated>
+    <updated>2024-12-22T18:49:33.592Z</updated>
     
     
       
@@ -458,7 +486,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/21/yi-lao-yong-yi-nginx-fan-xiang-dai-li-zhuan-fa-pei-zhi/"/>
     <id>https://ellendan.com/2023/11/21/yi-lao-yong-yi-nginx-fan-xiang-dai-li-zhuan-fa-pei-zhi/</id>
     <published>2023-11-21T07:47:46.000Z</published>
-    <updated>2024-12-22T03:49:00.336Z</updated>
+    <updated>2024-12-22T18:49:33.592Z</updated>
     
     
       
@@ -484,7 +512,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/17/ding-shi-zi-dong-shan-chu-acr-images/"/>
     <id>https://ellendan.com/2023/11/17/ding-shi-zi-dong-shan-chu-acr-images/</id>
     <published>2023-11-17T14:46:56.000Z</published>
-    <updated>2024-12-22T03:49:00.335Z</updated>
+    <updated>2024-12-22T18:49:33.592Z</updated>
     
     
       
@@ -512,7 +540,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/11/12/zai-python-ji-zhu-zhan-xia-zuo-db-migration-alembic-flask-migration/"/>
     <id>https://ellendan.com/2023/11/12/zai-python-ji-zhu-zhan-xia-zuo-db-migration-alembic-flask-migration/</id>
     <published>2023-11-12T09:09:13.000Z</published>
-    <updated>2024-12-22T03:49:00.334Z</updated>
+    <updated>2024-12-22T18:49:33.590Z</updated>
     
     
       
@@ -539,7 +567,7 @@ sonarqube</summary>
     <link href="https://ellendan.com/2023/10/18/sqlalchemy-dui-yu-sequence-de-zhi-chi/"/>
     <id>https://ellendan.com/2023/10/18/sqlalchemy-dui-yu-sequence-de-zhi-chi/</id>
     <published>2023-10-18T07:16:52.000Z</published>
-    <updated>2024-12-22T03:49:00.334Z</updated>
+    <updated>2024-12-22T18:49:33.590Z</updated>
     
     
       
@@ -559,34 +587,6 @@ sonarqube</summary>
     
     
     <category term="Python" scheme="https://ellendan.com/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 GITHUB WORKFLOW 自动发布 Azure CR 和部署 Azure App Service</title>
-    <link href="https://ellendan.com/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/"/>
-    <id>https://ellendan.com/2023/09/01/shi-yong-github-workflow-zi-dong-fa-bu-azure-cr-he-bu-shu-azure-app-service/</id>
-    <published>2023-09-01T12:21:11.000Z</published>
-    <updated>2024-12-22T03:49:00.323Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;Azure-App-Service-概述&quot;&gt;Azure App Service 概述&lt;/h3&gt;
-&lt;p&gt;Azure 计算服务提供了多种类型：&lt;code&gt;VM&lt;/code&gt;、&lt;code&gt;Container apps&lt;/code&gt;、&lt;code&gt;App</summary>
-        
-      
-    
-    
-    
-    <category term="Azure" scheme="https://ellendan.com/categories/Azure/"/>
-    
-    
-    <category term="Azure" scheme="https://ellendan.com/tags/Azure/"/>
-    
-    <category term="云平台" scheme="https://ellendan.com/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/"/>
     
   </entry>
   
