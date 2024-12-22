@@ -7,6 +7,8 @@ public/
 .deploy*/
 httpData/
 .obsidian/
+copilot-custom-prompts/
+copilot-conversations/
 books/*/.github/
 books/*/.gitignore
 books/*/.tool-versions
