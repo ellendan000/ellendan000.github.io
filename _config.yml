@@ -144,8 +144,8 @@ search:
 needmoreshare:
   enable: true
   cdn:
-    js: //cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js
-    css: //cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css
+    js: //gcore.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js
+    css: //gcore.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css
   postbottom:
     enable: true
     options:
@@ -203,3 +203,14 @@ math:
         display: false
       tex:
       svg:
+
+tag_common:
+  cdn: https://gcore.jsdelivr.net/npm/ # enable CDN, default is https://fastly.jsdelivr.net/npm/ 
+  layout:
+    - post
+    - page
+
+markdown:
+  preset: 'default'
+  plugins:
+    - markdown-it-imsize
