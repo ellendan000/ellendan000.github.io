@@ -14,8 +14,15 @@ tags:
 categories:
   - Pandas
 ---
-自2024年9月底A股市场突然上涨以来，我重新开始关注股市。同时，我从网上收集了一些数据，尝试从业务和技术两个角度进行分析，并利用手头掌握的一些工具加以应用。
+自2024年9月底A股市场突然上涨以来，我重新开始关注股市。同时，从网上收集了一些数据，尝试从业务和技术两个角度进行分析，并利用手头掌握的一些工具加以应用。
+或许有人会问，现在市场上有这么多股票理财App，各种指标已经目不暇接，为什么还要花时间自己编写代码呢？对此，我有以下看法：
+1. 股票理财App 就跟 SaaS 平台一样，提供的是符合更多受众的通用功能，以及带来更高销售额和运营周期的付费功能。掌握了 DDD 的应该都知道，企业的竞争力体现于核心域，而核心域的应用化需要靠定制才能落地。投资理财亦是如此，掌握如何定制自己的工具和策略，可以增强自身理财的竞争力，同时做到有依据的理性理财。
+2. 区别于企业应用领域的定制化 —— 唯有大企业才能承担高昂的定制成本，理财类量化分析小散即可做到。
+3. 相比于一有新技术就拿来革自己的命的程序员群体来说，有那种卷研发效能指标的劲儿，不如转换下赛道思路：向前一步 —— 多学习一些非技术领域的业务知识，拿新工具来卷卷自己的理财收益率啊。
+4. 对于想学习 Pandas 的小伙伴来说，股票数据分析也是一个不错的主题背景。
 
+本文旨在通过分析连板数量的分布情况，来观察和理解打板的概率，端正理性追板的心态。
+以下是实现这一目标的步骤。
 ## 1. HuggingFace Hub Datasets
 我从网上抓取了2005年1月1日~2024年12月31日的A股日行情数据（烛线图数据），然后创建了 HuggingFace dataset: [ellendan/a-share-prices](https://huggingface.co/datasets/ellendan/a-share-prices)。
 
@@ -66,7 +73,8 @@ load_dataset方法的参数：
 总数据量约有13M行。
 
 ## 2. 编写 Pandas demo
-本人创建了一个 HuggingFace Space，demo 代码保存在其中[ellendan/a-share-demo](https://huggingface.co/spaces/ellendan/a-share-demo)。
+我创建了一个 HuggingFace Space，demo 代码保存在其中[ellendan/a-share-demo](https://huggingface.co/spaces/ellendan/a-share-demo)。
+如想借鉴复制代码，请以 HuggingFace Space Repo 上为准，本人后续可能会优化和更新代码。
 ![ellendan/a-share-demo](使用Pandas分析A股连板数量的分布/space.png)
 ### 2.1 使用 Pandas 进行连板统计
 关键代码在`a_share/demo.py`文件中，方法`load_stock_data`：
@@ -118,7 +126,7 @@ def serie_high_limit(source_data_frame, last_n_days=400):
     return remove_trade_data_overdate(data_frame, last_n_days)
 ```
 - source_data_frame 数据集中包括“所有的股票”的日行情数据，首先需要对 source_data_frame 按 code 进行分组，这样才能算出每支股票各自历史行情中出现过的连板数据。
-- 计算连板的逻辑在方法 prepare_features 中，思路是这样的：
+- 计算单只股票的连板的逻辑在方法 prepare_features 中，思路是这样的：
     - ① 当收盘价(close) == 涨停限价(high_limit)时，则是当日涨停（值1：涨停，值0：否），添加 `is_high_limit`列给 DataFrame
       ![is_high_limit 的数据示例](使用Pandas分析A股连板数量的分布/1.png =400x400)
     - ② 当每行数据的 `is_high_limit`值与前一天的值不相等时，则认为不连续的段的开始（值1：是，值0：否）。数据添加新列`segment_start`。
@@ -196,9 +204,15 @@ if __name__ == "__main__":
 后续的 demo 大部分将使用 jupyter + matplotlib 的方式。
 {% endnote%}
 
-## 3. HuggingFace Space Web展示
+## 3. 结果展示
+### 运行结果
+![结果图展示](使用Pandas分析A股连板数量的分布/results.png)
+从图上可以看到，近400个交易日内：
+- 图1，2024年10月之后，A 股市场转暖，4连板以上出现的频率增多，提供了更多的打板机会。
+- 图2，历史行情中止步于 2 连板的股票机会有2214次。因此，只要看到2连板、就一头热往里冲，幻想会6连板、10连板的小散们，需要警醒：真正路过2连板、顺利达成6连板的股票机会只有 3.1 %，不要无脑追板。 
+### HuggingFace Space Web 线上 demo
 {% note warning %}
-白嫖的免费CPU，运算速度很慢，每次执行可能要1分钟+。
+白嫖的免费CPU，运算速度很慢，每次执行可能要1分钟+。可以将代码库 clone 到本地运行。
 {% endnote%}
 <script
 	type="module"
