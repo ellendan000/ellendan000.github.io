@@ -125,8 +125,9 @@ def serie_high_limit(source_data_frame, last_n_days=400):
     data_frame = source_data_frame.groupby(level=0).apply(lambda x: prepare_features(x, last_n_days))
     return remove_trade_data_overdate(data_frame, last_n_days)
 ```
-- source_data_frame 数据集中包括“所有的股票”的日行情数据，首先需要对 source_data_frame 按 code 进行分组，这样才能算出每支股票各自历史行情中出现过的连板数据。
-- 计算单只股票的连板的逻辑在方法 prepare_features 中，思路是这样的：
+- source_data_frame 数据集中包括“所有的股票”的日行情数据，首先在`serie_high_limit`方法中对 source_data_frame 按 code 进行分组，这样才能计算每支股票各自历史行情中出现过的连板数据，计算完后又按照 code 进行汇总。
+  ![函数最终输出结果格式](使用Pandas分析A股连板数量的分布/count.png)
+- 单支股票连板的计算逻辑在方法 prepare_features 中，思路是这样的：
     - ① 当收盘价(close) == 涨停限价(high_limit)时，则是当日涨停（值1：涨停，值0：否），添加 `is_high_limit`列给 DataFrame
       ![is_high_limit 的数据示例](使用Pandas分析A股连板数量的分布/1.png =400x400)
     - ② 当每行数据的 `is_high_limit`值与前一天的值不相等时，则认为不连续的段的开始（值1：是，值0：否）。数据添加新列`segment_start`。
