@@ -23,6 +23,14 @@ flowchart LR;
     B -.->|可能| C[地天板];
     B -.->|可能| D[躺地板];
     B -.->|可能| E[翘板成功];
+
+    subgraph 继续连板;
+        C;
+    end;
+    subgraph 破连板;
+        D;
+        E;
+    end;
 {% endmermaid %}
 
 在上篇博客中（[使用Pandas分析A股连板数量的分布](https://ellendan.com/2025/01/07/shi-yong-pandas-fen-xi-a-gu-lian-ban-shu-liang-de-fen-bu/)），我使用 Pandas 统计了近期的涨停连板的数量分布，这次我们用另一种思路来统计一下地天板的数量分布，同时回答一下以下问题：
