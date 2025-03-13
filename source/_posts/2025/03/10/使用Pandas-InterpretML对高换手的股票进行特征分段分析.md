@@ -1,5 +1,5 @@
 ---
-title: 使用Pandas+interpretML对高换手的股票进行特征分段分析
+title: 使用Pandas+InterpretML对高换手的股票进行特征分段分析
 top: false
 cover: false
 toc: true
