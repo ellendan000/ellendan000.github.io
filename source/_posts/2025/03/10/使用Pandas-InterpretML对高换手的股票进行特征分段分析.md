@@ -1,5 +1,5 @@
 ---
-title: 使用Pandas+InterpretML分析高换手票的上涨趋势延续成功率
+title: 使用Pandas+InterpretML分析高换手后的上涨趋势延续成功率
 top: false
 cover: false
 toc: true
