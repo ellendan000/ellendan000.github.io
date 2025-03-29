@@ -134,6 +134,7 @@ class Backtest {
 ```mermaid
 --- 
 title: Backtesting 执行时序
+config:
 ---
 sequenceDiagram
     actor User
