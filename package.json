@@ -12,6 +12,7 @@
     "version": "6.3.0"
   },
   "dependencies": {
+    "@renbaoshuo/markdown-it-katex": "^2.0.2",
     "base64url": "^3.0.1",
     "bl": "^6.0.16",
     "hexo": "^6.3.0",
@@ -40,6 +41,7 @@
     "hexo-wordcount": "^6.0.1",
     "jwa": "^2.0.0",
     "jws": "^4.0.0",
+    "katex": "^0.16.21",
     "lodash": "^4.17.21",
     "markdown-it-imsize": "^2.0.1",
     "qs": "^6.13.1",

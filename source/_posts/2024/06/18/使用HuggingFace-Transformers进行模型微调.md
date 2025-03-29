@@ -202,12 +202,12 @@ def eval_metric(eval_predict):
 - FP （False Positive）：假*正例，即实际为负类，”错误“预测为正类的样本数。
 - FN （False Negative）：假*负例，即实际为正类，”错误“预测为负类的样本数。
   
-`acc` = {% katex %} \frac{TP+TN}{TP+TN+FP+FN} {% endkatex %},被称为准确率。  
+`acc` = $\frac{TP+TN}{TP+TN+FP+FN}$,被称为准确率。  
 
 了解`F1分值`前需要了解 `精确率 Precision`（也叫查准率） 和 `召回率 Recall`（也叫查全率）。  
-- `Precison` = {% katex%} \frac{TP}{TP+FP} {% endkatex %}，在所有被预测为正类的样本中，实际的确是正类的比例。  
-- `Recall` = {% katex%} \frac{TP}{TP+FN} {% endkatex %}， 在所有正类的数据集范围内被成功预测对的比例。
-- `F1` = {% katex%} 2 \times \frac{Precision \times Recall}{Precision + Recall} {% endkatex %}，是 Presion 和 Recall 的调和平均值，旨在提供一个综合评价指标，特别是针对类别不平衡的数据集。
+- `Precison` = $\frac{TP}{TP+FP}$，在所有被预测为正类的样本中，实际的确是正类的比例。  
+- `Recall` = $\frac{TP}{TP+FN}$， 在所有正类的数据集范围内被成功预测对的比例。
+- `F1` = $2 \times \frac{Precision \times Recall}{Precision + Recall}$，是 Presion 和 Recall 的调和平均值，旨在提供一个综合评价指标，特别是针对类别不平衡的数据集。
   F1分值在0到1之间，值越接近1表示模型的性能越好，既考虑了模型预测的准确性（Precision），也考虑了模型识别出所有正例的能力（Recall）。 
 
 ##### 定义训练参数

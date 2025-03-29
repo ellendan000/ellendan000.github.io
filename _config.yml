@@ -196,13 +196,6 @@ math:
     css: 'https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.css'
     options:
       throwOnError: false
-  mathjax:
-    css: false
-    options:
-      conversion:
-        display: false
-      tex:
-      svg:
 
 tag_common:
   cdn: https://gcore.jsdelivr.net/npm/ # enable CDN, default is https://fastly.jsdelivr.net/npm/ 
@@ -213,4 +206,5 @@ tag_common:
 markdown:
   preset: 'default'
   plugins:
-    - markdown-it-imsize
+    - name: markdown-it-imsize
+    - name: '@renbaoshuo/markdown-it-katex'
