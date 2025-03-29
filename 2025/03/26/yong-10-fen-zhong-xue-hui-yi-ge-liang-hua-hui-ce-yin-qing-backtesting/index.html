@@ -69,6 +69,7 @@ class Backtest {
     Position "1" *--&gt; "*" Trade
     Order "*" .. "*" Trade : open or close</pre><div class="note info"><p>上图是简略的画法，Backtesting 源代码中实际上用了一些中间类，但为了更好理解概念，我将其在图上省略。</p></div><ul><li><strong>Backtest</strong> 类是核心容器，也是 Portal，负责组装各组件和参数。它有三大函数：<ul><li><code>run()</code> 运行回测。</li><li><code>plot()</code> 将回测结果可视化。</li><li><code>optimize()</code> 自动优化 Strategy 参数。</li></ul></li><li><strong>Strategy</strong> 类是用户需要定制的主要类，用户可以在其中定制自己的仓位管理、入场时机、止损机制、退出策略以及操作战术。它有两大函数：<ul><li><code>init()</code> 初始化函数。获取用户注入的股票时序数据，计算出参与策略量价相关的指标。</li><li><code>next()</code> 为时间驱动函数。如果用户注入的是日线数据，在时间重放时，每一日执行一次；如果注入的是分时数据，则每一条分时记录执行一次。<br>next() 是定制用户策略的集中位置。</li></ul></li><li><strong>Position</strong> 类是仓位，主要对交易总量和盈亏进行监控，以及执行平仓操作。</li><li><strong>Order</strong> 类，用户在 Strategy 类中进行的每一次买卖、止盈止损等操作，都会生成对应的订单。当订单被判定有效、并被成交时，会将结果映射成 Trade 对象。函数：<ul><li><code>cancel()</code> 当订单没有被成交时，可以执行取消操作。主要用于限价订单。</li></ul></li><li><strong>Trade</strong> 类，只有被成交的订单，才被映射成交易。 一条交易，管理着从买入到平仓退出整个周期段的记录。<ul><li><code>close()</code> 平仓操作。Trade 提供平仓函数，当 Position 对象进行平仓时，实际上也是调用的所有活跃状态的 Trade 对象的 close() 函数。<br>除了平仓这个动作之外，所有的交易操作，都需要通过 Order 对象来传达执行。</li></ul></li></ul><p>通过上面可以看到，使用 Backtesting 回测引擎，用户的主要代码工作就是定制<strong>Strategy</strong>类。<br><strong>注意：</strong> 介绍 Strategy 类时，我没有提到投资标的的选择策略。是的，Backtesting 目前不支持策略动态选股。</p><pre class="mermaid">--- 
 title: Backtesting 执行时序
+config:
 ---
 sequenceDiagram
     actor User
