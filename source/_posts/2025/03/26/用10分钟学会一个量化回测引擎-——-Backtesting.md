@@ -162,8 +162,6 @@ sequenceDiagram
 ```
 
 ## 三、代码操作
-Demo 的代码库依然是在之前的 HuggingFace Demo Space 中，[脚本地址](https://huggingface.co/spaces/ellendan/a-share-demo/tree/main/a_share/ipynb/backtesting_py)。
-
 ### 1. 依赖库
 - Pandas （用来加载数据源）
 - TA-Lib（用来计算指标）
@@ -177,6 +175,15 @@ pip install ta-lib
 ```
 Linux / Windows 则见[官方readme](https://github.com/ta-lib/ta-lib-python?tab=readme-ov-file#dependencies)。
 
+Demo 的代码库依然是在之前的 HuggingFace Demo Space 中，[脚本地址](https://huggingface.co/spaces/ellendan/a-share-demo/tree/main/a_share/ipynb/backtesting_py)。
+{% note warning %}
+注意： 
+Demo 库中的 `requirements.txt` 会在 HuggingFace自动部署，但笔者的 HuggingFace账号是 Free level，不能 SSH 到 Space Environment 去安装 TA-Lib C/C++库，因此 requirements.txt 之后不会再更新。  
+
+下载了 Demo 库的小伙伴，如果需要使用 requirements.txt 安装依赖，请使用`local-requirements.txt`。  
+另外，比较习惯 NPM 使用姿势的小伙伴，笔者还是更推荐使用 pipenv。只需要使用命令`pip install pipenv`即可安装 pipenv，然后就可以使用 pipenv 来代替 pip 工作了。  
+[Pipenv 官方文档戳这里👈](https://github.com/pypa/pipenv)
+{% endnote %}
 ### 2. 加载股票数据
 数据集在线上老位置：[HuggingFace dataset ellendan/a-share-21](https://huggingface.co/datasets/ellendan/a-share-21/blob/main/all-prices-with-values-250303.csv)。
 ```python
@@ -199,7 +206,7 @@ data.rename(columns={'open': 'Open', 'high': 'High', 'low': 'Low', 'close': 'Clo
 - 使用 KD 金叉进行择时买入，KD 死叉卖出
 - 使用 ATR 进行仓位管理和止损指导
 
-因此，在需要在 init() 函数中对涉及到的指标进行批量计算，以提供给 next()函数使用。
+因此，需要在 init() 函数中对涉及到的指标进行批量计算，以提供给 next()函数使用。
 ```Python
 import talib as ta
 from backtesting import Strategy
