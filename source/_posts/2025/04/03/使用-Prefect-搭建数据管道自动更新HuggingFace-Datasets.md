@@ -480,5 +480,5 @@ deployments:
 ## 四、效果
 1. [ellendan/a-share-prices](https://huggingface.co/datasets/ellendan/a-share-prices)数据集支持数据工作流自动更新，当前已经更新到了2025年4月3日。
 2. 数据集的数据来源切换到了支持 API 方式的新数据源 Tushare，尽量还原原数据集的字段，但有三个字段取消提供：`is_st`、`avg_price`和`is_paused`。详情见数据集的 README，README已经更新。
-3. 数据集的最近一次更新时间会写入文件`.last_updated_date`，可自主查看。
+3. 数据集的最近一次更新时间会写入数据集的`.last_updated_date`文件，可自主查看。
 4. **全量更新**后叠加**增量更新**，会让数据集不能再按照 `date` 字段顺序排列，因此加载数据集之后，必须手动排下序，才能保持原有脚本的效果。（[ellendan/a-share-demo 首页的连板数据分布](https://huggingface.co/spaces/ellendan/a-share-demo/blob/main/a_share/demo.py) 代码已修改。）
