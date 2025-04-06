@@ -16,13 +16,13 @@ categories:
 ## 一、前言
 近期在量化分析 Demo 中，一直使用 `ellendan/a-share-21` 这一短期前复权价格数据集，而旧数据集 `ellendan/a-share-prices` 则长期未更新。  
 `ellendan/a-share-prices` 数据集的时间跨度较大（自 2005 年至今），原本为机器学习模型提供，但近期数据更新几乎停滞。
-这两天做 AI workflow 的时候，突然想看看有没有白嫖地资源 —— 给这个数据集挂一条数据流水线，让它自己定期更新。最后选择了 Prefect。  
+这两天做 AI workflow 的时候，突然想看看有没有白嫖地资源 —— 给这个数据集挂一条数据流水线，让它自己定期更新。最后选择了 [Prefect](https://www.prefect.io/)。  
 
 选中 Prefect 考虑这几点：
 - 对 Python 支持度高，相比一些数据平台的 DSL 或者 UI 拖拉拽的开发方式，自由度更高。
 - 有白嫖的 Cloud 资源可用。
 - 可集成大量通用研发平台（我这里主要使用了Github Action、HuggingFace Datasets）。
-- 学习曲线低，工具轻量级。
+- 学习曲线低，工具轻量级。  
 
 ## 二、数据流水线的架构设计
 ```mermaid
