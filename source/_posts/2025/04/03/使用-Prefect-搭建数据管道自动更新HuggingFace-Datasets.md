@@ -386,7 +386,7 @@ Prefect Cloud 本身就是控制面板层，我们只需要创建自己的 Worke
 使用上面章节 2.2 和 2.3 相同的方式在 Prefect Cloud 进行配置。  
 
 #### 3.4 给 Github Repo 新建 Actions 
-在 git 文件夹下，新建Github action flow：
+在 .github 文件夹下，新建Github action flow：
 ```yaml a-share-data-pipeline/.github/workflows/deploy-prefect-flow.yaml
 name: Deploy Prefect flow
 
