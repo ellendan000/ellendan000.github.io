@@ -45,6 +45,7 @@
     "lodash": "^4.17.21",
     "markdown-it-imsize": "^2.0.1",
     "qs": "^6.13.1",
+    "tar-fs": "^1.16.4",
     "tough-cookie": "^5.0.0",
     "tunnel-agent": "^0.6.0",
     "yargs-parser": "^21.1.1"
