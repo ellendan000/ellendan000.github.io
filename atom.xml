@@ -6,7 +6,7 @@
   <link href="https://ellendan.com/atom.xml" rel="self"/>
   
   <link href="https://ellendan.com/"/>
-  <updated>2025-06-02T15:34:54.203Z</updated>
+  <updated>2025-07-01T06:48:36.167Z</updated>
   <id>https://ellendan.com/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>快速复习Azure Storage</title>
+    <link href="https://ellendan.com/2025/06/30/kuai-su-fu-xi-azure-storage/"/>
+    <id>https://ellendan.com/2025/06/30/kuai-su-fu-xi-azure-storage/</id>
+    <published>2025-06-30T09:53:43.000Z</published>
+    <updated>2025-07-01T06:48:36.167Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Azure Storage 是微软提供的云原生托管存储解决方案，专为满足现代数据存储的高可用性、可扩展性及安全性需求而设计。&lt;br&gt;
+作为 Azure 云服务的核心组件，它为企业提供了多样化的存储服务，无需管理底层硬件即可实现全球级数据管理。&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Cloud" scheme="https://ellendan.com/categories/Cloud/"/>
+    
+    
+    <category term="Azure" scheme="https://ellendan.com/tags/Azure/"/>
+    
+    <category term="云平台" scheme="https://ellendan.com/tags/%E4%BA%91%E5%B9%B3%E5%8F%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>使用 Coze 搭建工作流实时解读财经快讯</title>
     <link href="https://ellendan.com/2025/04/15/shi-yong-coze-da-jian-gong-zuo-liu-shi-shi-jie-du-cai-jing-kuai-xun/"/>
     <id>https://ellendan.com/2025/04/15/shi-yong-coze-da-jian-gong-zuo-liu-shi-shi-jie-du-cai-jing-kuai-xun/</id>
     <published>2025-04-15T03:09:51.000Z</published>
-    <updated>2025-06-02T15:34:54.203Z</updated>
+    <updated>2025-07-01T06:48:36.161Z</updated>
     
     
       
@@ -46,7 +75,7 @@
     <link href="https://ellendan.com/2025/04/03/shi-yong-prefect-da-jian-shu-ju-guan-dao-zi-dong-geng-xin-huggingface-datasets/"/>
     <id>https://ellendan.com/2025/04/03/shi-yong-prefect-da-jian-shu-ju-guan-dao-zi-dong-geng-xin-huggingface-datasets/</id>
     <published>2025-04-03T05:59:14.000Z</published>
-    <updated>2025-06-02T15:34:54.174Z</updated>
+    <updated>2025-07-01T06:48:36.133Z</updated>
     
     
       
@@ -72,7 +101,7 @@
     <link href="https://ellendan.com/2025/03/26/yong-10-fen-zhong-xue-hui-yi-ge-liang-hua-hui-ce-yin-qing-backtesting/"/>
     <id>https://ellendan.com/2025/03/26/yong-10-fen-zhong-xue-hui-yi-ge-liang-hua-hui-ce-yin-qing-backtesting/</id>
     <published>2025-03-26T08:02:29.000Z</published>
-    <updated>2025-06-02T15:34:54.173Z</updated>
+    <updated>2025-07-01T06:48:36.131Z</updated>
     
     
       
@@ -99,7 +128,7 @@
     <link href="https://ellendan.com/2025/03/10/shi-yong-pandas-interpretml-dui-gao-huan-shou-de-gu-piao-jin-xing-te-zheng-fen-duan-fen-xi/"/>
     <id>https://ellendan.com/2025/03/10/shi-yong-pandas-interpretml-dui-gao-huan-shou-de-gu-piao-jin-xing-te-zheng-fen-duan-fen-xi/</id>
     <published>2025-03-10T04:58:30.000Z</published>
-    <updated>2025-06-02T15:34:54.160Z</updated>
+    <updated>2025-07-01T06:48:36.119Z</updated>
     
     
       
@@ -126,7 +155,7 @@
     <link href="https://ellendan.com/2025/02/11/shi-yong-python-stock-pandas-ku-jin-xing-macd-kdj-shuang-yin-zi-de-ce-suan/"/>
     <id>https://ellendan.com/2025/02/11/shi-yong-python-stock-pandas-ku-jin-xing-macd-kdj-shuang-yin-zi-de-ce-suan/</id>
     <published>2025-02-11T12:20:20.000Z</published>
-    <updated>2025-06-02T15:34:54.158Z</updated>
+    <updated>2025-07-01T06:48:36.117Z</updated>
     
     
       
@@ -153,7 +182,7 @@
     <link href="https://ellendan.com/2025/02/06/shi-yong-pandas-fen-xi-a-gu-di-tian-ban-shu-liang-de-fen-bu/"/>
     <id>https://ellendan.com/2025/02/06/shi-yong-pandas-fen-xi-a-gu-di-tian-ban-shu-liang-de-fen-bu/</id>
     <published>2025-02-06T13:28:14.000Z</published>
-    <updated>2025-06-02T15:34:54.146Z</updated>
+    <updated>2025-07-01T06:48:36.104Z</updated>
     
     
       
@@ -182,7 +211,7 @@
     <link href="https://ellendan.com/2025/01/07/shi-yong-pandas-fen-xi-a-gu-lian-ban-shu-liang-de-fen-bu/"/>
     <id>https://ellendan.com/2025/01/07/shi-yong-pandas-fen-xi-a-gu-lian-ban-shu-liang-de-fen-bu/</id>
     <published>2025-01-07T14:49:47.000Z</published>
-    <updated>2025-06-02T15:34:54.140Z</updated>
+    <updated>2025-07-01T06:48:36.098Z</updated>
     
     
       
@@ -210,7 +239,7 @@
     <link href="https://ellendan.com/2024/12/22/esp8266-esp-01s-shao-lu-micropython-gu-jian/"/>
     <id>https://ellendan.com/2024/12/22/esp8266-esp-01s-shao-lu-micropython-gu-jian/</id>
     <published>2024-12-22T03:55:29.000Z</published>
-    <updated>2025-06-02T15:34:54.105Z</updated>
+    <updated>2025-07-01T06:48:36.063Z</updated>
     
     
       
@@ -238,7 +267,7 @@ ESP-01S 开发板出厂时使用的是 AT 指令集，并附带了适用于</sum
     <link href="https://ellendan.com/2024/12/20/zai-hexo-cai-dan-shang-gua-zai-gitbook-zi-zhi-de-wiki/"/>
     <id>https://ellendan.com/2024/12/20/zai-hexo-cai-dan-shang-gua-zai-gitbook-zi-zhi-de-wiki/</id>
     <published>2024-12-20T17:39:36.000Z</published>
-    <updated>2025-06-02T15:34:54.104Z</updated>
+    <updated>2025-07-01T06:48:36.062Z</updated>
     
     
       
@@ -264,7 +293,7 @@ ESP-01S 开发板出厂时使用的是 AT 指令集，并附带了适用于</sum
     <link href="https://ellendan.com/2024/09/05/wei-xin-xiao-cheng-xu-xiao-xi-ding-yue-tang-shui-shi-ji-cheng/"/>
     <id>https://ellendan.com/2024/09/05/wei-xin-xiao-cheng-xu-xiao-xi-ding-yue-tang-shui-shi-ji-cheng/</id>
     <published>2024-09-05T03:31:03.000Z</published>
-    <updated>2025-06-02T15:34:54.099Z</updated>
+    <updated>2025-07-01T06:48:36.057Z</updated>
     
     
       
@@ -292,7 +321,7 @@ ESP-01S 开发板出厂时使用的是 AT 指令集，并附带了适用于</sum
     <link href="https://ellendan.com/2024/08/30/chuang-jian-p2s-vpn-lian-jie-azure-vnet/"/>
     <id>https://ellendan.com/2024/08/30/chuang-jian-p2s-vpn-lian-jie-azure-vnet/</id>
     <published>2024-08-30T04:08:54.000Z</published>
-    <updated>2025-06-02T15:34:54.089Z</updated>
+    <updated>2025-07-01T06:48:36.047Z</updated>
     
     
       
@@ -320,7 +349,7 @@ ESP-01S 开发板出厂时使用的是 AT 指令集，并附带了适用于</sum
     <link href="https://ellendan.com/2024/07/26/liang-ri-yi-gai-nian-zhi-azure-pian-yun-shang-de-sql-shu-ju-ku-ni-kan-ming-bai-liao-ma/"/>
     <id>https://ellendan.com/2024/07/26/liang-ri-yi-gai-nian-zhi-azure-pian-yun-shang-de-sql-shu-ju-ku-ni-kan-ming-bai-liao-ma/</id>
     <published>2024-07-26T04:47:57.000Z</published>
-    <updated>2025-06-02T15:34:54.087Z</updated>
+    <updated>2025-07-01T06:48:36.045Z</updated>
     
     
       
@@ -352,7 +381,7 @@ ESP-01S 开发板出厂时使用的是 AT 指令集，并附带了适用于</sum
     <link href="https://ellendan.com/2024/07/20/liang-ri-yi-gai-nian-zhi-azure-pian-azure-wang-luo-jia-gou-guan-jian-zu-jian/"/>
     <id>https://ellendan.com/2024/07/20/liang-ri-yi-gai-nian-zhi-azure-pian-azure-wang-luo-jia-gou-guan-jian-zu-jian/</id>
     <published>2024-07-20T15:30:23.000Z</published>
-    <updated>2025-06-02T15:34:54.086Z</updated>
+    <updated>2025-07-01T06:48:36.044Z</updated>
     
     
       
@@ -382,7 +411,7 @@ ESP-01S 开发板出厂时使用的是 AT 指令集，并附带了适用于</sum
     <link href="https://ellendan.com/2024/07/15/liang-ri-yi-gai-nian-zhi-azure-pian-vm-scales-sets/"/>
     <id>https://ellendan.com/2024/07/15/liang-ri-yi-gai-nian-zhi-azure-pian-vm-scales-sets/</id>
     <published>2024-07-15T01:14:03.000Z</published>
-    <updated>2025-06-02T15:34:54.085Z</updated>
+    <updated>2025-07-01T06:48:36.044Z</updated>
     
     
       
@@ -413,7 +442,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/12/liang-ri-yi-gai-nian-zhi-azure-pian-availability-sets/"/>
     <id>https://ellendan.com/2024/07/12/liang-ri-yi-gai-nian-zhi-azure-pian-availability-sets/</id>
     <published>2024-07-12T07:34:04.000Z</published>
-    <updated>2025-06-02T15:34:54.085Z</updated>
+    <updated>2025-07-01T06:48:36.043Z</updated>
     
     
       
@@ -442,7 +471,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/08/liang-ri-yi-gai-nian-zhi-azure-pian-availability-zones/"/>
     <id>https://ellendan.com/2024/07/08/liang-ri-yi-gai-nian-zhi-azure-pian-availability-zones/</id>
     <published>2024-07-08T15:26:35.000Z</published>
-    <updated>2025-06-02T15:34:54.084Z</updated>
+    <updated>2025-07-01T06:48:36.043Z</updated>
     
     
       
@@ -473,7 +502,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/05/liang-ri-yi-gai-nian-zhi-azure-pian-azure-backup/"/>
     <id>https://ellendan.com/2024/07/05/liang-ri-yi-gai-nian-zhi-azure-pian-azure-backup/</id>
     <published>2024-07-05T08:30:13.000Z</published>
-    <updated>2025-06-02T15:34:54.084Z</updated>
+    <updated>2025-07-01T06:48:36.042Z</updated>
     
     
       
@@ -503,7 +532,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/"/>
     <id>https://ellendan.com/2024/07/02/liang-ri-yi-gai-nian-zhi-azure-pian-virtual-machine/</id>
     <published>2024-07-02T07:39:45.000Z</published>
-    <updated>2025-06-02T15:34:54.082Z</updated>
+    <updated>2025-07-01T06:48:36.040Z</updated>
     
     
       
@@ -532,7 +561,7 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <link href="https://ellendan.com/2024/06/18/shi-yong-huggingface-transformers-jin-xing-mo-xing-wei-diao/"/>
     <id>https://ellendan.com/2024/06/18/shi-yong-huggingface-transformers-jin-xing-mo-xing-wei-diao/</id>
     <published>2024-06-18T05:56:28.000Z</published>
-    <updated>2025-06-02T15:34:54.082Z</updated>
+    <updated>2025-07-01T06:48:36.040Z</updated>
     
     
       
@@ -554,35 +583,6 @@ Azure VMSS 正是应对这种需求的解决方案。&lt;br&gt;
     <category term="AI" scheme="https://ellendan.com/tags/AI/"/>
     
     <category term="HuggingFace" scheme="https://ellendan.com/tags/HuggingFace/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes 组件架构回顾</title>
-    <link href="https://ellendan.com/2024/03/19/kubernetes-zu-jian-jia-gou-hui-gu/"/>
-    <id>https://ellendan.com/2024/03/19/kubernetes-zu-jian-jia-gou-hui-gu/</id>
-    <published>2024-03-19T09:09:16.000Z</published>
-    <updated>2025-06-02T15:34:54.082Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;前面回顾了 Kubernetes 的逻辑概念模型和使用，这篇主要回顾一下 Kubernetes 的组件架构。&lt;br&gt;
-之前提到 Kubernetes 将集群中的机器划分为至少一个 Master 节点和一群 Node 节点。&lt;/p&gt;
-&lt;p&gt;Master</summary>
-        
-      
-    
-    
-    
-    <category term="Kubernetes" scheme="https://ellendan.com/categories/Kubernetes/"/>
-    
-    
-    <category term="Kubernetes" scheme="https://ellendan.com/tags/Kubernetes/"/>
-    
-    <category term="云原生" scheme="https://ellendan.com/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/"/>
     
   </entry>
   
