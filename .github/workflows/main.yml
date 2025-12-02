@@ -33,18 +33,18 @@ jobs:
           npm run build -d
           cp -r books/xp public/book-xp
           
-      - name: GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2.6.0
-        with:
-          target_branch: master
-          keep_history: true
-          allow_empty_commit: false
-          build_dir: public
-          jekyll: false
-          committer: git-action-deploy
-          commit_message: "git action deployed."
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: GitHub Pages
+      #   uses: crazy-max/ghaction-github-pages@v2.6.0
+      #   with:
+      #     target_branch: master
+      #     keep_history: true
+      #     allow_empty_commit: false
+      #     build_dir: public
+      #     jekyll: false
+      #     committer: git-action-deploy
+      #     commit_message: "git action deployed."
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy Azure Static App
         uses: Azure/static-web-apps-deploy@v1
