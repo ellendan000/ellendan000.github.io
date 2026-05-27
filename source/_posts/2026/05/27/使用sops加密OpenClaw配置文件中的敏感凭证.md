@@ -1,7 +1,7 @@
 ---
 title: 使用sops加密OpenClaw配置文件中的敏感凭证
-top: true
-cover: false
+top: false
+cover: true
 toc: true
 date: 2026-05-27 23:16:32
 img:
