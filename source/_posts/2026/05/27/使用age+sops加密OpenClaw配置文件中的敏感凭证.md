@@ -1,5 +1,5 @@
 ---
-title: 使用sops加密OpenClaw配置文件中的敏感凭证
+title: 使用age+sops加密OpenClaw配置文件中的敏感凭证
 top: false
 cover: true
 toc: true
@@ -28,6 +28,10 @@ Secrets audit: findings. plaintext=3, unresolved=0, shadowed=0, legacy=0.
 - [PLAINTEXT_FOUND] /root/.openclaw/openclaw.json:plugins.entries.minimax.config.webSearch.apiKey plugins.entries.minimax.config.webSearch.apiKey is stored as plaintext.
 - [PLAINTEXT_FOUND] /root/.openclaw/agents/main/agent/auth-profiles.json:profiles.minimax:cn.key Auth profile API key is stored as plaintext.
 ```
+{% note warning %}
+需要注意：plaintext 形式的 gateway.auth.token 无法使用本文的方式迁移。
+博主迁移 gateway token 后出现 gateway 启动异常，如果是仅回环地址访问，这个 token 的安全级别并不是特别重要，于是暂时没深究。
+{% endnote %}
 
 ## 2. 使用 age + sops 进行本地秘钥文件加解密 
 ### 2.1 预先安装 age + sops
@@ -83,17 +87,8 @@ $ chmod 600 *.enc.json
             }
         }
     },
-    "gateway": {
-        "auth": {
-            "token": "xxx"
-        }
-    },
-    "plugins": {
-        "minimax": {
-            "webSearch": {
-                "apiKey": "sk-cp-xxx"
-            }
-        }
+    "feishu": {
+        "appSecret": "xxx"
     }
 }
 ```
